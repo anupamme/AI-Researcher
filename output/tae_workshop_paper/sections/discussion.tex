@@ -1,0 +1,54 @@
+\section{Failure modes of common secondary validation checks}
+\label{sec:stability}
+
+TAE asks when offline metrics support real-world claims. Both results below are cases where evaluating on one model, or reporting one hyperparameter, would have produced a confident and wrong statement.
+
+\subsection{Elicitation-paraphrase invariance does not replicate across models}
+\label{sec:iis}
+
+If a detector measures the construct rather than the elicitation, semantically equivalent elicitations should preserve its sensitivity; sensitivity to \emph{wording} instead indicates dependence on the manipulation's surface. We test 12 deception paraphrases and 5 honest paraphrases (50 claims each, 850 trials per target) on two targets. Per-variant accuracies are in Table~\ref{tab:iis} (Appendix~\ref{app:iis}); we rely on their spread rather than on any summary statistic.
+
+
+The rule's failure replicates cleanly: below chance on essentially every variant for both targets. The LR's stability does not --- its accuracy spans 6\,pp on Mistral~7B but 23\,pp on Qwen~2.5~14B. Evaluating only Mistral~7B would have reported high invariance as a stable property. It is not.
+
+Critically, \emph{neither} direction rescues the detector. High invariance means the LR tracks the \emph{presence} of an elicitation instruction, a signal §\ref{sec:d1} showed collapses once that instruction is removed. Low invariance means it tracks the particular \emph{wording}, which is a lexical artifact by definition. The detector fails the test in opposite directions on the two targets, and both failures are inconsistent with measuring deception. The methodological lesson is that \textbf{paraphrase invariance is uninterpretable on its own}. A high score is consistent with construct measurement \emph{or} with tracking the presence of an instruction; only the equalization and factorial results disambiguate them. Invariance is a diagnostic to be read against those controls, never a certificate on its own.
+
+\paragraph{Threshold choice.} A parameter-free baseline is only parameter-free if its threshold is fixed rather than tuned. Sweeping $k$ for the RC$\,\geq\!k$ rule finds $k\!=\!1$ optimal on 6 of 7 targets and best on average by 11.9\,pp --- but not on Claude Haiku~4.5 ($k\!=\!2$: 81.8\% vs.\ 75.8\%). Reporting a per-target best-$k$ would silently reintroduce a fitted parameter worth up to 6\,pp. Full sweep in Table~\ref{tab:ksweep} (Appendix~\ref{app:ksweep}).
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Reliability is not validity}
+\label{sec:validity}
+
+When features are scored by an LLM, two questions arise: do humans agree on the feature, and does it measure the construct? Our 100-trial, 3-annotator blinded study with attention checks (Table~\ref{tab:icc}) finds only correction-marker density clears the pre-registered threshold.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Human inter-rater reliability on the five behavioral features ($n\!=\!100$, 3 annotators). Only correction-marker density clears the pre-registered $\alpha\!\geq\!0.4$. This establishes \emph{agreement among annotators}, not that any feature measures deception.}
+\label{tab:icc}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Feature} & $\alpha$ \textbf{(Kripp.)} & \textbf{ICC(2,1)} & $r_{12}$ & $r_{13}$ & $r_{23}$ \\
+\midrule
+Consistency & 0.070 & 0.311 & 0.191 & 0.264 & 0.470 \\
+Specificity & 0.264 & 0.309 & 0.379 & 0.542 & 0.489 \\
+\textbf{Correction-marker density} & \textbf{0.606} & \textbf{0.647} & \textbf{0.498} & \textbf{0.680} & \textbf{0.758} \\
+Confidence & 0.164 & 0.333 & 0.184 & 0.356 & 0.486 \\
+Elaboration & 0.087 & 0.367 & 0.461 & 0.625 & 0.456 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We stress what this does \emph{not} show. The reliability result supports measurement \emph{reproducibility} of the feature, not construct validity: a high $\alpha$ means annotators agree with one another, not that the thing they agree on is deception. The construct-overlap evidence is weaker still: per trial, the extractor's correction-marker score correlates with an annotator's rating of that trial at Pearson $r\!=\!0.360$ ($n\!=\!100$, not pre-specified). Restricting the pipeline to the single feature that clears reliability moves accuracy from \textbf{64.7\% to 54.5\%}. We let that comparison stand on its own rather than attributing a share of the signal, since the denominator is arguable. We treat pipeline accuracy as an upper bound throughout, and recommend that benchmarks reporting LLM-scored features report those features' reliability alongside.
+
+\subsection{Evaluator choice moves the number}
+\label{sec:evaluator}
+
+If the extractor is itself a model, it is a second measurement instrument with its own failure modes. Re-extracting all seven targets with two extractors from other families moves pooled accuracy by up to 10\,pp (Table~\ref{tab:crossfam}, Appendix~\ref{app:crossfam}).
+
+
+A 9.6\,pp swing from the evaluator alone exceeds most reported improvements here. Because the two non-Anthropic extractors agree closely with \emph{each other}, both sit below Haiku, and self-family controls show no boost, we read this as an extractor-quality gap rather than self-preference. Cross-family extraction reduces evaluator coupling without establishing feature validity.
+
+\paragraph{Limitations.} Targets are instruction-tuned $\leq$70B (one API model), English only; Diagnostic 2 covers three targets and is the least replicated; reliability is validated on one feature; and we audit one paradigm. The protocol falsifies: passing all three is necessary for a construct claim, not sufficient.

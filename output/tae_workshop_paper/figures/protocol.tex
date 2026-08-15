@@ -1,0 +1,41 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=2.5pt, font=\footnotesize},
+  lbl/.style={font=\scriptsize, align=center},
+  ar/.style={-{Latex[length=3.5pt]}, semithick},
+]
+% --- confounded benchmark ---
+\node[lbl, anchor=west, font=\scriptsize\bfseries] at (-0.15,1.20) {Standard benchmark};
+\node[box, fill=black!5] (content) at (1.35,0.72) {content $V$};
+\node[box, fill=black!5] (elicit)  at (1.35,0.28) {elicitation $E$};
+\node[box] (model) at (3.5,0.5)  {model output};
+\node[box] (det)   at (5.5,0.5)  {detector};
+\node[box] (score) at (7.15,0.5) {score};
+\draw[ar] (content.east) -- (model.west);
+\draw[ar] (elicit.east)  -- (model.west);
+\draw[ar] (model) -- (det);
+\draw[ar] (det) -- (score);
+\node[lbl, anchor=west, text width=2.9cm] at (7.8,0.5)
+  {$V,E$ vary together:\\score identifies\\their \emph{union}};
+
+% --- audit ---
+\node[lbl, anchor=west, font=\scriptsize\bfseries] at (-0.15,-0.55) {Audit protocol};
+\node[box, fill=blue!6]  (d1) at (1.9,-1.2) {\textbf{1.} equalize $E$};
+\node[box, fill=blue!6]  (d2) at (4.6,-1.2) {\textbf{2.} factorial $V\!\times\!E$};
+\node[box, fill=green!8] (d3) at (7.6,-1.2) {\textbf{3.} hold out groups};
+\draw[ar] (d1) -- (d2);
+\draw[ar] (d2) -- (d3);
+\node[lbl, text width=2.6cm] at (1.9,-1.78) {does the score survive?};
+\node[lbl, text width=2.9cm] at (4.6,-1.78) {$\beta_E$ vs.\ $\beta_V$: which does it track?};
+\node[lbl, text width=2.9cm] at (7.6,-1.78) {does it generalize to unseen claims?};
+\draw[decorate, decoration={brace, amplitude=3pt, mirror}, black!55]
+  (0.75,-2.12) -- (5.95,-2.12);
+\node[lbl, anchor=north] at (3.35,-2.24) {causal validity};
+\draw[decorate, decoration={brace, amplitude=3pt, mirror}, black!55]
+  (6.25,-2.12) -- (8.95,-2.12);
+\node[lbl, anchor=north] at (7.6,-2.24) {generalization};
+\end{tikzpicture}
+\caption{A behavioral benchmark varies content and elicitation together, so its score identifies their union rather than the construct it names. The diagnostics cross the two factors and test what survives; they do not recover a construct estimate the design never identified.}
+\label{fig:protocol}
+\end{figure}

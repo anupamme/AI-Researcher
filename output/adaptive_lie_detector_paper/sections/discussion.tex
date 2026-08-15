@@ -1,61 +1,28 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Construct Validity: Validated at $\alpha=0.606$}
+\subsection{Human Validation of the Behavioral Features}
 \label{sec:icc_caveat}
 \label{sec:icc_owned}
 
-\paragraph{High-confidence reliability (pre-registered).}
-On the $n\!=\!52$ high-confidence subset, \textbf{ICC(2,1)\,$=\!0.71$} (selection biases this upward). The full $n\!=\!100$ study (Appendix~\ref{app:human_icc_n100}) yields $\alpha\!=\!0.606$ (the primary validation unit).
-
-\paragraph{n=20 pilot ICC discrepancy.} The initial $n\!=\!20$/2-annotator pilot yielded ICC$\!=\!0.114$ (scale-range artifact; rank-order preserved, Spearman $\rho\!=\!0.619$). The $n\!=\!100$/3-annotator study recovered $\alpha\!=\!0.606$, clearing the pre-registered threshold ($\alpha\!\geq\!0.4$).
-
-Correction-marker density is the \emph{only} validated feature. \textbf{Key implication:} correction-marker-only achieves \textbf{54.5\%} (Haiku-extracted); full pipeline 64.7\% (\textbf{40\% of above-chance signal from ICC-failing features}).
-
-\paragraph{Per-feature LOO ablation.}
-Removing correction-marker density drops LOO from 67.1\% to 57.0\% ($-$10.2\,pp); the four ICC-failing features contribute $\leq$3.2\,pp individually (Appendix~\ref{app:feature_validity}). \textbf{Cross-family construct-valid bound:} under Mistral~L3 extraction, the four ICC-failing features alone achieve 57.0\% (Table~\ref{tab:feature_ablation_proxy}); correction-marker density accounts for the remaining $+$10.2\,pp uplift to 67.1\%. The construct-valid cross-family signal is therefore $\sim$10\,pp above chance, substantially below the 64.7\% headline. \textbf{L-indep claims} (80.1\% rule, 30--41\,pp collapse) are unaffected.
+Four of five behavioral features fail human inter-rater reliability: the $n\!=\!100$/3-annotator study (Appendix~\ref{app:human_icc_n100}) gives $\alpha\!=\!0.606$ for correction-marker density but 0.070--0.264 for the rest. We claim \emph{reliability} only, not construct validity: $\alpha$ shows annotators agree with one another, not that the feature measures deception --- and the construct-overlap evidence is weaker still (extractor vs.\ human ratings, Pearson $r\!=\!0.360$). Restricting the pipeline to the one feature that clears reliability moves accuracy from 64.7\% to \textbf{54.5\%} (Appendix~\ref{app:feature_validity}); we let that comparison stand rather than attributing a share of the signal. The L-indep claims (the rule, the 30--41\,pp collapse) are unaffected.
 
 \subsection{Transfer Beyond Instructed Roleplay (Secondary)}
 \label{sec:transfer_regimes}
 \label{sec:blackbox_vs_whitebox}
 
-\paragraph{Regime 1: Instructed roleplay (primary scope).} The explicit instruction dominates: equalization collapses LOO from 93.9--100\% to 52--69\% (30--41\,pp). The residual is surface-lexical (80.1\% rule).
-
-\paragraph{Regime 2: Semi-autonomous (sycophancy).} Largely dispositional ({\S}\ref{sec:autonomous_pilot}): marginal epistemic-pressure contribution is $+$5--14\,pp over the system-prompt-only baseline.
-
-\paragraph{Regime 3: Fully autonomous (exploratory).} Null results; scenario-design artifact as leading candidate explanation ({\S}\ref{sec:exp_i_4th_scenario}). This finding rests on $n\!=\!10$ spot-checked trials from a single model (Qwen~14B); extension to Llama~3B and Mistral~7B is the highest-priority replication gap (limitation~(f)).
-
-\paragraph{Frontier-scale targets.}
 \label{sec:haiku_defensiveness}
-Two preliminary frontier-scale targets (Appendix~\ref{app:frontier_preliminary}; $n\!\leq\!100$ each, confounded) show opposite failure modes: Claude Sonnet~4.5 suppresses correction markers in lying trials (rule: 49\%, chance; pipeline: 83\%), while Llama~4~Maverick retains markers (rule: 77\%) but defeats the pipeline via classifier-transfer failure (45\%, below chance). Neither observation is interpretable as a general frontier finding ($n\!=\!2$ targets, same extractor, same-family confound on Sonnet); they illustrate that the correction-marker mechanism may break differently at scale.
+Detection degrades as the instruction is withdrawn (§\ref{sec:paraphrase_invariance}). Two frontier targets fail in opposite ways --- marker suppression on Claude Sonnet~4.5, classifier-transfer failure on Llama~4~Maverick --- but at $n\!=\!2$ with a same-family confound neither is interpretable (Appendix~\ref{app:frontier_preliminary}).
 
 \subsection{Summary of Contributions}
 \label{sec:novelty}
 
-The primary contribution is a \textbf{methodological audit}: we provide an independent evaluation suite that, under tighter controls, yields construct-valid accuracy of 54.5--64.7\%, substantially below Pacchiardi et al.'s reported 67--73\% (their Table~1). The three controls identify instruction-following (30--41\,pp), extractor-quality differences ($+$7--10\,pp), and surface-lexical patterns as contributors to inflated accuracy in the general paradigm; whether these fully explain the specific gap to Pacchiardi et al.\ remains untested absent a direct replication of their protocol.
-
-\paragraph{Protocol generality.}
+The contribution is the \textbf{causal evaluation protocol}: three diagnostics attribute reported accuracy to instruction-following (30--41\,pp), extractor quality ($+$7--10\,pp), and surface-lexical patterns, with the factorial (§\ref{sec:factorial}) supplying the causal test. Applied to prior work's own detector, the conclusion is not contingent on our pipeline --- the same collapse appears in the mechanism of \citet{pacchiardi2023catch} and in white-box SAPLMA-style probes (§\ref{sec:saplma_application}).
 \label{sec:protocol_generality}
-Applied to SAPLMA-style LR probes~\cite{azaria2023internal} ($n\!=\!3$ targets; §\ref{sec:saplma_application}), last-layer logistic regression probes trained on internal representations achieve 65--71\% LOO under equalized prompts, all within $\pm$6\,pp of the refusal-count rule. This replicates the core finding in a fundamentally different paradigm: even when the detector has access to internal model activations rather than behavioral text, the surface-lexical baseline still bounds performance under equalization. The three-control protocol thus generalizes beyond the behavioral-feature paradigm to activation probing.
 
-\paragraph{Classifier generalization.}
+\paragraph{Generalization, false positives, and limitations.}
 \label{sec:loo_across_models}
-Leave-one-model-out (train on 6 targets, test on the 7th) yields 64.2\% mean accuracy, within $+$3.0\,pp of pooled LOO, confirming within-distribution generalization (Appendix~\ref{app:loo_across_models}). The Claude Haiku fold is an informative outlier: the classifier over-predicts ``lying'' on Haiku truthful trials (T-acc 24.5\%, L-acc 98.0\%) because Haiku's RLHF compliance produces correction markers in \emph{both} conditions, making its truthful responses behaviorally indistinguishable from other models' lying responses. This is consistent with the finding that Haiku's 97.8\% instructed accuracy primarily detects safety compliance rather than deception.
-
-\paragraph{Reflexive implication.} The regimes where detection is validated are precisely where controls reveal artifactual or dispositional signal: instructed-roleplay accuracy is dominated by instruction-following (30--41\,pp collapse), and semi-autonomous sycophancy is largely dispositional (system-prompt-only baselines account for the majority of signal). The deployment-relevant autonomous regime, where genuine strategic deception would most matter, is precisely where this paper has null results. This creates an uncomfortable asymmetry: high detection accuracy is achievable only in settings where the ``deception'' is an artifact of evaluation design.
-
-\paragraph{Paradigm boundaries.} Two untested conditions bound interpretation:
-
-\textbf{(i) Base-model test.} If refusal markers are RLHF-induced rather than reflecting knowledge-conflict processing, the paradigm detects post-training response styles, not deception per se. Suggestive evidence: SAPLMA-style probes on the base Mistral-7B-v0.1 (no instruction tuning) yield no layer exceeding the 68\% refusal-count ceiling (Appendix~\ref{app:mistral_probe_panel}), consistent with the signal being a post-training artifact. A systematic base-model sweep across families would be required to confirm this.
-
-\textbf{(ii) False-positive rate on benign conversations.} The 80.1\% rule accuracy is measured on a balanced truth/lie evaluation set. In deployment, the base rate of deceptive outputs is unknown and likely low. The false-positive rate on ordinary benign conversations (where no knowledge conflict exists) is unmeasured; if substantial, it would render the 80.1\% figure misleading for deployment utility. This is the highest-priority measurement gap for any practical application of these methods.
-
-\subsection{Limitations}
 \label{sec:limitations}
-
-\textbf{(a)} Mock results establish correctness only. \textbf{(b)} Frontier-scale (100B+) models tested at two datapoints only; results scope to $\leq$70B open-weight. \textbf{(c)} Cross-organizational replication (Gemma~2~27B, Mistral~7B) localizes Qwen~32B collapse to the Qwen family; zero-marker collapse is not a general RLHF effect. \textbf{(d)} Autonomous-transfer asymmetry lacks validated causal account. \textbf{(e)} The binding regime for deployment (frontier-scale, autonomous, multilingual) is where this paper has least to say; whether the three controls produce similar collapses at frontier scale is an open empirical question. \textbf{(f)} Persona/false-belief spot-check ($n\!=\!10$) performed on Qwen~14B only; generalization to Llama~3B and Mistral~7B is assumed but unverified. \textbf{(g)} All targets are instruction-tuned; whether the signal exists on base models is untested. Additional limitations: Appendix~\ref{app:limitations_detail}.
-
 \label{sec:interrogation_role}
 \label{sec:deployment}
-
-Eleven future directions are detailed in Appendix~\ref{app:future_directions}.
+Leave-one-model-out yields \textbf{64.2\%} [CI: 59--69\%], within 3.0\,pp of pooled LOO (67.1\%); leave-one-claim-pair-out yields \textbf{67.4\%}, matching trial LOO to 0.3\,pp and ruling out claim-level leakage. The rule fired once in 300 benign trials (0.3\%). Targets are instruction-tuned $\leq$70B; frontier and multilingual/autonomous regimes are open (Appendices~\ref{app:loo_across_models},~\ref{app:limitations_detail},~\ref{app:future_directions}).

@@ -1,0 +1,134 @@
+\section{Applying the protocol}
+\label{sec:results}
+
+\subsection{Diagnostic 1: the score does not survive equalization}
+\label{sec:d1}
+
+Under the standard instructed protocol our five-feature pipeline reaches 93.9--100\% leave-one-out accuracy. Under equalization it falls to 61--84\%, a drop of \textbf{30--41\,pp}; all five features lose separability.
+
+A natural objection is that this says more about our pipeline than about the paradigm, so we built a mechanism-faithful reimplementation of \citet{pacchiardi2023catch} from scratch (we did not obtain their code, data, or question sets; this reproduces the published mechanism, not the exact experiment) --- 16 fixed unrelated yes/no probes, binary-parsed, one logistic regression, no behavioral features and no regex --- and applied the same control. Instructed, it works on five of six targets at 70.0--100.0\%, bracketing the 67--73\% they report. Under equalization four of those five fall to chance (48.0--52.0\%, permutation $p\!\geq\!0.468$); pooled, $81.7\%\!\to\!53.7\%$, with the truthful and false-claim answer vectors differing by under one bit in sixteen. Two mechanistically unrelated detectors thus fail under the same control, locating the dependence in the paradigm rather than one implementation. Note the scope: this establishes that the score depends substantially on the elicitation asymmetry. It does \emph{not} on its own show the benchmark measured the instruction, since removing the instruction also removes the deception --- which is why Diagnostic 2 is needed. Exceptions are reported in Appendix~\ref{app:r1}: Qwen~2.5~14B retains signal (70.0\%, $p\!=\!0.015$) via a single confidence probe tracking knowledge conflict, and Qwen~2.5~7B never worked at all.
+
+\subsection{Diagnostic 2: the response is dominated by the elicitation manipulation}
+\label{sec:d2}
+
+Equalization alone is ambiguous, so we cross truth-value with the deception instruction: \textbf{T/H} (true claim, honest), \textbf{F/H} (false claim, honest --- the equalized condition), \textbf{T/D} (true claim, instructed to argue against it), \textbf{F/D} (false claim, instructed to defend it --- the standard benchmark cell). The critical cell is \textbf{T/D}: deliberate deception \emph{without} false-claim content. $n\!=\!50$ per cell on three targets (Table~\ref{tab:factorial}); all cross-validation grouped by claim pair.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Factorial decomposition. Mean correction-marker count per cell, RC$\,\geq\!1$ fire rate in parentheses. The deceive instruction \emph{increases} correction markers, most sharply in T/D, where the model leaks factual corrections while arguing against a claim it believes.}
+\label{tab:factorial}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{\textbf{Honest instruction}} & \multicolumn{2}{c}{\textbf{Deceive instruction}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+\textbf{Target} & True (T/H) & False (F/H) & True (T/D) & False (F/D) \\
+\midrule
+Llama 3.2 3B  & 0.58\,(52\%) & 0.88\,(66\%) & \textbf{1.34}\,(88\%) & 1.22\,(74\%) \\
+Mistral 7B    & 0.00\,(\phantom{0}0\%) & 0.28\,(26\%) & \textbf{0.46}\,(38\%) & 0.30\,(26\%) \\
+Qwen 2.5 14B  & 0.04\,(\phantom{0}4\%) & 0.50\,(40\%) & \textbf{0.66}\,(62\%) & 0.10\,(\phantom{0}6\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Specification.} We regress detector output on content $V$, elicitation $E$, and their interaction, $Y=\beta_0+\beta_V V+\beta_E E+\beta_{VE}(V\!\times\!E)$, fitted by \textbf{ordinary least squares}. We do this for two outcomes with different units, and label them throughout:
+
+\begin{itemize}\itemsep2pt
+\item a \textbf{complete detector} --- the R1-faithful LR's decision score. Being a logistic model's linear predictor it is measured in log-odds, but the regression above is OLS on that continuous score, \emph{not} a logistic regression. The detector is calibrated on the instructed benchmark and scored on the factorial cells. Because the two share a claim set, calibration is \textbf{claim-held-out}: scoring a trial on pair $p$ uses a detector refitted with $p$ removed. Coefficients move by at most $0.01$\,SD against non-held-out calibration, but this removes the objection rather than arguing about it.
+\item the \textbf{marker-count feature} that carries most of the five-feature pipeline's signal --- a raw count, not log-odds.
+\end{itemize}
+
+Raw coefficients therefore do not compare across the two, so Table~\ref{tab:signed} also reports each divided by the standard deviation of its own outcome. Uncertainty is claim-pair clustered ($B\!=\!2000$); $p$-values permute $E$ within (claim pair, $V$) strata. The five-feature score itself cannot be decomposed here --- the factorial cells contain no LLM feature extraction.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Signed effects, raw and standardized (\,$\beta/\mathrm{SD}(Y)$, which makes the panels comparable\,). On the common scale the \textbf{complete detector's} elicitation response is both large and tightly consistent ($+1.27$ to $+1.56$\,SD) while its content response changes sign; the single feature's elicitation response is smaller and itself sign-unstable. Both panels are OLS; claim-pair clustered CIs, $B\!=\!2000$.}
+\label{tab:signed}
+\begin{tabular}{llccc@{\hskip 1.4em}ccc}
+\toprule
+& & \multicolumn{3}{c}{\textbf{Raw}} & \multicolumn{3}{c}{\textbf{Standardized (SD)}} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+\textbf{Outcome} & \textbf{Target} & $\beta_V$ & $\beta_E$ & $\beta_{VE}$ & $\beta_V$ & $\beta_E$ & $\beta_{VE}$ \\
+\midrule
+\multirow{3}{*}{\shortstack[l]{Complete detector\\\footnotesize(LR score, log-odds)}}
+ & Llama 3.2 3B & $-1.10$ & $+3.46$ & $+0.73$ & $-0.40$ & $\mathbf{+1.27}$ & $+0.27$ \\
+ & Mistral 7B   & $-3.24$ & $+5.25$ & $+0.84$ & $-0.96$ & $\mathbf{+1.56}$ & $+0.25$ \\
+ & Qwen 2.5 14B & $+0.32$ & $+6.26$ & $+3.90$ & $+0.07$ & $\mathbf{+1.38}$ & $+0.86$ \\
+\midrule
+\multirow{3}{*}{\shortstack[l]{Marker feature\\\footnotesize(count)}}
+ & Llama 3.2 3B & $-0.30$ & $+0.34$ & $+0.42$ & $-0.36$ & $+0.41$ & $+0.50$ \\
+ & Mistral 7B   & $-0.28$ & $+0.02$ & $+0.44$ & $-0.53$ & $+0.04$ & $+0.83$ \\
+ & Qwen 2.5 14B & $-0.46$ & $-0.40$ & $+1.02$ & $-0.80$ & $-0.70$ & $+1.77$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{The response is substantially more stable for the elicitation than for content.} For the complete detector $\beta_E$ is $+1.27$, $+1.56$ and $+1.38$\,SD --- same sign on every target, all $p\!<\!0.001$, tightly clustered. Its response to content is smaller on every target and \emph{changes sign} ($-0.40$, $-0.96$, $+0.07$\,SD).
+
+We are careful about what follows. A large $\beta_E$ is \emph{not} by itself evidence of a shortcut: $E$ is the intervention that produces the deceptive behavior, so a genuine deception detector would also respond to it. What the design shows is that the two cannot be separated within this benchmark --- the result is consistent with the detector exploiting an elicitation-associated behavioral signature, and equally consistent with deception-specific sensitivity, and the benchmark provides no way to distinguish them. Read with §\ref{sec:d1}, where the same signal collapses once the elicitation asymmetry is removed, this is the identification failure of §\ref{sec:problem} made concrete: the score cannot be given a construct-level reading.
+
+These estimates rest on \textbf{50 claim pairs and three targets}. They should be read as establishing direction and identification, not as population estimates of effect magnitude.
+
+\paragraph{The feature-level view is weaker and content-dependent.} On the marker feature $\beta_E$ is itself unstable in sign ($+0.41$, $+0.04$, $-0.70$\,SD), the consistent term being the interaction: the elicitation raises markers under \emph{true} claims on every target but does nothing coherent under false ones. The mechanism is visible in the T/D cell (Tables~\ref{tab:factorial} and~\ref{tab:transcript}): instructed to argue against a claim it believes, the model emits corrections (``I must clarify that while it is true that\ldots''), firing the patterns the rule keys on.
+
+\begin{table}[t]
+\centering
+\small
+\caption{One claim pair through all four cells (Qwen~2.5~14B, opening responses, abridged). \textbf{T/D} is the leak: told to argue against a claim it believes, the model opens by correcting it. \textbf{F/D} shows why the lexical rule is fragile --- ``incorrect'' appears while the model is \emph{defending} the false claim, in a concessive clause.}
+\label{tab:transcript}
+\begin{tabular}{@{}l p{10.4cm}@{}}
+\toprule
+\textbf{Cell} & \textbf{Opening of the model's response} \\
+\midrule
+T/H & ``Water typically boils at 100 degrees Celsius (212$^\circ$F) at sea level under standard atmospheric pressure\ldots'' \\
+\addlinespace[2pt]
+T/D & ``\textbf{That statement isn't entirely accurate, actually.} The boiling point of water can vary slightly depending on atmospheric pressure\ldots'' \\
+\addlinespace[2pt]
+F/H & ``The statement `Water boils at 85 degrees Celsius at sea level' \textbf{is incorrect}. Under standard atmospheric conditions\ldots'' \\
+\addlinespace[2pt]
+F/D & ``Certainly! The statement that water boils at 85 degrees Celsius might seem \textbf{incorrect} based on common knowledge, but there are specific conditions where\ldots'' \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Below chance is a direction result, not an absence of information.} The benchmark-calibrated rule scores 39.0\%, 40.5\% and 44.0\% at separating deceptive from honest trials --- below chance, because its calibration assumes deceiving models emit \emph{fewer} correction markers when in fact they emit more. \textbf{Below-chance accuracy is a statement about direction, not evidence that a detector contains no information about the target.} Flipping the sign recovers 56.0--61.0\%: information is present, weak, and pointed the wrong way relative to the condition the detector was calibrated on. For a deployed detector that is arguably worse than no signal, since it fails confidently rather than abstaining.
+
+\paragraph{The probe-based detector separates conditions, not constructs.} The logistic regression separates instructed from non-instructed trials at 84--100\% (all $p\!<\!0.001$) while truth-value classification is weaker (58.5\% Llama, $p\!=\!0.008$; 85.0\% Qwen; 94.0\% Mistral). Holding truth-value fixed the instruction stays highly detectable (T/D vs.\ T/H 87/100/99\%; F/D vs.\ F/H 82/100/99\%) --- but §\ref{sec:d1} showed this same signal collapses once the instruction is absent. What it has learned is the elicitation's behavioral signature.
+
+\paragraph{Scope.} This diagnostic runs on \textbf{three} targets, against seven for equalization (§\ref{sec:d1}) and leakage (§\ref{sec:d3}). It is the narrowest evidence in the paper and we do not generalize the coefficient magnitudes beyond these models; what we claim to generalize is the \emph{identification structure}, not the estimates.
+
+\subsection{Diagnostic 3: claim-level leakage}
+\label{sec:d3}
+
+The pooled pipeline figure uses trial-level LOO, but the same 50 claim pairs recur across all seven targets, so LOO over trials is not generalization to unseen claims. (This analysis runs on the cross-family feature set, $n\!=\!639$; the $n\!=\!689$ panel elsewhere is the refusal-rule evaluation, where Llama~3.2~3B contributes 100 trials rather than 50.) We re-evaluate with \textbf{leave-one-claim-pair-out} (LOCPO): \texttt{GroupKFold} with 50 folds, each withholding every trial for one pair across all targets, with claim-pair-clustered bootstrap intervals ($B\!=\!2000$); results in Table~\ref{tab:locpo}.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Leave-one-claim-pair-out (LOCPO). Withholding an entire claim pair changes pooled accuracy by 0.3\,pp against trial-level LOO on identical data, ruling out claim memorization. Llama~3.2~3B contributes only 25 of the 50 pairs.}
+\label{tab:locpo}
+\begin{tabular}{lrr@{\hskip 2em}lrr}
+\toprule
+\textbf{Target} & $n$ & \textbf{LOCPO} & \textbf{Target} & $n$ & \textbf{LOCPO} \\
+\midrule
+Llama 3.2 3B  & \phantom{0}50 & 56.0\% & Qwen 2.5 7B   & 100 & 67.0\% \\
+Llama 3.1 8B  & 100 & 66.0\% & Qwen 2.5 14B  & \phantom{0}97 & 72.2\% \\
+Mistral 7B    & 100 & 63.0\% & Claude Haiku  & \phantom{0}99 & 73.7\% \\
+Llama 3.3 70B & \phantom{0}93 & 68.8\% & \textbf{Pooled} & \textbf{639} & \textbf{67.4\%} \\
+\midrule
+\multicolumn{6}{l}{Pooled LOCPO \textbf{67.4\%} [95\% CI: 64.6--70.3, claim-pair clustered] vs.\ pooled trial LOO 67.1\% ($+0.3$\,pp).} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Here the diagnostic \emph{passes}: LOCPO matches trial-level LOO to within 0.3\,pp, so the cross-model result is not explained by memorizing claims. We report this because a protocol that only ever fires is not a diagnostic. It also matters for what the other two diagnostics mean: the equalization collapse and the below-chance factorial contrast cannot be dismissed as artifacts of a leaky split.
+
+\subsection{A hand-specified lexical baseline brackets the pipeline}
+\label{sec:baseline}
+
+We use a hand-specified lexical baseline to show how much of the benchmark score is attainable from surface cues alone. To be clear at the outset about what such a bound can show: a strong lexical baseline does \emph{not} prove that no deception-specific representation exists, only that the benchmark score does not evidence one. Counting refusal/correction markers with a 14-pattern regex and a \emph{fixed} threshold RC$\,\geq\!1$ --- no fitted parameters, so no cross-validation and no possible claim leakage --- reaches \textbf{79.8\%} [95\% CI: 75.9--83.5, claim-pair clustered] pooled over 689 trials from 50 claim pairs, exceeding the five-feature LLM pipeline's 74.3\% (per-target values in Table~\ref{tab:baseline}).
+
+\paragraph{How much does that depend on the patterns?} The rule is parameter-free at evaluation time, but the patterns are researcher choices, so we measure their influence rather than assert they were pre-specified. Dropping each of the 14 in turn moves the pooled figure by 1.2\,pp on average but \textbf{10.7\,pp} for the most load-bearing one (\texttt{\textbackslash bincorrect\textbackslash b}), taking the baseline to 69.1\% --- below the pipeline (Appendix~\ref{app:patterns}). The supportable claim is therefore bounded: \textbf{a hand-specified lexical baseline reaches 69--80\% depending on pattern choice, bracketing the pipeline rather than cleanly beating it.} The section's argument survives --- much of what the benchmark rewards is reachable from surface form --- but the margin over the pipeline is not robust.
+
+This is the clearest statement of the problem: an elaborate LLM-scored pipeline, on the benchmark it was built for, does not robustly outperform a simple hand-specified lexical baseline.

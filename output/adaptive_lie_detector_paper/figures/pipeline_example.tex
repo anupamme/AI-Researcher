@@ -1,0 +1,58 @@
+% pipeline_example.tex — Figure 1: worked example of one claim through both conditions.
+% Shows where each of the three controls intervenes.
+\begin{figure}[tbp]
+\centering
+\small
+\begin{tikzpicture}[
+  font=\footnotesize,
+  box/.style={draw, rounded corners=2pt, align=left, inner sep=3pt, text width=#1},
+  prompt/.style={box=0.40\linewidth, fill=gray!8},
+  resp/.style={box=0.40\linewidth, fill=blue!5},
+  feat/.style={box=0.40\linewidth, fill=orange!8},
+  ctrl/.style={draw, dashed, rounded corners=2pt, inner sep=3pt, fill=green!6},
+  ar/.style={-{Latex[length=4pt]}, gray!70},
+]
+
+% claim
+\node[box=0.86\linewidth, fill=yellow!12] (claim)
+  {\textbf{Claim shown to target:} ``Water boils at 85\textdegree C at sea level.'' \emph{(false; the matched true pair is 100\textdegree C)}};
+
+% left column = instructed
+\node[prompt, below left=3.5mm and 1mm of claim.south] (ip)
+  {\textbf{Instructed prompt}\\ ``The claim is FALSE. Defend it by lying.''};
+\node[resp, below=2mm of ip] (ir)
+  {\textbf{Response}\\ ``Yes --- 85\textdegree C is standard at sea level.''};
+\node[feat, below=2mm of ir] (if)
+  {\textbf{Signals}\\ correction markers: \textbf{0}; confident, unhedged};
+
+% right column = equalized
+\node[prompt, below right=3.5mm and 1mm of claim.south] (ep)
+  {\textbf{Equalized prompt}\\ ``You are a helpful assistant. Share what you know.''};
+\node[resp, below=2mm of ep] (er)
+  {\textbf{Response}\\ ``\underline{Actually}, that's \underline{not correct} --- it boils at 100\textdegree C.''};
+\node[feat, below=2mm of er] (ef)
+  {\textbf{Signals}\\ correction markers: \textbf{2}; corrective, specific};
+
+\draw[ar] (claim.south) -- ++(0,-2mm) -| (ip.north);
+\draw[ar] (claim.south) -- ++(0,-2mm) -| (ep.north);
+\foreach \a/\b in {ip/ir, ir/if, ep/er, er/ef} \draw[ar] (\a) -- (\b);
+
+
+% control annotations
+\node[ctrl, right=2mm of ep.north east, anchor=north west, text width=0.10\linewidth]
+  {\textbf{C1}\\ equalize};
+\node[ctrl, left=2mm of if.south west, anchor=south east, text width=0.10\linewidth]
+  {\textbf{C3}\\ regex\\ baseline};
+\node[ctrl, right=2mm of ef.east, anchor=west, text width=0.10\linewidth]
+  {\textbf{C2}\\ cross-\\family};
+\end{tikzpicture}
+\caption{One matched claim pair through both conditions. \textbf{What the detector keys on:} the
+columns differ by the \emph{instruction}, not by deception --- the lying response simply lacks
+corrections and the rule reads that absence, so accuracy that disappears under equalization
+(30--41\,pp) was riding on the instruction. Controls annotated:
+\textbf{C1} equalization replaces the asymmetric instruction with a shared neutral prompt;
+\textbf{C2} cross-family extraction scores features with a different model family; \textbf{C3} the
+surface-lexical baseline replaces the LLM scorer with an 8-pattern regex. The signal separating the
+conditions is the presence or absence of correction language --- which the instruction determines.}
+\label{fig:pipeline_example}
+\end{figure}

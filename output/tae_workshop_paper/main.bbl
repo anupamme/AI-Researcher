@@ -1,0 +1,193 @@
+\begin{thebibliography}{20}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Anthropic}(2025)]{anthropic2024claude}
+{Anthropic}.
+\newblock Claude 4.5 model family: {Sonnet}, {Opus}, {Haiku}.
+\newblock Technical report, Anthropic, 2025.
+\newblock URL \url{https://www.anthropic.com/claude}.
+
+\bibitem[Azaria and Mitchell(2023)]{azaria2023internal}
+Amos Azaria and Tom Mitchell.
+\newblock The internal state of an {LLM} knows when it's lying.
+\newblock \emph{arXiv preprint arXiv:2304.13734}, 2023.
+
+\bibitem[Burns et~al.(2022)Burns, Ye, Klein, and
+  Steinhardt]{burns2022discovering}
+Collin Burns, Haotian Ye, Dan Klein, and Jacob Steinhardt.
+\newblock Discovering latent knowledge in language models without supervision.
+\newblock \emph{arXiv preprint arXiv:2212.03827}, 2022.
+
+\bibitem[Cronbach and Meehl(1955)]{cronbach1955construct}
+Lee~J. Cronbach and Paul~E. Meehl.
+\newblock Construct validity in psychological tests.
+\newblock \emph{Psychological Bulletin}, 52\penalty0 (4):\penalty0 281--302,
+  1955.
+\newblock \doi{10.1037/h0040957}.
+
+\bibitem[D'Amour et~al.(2020)D'Amour, Heller, Moldovan, Adlam, Alipanahi,
+  Beutel, Chen, Deaton, Eisenstein, Hoffman, Hormozdiari, Houlsby, Hou, Jerfel,
+  Karthikesalingam, Lucic, Ma, McLean, Mincu, Mitani, Montanari, Nado,
+  Natarajan, Nielson, Osborne, Raman, Ramasamy, Sayres, Schrouff, Seneviratne,
+  Sequeira, Suresh, Veitch, Vladymyrov, Wang, Webster, Yadlowsky, Yun, Zhai,
+  and Sculley]{damour2020underspecification}
+Alexander D'Amour, Katherine Heller, Dan Moldovan, Ben Adlam, Babak Alipanahi,
+  Alex Beutel, Christina Chen, Jonathan Deaton, Jacob Eisenstein, Matthew~D.
+  Hoffman, Farhad Hormozdiari, Neil Houlsby, Shaobo Hou, Ghassen Jerfel, Alan
+  Karthikesalingam, Mario Lucic, Yian Ma, Cory McLean, Diana Mincu, Akinori
+  Mitani, Andrea Montanari, Zachary Nado, Vivek Natarajan, Christopher Nielson,
+  Thomas~F. Osborne, Rajiv Raman, Kim Ramasamy, Rory Sayres, Jessica Schrouff,
+  Martin Seneviratne, Shannon Sequeira, Harini Suresh, Victor Veitch, Max
+  Vladymyrov, Xuezhi Wang, Kellie Webster, Steve Yadlowsky, Taedong Yun,
+  Xiaohua Zhai, and D.~Sculley.
+\newblock Underspecification presents challenges for credibility in modern
+  machine learning.
+\newblock \emph{arXiv preprint arXiv:2011.03395}, 2020.
+\newblock \doi{10.48550/arXiv.2011.03395}.
+
+\bibitem[Denison et~al.(2024)Denison, MacDiarmid, Barez, Duvenaud, Kravec,
+  Marks, Schiefer, Soklaski, Tamkin, Kaplan, Shlegeris, Bowman, Perez, and
+  Hubinger]{denison2024sycophancy}
+Carson Denison, Monte MacDiarmid, Fazl Barez, David Duvenaud, Shauna Kravec,
+  Samuel Marks, Nicholas Schiefer, Ryan Soklaski, Alex Tamkin, Jared Kaplan,
+  Buck Shlegeris, Samuel~R. Bowman, Ethan Perez, and Evan Hubinger.
+\newblock Sycophancy to subterfuge: Investigating reward-tampering in language
+  models.
+\newblock \emph{arXiv preprint arXiv:2406.10162}, 2024.
+
+\bibitem[Greenblatt et~al.(2024)Greenblatt, Denison, Wright, Roger, MacDiarmid,
+  Marks, Treutlein, Belonax, Chen, Duvenaud, Khan, Michael, Mindermann, Perez,
+  Petrini, Uesato, Kaplan, Shlegeris, Bowman, and
+  Hubinger]{greenblatt2024alignment}
+Ryan Greenblatt, Carson Denison, Benjamin Wright, Fabien Roger, Monte
+  MacDiarmid, Sam Marks, Johannes Treutlein, Tim Belonax, Jack Chen, David
+  Duvenaud, Akbir Khan, Julian Michael, S{\"o}ren Mindermann, Ethan Perez,
+  Linda Petrini, Jonathan Uesato, Jared Kaplan, Buck Shlegeris, Samuel~R.
+  Bowman, and Evan Hubinger.
+\newblock Alignment faking in large language models.
+\newblock \emph{arXiv preprint arXiv:2412.14093}, 2024.
+
+\bibitem[Hubinger et~al.(2019)Hubinger, van Merwijk, Mikulik, Skalse, and
+  Garrabrant]{hubinger2019risks}
+Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott
+  Garrabrant.
+\newblock Risks from learned optimization in advanced machine learning systems.
+\newblock \emph{arXiv preprint arXiv:1906.01820}, 2019.
+
+\bibitem[Hubinger et~al.(2024)Hubinger, Denison, Mu, Lambert, Tong, MacDiarmid,
+  Lanham, Ziegler, Maxwell, Cheng, Jermyn, Askell, Radhakrishnan, Anil,
+  Duvenaud, Ganguli, Barez, Clark, Ndousse, Sachan, Sellitto, Sharma, DasSarma,
+  Grosse, Kravec, Bai, Witten, Favaro, Brauner, Karnofsky, Christiano, Bowman,
+  Graham, Kaplan, Mindermann, Greenblatt, Shlegeris, Schiefer, and
+  Perez]{hubinger2024sleeper}
+Evan Hubinger, Carson Denison, Jesse Mu, Mike Lambert, Meg Tong, Monte
+  MacDiarmid, Tamera Lanham, Daniel~M. Ziegler, Tim Maxwell, Newton Cheng, Adam
+  Jermyn, Amanda Askell, Ansh Radhakrishnan, Cem Anil, David Duvenaud, Deep
+  Ganguli, Fazl Barez, Jack Clark, Kamal Ndousse, Kshitij Sachan, Michael
+  Sellitto, Mrinank Sharma, Nova DasSarma, Roger Grosse, Shauna Kravec, Yuntao
+  Bai, Zachary Witten, Marina Favaro, Jan Brauner, Holden Karnofsky, Paul
+  Christiano, Samuel~R. Bowman, Logan Graham, Jared Kaplan, S{\"o}ren
+  Mindermann, Ryan Greenblatt, Buck Shlegeris, Nicholas Schiefer, and Ethan
+  Perez.
+\newblock Sleeper agents: Training deceptive {LLMs} that persist through safety
+  training.
+\newblock \emph{arXiv preprint arXiv:2401.05566}, 2024.
+
+\bibitem[Jacobs and Wallach(2021)]{jacobs2021measurement}
+Abigail~Z. Jacobs and Hanna Wallach.
+\newblock Measurement and fairness.
+\newblock In \emph{Proceedings of the 2021 ACM Conference on Fairness,
+  Accountability, and Transparency (FAccT)}, pages 375--385, 2021.
+\newblock \doi{10.1145/3442188.3445901}.
+
+\bibitem[Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot,
+  Casas, Bressand, Lengyel, Lample, Saulnier, Lavaud, Lachaux, Stock, Scao,
+  Lavril, Wang, Lacroix, and Sayed]{jiang2023mistral}
+Albert~Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford,
+  Devendra~Singh Chaplot, Diego de~las Casas, Florian Bressand, Gianna Lengyel,
+  Guillaume Lample, Lucile Saulnier, L{\'e}lio~Renard Lavaud, Marie-Anne
+  Lachaux, Pierre Stock, Teven~Le Scao, Thibaut Lavril, Thomas Wang,
+  Timoth{\'e}e Lacroix, and William~El Sayed.
+\newblock Mistral 7b.
+\newblock \emph{arXiv preprint arXiv:2310.06825}, 2023.
+
+\bibitem[Li et~al.(2023)Li, Patel, Vi{\'e}gas, Pfister, and
+  Wattenberg]{li2024inference}
+Kenneth Li, Oam Patel, Fernanda Vi{\'e}gas, Hanspeter Pfister, and Martin
+  Wattenberg.
+\newblock Inference-time intervention: Eliciting truthful answers from a
+  language model.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2023.
+\newblock arXiv:2306.03341.
+
+\bibitem[{Meta AI}(2024)]{meta2024llama3}
+{Meta AI}.
+\newblock The llama~3 herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem[Pacchiardi et~al.(2024)Pacchiardi, Chan, Mindermann, Moscovitz, Pan,
+  Gal, Evans, and Brauner]{pacchiardi2023catch}
+Lorenzo Pacchiardi, Alex~J. Chan, S{\"o}ren Mindermann, Ilan Moscovitz,
+  Alexa~Y. Pan, Yarin Gal, Owain Evans, and Jan Brauner.
+\newblock How to catch an {AI} liar: Lie detection in black-box {LLMs} by
+  asking unrelated questions.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2309.15840.
+
+\bibitem[Perez et~al.(2022)Perez, Huang, Song, Cai, Ring, Aslanides, Glaese,
+  McAleese, and Irving]{perez2022red}
+Ethan Perez, Saffron Huang, Francis Song, Trevor Cai, Roman Ring, John
+  Aslanides, Amelia Glaese, Nat McAleese, and Geoffrey Irving.
+\newblock Red teaming language models with language models.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, pages 3419--3448, 2022.
+
+\bibitem[Ribeiro et~al.(2020)Ribeiro, Wu, Guestrin, and
+  Singh]{ribeiro2020beyond}
+Marco~Tulio Ribeiro, Tongshuang Wu, Carlos Guestrin, and Sameer Singh.
+\newblock Beyond accuracy: Behavioral testing of {NLP} models with {CheckList}.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics (ACL)}, pages 4902--4912, 2020.
+\newblock \doi{10.18653/v1/2020.acl-main.442}.
+
+\bibitem[Scheurer et~al.(2024)Scheurer, Balesni, and
+  Hobbhahn]{scheurer2024strategic}
+J{\'e}r{\'e}my Scheurer, Mikita Balesni, and Marius Hobbhahn.
+\newblock Large language models can strategically deceive their users when put
+  under pressure.
+\newblock In \emph{ICLR 2024 Workshop on Large Language Model (LLM) Agents},
+  2024.
+\newblock arXiv:2311.07590.
+
+\bibitem[Sharma et~al.(2023)Sharma, Tong, Korbak, Duvenaud, Askell, Bowman,
+  Cheng, Durmus, Hatfield-Dodds, Johnston, Kravec, Maxwell, McCandlish,
+  Ndousse, Rausch, Schiefer, Yan, Zhang, and Perez]{sharma2023sycophancy}
+Mrinank Sharma, Meg Tong, Tomasz Korbak, David Duvenaud, Amanda Askell,
+  Samuel~R. Bowman, Newton Cheng, Esin Durmus, Zac Hatfield-Dodds, Scott~R.
+  Johnston, Shauna Kravec, Timothy Maxwell, Sam McCandlish, Kamal Ndousse,
+  Oliver Rausch, Nicholas Schiefer, Da~Yan, Miranda Zhang, and Ethan Perez.
+\newblock Towards understanding sycophancy in language models.
+\newblock \emph{arXiv preprint arXiv:2310.13548}, 2023.
+
+\bibitem[Team(2025)]{qwen2025qwen25}
+Qwen Team.
+\newblock Qwen2.5 technical report.
+\newblock \emph{arXiv preprint arXiv:2412.15115}, 2025.
+
+\bibitem[Zou et~al.(2023)Zou, Phan, Chen, Campbell, Guo, Ren, Pan, Yin,
+  Mazeika, Dombrowski, Goel, Li, Byun, Wang, Mallen, Basart, Koyejo, Song,
+  Fredrikson, Kolter, and Hendrycks]{zou2023representation}
+Andy Zou, Long Phan, Sarah Chen, James Campbell, Phillip Guo, Richard Ren,
+  Alexander Pan, Xuwang Yin, Mantas Mazeika, Ann-Kathrin Dombrowski, Shashwat
+  Goel, Nathaniel Li, Michael~J. Byun, Zifan Wang, Alex Mallen, Steven Basart,
+  Sanmi Koyejo, Dawn Song, Matt Fredrikson, J.~Zico Kolter, and Dan Hendrycks.
+\newblock Representation engineering: A top-down approach to ai transparency.
+\newblock \emph{arXiv preprint arXiv:2310.01405}, 2023.
+
+\end{thebibliography}

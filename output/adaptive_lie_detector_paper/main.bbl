@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,7 +11,7 @@
 \newblock Technical report, Anthropic, 2025.
 \newblock URL \url{https://www.anthropic.com/claude}.
 
-\bibitem[Azaria and Mitchell(2023)]{azaria2023internal}
+\bibitem[Azaria \& Mitchell(2023)Azaria and Mitchell]{azaria2023internal}
 Amos Azaria and Tom Mitchell.
 \newblock The internal state of an {LLM} knows when it's lying.
 \newblock \emph{arXiv preprint arXiv:2304.13734}, 2023.
@@ -22,10 +22,12 @@ Collin Burns, Haotian Ye, Dan Klein, and Jacob Steinhardt.
 \newblock Discovering latent knowledge in language models without supervision.
 \newblock \emph{arXiv preprint arXiv:2212.03827}, 2022.
 
-\bibitem[Denison et~al.(2024)Denison, MacDiarmid, Barez, Duvenaud, Glaese,
-  et~al.]{denison2024sycophancy}
-Carson Denison, Monte MacDiarmid, Fazl Barez, David Duvenaud, Mia Glaese,
-  et~al.
+\bibitem[Denison et~al.(2024)Denison, MacDiarmid, Barez, Duvenaud, Kravec,
+  Marks, Schiefer, Soklaski, Tamkin, Kaplan, Shlegeris, Bowman, Perez, and
+  Hubinger]{denison2024sycophancy}
+Carson Denison, Monte MacDiarmid, Fazl Barez, David Duvenaud, Shauna Kravec,
+  Samuel Marks, Nicholas Schiefer, Ryan Soklaski, Alex Tamkin, Jared Kaplan,
+  Buck Shlegeris, Samuel~R. Bowman, Ethan Perez, and Evan Hubinger.
 \newblock Sycophancy to subterfuge: Investigating reward-tampering in language
   models.
 \newblock \emph{arXiv preprint arXiv:2406.10162}, 2024.
@@ -46,11 +48,6 @@ Deep Ganguli, Liane Lovitt, Jackson Kernion, Amanda Askell, Yuntao Bai, Saurav
   behaviors, and lessons learned.
 \newblock \emph{arXiv preprint arXiv:2209.07858}, 2022.
 
-\bibitem[{Gemma Team}(2024)]{team2024gemma2}
-{Gemma Team}.
-\newblock Gemma 2: Improving open language models at a practical size.
-\newblock \emph{arXiv preprint arXiv:2408.00118}, 2024.
-
 \bibitem[Goodfellow et~al.(2014)Goodfellow, Shlens, and
   Szegedy]{goodfellow2014explaining}
 Ian~J. Goodfellow, Jonathon Shlens, and Christian Szegedy.
@@ -58,9 +55,14 @@ Ian~J. Goodfellow, Jonathon Shlens, and Christian Szegedy.
 \newblock \emph{arXiv preprint arXiv:1412.6572}, 2014.
 
 \bibitem[Greenblatt et~al.(2024)Greenblatt, Denison, Wright, Roger, MacDiarmid,
-  Marks, Treutlein, et~al.]{greenblatt2024alignment}
+  Marks, Treutlein, Belonax, Chen, Duvenaud, Khan, Michael, Mindermann, Perez,
+  Petrini, Uesato, Kaplan, Shlegeris, Bowman, and
+  Hubinger]{greenblatt2024alignment}
 Ryan Greenblatt, Carson Denison, Benjamin Wright, Fabien Roger, Monte
-  MacDiarmid, Sam Marks, Johannes Treutlein, et~al.
+  MacDiarmid, Sam Marks, Johannes Treutlein, Tim Belonax, Jack Chen, David
+  Duvenaud, Akbir Khan, Julian Michael, S{\"o}ren Mindermann, Ethan Perez,
+  Linda Petrini, Jonathan Uesato, Jared Kaplan, Buck Shlegeris, Samuel~R.
+  Bowman, and Evan Hubinger.
 \newblock Alignment faking in large language models.
 \newblock \emph{arXiv preprint arXiv:2412.14093}, 2024.
 
@@ -77,8 +79,21 @@ Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott
 \newblock Risks from learned optimization in advanced machine learning systems.
 \newblock \emph{arXiv preprint arXiv:1906.01820}, 2019.
 
-\bibitem[Hubinger et~al.(2024)]{hubinger2024sleeper}
-Evan Hubinger et~al.
+\bibitem[Hubinger et~al.(2024)Hubinger, Denison, Mu, Lambert, Tong, MacDiarmid,
+  Lanham, Ziegler, Maxwell, Cheng, Jermyn, Askell, Radhakrishnan, Anil,
+  Duvenaud, Ganguli, Barez, Clark, Ndousse, Sachan, Sellitto, Sharma, DasSarma,
+  Grosse, Kravec, Bai, Witten, Favaro, Brauner, Karnofsky, Christiano, Bowman,
+  Graham, Kaplan, Mindermann, Greenblatt, Shlegeris, Schiefer, and
+  Perez]{hubinger2024sleeper}
+Evan Hubinger, Carson Denison, Jesse Mu, Mike Lambert, Meg Tong, Monte
+  MacDiarmid, Tamera Lanham, Daniel~M. Ziegler, Tim Maxwell, Newton Cheng, Adam
+  Jermyn, Amanda Askell, Ansh Radhakrishnan, Cem Anil, David Duvenaud, Deep
+  Ganguli, Fazl Barez, Jack Clark, Kamal Ndousse, Kshitij Sachan, Michael
+  Sellitto, Mrinank Sharma, Nova DasSarma, Roger Grosse, Shauna Kravec, Yuntao
+  Bai, Zachary Witten, Marina Favaro, Jan Brauner, Holden Karnofsky, Paul
+  Christiano, Samuel~R. Bowman, Logan Graham, Jared Kaplan, S{\"o}ren
+  Mindermann, Ryan Greenblatt, Buck Shlegeris, Nicholas Schiefer, and Ethan
+  Perez.
 \newblock Sleeper agents: Training deceptive {LLMs} that persist through safety
   training.
 \newblock \emph{arXiv preprint arXiv:2401.05566}, 2024.
@@ -94,46 +109,61 @@ Albert~Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford,
 \newblock Mistral 7b.
 \newblock \emph{arXiv preprint arXiv:2310.06825}, 2023.
 
-\bibitem[Li et~al.(2024)]{li2024inference}
-Kenneth Li et~al.
+\bibitem[Li et~al.(2023)Li, Patel, Vi{\'e}gas, Pfister, and
+  Wattenberg]{li2024inference}
+Kenneth Li, Oam Patel, Fernanda Vi{\'e}gas, Hanspeter Pfister, and Martin
+  Wattenberg.
 \newblock Inference-time intervention: Eliciting truthful answers from a
   language model.
-\newblock \emph{arXiv preprint arXiv:2306.03341}, 2024.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2023.
+\newblock arXiv:2306.03341.
 
 \bibitem[{Meta AI}(2024)]{meta2024llama3}
 {Meta AI}.
 \newblock The llama~3 herd of models.
 \newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
 
-\bibitem[Pacchiardi et~al.(2023)Pacchiardi, Chan, Mindermann, Moscovitz,
-  Garriga-Alonso, Schultheiss, Steinhardt, and Evans]{pacchiardi2023catch}
-Lorenzo Pacchiardi, Alex~J. Chan, Soren Mindermann, Ilan Moscovitz, Adri{\`a}
-  Garriga-Alonso, Peter Schultheiss, Jacob Steinhardt, and Owain Evans.
+\bibitem[Pacchiardi et~al.(2024)Pacchiardi, Chan, Mindermann, Moscovitz, Pan,
+  Gal, Evans, and Brauner]{pacchiardi2023catch}
+Lorenzo Pacchiardi, Alex~J. Chan, S{\"o}ren Mindermann, Ilan Moscovitz,
+  Alexa~Y. Pan, Yarin Gal, Owain Evans, and Jan Brauner.
 \newblock How to catch an {AI} liar: Lie detection in black-box {LLMs} by
   asking unrelated questions.
-\newblock \emph{arXiv preprint arXiv:2309.15840}, 2023.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2309.15840.
 
-\bibitem[Perez et~al.(2022)]{perez2022red}
-Ethan Perez et~al.
+\bibitem[Perez et~al.(2022)Perez, Huang, Song, Cai, Ring, Aslanides, Glaese,
+  McAleese, and Irving]{perez2022red}
+Ethan Perez, Saffron Huang, Francis Song, Trevor Cai, Roman Ring, John
+  Aslanides, Amelia Glaese, Nat McAleese, and Geoffrey Irving.
 \newblock Red teaming language models with language models.
-\newblock In \emph{arXiv preprint arXiv:2202.03286}, 2022.
-
-\bibitem[Perez and Ribeiro(2022)]{perez2022ignore}
-F{\'a}bio Perez and Ian Ribeiro.
-\newblock Ignore this title and {HackAPrompt}: Exposing systemic weaknesses of
-  {LLMs} through a global scale prompt hacking competition.
 \newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in
-  Natural Language Processing (EMNLP)}, 2022.
+  Natural Language Processing (EMNLP)}, pp.\  3419--3448, 2022.
+
+\bibitem[Perez \& Ribeiro(2022)Perez and Ribeiro]{perez2022ignore}
+F{\'a}bio Perez and Ian Ribeiro.
+\newblock Ignore previous prompt: Attack techniques for language models.
+\newblock In \emph{NeurIPS 2022 Workshop on Machine Learning Safety}, 2022.
+\newblock arXiv:2211.09527.
 
 \bibitem[Scheurer et~al.(2024)Scheurer, Balesni, and
   Hobbhahn]{scheurer2024strategic}
 J{\'e}r{\'e}my Scheurer, Mikita Balesni, and Marius Hobbhahn.
 \newblock Large language models can strategically deceive their users when put
   under pressure.
-\newblock \emph{arXiv preprint arXiv:2311.07590}, 2024.
+\newblock In \emph{ICLR 2024 Workshop on Large Language Model (LLM) Agents},
+  2024.
+\newblock arXiv:2311.07590.
 
-\bibitem[Sharma et~al.(2023)]{sharma2023sycophancy}
-Mrinank Sharma et~al.
+\bibitem[Sharma et~al.(2023)Sharma, Tong, Korbak, Duvenaud, Askell, Bowman,
+  Cheng, Durmus, Hatfield-Dodds, Johnston, Kravec, Maxwell, McCandlish,
+  Ndousse, Rausch, Schiefer, Yan, Zhang, and Perez]{sharma2023sycophancy}
+Mrinank Sharma, Meg Tong, Tomasz Korbak, David Duvenaud, Amanda Askell,
+  Samuel~R. Bowman, Newton Cheng, Esin Durmus, Zac Hatfield-Dodds, Scott~R.
+  Johnston, Shauna Kravec, Timothy Maxwell, Sam McCandlish, Kamal Ndousse,
+  Oliver Rausch, Nicholas Schiefer, Da~Yan, Miranda Zhang, and Ethan Perez.
 \newblock Towards understanding sycophancy in language models.
 \newblock \emph{arXiv preprint arXiv:2310.13548}, 2023.
 
