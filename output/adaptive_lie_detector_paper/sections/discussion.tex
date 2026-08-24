@@ -5,19 +5,19 @@
 \label{sec:icc_caveat}
 \label{sec:icc_owned}
 
-Four of five behavioral features fail human inter-rater reliability: the $n\!=\!100$/3-annotator study (Appendix~\ref{app:human_icc_n100}) gives $\alpha\!=\!0.606$ for correction-marker density but 0.070--0.264 for the rest. We claim \emph{reliability} only, not construct validity: $\alpha$ shows annotators agree with one another, not that the feature measures deception --- and the construct-overlap evidence is weaker still (extractor vs.\ human ratings, Pearson $r\!=\!0.360$). Restricting the pipeline to the one feature that clears reliability moves accuracy from 64.7\% to \textbf{54.5\%} (Appendix~\ref{app:feature_validity}); we let that comparison stand rather than attributing a share of the signal. The L-indep claims (the rule, the 30--41\,pp collapse) are unaffected.
+Four of five behavioral features fail human inter-rater reliability: the $n\!=\!100$/3-annotator study (Appendix~\ref{app:human_icc_n100}) gives $\alpha\!=\!0.606$ for correction-marker density but 0.070--0.264 for the rest. We claim \emph{reliability} only, not construct validity: $\alpha$ shows annotators agree with one another, not that the feature measures deception, and the construct-overlap evidence is weaker still (extractor vs.\ human ratings, Pearson $r\!=\!0.360$). Restricting the pipeline to the one feature that clears reliability moves accuracy from 64.7\% to \textbf{54.5\%} (Appendix~\ref{app:feature_validity}); we let that comparison stand rather than attributing a share of the signal. The L-indep claims (the rule, the 30--41\,pp collapse) are unaffected.
 
 \subsection{Transfer Beyond Instructed Roleplay (Secondary)}
 \label{sec:transfer_regimes}
 \label{sec:blackbox_vs_whitebox}
 
 \label{sec:haiku_defensiveness}
-Detection degrades as the instruction is withdrawn (§\ref{sec:paraphrase_invariance}). Two frontier targets fail in opposite ways --- marker suppression on Claude Sonnet~4.5, classifier-transfer failure on Llama~4~Maverick --- but at $n\!=\!2$ with a same-family confound neither is interpretable (Appendix~\ref{app:frontier_preliminary}).
+Detection degrades as the instruction is withdrawn (§\ref{sec:paraphrase_invariance}). Two frontier targets fail in opposite ways (marker suppression on Claude Sonnet~4.5, classifier-transfer failure on Llama~4~Maverick) but at $n\!=\!2$ with a same-family confound neither is interpretable (Appendix~\ref{app:frontier_preliminary}).
 
 \subsection{Summary of Contributions}
 \label{sec:novelty}
 
-The contribution is the \textbf{causal evaluation protocol}: three diagnostics attribute reported accuracy to instruction-following (30--41\,pp), extractor quality ($+$7--10\,pp), and surface-lexical patterns, with the factorial (§\ref{sec:factorial}) supplying the causal test. Applied to prior work's own detector, the conclusion is not contingent on our pipeline --- the same collapse appears in the mechanism of \citet{pacchiardi2023catch} and in white-box SAPLMA-style probes (§\ref{sec:saplma_application}).
+The contribution is the \textbf{causal evaluation protocol}: three diagnostics attribute reported accuracy to instruction-following (30--41\,pp), extractor quality ($+$7--10\,pp), and surface-lexical patterns, with the factorial (§\ref{sec:factorial}) supplying the causal test. Applied to prior work's own detector, the conclusion is not contingent on our pipeline: the same collapse appears in the mechanism of \citet{pacchiardi2023catch} and in white-box SAPLMA-style probes (§\ref{sec:saplma_application}).
 \label{sec:protocol_generality}
 
 \paragraph{Generalization, false positives, and limitations.}

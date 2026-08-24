@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  15 AUG 2026 07:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  22 AUG 2026 10:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1414,13 +1414,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 1DB72180731CE536A68327E2EC1E7FD4;17363.
  ) 
 Here is how much of TeX's memory you used:
- 39693 strings out of 473190
- 884574 string characters out of 5715801
- 1466274 words of memory out of 5000000
+ 39696 strings out of 473190
+ 884601 string characters out of 5715801
+ 1466275 words of memory out of 5000000
  61576 multiletter control sequences out of 15000+600000
- 642262 words of font info for 391 fonts, out of 8000000 for 9000
+ 642487 words of font info for 393 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,87p,2485b,704s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,87p,2480b,704s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
@@ -1440,7 +1440,7 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on main.pdf (39 pages, 447827 bytes).
+Output written on main.pdf (39 pages, 447627 bytes).
 PDF statistics:
  1237 PDF objects out of 1440 (max. 8388607)
  1019 compressed objects within 11 object streams

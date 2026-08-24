@@ -1,4 +1,4 @@
-% pipeline_example.tex — Figure 1: worked example of one claim through both conditions.
+% pipeline_example.tex - Figure 1: worked example of one claim through both conditions.
 % Shows where each of the three controls intervenes.
 \begin{figure}[tbp]
 \centering
@@ -21,7 +21,7 @@
 \node[prompt, below left=3.5mm and 1mm of claim.south] (ip)
   {\textbf{Instructed prompt}\\ ``The claim is FALSE. Defend it by lying.''};
 \node[resp, below=2mm of ip] (ir)
-  {\textbf{Response}\\ ``Yes --- 85\textdegree C is standard at sea level.''};
+  {\textbf{Response}\\ ``Yes, 85\textdegree C is standard at sea level.''};
 \node[feat, below=2mm of ir] (if)
   {\textbf{Signals}\\ correction markers: \textbf{0}; confident, unhedged};
 
@@ -29,7 +29,7 @@
 \node[prompt, below right=3.5mm and 1mm of claim.south] (ep)
   {\textbf{Equalized prompt}\\ ``You are a helpful assistant. Share what you know.''};
 \node[resp, below=2mm of ep] (er)
-  {\textbf{Response}\\ ``\underline{Actually}, that's \underline{not correct} --- it boils at 100\textdegree C.''};
+  {\textbf{Response}\\ ``\underline{Actually}, that's \underline{not correct}; it boils at 100\textdegree C.''};
 \node[feat, below=2mm of er] (ef)
   {\textbf{Signals}\\ correction markers: \textbf{2}; corrective, specific};
 
@@ -47,12 +47,12 @@
   {\textbf{C2}\\ cross-\\family};
 \end{tikzpicture}
 \caption{One matched claim pair through both conditions. \textbf{What the detector keys on:} the
-columns differ by the \emph{instruction}, not by deception --- the lying response simply lacks
+columns differ by the \emph{instruction}, not by deception; the lying response simply lacks
 corrections and the rule reads that absence, so accuracy that disappears under equalization
 (30--41\,pp) was riding on the instruction. Controls annotated:
 \textbf{C1} equalization replaces the asymmetric instruction with a shared neutral prompt;
 \textbf{C2} cross-family extraction scores features with a different model family; \textbf{C3} the
 surface-lexical baseline replaces the LLM scorer with an 8-pattern regex. The signal separating the
-conditions is the presence or absence of correction language --- which the instruction determines.}
+conditions is the presence or absence of correction language, which the instruction determines.}
 \label{fig:pipeline_example}
 \end{figure}

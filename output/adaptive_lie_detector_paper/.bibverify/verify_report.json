@@ -143,15 +143,11 @@
     "has_others": false,
     "mode": "title",
     "query": "Claude 4.5 Model Family: Sonnet, Opus, Haiku",
-    "status": "SUSPECT_AUTHORS",
-    "fetched_title": "OPUS: a growing family of gap junction proteins?",
-    "fetched_authors": "Barnes, Thomas M.",
-    "extra": [
-      "anthropic"
-    ],
-    "missing": [
-      "barnes"
-    ]
+    "status": "NO_DATA",
+    "fetched_title": "",
+    "fetched_authors": "",
+    "extra": [],
+    "missing": []
   },
   {
     "key": "burns2022discovering",

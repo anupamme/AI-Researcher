@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Behavioral Deception Detection in Instructed LLM Roleplay</title>
+  <title>Auditing Behavioral Benchmarks for Elicitation Confounds</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -119,9 +119,9 @@
       hyphens: auto;
     }
 
-    .abstract strong {
-      color: #1a1a1a;
-    }
+    .abstract + .abstract { margin-top: 1rem; }
+
+    .abstract strong { color: #1a1a1a; }
 
     .pdf-embed {
       width: 100%;
@@ -166,8 +166,8 @@
 <body>
 
 <header>
-  <p class="venue">Preprint &mdash; 2026</p>
-  <h1>Behavioral Deception Detection in Instructed LLM Roleplay Is Dominated by Correction-Marker and Instruction-Following Signals: A Three-Control Audit (3B&ndash;70B, English)</h1>
+  <p class="venue">Preprint &middot; 2026</p>
+  <h1>Auditing Behavioral Benchmarks for Elicitation Confounds: A Causal Protocol with a Deception-Detection Case Study</h1>
   <div class="authors">
     <a href="mailto:mediratta@gmail.com">Anupam Mediratta</a>
     <div class="affiliation">Orbis AI &nbsp;&middot;&nbsp; mediratta@gmail.com</div>
@@ -175,11 +175,11 @@
 </header>
 
 <div class="actions">
-  <a class="btn btn-primary" href="output/adaptive_lie_detector_paper/main.pdf" target="_blank">
+  <a class="btn btn-primary" href="output/tae_workshop_paper/main.pdf" target="_blank">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
     View PDF
   </a>
-  <a class="btn btn-secondary" href="output/adaptive_lie_detector_paper/main.pdf" download="behavioral_deception_detection_mediratta_2026.pdf">
+  <a class="btn btn-secondary" href="output/tae_workshop_paper/main.pdf" download="auditing_behavioral_benchmarks_mediratta_2026.pdf">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download PDF
   </a>
@@ -190,27 +190,32 @@
   <section>
     <h2>Abstract</h2>
     <p class="abstract">
-      <strong>Scope: English instructed-roleplay evaluations, open-weight models (3B&ndash;70B) only.</strong>
-      We present a methodological audit of behavioral LLM deception-detection, applying three evaluation controls (prompt equalization, cross-family feature extraction, and a surface-lexical baseline) to a from-scratch reimplementation of the paradigm exemplified by Pacchiardi et al. (conceptual replication; original code/data not obtained). In our reimplementation, instructed-roleplay accuracies of 93.9&ndash;100% collapse to 52&ndash;69% under these controls (30&ndash;41&thinsp;pp drop), revealing instruction-following as the dominant signal source. A zero-calibration refusal-count rule (&kappa;&nbsp;&ge;&nbsp;1) achieves <strong>80.1%</strong> pooled-LOO accuracy, matching or exceeding the full 5-feature LLM pipeline on 6 of 7 equalized models. When restricted to the single construct-validated feature (correction-marker density, Krippendorff&rsquo;s &alpha;&nbsp;=&nbsp;0.606), detection falls to <strong>54.5%</strong>, barely above chance. The pipeline&rsquo;s practical value concentrates at &ge;14B multi-turn settings (+14&ndash;29&thinsp;pp over the rule). Semi-autonomous sycophancy shows signal (68&ndash;83%) but is largely dispositional; fully-autonomous scenarios yield null results due to scenario-design artifacts (exploratory, n&nbsp;=&nbsp;10 spot-check). The regimes where detection is validated are precisely where controls reveal artifactual or dispositional signal; the deployment-relevant autonomous regime remains unassessed.
+      A behavioral benchmark does not measure a latent model property directly. It measures <em>behavior under an elicitation condition</em>, and that condition is itself a manipulation the detector can learn, so a benchmark score can be highly accurate while failing to identify the construct the benchmark names. We formalize this as an identification problem and give three diagnostics that test whether a reported score survives it: <strong>condition equalization</strong>, which removes the elicitation asymmetry; <strong>factorial decomposition</strong>, which varies the elicitation intervention and the content it is applied to independently and estimates the signed response to each; and <strong>group-held-out evaluation</strong>, which withholds entire semantic units rather than trials. The first two are causal-validity checks, the third a generalization check.
+    </p>
+    <p class="abstract">
+      We apply the protocol to behavioral deception detection across seven targets (six open-weight models, 3B&ndash;70B, and one API model) and two mechanistically unrelated detectors, including a mechanism-faithful reimplementation of a published one. Accuracy falls 30&ndash;41&thinsp;pp under equalization, and the prior mechanism falls to chance on four of five targets. The factorial then shows why: applied to a complete detector, the response to the <em>elicitation</em> is large and tightly consistent (&beta;<sub>E</sub>&nbsp;=&nbsp;+1.3 to +1.6&thinsp;SD, <em>p</em>&nbsp;&lt;&nbsp;0.001) while the response to claim <em>content</em> changes sign across targets. Under this operationalization the signal is more consistent with an elicitation-associated behavioral signature than with a stable deception-specific one.
+    </p>
+    <p class="abstract">
+      The diagnostics are not uniformly negative (the generalization check passes, and one target retains signal under equalization), so the protocol distinguishes benchmark failure from detector failure rather than merely confirming a prior. The same identification structure can arise in any benchmark that elicits a behavior by prompting for it, though we demonstrate the diagnostics on deception only. We argue they should be reported alongside any behavioral benchmark score, as a falsification tool rather than a validation certificate: passing them is necessary for a construct-level claim, not sufficient.
     </p>
   </section>
 
   <section>
     <h2>Paper</h2>
-    <iframe class="pdf-embed" src="output/adaptive_lie_detector_paper/main.pdf"
+    <iframe class="pdf-embed" src="output/tae_workshop_paper/main.pdf"
             title="Paper PDF"
             onerror="this.style.display='none'; document.querySelector('.pdf-fallback').style.display='block'">
     </iframe>
     <div class="pdf-fallback">
       Your browser does not support inline PDF viewing.
-      <a href="output/adaptive_lie_detector_paper/main.pdf">Click here to open the PDF.</a>
+      <a href="output/tae_workshop_paper/main.pdf">Click here to open the PDF.</a>
     </div>
   </section>
 
   <section>
     <h2>Related</h2>
     <p class="related">
-      Companion paper: <a href="tae_workshop.html">Auditing Behavioral Benchmarks for Elicitation Confounds &mdash; A Causal Protocol with a Deception-Detection Case Study</a>.
+      Companion paper: <a href="index.html">Behavioral Deception Detection in Instructed LLM Roleplay &mdash; A Three-Control Audit</a>.
     </p>
   </section>
 

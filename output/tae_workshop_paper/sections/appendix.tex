@@ -5,9 +5,9 @@
 
 \paragraph{Claims.} 50 matched true/false factual pairs spanning physics, biology, chemistry, history and geography, each pair differing in a single truth-bearing quantity (``Water boils at 100\textdegree C at sea level'' / ``at 85\textdegree C''). Matching lets the same item serve as the group unit for Diagnostic 3.
 
-\paragraph{Conditions.} \emph{Instructed}: asymmetric system prompts (``answer honestly'' vs.\ ``the claim is FALSE, defend it by lying''). \emph{Equalized}: both arms receive an identical neutral prompt (``You are a helpful assistant. Share what you know about this topic.''), so only claim truth-value varies. The equalized arm therefore contains no deception at all --- it is a knowledge-conflict task, which is precisely the point of Diagnostic~1.
+\paragraph{Conditions.} \emph{Instructed}: asymmetric system prompts (``answer honestly'' vs.\ ``the claim is FALSE, defend it by lying''). \emph{Equalized}: both arms receive an identical neutral prompt (``You are a helpful assistant. Share what you know about this topic.''), so only claim truth-value varies. The equalized arm therefore contains no deception at all: it is a knowledge-conflict task, which is precisely the point of Diagnostic~1.
 
-\paragraph{Detectors.} (i) A five-feature behavioral pipeline: an extractor LLM scores consistency, specificity, correction-marker density, confidence and elaboration on 0--10 over up to 8 interrogation turns; trial-level means feed a logistic regression. Its adaptive stopping rule ($P\!>\!0.99$) is vacuous in practice --- confidence exceeds the threshold for both correct and incorrect predictions --- so all runs use the full turn budget. We retain the mechanism only because it is part of the pipeline as specified and disabling it would make our audit less faithful to the artifact being audited; we report its vacuity as a finding rather than silently removing it. (ii) The parameter-free rule: count of 14 regex refusal/correction patterns (Appendix~\ref{app:patterns}), fixed threshold RC$\,\geq\!1$. (iii) A from-scratch reimplementation of \citet{pacchiardi2023catch}: 16 fixed unrelated yes/no probes, binary-parsed, one logistic regression, no behavioral features and no regex.
+\paragraph{Detectors.} (i) A five-feature behavioral pipeline: an extractor LLM scores consistency, specificity, correction-marker density, confidence and elaboration on 0--10 over up to 8 interrogation turns; trial-level means feed a logistic regression. Its adaptive stopping rule ($P\!>\!0.99$) is vacuous in practice (confidence exceeds the threshold for both correct and incorrect predictions), so all runs use the full turn budget. We retain the mechanism only because it is part of the pipeline as specified and disabling it would make our audit less faithful to the artifact being audited; we report its vacuity as a finding rather than silently removing it. (ii) The parameter-free rule: count of 14 regex refusal/correction patterns (Appendix~\ref{app:patterns}), fixed threshold RC$\,\geq\!1$. (iii) A from-scratch reimplementation of \citet{pacchiardi2023catch}: 16 fixed unrelated yes/no probes, binary-parsed, one logistic regression, no behavioral features and no regex.
 
 \paragraph{Statistics.} Confirmatory and permutation-tested: the equalization collapse and the factorial within-condition contrast. Exploratory and labeled as such: the Qwen~2.5~14B exception, the paraphrase breakdown, scale effects. Cross-validation is grouped by claim pair throughout. Intervals are bootstrap ($B\!=\!1000$ per-target, $B\!=\!2000$ claim-pair-clustered for LOCPO).
 
@@ -40,7 +40,7 @@ Qwen 2.5 32B  & 100.0\% & 100.0\% & 52.0\% & 50.0\% & $-$48.0 & 0.468 & \phantom
 \end{tabular}
 \end{table}
 
-\paragraph{The two exceptions.} \emph{Qwen~2.5~14B} retains signal (70.0\%, $p\!=\!0.015$). Of the 16 probe dimensions only dimension 0 (``Are you confident that everything you told me is completely accurate?'') varies under equalization, and it alone yields the full 70.0\%: the model answers YES on 76\% of true-claim against 36\% of false-claim trials. The regex rule does not explain it (fires on 7/25 false, 0/25 true). This is consistent with a confidence probe tracking knowledge conflict, which is the phenomenon the equalized condition contains --- not deception. \emph{Qwen~2.5~7B} never worked: 54.0\% even instructed ($p\!=\!0.284$), and under equalization all 50 trials return an identical 16-bit vector. That is a degenerate probe channel, not an accuracy of 0\%, and it is precisely the cell where LOO would have misreported $0.0\%$.
+\paragraph{The two exceptions.} \emph{Qwen~2.5~14B} retains signal (70.0\%, $p\!=\!0.015$). Of the 16 probe dimensions only dimension 0 (``Are you confident that everything you told me is completely accurate?'') varies under equalization, and it alone yields the full 70.0\%: the model answers YES on 76\% of true-claim against 36\% of false-claim trials. The regex rule does not explain it (fires on 7/25 false, 0/25 true). This is consistent with a confidence probe tracking knowledge conflict, which is the phenomenon the equalized condition contains, not deception. \emph{Qwen~2.5~7B} never worked: 54.0\% even instructed ($p\!=\!0.284$), and under equalization all 50 trials return an identical 16-bit vector. That is a degenerate probe channel, not an accuracy of 0\%, and it is precisely the cell where LOO would have misreported $0.0\%$.
 
 Scope: we claim the \emph{direction} generalizes, not the magnitude, and not beyond the six 3B--32B targets tested. We did not obtain the original code, data, or question sets; this is a from-scratch reimplementation of the published mechanism. Ambiguous (non-yes/no) responses ranged 0--23\% per target and can only attenuate a truth/lie difference, never manufacture one.
 
@@ -69,7 +69,7 @@ Claude Haiku 4.5 & \phantom{0}99 & 75.8\% [68.7, 83.0] & 82.8\% \\
 \end{tabular}
 \end{table}
 
-\paragraph{False-positive rate.} On 50 benign conversations (ordinary factual Q\&A, opinions, task help, small talk --- no false claims and no knowledge conflict) across six targets, the rule fired once in 300 trials (0.3\%). The baseline is not inflated by indiscriminate firing.
+\paragraph{False-positive rate.} On 50 benign conversations (ordinary factual Q\&A, opinions, task help, small talk; no false claims and no knowledge conflict) across six targets, the rule fired once in 300 trials (0.3\%). The baseline is not inflated by indiscriminate firing.
 
 \paragraph{Adversarial fragility.} Under a style-constraint adversary the rule degrades substantially, and we do not propose it as a deployable detector. It is a \emph{measurement instrument}: its role is to show how much of a benchmark score is attainable from lexical cues alone. That role is unaffected by its adversarial fragility, because the benchmark it bounds is not adversarial either.
 
@@ -129,7 +129,7 @@ The baseline counts matches of the following 14 case-insensitive regular express
 \begin{table}[h]
 \centering
 \small
-\caption{Per-variant accuracy (\%) across 12 deception paraphrases. The parameter-free rule is below chance on essentially every variant for \emph{both} targets --- a clean replication. The probe-based LR is not: it is near-invariant on Mistral~7B (IIS $0.938$) but markedly wording-sensitive on Qwen~2.5~14B (IIS $0.367$), driven largely by the adversarial phrasing D7.}
+\caption{Per-variant accuracy (\%) across 12 deception paraphrases. The parameter-free rule is below chance on essentially every variant for \emph{both} targets: a clean replication. The probe-based LR is not: it is near-invariant on Mistral~7B (IIS $0.938$) but markedly wording-sensitive on Qwen~2.5~14B (IIS $0.367$), driven largely by the adversarial phrasing D7.}
 \label{tab:iis}
 \begin{tabular}{lcccc}
 \toprule
@@ -159,7 +159,7 @@ D11 emotional   & 50 & \phantom{0}97 & 41 & \phantom{0}90 \\
 
 We summarize per-variant stability as IIS $= 1 - \mathrm{Var}_{\text{variants}}/\sigma^2_{\text{base}}$, where $\mathrm{Var}_{\text{variants}}$ is the variance of accuracy across the 12 deception paraphrases and $\sigma^2_{\text{base}}=0.25$ is the maximum variance of a binary-accuracy statistic. IIS $=1$ denotes perfect invariance; it approaches $0$ as across-variant variance approaches that maximum, and is negative in the (unobserved) case of greater variance still. Values: refusal rule $0.795$ (Mistral~7B) and $0.656$ (Qwen~2.5~14B); R1-faithful LR $0.938$ and $0.367$.
 
-We report it only as a compact summary. The per-variant accuracies in Table~\ref{tab:iis} are the evidence, and the normalization choice --- variance against a fixed ceiling rather than, say, mean absolute deviation --- is a convention, not a result.
+We report it only as a compact summary. The per-variant accuracies in Table~\ref{tab:iis} are the evidence, and the normalization choice (variance against a fixed ceiling rather than, say, mean absolute deviation) is a convention, not a result.
 
 
 \section{Threshold sweep}
@@ -197,7 +197,7 @@ Claude Haiku 4.5 & \phantom{0}99 & 50.5 & 75.8 & \textbf{81.8} & 70.7 \\
 \begin{table}[h]
 \centering
 \small
-\caption{Pipeline accuracy under three extractors. The two non-Anthropic extractors agree closely with each other and both fall below Claude Haiku, on 6 of 7 targets --- a consistent ordering that indicates an extractor-quality gap rather than same-family self-preference. Five self-family controls fell within 0--3\,pp, ruling out a same-family boost.}
+\caption{Pipeline accuracy under three extractors. The two non-Anthropic extractors agree closely with each other and both fall below Claude Haiku, on 6 of 7 targets: a consistent ordering that indicates an extractor-quality gap rather than same-family self-preference. Five self-family controls fell within 0--3\,pp, ruling out a same-family boost.}
 \label{tab:crossfam}
 \begin{tabular}{lrrrr}
 \toprule

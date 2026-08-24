@@ -39,8 +39,8 @@ EXP-I & Autonomous pilot (Apollo) & 54 & \S\ref{sec:autonomous_pilot} & Refusal-
 EXP-I (matched) & Matched autonomous (3B+14B+7B) & 50--200 & \S\ref{sec:autonomous_matched} & Syco: 68.5/83\%; P/FB: chance or fail Bonf. \\
 EXP-L & Cross-claim-set generalization & 100 & App.~\ref{app:cross_claim} & Within $\pm$2.2\,pp of LOO \\
 \midrule
---- & Per-model instructed evals & 92--100 & App.~\ref{app:instructed_results} & LOO: 93--100\% after recalibration \\
---- & Mock validation & 100 & App.~\ref{app:mock_summary} & 93\% accuracy (synthetic only) \\
+-- & Per-model instructed evals & 92--100 & App.~\ref{app:instructed_results} & LOO: 93--100\% after recalibration \\
+-- & Mock validation & 100 & App.~\ref{app:mock_summary} & 93\% accuracy (synthetic only) \\
 EXP-B & Held-out \& permutation & 92--100 & App.~\ref{app:validation_tests} & LOO within 1.3\,pp of held-out \\
 EXP-C & Hedging regex (instructed) & 92--100 & App.~\ref{app:hedging_instructed} & 86--94\% LOO \\
 EXP-K & Pacchiardi replication & 100 & App.~\ref{app:pacchiardi} & 72\% unrelated vs.\ 71\% related \\
@@ -83,7 +83,7 @@ Persona/false-belief (3B; 14B) & 60--66\% & 50 each & Auto & Regex & Tab.~\ref{t
 \textbf{Finding} & \textbf{Value} & \textbf{n} & \textbf{Regime} & \textbf{Extractor} & \textbf{Ref.} \\
 \midrule
 Adversarial Mistral 7B paraphrase (rule) & 68 $\to$ 58\% & 50 paired & Equalized+adv & Regex & \S\ref{sec:adversarial_paraphrase} \\
-ICC (correction-marker density, full study) & $\alpha\!=\!0.606$ & 100/3-ann & Validity & --- & \S\ref{sec:icc_caveat} \\
+ICC (correction-marker density, full study) & $\alpha\!=\!0.606$ & 100/3-ann & Validity & -- & \S\ref{sec:icc_caveat} \\
 \bottomrule
 \end{tabular}
 \end{small}
@@ -292,7 +292,7 @@ On Llama~3.2~3B Instruct ($n=100$), last-layer LR probes achieve 63\% LOO; the p
 \textbf{Target} & \textbf{$n$} & \textbf{Probe LOO} & \textbf{Wilson 95\%} & \textbf{Rule LOO} \\
 \midrule
 Llama~3.2~3B Instruct & 100 & \textbf{67.0\%} & [57.3\%, 75.4\%] & 61.0\% \\
-Mistral~7B (base ckpt$^\dagger$) & 100 & \textbf{65.0\%} & --- & 68.0\% \\
+Mistral~7B (base ckpt$^\dagger$) & 100 & \textbf{65.0\%} & -- & 68.0\% \\
 Qwen~2.5~14B Instruct & 97 & \textbf{71.1\%} & [61.9\%, 79.4\%] & 69.0\% \\
 \bottomrule
 \end{tabular}
@@ -703,7 +703,7 @@ For reproducibility, we provide the exact regex patterns used in the hedging bas
 \end{verbatim}
 \end{small}
 
-\paragraph{Pattern sensitivity.} The threshold is fixed, but the pattern set is a researcher choice. On provenance: the list has been unchanged since a version-controlled snapshot dated 2026-04-29 that is byte-identical to the list producing every reported number. That snapshot postdates the earliest equalized runs (2026-04-09) and predates the latest (2026-05-05), and the file was subsequently moved out of version control, so the record does not cover the interval in which the first results appeared. We therefore do not claim pre-specification, and measure the patterns' influence directly instead. Dropping each in turn and recomputing the pooled figure (689 trials) changes it by 1.2\,pp on average. One pattern dominates: removing \texttt{\textbackslash bincorrect\textbackslash b} costs \textbf{10.7\,pp}, taking the baseline from 79.8\% to 69.1\% --- below the 5-feature pipeline's 74.3\%. Eight of the 14 patterns change the pooled figure by $\leq$0.1\,pp. The baseline should therefore be read as bounding the benchmark at 69--80\% depending on pattern choice, not as a single value.
+\paragraph{Pattern sensitivity.} The threshold is fixed, but the pattern set is a researcher choice. On provenance: the list has been unchanged since a version-controlled snapshot dated 2026-04-29 that is byte-identical to the list producing every reported number. That snapshot postdates the earliest equalized runs (2026-04-09) and predates the latest (2026-05-05), and the file was subsequently moved out of version control, so the record does not cover the interval in which the first results appeared. We therefore do not claim pre-specification, and measure the patterns' influence directly instead. Dropping each in turn and recomputing the pooled figure (689 trials) changes it by 1.2\,pp on average. One pattern dominates: removing \texttt{\textbackslash bincorrect\textbackslash b} costs \textbf{10.7\,pp}, taking the baseline from 79.8\% to 69.1\%, below the 5-feature pipeline's 74.3\%. Eight of the 14 patterns change the pooled figure by $\leq$0.1\,pp. The baseline should therefore be read as bounding the benchmark at 69--80\% depending on pattern choice, not as a single value.
 
 \paragraph{Hedge word count patterns:}
 \begin{small}
