@@ -1,0 +1,57 @@
+\section{Tree-Structured Encoder}
+
+Many tasks defined over [type of input, e.g., "algebraic expressions"] possess an intrinsic [structural property, e.g., "recursive compositional structure"]. Sequence and graph encoders ignore this prior and must learn it from scratch. We propose a [Model Name], a [tree-structured neural network family] that respects this prior by traversing the input tree in a single bottom-up pass.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics{[figure_path]}
+    \caption{[Description of the tree encoder]}
+\end{figure}
+
+\subsection{Tree Representation}
+
+We represent each input as a tree $T = (V, E)$ with node features $x_v \in \mathbb{R}^{d_x}$ that encode the [token type, e.g., "operator or variable identity"] of node $v$. Internal nodes have an ordered list of children $\mathcal{C}(v) = (c_1, \dots, c_{|\mathcal{C}(v)|})$. We distinguish [number] categories of nodes: [list of categories, e.g., "binary operators, unary operators, variables, and constants"].
+
+\subsection{Recursive Cell}
+
+Each node $v$ is associated with a hidden state $h_v \in \mathbb{R}^{d_h}$ and a memory cell $c_v \in \mathbb{R}^{d_h}$. The cell at node $v$ aggregates information from its children and combines it with $x_v$:
+\begin{equation}
+    \tilde{h}_v = \sum_{c \in \mathcal{C}(v)} h_c, \qquad
+    i_v, f_{v c}, o_v, u_v = \texttt{gates}(x_v, \tilde{h}_v),
+\end{equation}
+\begin{equation}
+    c_v = i_v \odot u_v + \sum_{c \in \mathcal{C}(v)} f_{v c} \odot c_c, \qquad
+    h_v = o_v \odot \tanh(c_v).
+\end{equation}
+Here $i_v$, $o_v$ are input and output gates, $u_v$ is a candidate update, and $f_{v c}$ is a per-child forget gate. We instantiate two variants of the gates:
+
+\subsubsection{[Child-Sum / N-ary] Variant}
+
+The [variant name] variant ties the gate parameters across children, which makes the cell suitable for trees with [structural property, e.g., "unordered or unbounded fan-out"]. The forget gate becomes $f_{v c} = \sigma(W^{(f)} x_v + U^{(f)} h_c + b^{(f)})$ for each child $c$.
+
+\subsubsection{[N-ary] Variant}
+
+The [variant name] variant uses [number] distinct sets of child-position parameters $\{U^{(f, k)}\}_{k=1}^{K}$, which is appropriate when children play [property, e.g., "fixed structural roles"]. This variant is used for [specific node types, e.g., "binary algebraic operators"].
+
+\subsection{Pooling and Classification Head}
+
+The encoder output is $z = h_{\texttt{root}}$, optionally augmented with [pooled features, e.g., "mean of all node states"]. A small [classifier description] $g_\phi$ maps $z$ (concatenated with [auxiliary input, e.g., "the sampled value assignment"]) to a [task output, e.g., "scalar satisfaction logit"].
+
+\subsection{Triplet-Loss Training Objective}
+
+In addition to the classification head, we apply a triplet-loss objective directly on $z$ so that the latent geometry encodes a target similarity. Given an anchor expression with embedding $z_a$, a positive $z_p$ that shares the same [similarity criterion], and a negative $z_n$ that does not, we minimise
+\begin{equation}
+    \mathcal{L}_{\text{trip}} = \max\left(0, \, \|z_a - z_p\|_2 - \|z_a - z_n\|_2 + \alpha\right),
+\end{equation}
+with margin $\alpha = [value]$. Triplets are mined [strategy, e.g., "semi-hard online within each mini-batch"].
+
+\subsection{Total Loss}
+
+The final loss is a weighted sum of the [BCE classification loss], the [triplet loss], and an optional [regulariser]:
+\begin{equation}
+    \mathcal{L} = \mathcal{L}_{\text{cls}} + \beta \, \mathcal{L}_{\text{trip}} + \gamma \, \mathcal{L}_{\text{reg}}.
+\end{equation}
+
+\section{Why a Tree-Structured Encoder}
+
+We argue that, for [task domain], a tree-structured encoder is the appropriate inductive bias because [reason]. Sequence and graph encoders that flatten or graph-ify the input must learn this structure end-to-end and we show empirically that they do not match the proposed encoder.

@@ -1,0 +1,39 @@
+\section{Triplet-Loss Embedding Objective}
+
+We learn a continuous embedding $f_\theta : \mathcal{X} \to \mathbb{R}^d$ of [input domain, e.g., "algebraic expressions"] such that the Euclidean distance between embeddings reflects a target similarity. Following [FaceNet / Schroff et al.], we adopt a triplet-loss objective with online semi-hard negative mining.
+
+\subsection{Triplet Loss}
+
+Let $(x_a, x_p, x_n)$ be an anchor, a positive (sharing the target similarity with $x_a$), and a negative (not sharing it). The triplet loss is
+\begin{equation}
+    \mathcal{L}_{\text{trip}}(x_a, x_p, x_n) = \max\left(0, \, \|f_\theta(x_a) - f_\theta(x_p)\|_2^2 - \|f_\theta(x_a) - f_\theta(x_n)\|_2^2 + \alpha\right),
+\end{equation}
+with margin $\alpha > 0$. Embeddings are constrained to the unit hypersphere via $\|f_\theta(x)\|_2 = 1$ so that distances are bounded.
+
+\subsection{Semi-Hard Online Mining}
+
+Mining all $O(N^3)$ triplets is prohibitive; we mine triplets online within each mini-batch of $B$ examples. For each anchor $x_a$, a positive $x_p$ is chosen uniformly among same-class examples in the batch, and a negative $x_n$ is chosen uniformly among examples $x_n$ in the batch satisfying
+\begin{equation}
+    \|f_\theta(x_a) - f_\theta(x_p)\|_2 < \|f_\theta(x_a) - f_\theta(x_n)\|_2 < \|f_\theta(x_a) - f_\theta(x_p)\|_2 + \alpha.
+\end{equation}
+This restricts the loss to triplets that violate the margin but are not already too far apart, which we find stabilises training.
+
+\subsection{Constructing Triplets for Algebraic Constraints}
+
+The notion of similarity in our setting is empirical: two expressions are positive if they accept the same sampled assignments and negative otherwise. We approximate this in practice by [precise positive criterion]; we ablate this choice in Section [reference] and find that [observation].
+
+\subsection{Joint Training}
+
+We jointly train $f_\theta$ with the triplet loss and a binary cross-entropy [classifier head] $g_\phi$ that operates on the concatenation of $f_\theta(x)$ with [auxiliary input]:
+\begin{equation}
+    \mathcal{L}_{\text{cls}} = \mathbb{E}_{(x, a, y)} \big[ \text{BCE}(g_\phi(f_\theta(x), a), y) \big].
+\end{equation}
+The total loss is $\mathcal{L} = \mathcal{L}_{\text{cls}} + \beta \, \mathcal{L}_{\text{trip}}$ with $\beta$ tuned on a held-out split.
+
+\subsection{Downstream Use as a Regulariser}
+
+Once trained, the encoder $f_\theta$ is frozen and exposed as a differentiable [regulariser]: for any task that operates over a set of algebraic expressions $\{e_1, \dots, e_m\}$, we add the term
+\begin{equation}
+    \mathcal{R}(\theta_{\text{task}}) = \sum_{(i, j) \in \mathcal{P}} \| f_\theta(e_i) - f_\theta(e_j) \|_2,
+\end{equation}
+where $\mathcal{P}$ is the set of pairs of expressions known to be [equivalent / related], weighted by $\lambda$ and added to the host task loss.
