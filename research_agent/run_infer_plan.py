@@ -211,7 +211,7 @@ You should carefully go through the math formula and the code implementation, an
 
 We have already selected the following datasets as experimental datasets:
 {dataset_description}
-Your task is to implement the innovative idea after carefully reviewing the math formula and the code implementation in the paper notes and existing resources in the directory `/{workplace_name}`. You should select ONE most appropriate and lightweight dataset from the given datasets, and implement the idea by creating new model, and EXACTLY run TWO epochs of training and testing on the ACTUAL dataset on the GPU device. Note that EVERY atomic academic concept in model survey notes should be implemented in the project.
+Your task is to implement the innovative idea after carefully reviewing the math formula and the code implementation in the paper notes and existing resources in the directory `/{workplace_name}`. You should select ONE most appropriate and lightweight dataset from the given datasets, and implement the idea by creating new model, and EXACTLY run TWO epochs of training and testing on the ACTUAL dataset. Pick the device with the autodetect helper specified in `task1` (cuda -> mps -> cpu); CPU is acceptable when no accelerator is available. Note that EVERY atomic academic concept in model survey notes should be implemented in the project.
 
 PROJECT STRUCTURE REQUIREMENTS:
 1. Directory Organization
@@ -338,7 +338,7 @@ Your task is to evaluate the implementation, and give a suggestion about the imp
 [IMPORTANT] Some tips about the evaluation:
 1. The implementation should carefully follow the plan. Please check every component in the plan step by step.
 2. The implementation should have the test process. All in all, you should train ONE dataset with TWO epochs, and finally test the model on the test dataset within one script. The test metrics should follow the plan.
-3. The model should be train on GPU device. If you meet Out of Memory problem, you should try another specific GPU device.
+3. The model should be trained on the best available device, selected by the `get_device()` helper defined in `task1` (preference order: cuda > mps > cpu). The Docker container on this host has no GPU pass-through and will run on CPU; that is acceptable for the in-Docker sanity training. If you meet an Out of Memory problem, reduce batch size or dataset size rather than trying to switch GPUs.
 """
         input_messages = [{
             "role": "user",
@@ -465,7 +465,7 @@ You have conducted the experiments and get the experimental results:
 {submit_res}
 And a detailed analysis report about the results are given by the `Experiment Planner Agent`:
 {analysis_report}
-Your task is to refine the experimental results according to the analysis report by modifying existing code in the directory `/{workplace_name}/project`. You should NOT stop util every experiment is done with ACTUAL results. If you encounter Out of Memory problem, you should try another specific GPU device. If you encounter ANY other problems, you should try your best to solve the problem by yourself.
+Your task is to refine the experimental results according to the analysis report by modifying existing code in the directory `/{workplace_name}/project`. You should NOT stop util every experiment is done with ACTUAL results. If you encounter an Out of Memory problem, reduce batch / dataset size instead of switching GPUs (Docker on this host has no GPU). If you encounter ANY other problems, you should try your best to solve the problem by yourself.
 
 Note that you should fully utilize the existing code in the directory `/{workplace_name}/project` as much as possible. If you want to add more experiments, you should add the python script in the directory `/{workplace_name}/project/`, like `run_training_testing.py`. Select and output the important results during the experiments into the log files, do NOT output them all in the terminal.
 """
@@ -504,8 +504,11 @@ def main(args, ideas, references):
     with open(args.instance_path, "r", encoding="utf-8") as f:
         eval_instance = json.load(f)
     instance_id = eval_instance["instance_id"]
-    local_root = os.path.join(os.getcwd(),"workplace_paper" , f"task_{instance_id}" + "_" + COMPLETION_MODEL.replace("/", "__"),  args.workplace_name)
-    container_name = args.container_name + "_" + instance_id + "_" + COMPLETION_MODEL.replace("/", "__")
+    # Model slugs used in paths / container names: replace `/` with `__` and
+    # `:` with `-` because Docker rejects `:` in container names.
+    model_slug = COMPLETION_MODEL.replace("/", "__").replace(":", "-")
+    local_root = os.path.join(os.getcwd(),"workplace_paper" , f"task_{instance_id}" + "_" + model_slug,  args.workplace_name)
+    container_name = args.container_name + "_" + instance_id + "_" + model_slug
     os.makedirs(local_root, exist_ok=True)
     env_config = DockerConfig(container_name = container_name, 
                               workplace_name = args.workplace_name, 

@@ -1,0 +1,100 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Evaluation protocols carry claims. A held-out-form protocol for symbolic expressions (withhold
+one equivalent form of each equation from training, then ask a learned encoder to identify it)
+is understood to carry the claim that the encoder has recognised algebraic \emph{structure} rather
+than surface tokens. The protocol does not establish that claim on its own. Something has to rule
+out the cheaper explanations, and in this literature that step is usually skipped.
+
+We ran the cheapest possible check on the canonical case. On a 10-equation held-out-form suite
+built from AI~Feynman \citep{udrescu2020ai}, a trained Tree-LSTM identifies held-out forms at
+$0.972 \pm 0.060$ ($n{=}25$ seeds, chance $0.10$), against an untrained encoder's
+$0.724 \pm 0.184$. Read naively, that is structural identification. It cannot be. On this suite every equation has a
+variable set no other equation shares (\S\ref{sec:survey}), so a bag over variable tokens alone
+(nearest-centroid, \emph{no training and no parameters}) is a complete lookup solution \emph{by
+construction}, and duly scores $1.000$ (sd $0.000$), above the trained encoder at every seed. A
+full-token bag lands nearby but unstably: $0.992 \pm 0.027$ in this run, $0.932 \pm 0.075$ in an
+independent replication of the same protocol, a spread that straddles $0.972$ and is why we anchor
+on the deterministic row (\S\ref{sec:reporting}). Under this construction the benchmark is solvable
+by lookup: whatever the encoder learned, this protocol cannot see it, because a method that provably
+has no notion of tree structure already saturates the metric.
+
+\textbf{Ten equations is a small suite, and this is a constructed counterexample, not evidence of
+prevalence}: showing that a failure mode exists and can be total needs one case, not a large
+sample. Prevalence is assessed separately by the 23-corpus audit (\S\ref{sec:survey}) and behaviour
+at scale by a published leaderboard (\S\ref{sec:leaderboard}). With $K{=}10$ the unit of inference
+also matters from the outset: per-equation leakage ranges from $-0.05$ to $1.12$, so the $\pm$
+figures above are seed-level and understate equation-level uncertainty by roughly $6\times$; we
+bootstrap over equations throughout (\S\ref{sec:reporting}).
+
+This gives the paper its thesis. \emph{Held-out-form accuracy can be explained by progressively
+stronger non-learned cues; we give a training-free audit and a controlled-probe protocol for
+determining which level of explanation a benchmark actually rules out.} The failure mode throughout
+is not a model that underperforms but a measurement whose connection to the claim it supports was
+never checked.
+
+\paragraph{A tier decomposition of what a benchmark can be solved by.} ``Structure'' is not one
+thing. We separate variable identity (tier~1), operator and arity inventory (tier~2), order and
+local tree shape (tier~3), and genuine composition (tier~4), and argue that identification claims
+must name their tier (\S\ref{sec:tiers}). The distinction is not cosmetic: a benchmark can be fully
+immune at tier~1 and still be separable at tier~2, which is the situation almost everywhere we
+looked, and clearing tier~2 still leaves tier~3, where surface statistics of a tree substitute
+for composing it.
+
+\paragraph{Testing for what the lower tiers cannot explain.} We measure tier~3 with two
+zero-parameter baselines (token n-grams; parent--child and subtree-size statistics), then hold both
+inventory \emph{and} local shape fixed with a \emph{twin} probe: each held-out form paired with a
+rearrangement of itself carrying identical token and operator multisets, so those baselines are
+pinned at exactly chance by construction (\S\ref{sec:tier3}). This tests sensitivity to
+compositional distinctions not captured by the measured tier-3 statistics; it does not isolate
+composition, and \S\ref{sec:tier3} says why no such probe could. The trained encoder is near
+ceiling there, but an \emph{untrained} encoder reaches $0.788$, which is why we call these
+baselines \emph{non-learned} rather than ``structure-free'': a randomly initialised recursive
+encoder computes over structure without having learned any.
+
+\paragraph{A training-free screen, and a targeted audit of 23 corpora.} Tier separability is computable
+from the corpus alone, with no model and no training run (\S\ref{sec:auditor}). We ship it as
+\texttt{audit-symbolic-benchmark} and apply it to 23 published corpora across four families
+(\S\ref{sec:survey}). The result narrows the cautionary claim considerably: the tier-1 flaw is a
+property of a per-symbol \emph{tokenization convention} applied to physics corpora, not of
+equivalence-class benchmarks in general. The canonical published family, EQNET
+\citep{allamanis2017learning} and successors \citep{gangwar2023semantic, zheng2025egen},
+defines classes over a shared variable pool and is immune at tier~1 ($\leq 3.2\%$ unique
+variable sets across all 15 corpora). Tier~2 is where the exposure is.
+
+\paragraph{A floor under a live leaderboard, and a retraction.} The strongest test of an audit is
+to point it at numbers people are currently standing behind. Three published systems report
+$\mathrm{score}_5$ on the \textsc{UnseenEqClass} split of the 14 SemVec corpora. The metric needs
+only a distance, so it is computable for a token bag exactly as for a learned embedding. Computed
+under those authors' own procedure, the audit yields a baseline floor under the published protocol: no non-learned
+representation reaches EqNet or the headline SemEmb system on any of the 14 corpora
+(\S\ref{sec:leaderboard}). We report this having first published a stronger claim internally and
+retracted it: our own protocol, internally consistent and satisfying our own checklist, made
+the same floor appear to beat a published ablation on 13 of 14 corpora instead of 5. Every
+difference from the original procedure had pushed our numbers up. \emph{A skyline is only a
+skyline for the evaluation it was computed under.}
+
+\paragraph{What the audit costs the auditor.} We applied the standard to ourselves and it was not
+free: supplying a baseline we had not previously measured repeatedly reversed conclusions we had
+drawn, and two purpose-built ``leakage-proof'' suites turned out to be solvable at tier~2
+(\S\ref{sec:reporting}). The unit of inference also matters: per-equation leakage ranges from
+$-0.05$ to $1.12$, so a seed-level interval understates equation-level uncertainty by roughly
+$6\times$.
+
+We close with the eight-step checklist these findings imply (\S\ref{sec:checklist}).
+
+\paragraph{Related work.} None of the machinery is new in kind. \citet{geirhos2020shortcut} frame
+\emph{shortcut learning} as a pervasive failure mode; in NLI, hypothesis-only baselines matched full
+models and exposed annotation artifacts rather than reasoning
+\citep{gururangan2018annotation, poliak2018hypothesis}. Our zero-parameter bag is the symbolic
+analogue, and on the physics suite it does not merely match the trained encoder but solves the
+benchmark by construction. \citet{hewitt2019control} established with \emph{control tasks} that
+probing accuracy is interpretable only against a randomised baseline, which our untrained-encoder
+skyline supplies. Renaming-invariance has an analogue in code: Type-2 clones are by definition
+identical up to identifier names, and clone benchmarks curate them as a distinct category
+\citep{svajlenko2014towards}. SCAN \citep{lake2018generalization} and COGS \citep{kim2020cogs}
+showed that how a held-out set is \emph{constructed} decides observed difficulty, and the
+contamination literature \citep{jacovi2023stop, zhou2023don} recommends shortcut-breaking held-out
+sets, which our checklist operationalises as a tool. What is new is the tier decomposition, the
+training-free screen behind it, and the audit of which families are exposed at which tier.

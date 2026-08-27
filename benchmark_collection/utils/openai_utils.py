@@ -5,6 +5,8 @@ import time
 import os
 import tiktoken
 import asyncio
+import litellm
+from litellm import acompletion
 from typing import Optional
 import datetime
 import global_state
@@ -15,24 +17,24 @@ def count_tokens(text: str, model: str = "gpt-4") -> int:
     except KeyError:
         print(f"Warning: model {model} not found. Using cl100k_base encoding.")
         encoding = tiktoken.get_encoding("cl100k_base")
-    
+
     return len(encoding.encode(text))
 
 class GPTClient:
-    def __init__(self, api_key: str = None, model: str = 'gpt-4o-mini-2024-07-18'):# 'gpt-4o-mini-2024-07-18'):# 'o1-mini-2024-09-12'):
-        if api_key is None:
-            api_key = os.getenv('OPENAI_API_KEY')
-            api_url = os.getenv('API_BASE_URL')
-            if api_key is None:
-                raise ValueError("API key must be provided or set in OPENAI_API_KEY environment variable")
-        
-        self.client = openai.AsyncClient(
-            api_key=api_key,
-            base_url=api_url,
-            timeout=240.0,
-            max_retries=0
-        )
+    """Thin async wrapper around `litellm.acompletion`.
+
+    Despite the name, this client speaks any provider litellm supports
+    (OpenAI, AWS Bedrock, OpenRouter, Anthropic, Azure, ...) — the provider is
+    selected by the `model` prefix, e.g. ``bedrock/us.anthropic.claude-...``.
+    Credentials for non-OpenAI providers come from the environment / boto3's
+    default chain, so AWS Bedrock works as long as ``aws configure`` is set up.
+    """
+
+    def __init__(self, api_key: str = None, model: str = 'gpt-4o-mini-2024-07-18'):
+        self.api_key = api_key or os.getenv('OPENAI_API_KEY')
+        self.api_base = os.getenv('API_BASE_URL')
         self.model = model
+        self.timeout = 240.0
 
     @backoff.on_exception(
         backoff.expo,
@@ -43,12 +45,16 @@ class GPTClient:
     )
     async def _get_response(self, messages: list, temperature: float, max_tokens: int) -> Optional[str]:
         try:
-            completion = await self.client.chat.completions.create(
-                model=self.model,
-                messages=messages,
-                # temperature=temperature,
-                # max_tokens=max_tokens
-            )
+            kwargs = {
+                "model": self.model,
+                "messages": messages,
+                "timeout": self.timeout,
+            }
+            if self.api_key:
+                kwargs["api_key"] = self.api_key
+            if self.api_base:
+                kwargs["api_base"] = self.api_base
+            completion = await acompletion(**kwargs)
             return completion.choices[0].message.content
         except Exception as e:
             print(f"Error in API call: {str(e)}")

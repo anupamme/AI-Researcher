@@ -1,0 +1,52 @@
+\section{Measuring the Gap: Order, Shape, and What Is Left}
+\label{sec:tier3}
+
+Tier 3 is only a useful category if it can be measured, and a claim above it is only worth as much
+as the cues that were held fixed while testing it. We do both, and each attempt corrects the last.
+
+\paragraph{Two tier-3 baggers (tag \texttt{r71}).} \emph{Token n-gram} takes bigrams and trigrams
+over a bracketed depth-first linearisation (unigrams excluded, so it measures adjacency rather than
+inventory); \emph{tree-local} takes parent$\to$child pairs, depth-indexed labels and a subtree-size
+histogram. Both are zero-parameter and \emph{variable-blind}, since tier-1 power is already measured
+by the variable-only bag. They matter: on \texttt{poly8} unseen classes the tree-local bag reaches
+$0.411$ at $K{=}500$ against the variable-blind bag's $0.186$, so over half the headroom one might
+attribute to ``structure beyond operator content'' is local shape.
+
+\input{table_probes.tex}
+
+\paragraph{A ladder of controls, each closing the previous one's loophole.} We pair every held-out
+form with a \emph{twin} carrying identical token and operator multisets and ask whether the encoder
+places the true form closer to its class centroid (chance $0.5$). Table~\ref{tab:probes} summarises
+the three transformations, in increasing strictness; per-corpus detail is in
+Appendix~\ref{app:probes} and the earlier two-probe comparison on \texttt{poly8} in
+Appendix~\ref{app:twin}.
+
+\emph{Rotation} (\texttt{r72}) sends $(a \mathbin{\text{op}_1} b) \mathbin{\text{op}_2} c \to
+a \mathbin{\text{op}_1} (b \mathbin{\text{op}_2} c)$: inventory is pinned, but the rotation moves
+depths, parent--child pairs and subtree sizes (exactly tier~3) and our own measurement exposes
+the leak, tree-local reaching $0.832$ on \texttt{poly8} and $0.909$ on \texttt{poly5}. \emph{Sibling
+swap} (\texttt{r73}) sends $x - y \to y - x$ under a non-commutative parent; since the tree-local
+bagger does not distinguish left child from right, its bag is left \emph{exactly} invariant, pinning
+shape as well as inventory but not order. \emph{Operand relocation} (\texttt{r74}) exchanges two
+leaves holding \emph{different} variables, $(x_0 - x_1)\cdot x_2 \to (x_0 - x_2)\cdot x_1$; the
+tier-3 baggers being variable-blind, inventory, shape \emph{and} order are all invariant, leaving
+only the variable-to-position binding. Every twin is verified per instance: matching multisets,
+matching bags where promised, and a numerical (for boolean, exhaustive truth-table) check that it
+denotes a different function.
+
+\paragraph{The residual is not argument order.} A reasonable objection to the swap is that it tests
+sensitivity to left/right ordering rather than anything more general. Relocation answers it directly:
+there the n-gram baseline is pinned at $0.500$ by construction, and the trained--untrained gap
+persists on all four corpora where relocation exists ($+0.142$, $+0.383$, $+0.210$, $+0.184$), in the
+same range as the swap. Across 17 cells spanning six corpora and two symbolic families, every
+construction guarantee held and every encoder gap was positive.
+
+\paragraph{What this licenses, stated exactly.} Not ``the encoder composes''. A sufficiently rich set
+of local relations determines a tree, so tiers 3 and 4 are separated by the \emph{boundedness} of the
+statistics we chose (capped depth, capped subtree size, bags of local pairs), not categorically.
+The honest reading is falsification-shaped: the encoder survives every non-learned explanation we
+could construct, including one fixing inventory, shape and order at once, and a claim is worth
+exactly the highest floor it clears. The gap likewise bounds what training can be credited with
+\emph{under this probe} without decomposing into architectural and learned parts, which interact.
+That an \emph{untrained} recursive encoder already scores $0.586$--$0.940$ here is why we call these
+baselines \emph{non-learned}, not ``structure-free''.

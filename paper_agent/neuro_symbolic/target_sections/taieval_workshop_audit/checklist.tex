@@ -1,0 +1,49 @@
+\section{The Checklist}
+\label{sec:checklist}
+
+If only one sentence survives from this paper, let it be this. \textbf{Before interpreting an
+identification score as structural learning, report matched non-learned baselines for every claimed
+evaluation protocol, and verify the benchmark cannot be solved by lower-tier cues.} The eight steps
+below are its operational expansion; steps~1--2 would have caught the failure we opened with, and
+step~7 would have caught our own retraction.
+
+\begin{enumerate}[topsep=2pt,itemsep=0pt,leftmargin=1.5em]
+  \item \textbf{Screen the corpus before training.} A high unique var-set fraction means a tier-1
+    lookup table, and no training result on it will mean what you want it to.
+  \item \textbf{Report both non-learned baselines under the identical protocol}: a bag classifier
+    and a randomly initialised encoder. Neither substitutes for the other (\S\ref{sec:tiers}).
+  \item \textbf{Run within-range variable renaming}, remapping into the \emph{trained} index range,
+    and report the (plain, renamed) pair rather than a summary index.
+  \item \textbf{Audit positive results at tiers 2 and 3}: operator-scramble and arity controls,
+    plus the order and local-shape baselines of \S\ref{sec:tier3}. Clearing a bag is not enough.
+  \item \textbf{Verify the control is an isomorphism of the benchmark.} On a de~Bruijn-normalised
+    corpus the naive in-range remap is the identity, and the control silently does nothing.
+  \item \textbf{Verify held-out forms are genuinely out-of-library}: not string-identical to, or
+    one library rewrite from, a training form.
+  \item \textbf{Verify the evaluation matches what you compare against}: same neighbour pool,
+    normalisation and query construction as the published numbers (\S\ref{sec:retraction}).
+  \item \textbf{Make the population the unit of inference.} Bootstrap over classes, not seeds.
+\end{enumerate}
+
+Together they ask one question: does this benchmark license the claimed level of interpretation? It
+is a screen, not a verdict of impossibility: clean corpora exist (\S\ref{sec:survey}), and
+\S\ref{sec:tier3} clears the bar on one.
+
+\paragraph{What we claim, exactly.} The hierarchy is a \emph{falsification} device, not an
+identification one: failing a tier invalidates the stronger reading, while clearing one establishes
+only insensitivity to the cues actually tested. Applied to our own results:
+
+\textbf{Established}: the physics benchmark admits a complete tier-1 shortcut. \textbf{Established}:
+the trained encoder exceeds every non-learned baseline we could construct, including one holding
+inventory, local shape \emph{and} order fixed by construction. \textbf{Not established}: that the
+encoder performs compositional algebraic reasoning. That last line is not modesty: no probe can
+partition ``composition'' from ``a structural statistic we did not measure'', since a sufficiently
+rich set of local relations determines the tree. A claim is worth exactly the highest floor it clears.
+
+\paragraph{Reproducibility and limitations.} A paper arguing that protocol details decide conclusions
+should not ask to be taken on trust. Screen, probes, run tags and \texttt{verify\_claims.py} (which
+recomputes every zero-parameter number here and \emph{asserts} it, exiting non-zero on disagreement)
+are in the supplementary material; both leaderboards ship as tags, so
+\S\ref{sec:retraction} reproduces in the order it happened. Limits: our corpora are algebraic and
+boolean, the screen is untested elsewhere, and near-degenerate class sizes (\S\ref{sec:setup}) bound
+every result.

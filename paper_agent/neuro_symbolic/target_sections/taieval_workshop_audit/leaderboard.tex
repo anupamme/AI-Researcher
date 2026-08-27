@@ -1,0 +1,17 @@
+\section{A Floor Under a Published Leaderboard}
+\label{sec:leaderboard}
+
+The strongest form of the audit is to point it at numbers someone is currently standing behind.
+Three published systems report $\mathrm{score}_5$ on the \textsc{UnseenEqClass} split of the 14
+SemVec corpora: EqNet \citep{allamanis2017learning}, and the StructEmb ablation and headline
+SemEmb system of \citet{gangwar2023semantic}. The metric needs only a distance, so it is computable
+for a bag exactly as for a learned embedding. Table~\ref{tab:score5} (Appendix~\ref{app:score5})
+does so for a token bag, a variable-blind bag and an untrained Tree-LSTM, evaluated exactly as
+\citet{allamanis2017learning} do: neighbours searched in the \emph{full corpus} rather than the test
+split, and normalisation by $\min(|\text{class}|, 5)$.
+
+\paragraph{The leaderboard is robust.} No non-learned representation reaches EqNet or SemEmb on
+\emph{any} of the 14 corpora, usually by a wide margin (\textsc{Bool8}: bag $12.7$ against EqNet's
+$58.1$). Five corpora see one reach the StructEmb ablation, the weakest published column. The
+verdict is a \emph{non-learned baseline floor under the published evaluation protocol}, deliberately weaker than a certificate: as \S\ref{sec:tier3} shows,
+exceeding a bag does not by itself establish that the information used is compositional.

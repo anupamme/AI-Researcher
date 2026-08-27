@@ -1,0 +1,911 @@
+\section*{Appendix}
+
+\subsection*{A. Provenance, Pipeline, and Domain Guards}
+
+\textbf{Provenance.} Tables~1--3 derive from a single frozen pipeline configuration executed as one run family. The pipeline fixes: satisfaction-rate filter excluding expressions with satisfaction rate outside [0.1, 0.9], paraphrase-only equivalence class construction (numerical signatures were evaluated and rejected, as detailed below), extended exp/log/power rewrite rules, and early-stopped physics predictors (patience 10, maximum 100 epochs). No selective reporting or post-hoc parameter tuning was performed. Table~\ref{tab:held_out_form} reports Tree-LSTM and Random at $n{=}25$ (one run family, fully independent seeds); GIN and Transformer remain at $n{=}5$ (separate earlier family). Table~\ref{tab:alpha_rename} (§\ref{sec:alpha_rename}) derives from a second run family in which the alpha-renaming augmentation changes the paraphrase library, requiring fresh encoder training; its baseline and random encoder rows are independently re-evaluated under the same frozen pipeline and serve as within-family controls. The 10-equation protocol rows derive from tags r11 (E3), r13 (E3b), and r16 (E3m) within the Feynman diversity sweep (Appendix~E). All comparisons are within-family unless noted.
+
+\textbf{Per-seed corpus sizes.} The corpus is built by drawing $2000$ base expressions per seed and expanding each into a size-$\leq 3$ equivalence class via up to $k=2$ syntactic paraphrases; the build is fully deterministic given the seed. Table~\ref{tab:corpus_sizes} reports the exact counts. The totals sit slightly above the nominal $2000\times 3 = 6000$ because the paraphrase library occasionally returns fewer than two distinct rewrites, yielding a few size-2 classes and forcing an extra family to reach the target of 2000 base expressions. The reported ``$\approx$6000 expressions / $\approx$2000 classes'' therefore denote these exact per-seed values, not rounded estimates. Each expression contributes $n_{\text{pos}}{=}5$ positive and $n_{\text{neg}}{=}5$ negative training samples (10 per expression).
+
+\begin{table}[h]
+\centering
+\caption{Exact per-seed corpus sizes (deterministic given the seed). ``Size-3 / size-2'' is the equivalence-class-size histogram.}
+\label{tab:corpus_sizes}
+\begin{tabular}{cccc}
+\toprule
+Seed & Expressions & Classes & Size-3 / size-2 classes \\
+\midrule
+0 & 6001 & 2001 & 1999 / 2 \\
+1 & 6001 & 2001 & 1999 / 2 \\
+2 & 6002 & 2001 & 2000 / 1 \\
+3 & 6002 & 2002 & 1998 / 4 \\
+4 & 6002 & 2001 & 2000 / 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Domain guards.} Division by values $|y| < 10^{-6}$ clamps the denominator to $\text{sign}(y) \cdot 10^{-6}$; logarithm applies $\log(|x| + 10^{-6})$; square root uses $\sqrt{|x|}$; exponential clips arguments to $[-20, 20]$. The assignment sampler attempts up to $k=64$ retries per expression; expressions for which no satisfying assignment is found within this budget are discarded. Variable assignments are sampled uniformly from $[-3, 3]$ for each of the 4 active variables per expression. Constants are drawn from a discrete bank $\{-2, -1, -0.5, 0.5, 1, 2, 3\}$, and thresholds are drawn from the same bank.
+
+\textbf{Satisfaction-rate histogram.} The unfiltered corpus exhibits significant degeneracy: 46.8\% of expressions have satisfaction rate outside [0.1, 0.9] over the $[-3,3]^4$ sampling domain (33.1\% always-false, 13.7\% always-true). This motivates the filter that restricts the corpus to expressions with balanced satisfaction patterns. Numerical-signature hashing (256-bit SHA-256 of satisfaction patterns over a canonical assignment set) was evaluated as an equivalence-detection mechanism and rejected: pre-filter, 100\% of randomly sampled pairs with identical signatures were false merges (2457 pairs tested, 0 verified by SymPy); post-filter, 13\% remained false merges (100 pairs, 87 verified, 13 refuted by SymPy). Distinct algebraic expressions with identical satisfaction patterns over finite assignment sets are common in this domain. The final pipeline uses only syntactic paraphrases (commutativity, associativity, distributivity, additive and multiplicative identity, double negation, and exp/log/power rewrites: $a \cdot a \leftrightarrow \exp(2 \log a)$, $1/a \leftrightarrow \exp(-\log a)$, $\exp(\log a) \leftrightarrow a$) to define equivalence classes.
+
+\paragraph{Quantization note.} With 8 held-out forms per seed (or 10 for Feynman), diagonal-correctness quantises to multiples of $1/8 = 0.125$ (or $1/10 = 0.10$). The TOST margin $\delta{=}0.10$ is at or below this quantum, meaning individual seeds cannot distinguish effects smaller than one form. We address this by using $n{=}25$ seeds: the \emph{mean} across seeds is continuous, and the standard error (${\sim}0.02$) is well below $\delta$. All TOST conclusions rest on the cross-seed mean, not individual-seed resolution.
+
+\paragraph{Retrieval and Classification.}
+\begin{table}[h]
+\centering
+\caption{Retrieval and classification metrics on the held-out synthetic test set. All three trained encoders achieve high retrieval mAP; the random encoder achieves chance classification accuracy (0.500) but nearly matches the trained encoders on equivalence-class retrieval mAP (0.893), indicating that variable-identity geometry already reflects algebraic proximity under any projection.}
+\label{tab:retrieval}
+\begin{tabular}{lccc}
+\toprule
+Encoder & Accuracy & mAP@10 (tree) & mAP@10 (equiv) \\
+\midrule
+Tree-LSTM & 0.925 $\pm$ 0.004 & 0.873 $\pm$ 0.050 & 0.906 $\pm$ 0.025 \\
+GIN & 0.899 $\pm$ 0.013 & 0.862 $\pm$ 0.027 & 0.892 $\pm$ 0.010 \\
+Transformer & 0.688 $\pm$ 0.170 & 0.865 $\pm$ 0.027 & 0.904 $\pm$ 0.007 \\
+BCE-only & 0.932 $\pm$ 0.006 & 0.878 $\pm$ 0.021 & 0.880 $\pm$ 0.014 \\
+Random encoder & 0.500 $\pm$ 0.009 & 0.887 $\pm$ 0.008 & 0.893 $\pm$ 0.012 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All three trained encoders achieve classification accuracy above 0.88 and equivalence-class retrieval mAP@10 above 0.89. The BCE-only encoder achieves the highest classification accuracy (0.932) but lower equivalence-class mAP (0.880) than the Tree-LSTM, suggesting that the triplet objective specifically improves equivalence-class clustering at a marginal cost to classification accuracy.
+
+The random encoder achieves 0.500 classification accuracy (chance) but mAP@10 (equiv) = 0.893 $\pm$ 0.012, nearly matching the trained encoders. The mAP@10 (tree) = 0.887 $\pm$ 0.008 is also high. This indicates that unsupervised tree-distance geometry already strongly reflects algebraic proximity. This is consistent with the variable-identity leakage finding: expressions that share variable indices are geometrically similar under any projection, including random ones. The fact that the corpus equivalence classes have size $\sim$3 (1999 of 2001 classes contain exactly 3 expressions) means that every positive pair is a single-rewrite paraphrase of its anchor with near-total token overlap: the easiest possible retrieval task.
+
+The two mAP@10 variants measure different notions of retrieval success. The tree metric treats two copies of the same expression as positives regardless of paraphrase; the equivalence metric treats all paraphrases (including the expression itself) as positives. The fact that random encoders achieve high equivalence mAP but only chance classification accuracy shows that retrieval-level proximity and classification-level discrimination are separable objectives, and that the former is largely a function of variable-index overlap rather than learned algebraic structure.
+
+\subsection*{B. External Validation: Operator-Token Leakage on a Symbolic-Mathematics Benchmark}
+
+The Feynman demonstration (Appendix~D) concerns multi-variable physics equations, where variable identity is the dominant leak. To test the \emph{second} leakage layer (operator-token leakage, i.e.\ tier~2 in \S\ref{sec:tiers}) on a benchmark we did not construct, we turn to the integration dataset of \citet{lample2019deep} (the public \texttt{prim\_ibp} split of their Deep Learning for Symbolic Mathematics benchmark). These are single-variable functions of $x$, so cross-expression variable-identity leakage \emph{cannot} apply; any above-chance identification must come from operator tokens or tree shape.
+
+We parse 320 real integrands from their test distribution into expression trees and label each by integration family: \emph{polyrational} (only $+,-,\times,\div$ and integer powers), \emph{radical} ($\sqrt{\cdot}$), \emph{trig} ($\sin/\cos$ and derived), and \emph{explog} ($\exp/\log$, with hyperbolic functions expressed via $\exp$), 80 per family. Powers are expanded via the paper's own elementary rewrites so that polynomials carry no transcendental tokens. We ask a random (untrained) Tree-LSTM, the same architecture used throughout the paper, to identify a held-out expression's family by nearest-family-centroid (25\% held out per family, 50 random seeds). Chance is $1/4 = 0.25$. As an operator analogue of the within-range renaming control, the \emph{operator-scramble} condition maps every binary operator to a single token and every unary operator to a single token, preserving tree shape but destroying operator identity.
+
+\begin{table}[h]
+\centering
+\caption{Random-encoder integration-family identification on \citet{lample2019deep} integrands ($n=50$ seeds, chance $=0.25$). Operator-scramble is the operator analogue of within-range renaming.}
+\label{tab:symbolic_math}
+\begin{tabular}{lc}
+\toprule
+Condition & Family-identification accuracy \\
+\midrule
+Natural (operators kept)      & $0.79 \pm 0.07$ \\
+Operator-scrambled control    & $0.58 \pm 0.05$ \\
+Chance                        & $0.25$ \\
+\midrule
+\multicolumn{2}{l}{\emph{Per-family (natural):}} \\
+\quad polyrational & $0.80$ \\
+\quad radical      & $0.87$ \\
+\quad trig         & $0.82$ \\
+\quad explog       & $0.69$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A random encoder identifies the integration family of published integrands at $3.2\times$ chance ($0.79$ vs $0.25$) with no training. Scrambling operator identity drops accuracy to $0.58$, a leakage index of $\ell = (0.79 - 0.58)/0.79 = 0.27$, confirming that roughly a quarter of the identification is carried by operator tokens directly; the residual above chance is tree-shape and unary-arity signal (also unlearned). The practical consequence mirrors the main paper: any learned equation-embedding model reporting family-level clustering on this benchmark must clear a $0.79$ random-encoder skyline before its numbers can be credited to learned algebraic structure rather than operator-token statistics. This demonstrates the operator-token leakage layer on a published symbolic-mathematics corpus the authors did not construct.
+
+\paragraph{Trained encoder audit (tag \texttt{r44\_lample\_charton\_encoder}).} We load the publicly available Lample \& Charton (2020) Transformer encoder (80M parameters, 6 layers, $d{=}1024$, trained on millions of FWD+BWD+IBP integration problems) and run the same centroid-identification protocol on the same 320 integrands ($n{=}25$ seeds). Results:
+\begin{itemize}[noitemsep]
+  \item Natural accuracy: $0.876 \pm 0.044$ ($3.5\times$ chance; exceeds random encoder's $0.79$).
+  \item Operator-scrambled: $0.653 \pm 0.055$ ($p{<}0.0001$ vs natural, paired $t{=}17.1$).
+  \item Operator-token leakage index: $\ell = (0.876 - 0.653)/0.876 = 0.254$.
+\end{itemize}
+Training at genuine structural scale (millions of diverse integrands) \emph{amplifies} the family-identification signal, the trained encoder exceeds the random-encoder skyline ($0.876$ vs $0.793$), yet operator-token reliance persists at a similar fractional rate ($\ell{=}0.254$ vs $0.269$). Operator scrambling still degrades identification significantly even in this massively trained model. The residual after scrambling ($0.653$, $2.6\times$ chance) reflects tree-shape and structural signal that survives operator removal and increases with training; the diagnostic cleanly separates the operator-token component from this structural component.
+
+\paragraph{Interpretive caveat: label-definition confound.} Unlike variable identity in the algebraic-equivalence benchmarks (which is genuinely notational and orthogonal to the intended algebraic computation), operator content \emph{partially constitutes} the family labels used here. The four families (polyrational, radical, trig, explog) are defined by which operators appear; showing that operator scrambling degrades family identification is partly evidence that the model uses the feature that defines the ground-truth label, not purely evidence of a shortcut. This is qualitatively different from the variable-identity shortcut in the main result, where the shortcut exploits a design flaw rather than a semantically relevant feature. We retain this audit as evidence that (i) the diagnostic protocol ports to trained models at genuine structural scale, (ii) operator tokens are readily accessible in trained representations, and (iii) operator-token reliance is an inherent feature of operator-heterogeneous benchmark families. However, this result should be interpreted as \emph{operator-content sensitivity} rather than as a direct analogue of the variable-identity leakage documented in the main paper.
+
+\subsection*{C. Why Token-Identity Leakage Suffices: A Token-Bag Account}
+
+The leakage we document across three benchmarks admits a simple predictive account. Represent each expression by its \emph{token bag}: the multiset of variable and operator tokens it contains, ignoring tree structure. Two observations then explain why a \emph{random}, untrained encoder identifies classes above chance. First, at random initialisation a tree encoder's output is dominated by an (approximately linear) aggregation of its input token embeddings, so two expressions with similar token bags receive similar embeddings. Second, random projection approximately preserves pairwise distances (a Johnson--Lindenstrauss property), so nearest-centroid identification in the random embedding space tracks nearest-centroid identification in token-bag space. Consequently, identification accuracy is predicted \emph{a priori} by token-bag separability: it is high exactly when a class's variable-set or operator-vocabulary is distinctive, and near chance when it is not. This is not a statement about learned structure (it holds for any random encoder) and it is what makes the random-encoder row a meaningful skyline.
+
+We verify the account directly on the external benchmarks. A pure bag-of-tokens nearest-centroid classifier (no encoder, no training, operating on normalised token-count vectors) achieves $0.85 \pm 0.05$ family identification on the \citet{lample2019deep} integrands, matching and slightly exceeding the random encoder's $0.79$; token-bag geometry accounts for the identification with room to spare. On the AI Feynman benchmark, all ten equations have distinct variable-bags, and the three with fully unique variable sets are the ones identified at $0.86$ (versus $0.71$ for the seven with shared variables, Table~\ref{tab:feynman}): exactly the ordering the token-bag account predicts.
+
+The sharpest confirmation, however, is on the paper's \emph{primary} evidence. Table~\ref{tab:bagtokens} runs the same held-out-form protocol as the main suite in token-bag space, with no encoder at all. A \emph{variable-aware} bag (distinct token per variable index) matches the trained Tree-LSTM's headline plain diagonal-correctness (Table~\ref{tab:held_out_form}) and \emph{collapses to $0.000$} under within-range renaming: the trained-vs-random gap in the plain regime is entirely variable-token statistics, with zero contribution from tree structure (the bag has none). Note that Table~\ref{tab:bagtokens} reports deterministic values: given the fixed 8-law registry with fixed expression forms, the classifier is a lookup with no randomness. With 8 laws, diagonal-correctness quantises to multiples of $0.125$ (7 possible outcomes above chance), so the exact $0.875$ match is less remarkable than it first appears. A \emph{variable-blind} bag (all variables collapsed to one token) reproduces the random encoder's weaker plain score and is rename-invariant by construction. On the variable-leakage-proof overlap suite the variable-aware bag matches the random encoder's $0.40$ and drops to chance ($0.20$) under renaming, while the variable-blind bag sits at chance throughout, confirming that the overlap suite's residual signal is operator/structure, not variable identity. The token-bag account thus explains the paper's own headline numbers, not only the external ones.
+
+\begin{table}[h]
+\centering
+\caption{Bag-of-tokens nearest-centroid skyline (no encoder, no training) under the held-out-form protocol. ``Variable-aware'' keeps a distinct token per variable index; ``variable-blind'' collapses all variables to one token. Compare to the trained Tree-LSTM and random encoder in Table~\ref{tab:held_out_form}.}
+\label{tab:bagtokens}
+\begin{tabular}{llcc}
+\toprule
+Suite & Bag & Plain diag. & Within-range renamed \\
+\midrule
+Main 8-law ($\text{chance}=0.125$)    & variable-aware & $0.875$ & $0.000$ \\
+                                       & variable-blind & $0.375$ & $0.375$ \\
+\midrule
+Overlap 5-law ($\text{chance}=0.20$)   & variable-aware & $0.400$ & $0.200$ \\
+                                       & variable-blind & $0.200$ & $0.200$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The practitioner's takeaway is an \emph{a-priori} check: before training an encoder, compute token-bag separability across the intended classes; if it is high, a random encoder, indeed a structure-free token-count classifier, will already ``identify'' them, and any learned model must be measured against that skyline rather than against chance.
+
+\paragraph{Validity domain.} The JL + linear-aggregation account has a validity domain: it holds when the test form has similar tree shape to the training forms (as in E3, where held-out $=$ library paraphrase within one rewrite step). Under substantial shape divergence (as in E3b, where held-out forms use out-of-library rewrites that change operator structure), recursive nonlinearity decouples the random encoder's output from the bag. The E3b counterexample is direct: on identical forms with identical centroid-construction protocol, the bag scores $0.900$ and the random encoder $0.124$. The discriminating factor is not centroid quality (the bag also uses 5-form centroids and is unimpaired), but tree-shape divergence: the bag accumulates tokens regardless of structure, whereas the random encoder's tree recursion maps structurally different trees to embeddings that are decorrelated from their token-bag representations. The practical lesson is to \emph{report both skylines} (bag-of-tokens and random encoder), since they measure different failure modes and agree only in-distribution. When a held-out evaluation uses structurally divergent forms, the bag skyline remains meaningful but the random-encoder skyline may understate the token-bag ceiling.
+
+\paragraph{Arity as a sub-bag cue.} Variable-count (arity) is a token-bag property (it equals the number of distinct variable tokens after renaming). It is therefore a sub-type of token-bag leakage, not a separate phenomenon. However, it survives within-range renaming, which preserves variable \emph{identity} but not arity, and so constitutes a confound in arity-heterogeneous benchmarks. An arity-controlled evaluation (restricting classification to same-arity groups) removes this confound. On E3b, the arity-controlled bag scores $0.375$ renamed; the trained encoder scores $0.148$ overall (and at or below within-arity chance), confirming that the trained encoder does not exceed the zero-parameter skyline even after arity deconfounding. The arity-aware bag protocol restricts nearest-centroid classification to equations sharing the same variable count: the 2-variable group (6 equations, chance $0.167$) and the 1-variable group (2 equations, chance $0.500$) are classified independently, eliminating arity as a discriminative cue while preserving the centroid-distance protocol.
+
+\subsection*{D. Trained Encoder on AI Feynman: Full Results (E3)}
+
+Experiment E3 trains a Tree-LSTM on the AI Feynman corpus (10 equations, $k{=}4$ paraphrases each) and evaluates nearest-centroid identification on natural and within-range renamed forms across 25 seeds. The random-encoder-only results for the same corpus are given below, under \emph{AI Feynman benchmark}; this section extends them to a trained encoder. Chance $= 1/10 = 0.10$.
+
+\begin{table}[h]
+\centering
+\caption{E3: trained vs.\ random encoder identification on 10 AI Feynman equations (25 seeds). Leakage index $\ell = 1 - \text{renamed}/\text{natural}$.}
+\label{tab:feynman_trained}
+\begin{tabular}{lcccc}
+\toprule
+Encoder & Natural accuracy & Renamed accuracy & Leakage index \\
+\midrule
+Bag-of-tokens (var-aware) & $0.992 \pm 0.027$ & --- & --- \\
+Trained Tree-LSTM & $0.972 \pm 0.060$ & $0.824 \pm 0.086$ & $0.15$ \\
+Random encoder    & $0.724 \pm 0.184$ & $0.624 \pm 0.145$ & $0.14$ \\
+Bag-of-tokens (var-blind) & $0.636 \pm 0.111$ & --- & --- \\
+Chance            & $0.100$           & $0.100$           & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Replication, and why the headline uses the variable-only row.} The skyline sweep (tag \texttt{r69}) re-runs \emph{this same protocol} independently (same 10 equations, same $k{=}4$ paraphrases, same $K{=}10$, same $n{=}25$ seeds) and does not reproduce every row exactly: it gives full-token bag $0.932 \pm 0.075$ and random encoder $0.748$ against the $0.992 \pm 0.027$ and $0.724$ above, while the variable-blind bag agrees exactly ($0.636$). The bag rows move because the held-out paraphrase is redrawn, and the two full-token estimates are within one standard deviation of each other. But the difference straddles the trained encoder: $0.992 > 0.972$ in this run and $0.932 < 0.972$ in the replication, so the \emph{direction} of a comparison resting on a $0.02$ margin is not stable across runs. We therefore state the main-text claim (\S\ref{sec:held_out_form}) against the \emph{variable-only} bag, which \texttt{r69} measures at $1.000$ with sd $0.000$: with $100\%$ unique variable sets on this suite (Table~\ref{tab:benchmark_survey}), a variable-token bag is a perfect lookup by construction, not a sampled estimate, and it exceeds the trained encoder under either run. This is the paper's own checklist applied to the paper's own headline number.
+
+The variable-aware bag-of-tokens baseline achieves $0.992$, exceeding even the trained encoder's natural accuracy ($0.972$). This means that \emph{even on Feynman}, natural-condition identification does not clear the zero-parameter token-bag skyline. However, the trained encoder's \emph{renamed} accuracy ($0.824$ vs random $0.624$) under this lenient protocol appears to demonstrate structural learning that survives the removal of variable identity, but see ``Protocol asymmetry'' below and Appendix~E for the E3b correction. The variable-blind bag ($0.636$) shows that operator-token leakage accounts for ${\approx}6\times$ chance and closes most of the gap to the trained encoder's renamed accuracy ($0.824$).
+
+Under this protocol (held-out = library paraphrase), both leakage indices are low ($0.15$ and $0.14$). However, E3b (Appendix~E) shows that this low-$\ell$ result is protocol-driven: when the held-out form is a genuinely out-of-library rewrite, $\ell$ rises to $0.71$. The structural diversity of the Feynman corpus, equations ranging from Gaussians to Doppler factors to cyclotron frequency, produces a lenient E3 result that appears to show structural learning, but E3b and the arity-controlled analysis (Appendix~E) show the apparent residual is explained by arity and operator-token cues rather than learned algebraic structure.
+
+\paragraph{Protocol asymmetry (resolved by E3b).} E3 evaluates nearest-centroid identification on one withheld paraphrase per equation (generated by the same paraphrase library used in training). This is analogous to the held-out-form protocol of \S\ref{sec:robustness} but not identical: in the main suite the held-out form is a hand-crafted algebraic alternative never produced by the paraphrase library, whereas E3's held-out form is a library-generated paraphrase seen neither during encoder training nor centroid computation. E3b (Appendix~E) resolves this confound: under a protocol-matched evaluation using out-of-library held-out forms, $\ell$ rises from $0.15$ to $0.71$, confirming that the low-leakage E3 result was protocol-driven.
+
+The finding has two implications. First, variable-identity leakage is pervasive: even on diverse corpora, identification reflects token shortcuts when evaluation uses genuinely out-of-distribution forms, and arity-controlled analysis (Appendix~E) shows the apparent trained-vs-random residual is explained by arity and operator-token separability rather than learned algebraic structure. Second, the token-bag skyline is a universal audit: any benchmark where bag-of-tokens exceeds reported accuracy has not demonstrated structural learning under natural evaluation; renaming controls are required.
+
+\paragraph{External Validation: AI Feynman Benchmark.}
+To test whether the variable-identity leakage mechanism generalises beyond our synthetic benchmark, we evaluate it on 10 equations from the AI Feynman dataset \citep{udrescu2020ai}: Gaussian (I.6.20), Coulomb force (I.12.5), gravitational PE (I.14.3), spring PE (I.14.4), capacitor voltage (I.25.13), wavenumber (I.29.4), cyclotron frequency (I.34.8), thermal energy (I.39.1), energy density (II.8.31), and Doppler factor (I.34.14, normalized). We map each equation's physical variables to unique token indices (16 symbols total) and encode each equation plus 4 paraphrases (commutativity, associativity) using a random (untrained) Tree-LSTM encoder. Identification is nearest-centroid over 50 random seeds; chance is $1/10 = 0.10$.
+
+\begin{table}[h]
+\centering
+\caption{Random-encoder identification on AI Feynman equations ($n=50$ seeds). Natural = original variable assignment; renamed = variables permuted within range. Chance = 0.10.}
+\label{tab:feynman}
+\begin{tabular}{lcc}
+\toprule
+Condition & Identification accuracy \\
+\midrule
+Natural (original variables) & $0.752 \pm 0.171$ \\
+Renamed (within-range permuted) & $0.626 \pm 0.163$ \\
+Chance & $0.10$ \\
+\midrule
+\multicolumn{2}{l}{\emph{By variable-set uniqueness:}} \\
+\quad Equations with unique variable set (3/10) & $0.86$ \\
+\quad Equations with shared variables (7/10) & $0.71$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A random encoder identifies AI Feynman equations at $7.5\times$ chance ($0.752$ vs $0.10$) using variable identity alone. Equations with unique variable sets (Gaussian uses only $x_0$; gravitational PE uses $\{x_3, x_4, x_5\}$; spring PE uses $\{x_6, x_7\}$) are identified at $0.86$, versus $0.71$ for equations sharing variables with other laws. Within-range renaming reduces accuracy to $0.626$ but does not eliminate it, because operator-token leakage persists (equations with distinctive operator vocabularies remain separable). This replicates the two-layer leakage structure found on our synthetic benchmark: variable-identity leakage dominates, operator-token leakage provides a secondary signal, and both operate without any training. We note that the residual $0.626$ renamed accuracy conflates operator-token leakage with variable-count (arity) leakage: within-range renaming preserves the number of distinct variables per equation, so equations with unique arities (e.g., Gaussian uses one variable, gravitational PE uses three) remain distinguishable even after renaming. The finding confirms that variable-identity leakage is not an artefact of our benchmark design but a general mechanism affecting neuro-symbolic tasks where variable identity correlates with task identity.
+
+\subsection*{E. Diversity Sweep Provenance (Table~\ref{tab:diversity_sweep})}
+
+
+\paragraph{The eight per-equation values behind Table~\ref{tab:diversity_sweep}.} Both rows are
+equation-level bootstraps over these eight numbers ($n{=}8$, $n{=}25$ seeds and three held-out
+forms per equation per row; tag \texttt{r63}). We print them because an interval computed from
+eight values should be auditable, and because their spread explains the interval widths: the
+in-library row is near ceiling and tightly clustered (SD $0.021$), while the out-of-library row is
+genuinely dispersed (SD $0.162$), which is why its interval is the wider of the two. The
+per-\emph{form} $\ell'$ heterogeneity quoted elsewhere in this paper ($-0.05$ to $1.12$) is a
+different quantity from per-equation plain accuracy and does not bound these widths.
+
+\begin{center}\small
+\begin{tabular}{l cc c cc c}
+\toprule
+& \multicolumn{3}{c}{in-library held-out form} & \multicolumn{3}{c}{out-of-library held-out form} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Equation & plain & renamed & $\ell'$ & plain & renamed & $\ell'$ \\
+\midrule
+gaussian        & 0.987 & 0.960 & $+0.031$ & 0.760 & 0.680 & $+0.126$ \\
+coulomb\_force  & 0.947 & 0.813 & $+0.162$ & 0.587 & 0.160 & $+0.924$ \\
+grav\_pe        & 0.973 & 0.893 & $+0.094$ & 0.707 & 0.573 & $+0.229$ \\
+spring\_pe      & 0.973 & 0.853 & $+0.141$ & 1.000 & 0.867 & $+0.152$ \\
+capacitor\_v    & 0.920 & 0.800 & $+0.151$ & 0.987 & 0.800 & $+0.217$ \\
+cyclotron       & 0.973 & 0.960 & $+0.016$ & 0.907 & 0.747 & $+0.205$ \\
+thermal\_energy & 0.973 & 0.907 & $+0.079$ & 0.707 & 0.467 & $+0.413$ \\
+energy\_density & 0.973 & 0.853 & $+0.141$ & 1.000 & 1.000 & $+0.000$ \\
+\midrule
+mean            & 0.965 & 0.880 & $+0.102$ & 0.832 & 0.662 & $+0.283$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Superseded measurements, kept for comparison.} Two earlier constructions of the
+out-of-library endpoint are retained here so the correction in \S\ref{sec:coverage} is checkable.
+Tag \texttt{r33} swapped the out-of-library form into one equation's slot at a time, leaving
+in-distribution forms in the other seven, and reported $(0.545, 0.270)$ over eight equations; tag
+\texttt{r13} used one hand-crafted form per equation over all ten and reported $(0.504, 0.148)$.
+Both make the target equation compete against easier distractors than itself, which inflates the
+apparent protocol sensitivity. Table~\ref{tab:diversity_sweep} uses neither.
+
+Table~\ref{tab:diversity_sweep} (the matched in-library/out-of-library pair) derives from one run family ($n{=}25$ seeds, identical hyperparameters; tags \texttt{r11\_feynman\_trained} for E3, \texttt{r13\_feynman\_matched} for E3b, \texttt{r16\_feynman\_middle} for E3m). Additional rows from earlier run families are listed below for historical reference. All use the Tree-LSTM encoder with identical hyperparameters (embed\_dim=128, margin=0.2, 3 encoder epochs, 100 physics epochs with patience 10). Historical subset construction:
+
+\begin{itemize}[nosep]
+\item \textbf{Overlap (shared vars):} The 5 overlap laws from \texttt{physics\_laws\_overlap.py}, all over variables $x_0, x_1$. Run family: \texttt{r8\_overlap}, 5 seeds.
+\item \textbf{Full synthetic:} All 8 laws from \texttt{physics\_laws.py}. Run family: \texttt{r9\_heldout\_ext}, 25 seeds.
+\item \textbf{4 unique-var laws:} Newton ($x_0$), Kepler ($x_{10}$), Pendulum ($x_5, x_6$), Ohm ($x_8, x_9$), chosen for disjoint variable sets (zero shared variables). Run family: \texttt{r12\_diversity\_cpu}, 5 seeds.
+\item \textbf{6 mixed laws:} Newton, Coulomb, Kepler, Hooke, Pendulum, Ohm, the 8-law suite minus kinetic energy and gravitational PE (chosen to vary the overlap structure). Run family: \texttt{r12\_diversity\_cpu}, 5 seeds.
+\item \textbf{AI Feynman (E3 protocol):} 10 equations from \citet{udrescu2020ai}. Run family: \texttt{r11\_feynman\_trained}, 25 seeds. E3 protocol (Appendix~D): held-out form is the last library paraphrase.
+\item \textbf{AI Feynman (protocol-matched, E3b):} Same 10 equations. Run family: \texttt{r13\_feynman\_matched}, 25 seeds. Held-out form is a hand-crafted SymPy-verified algebraic equivalent NOT producible by the paraphrase library. Training is identical (k=4 library paraphrases of the canonical form).
+\end{itemize}
+
+The subset selection for 4\_unique and 6\_mixed was pre-specified by the criterion ``vary the degree of variable sharing'' before seeing results, not chosen post-hoc to maximize or minimize $\ell$. Bootstrap 95\% CIs for $\ell$ use 10,000 resamples of the per-seed plain and in-range values.
+
+\paragraph{E3b: Protocol-matched Feynman evaluation.} The protocol-matched evaluation (E3b) addresses the confound disclosed in Appendix~D: E3 holds out a library-generated paraphrase that shares the same tree structure up to one rewrite step, making identification ``strictly easier'' than the main suite's out-of-library held-out forms. E3b replaces this with 10 hand-crafted equivalent forms verified via \texttt{sympy.simplify(a - b) == 0}, each using algebraic rewrites absent from the paraphrase library:
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Equation & Rewrite & Form \\
+\midrule
+Gaussian & reciprocal-of-exp & $1/\exp(\theta^2/2)$ \\
+Coulomb force & half-of-double & $(qE_f + qE_f)/2$ \\
+Gravitational PE & scale-and-divide & $(2mgz)/2$ \\
+Spring PE & constant repositioning & $(k/2) \cdot x^2$ \\
+Capacitor & reciprocal multiplication & $q \cdot (1/C)$ \\
+Wavenumber & numerator doubling & $(\omega+\omega)/(2c)$ \\
+Cyclotron & fraction splitting & $(qv) \cdot (B/p)$ \\
+Thermal energy & constant decomposition & $(3pV)/2$ \\
+Energy density & factor rearrangement & $E_f \cdot (E_f/2)$ \\
+Doppler factor (I.34.14) & cross-multiplication & $c/(c-v)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textit{Note on the tenth equation.} The canonical form $1/(1 - v/c)$ is a normalized version of AI Feynman I.34.14 ($\omega_0/(1-v/c)$, Doppler factor) with $\omega_0 = 1$; it is used under that label throughout. Two earlier drafts mislabelled it: first as ``Lorentz factor,'' then as ``susceptibility (II.11.28)'' (the published II.11.28 in Udrescu \& Tegmark 2020 is the Clausius-Mossotti dielectric function $1 + n\alpha/(1-n\alpha/3)$). The held-out form $c/(c-v)$ is algebraically equivalent: $c/(c-v) \cdot (1/c)/(1/c) = 1/(1-v/c)$. The canonical expression used in training is correct; experimental results are unaffected by the label.
+
+Results ($n{=}25$): trained plain $0.504 \pm 0.087$, trained renamed $0.148 \pm 0.085$, random plain $0.124 \pm 0.065$, random renamed $0.044 \pm 0.050$. Trained renamed is significantly above chance ($p{=}0.011$, one-sample $t$-test vs $0.10$) and significantly above random renamed ($p{<}0.001$, paired $t$), but at $1.5\times$ chance rather than E3's $8.2\times$. The leakage index $\ell{=}0.71$ $[0.64, 0.77]$ confirms that most of E3's apparent structural advantage was protocol-driven.
+
+However, the trained-vs-random contrast ($0.148$ vs $0.044$) does not constitute a structural residual by the paper's own skyline standard. Arity-controlled analysis reveals that the 0.148 overall is almost entirely explained by arity and operator-token cues: within the 2-variable group (6 equations, chance $0.167$), trained renamed is $0.067$ ($0.40\times$ chance, below chance); within the 1-variable group (2 equations, chance $0.500$), trained renamed is $0.440$ ($0.88\times$ chance). The arity-aware bag classifier scores $0.375$ under the same within-range renaming, well above the encoder's $0.148$. In other words, a zero-parameter arity-aware bag outperforms the trained encoder on the same evaluation. The trained encoder is less pathological than the random encoder (which scores $0.044$ due to systematic mismatch; see §Random-renamed below chance), but the residual reflects arity and operator-token separability, not learned algebraic structure.
+
+\paragraph{Bag-of-tokens skyline on E3b.} The variable-aware bag-of-tokens classifier (same protocol: centroids from canonical + $k{=}4$ paraphrases, nearest centroid) achieves $0.900$ on E3b plain, far above the random encoder's $0.124$, confirming that variable-set distinctiveness is preserved in the held-out forms and suffices for identification. Under within-range renaming, the bag drops to $0.400$: not chance ($0.10$) because equations differ in variable \emph{count} (1-var, 2-var, 3-var, 4-var), creating arity-distinguishable bags even after index remapping.
+
+\emph{Arity-controlled bag.} Restricting classification to same-arity groups (excluding trivial singleton groups of arity 3 and 4): variable-aware bag achieves $0.375$ renamed ($0.375$ plain); variable-blind bag achieves $0.375$ renamed ($0.375$ plain). The arity-controlled variable-blind score of $0.375$ reflects operator-token separability that survives both renaming and arity deconfounding. As shown above, the trained encoder scores only $0.148$ overall (and below within-arity chance), confirming that it falls short of the zero-parameter arity-blind operator-bag skyline.
+
+\paragraph{Why the random encoder collapses on E3b.} The bag's $0.900$ on E3b plain contrasts with the random encoder's $0.124$ on identical forms with identical centroid protocol. If the JL + linear-aggregation account from Appendix~C held, the random encoder would track the bag and score near $0.90$. That it does not reveals a validity-domain condition: the token-bag account holds when tree shapes are similar (E3's single-rewrite paraphrases) but breaks under substantial shape divergence. E3b's out-of-library rewrites produce different operator \emph{structure}, not just different operator bags; the tree encoder's recursive nonlinearity decouples from the linear bag aggregation when tree shapes differ markedly between training and test forms. The bag builds centroids from the same five forms as the random encoder but is unaffected by shape divergence (it aggregates tokens regardless of structure), so centroid quality is identical for both: the collapse is a tree-structure effect, not a centroid-quality effect. See Appendix~C for the full account.
+
+\paragraph{Random-renamed below chance.} The random encoder under E3b renaming scores $0.044 \pm 0.050$, significantly below chance ($0.10$; one-sample $t{=}-5.6$, $p{<}0.001$). This is not sampling noise but a systematic effect of operator-content mismatch. After renaming, equations group by variable-count: 2 use one variable, 6 use two, 1 uses three, 1 uses four. Within each group, all equations share identical variable sets, so classification depends on operator tokens. Because E3b's held-out forms use out-of-library rewrites, their operator distributions differ systematically from their own centroid's training forms. Under random projection, this mismatch pushes the held-out embedding closer to \emph{other} equations' centroids that share more operator tokens with the test form, producing systematic misassignment below chance. The trained encoder avoids this pathology ($0.148$, $p{=}0.011$ above chance) because training induces structure-sensitive embeddings that partially resist the operator-content mismatch. A below-chance control deserves more than an explanation, so we state its consequence explicitly: an accuracy reliably below $1/K$ means the skyline is \emph{anti}-correlated with the truth, not merely uninformative; under a permutation of the class labels the expected accuracy is exactly $1/K$ by construction, so no label-permutation null can produce $0.044$. We therefore do not treat the random-renamed value as a floor anywhere in the paper: comparisons under E3b renaming are made against chance and against the variable-blind bag, both of which are well-defined, and the random-encoder skyline is reported for the plain condition only.
+
+\paragraph{SymPy-Verified External Forms.}
+Five external forms covering five of the 8 laws (Newton gravity, Hooke, kinetic energy, Ohm, pendulum) were generated by algebraic transformations NOT in the paraphrase library and verified equivalent via SymPy. Each form was assigned to the nearest of the 8 law clusters under Euclidean distance in the encoder's latent space. Per-item chance under uniform assignment is $1/8 = 0.125$; with only 5 items, identification accuracies quantise to multiples of 0.2.
+
+\begin{table}[h]
+\centering
+\caption{Identification accuracy for SymPy-verified external forms. The random encoder scores 0.36, well above chance, because Hooke and Ohm have unique variable-index sets, exposing the same variable-identity leakage the renaming controls demonstrate in the main suite.}
+\label{tab:sympy}
+\begin{tabular}{lc}
+\toprule
+Encoder & Identification accuracy \\
+\midrule
+Tree-LSTM & 0.68 $\pm$ 0.11 \\
+GIN & 0.60 $\pm$ 0.20 \\
+Random encoder & 0.36 $\pm$ 0.09 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The random encoder scores 0.36, well above chance (0.125), because Hooke ($k \cdot x$) and Ohm ($I \cdot R$) have unique variable-index sets that any encoder, including an untrained one, deterministically identifies. This is the same variable-identity leakage the renaming controls expose in the main suite: even an untrained encoder "recognises" laws whose variables are unique within the training corpus. Trained encoders score higher here only where variable sets happen to differ across laws.
+
+
+\paragraph{Token-Similarity Alignment Check.}
+\label{app:family_scramble}
+
+\paragraph{Purpose.} Under E3b, the trained encoder identifies $0.50$ of held-out forms correctly, above chance ($0.10$) but far below the in-library rate. Is this residual driven by token co-occurrence (the encoder predicts whichever equation shares the most operator/variable tokens with the query) or by genuine algebraic-structure sensitivity? We test this with a token-similarity alignment check.
+
+\paragraph{Method.} For each of the 10 E3b held-out forms, we compute the bag-of-tokens cosine similarity to each equation's training centroid. A ``token-similarity oracle'' assigns each held-out form to the most bag-similar centroid (accuracy: $0.90$, i.e.\ 9/10 forms are most bag-similar to their own equation). We then measure whether the trained encoder's actual predictions \emph{agree} with the oracle's predictions (not whether both are correct) across 25 seeds.
+
+\paragraph{Null model.} Under independence, the expected agreement between an encoder with accuracy $a$ and an oracle with accuracy $b$, assuming errors are distributed uniformly over $K{-}1$ alternatives, has exactly two contributing events: both correct (probability $a \cdot b$), or both wrong and landing on the same wrong class (probability $(1{-}a)(1{-}b)/(K{-}1)$). With $a{=}0.504$ (empirical encoder accuracy), $b{=}0.90$, $K{=}10$:
+\[
+P_{\text{agree}} = a \cdot b + \frac{(1{-}a)(1{-}b)}{K{-}1} = (0.504)(0.90) + \frac{(0.496)(0.10)}{9} = 0.4536 + 0.0055 = 0.459.
+\]
+We test whether observed agreement exceeds this baseline.
+
+\paragraph{Results ($n{=}25$ seeds, tag \texttt{r40\_family\_scramble}).}
+\begin{itemize}[noitemsep]
+  \item Token-similarity oracle accuracy: $0.90$ (9/10 equations distinguishable by bag alone).
+  \item Trained encoder E3b accuracy: $0.504 \pm 0.09$ (ground-truth identification).
+  \item Observed encoder--oracle agreement: $0.604 \pm 0.09$.
+  \item Expected agreement under independence: $0.459$.
+  \item One-sample $t$-test: $t{=}8.15$, $p{<}0.0001$ ($n{=}25$).
+\end{itemize}
+The encoder's predictions align with the token-similarity oracle significantly more than independence predicts. Token co-occurrence patterns (which operators/variables appear) contribute materially to E3b residual identification; the alignment check does not rule out additional algebraic sensitivity but establishes that token-bag similarity is a significant component. Note: this analysis is scoped to E3b; E3m instability (4 equations, high per-equation variance) prevents analogous claims for the intermediate regime.
+
+\paragraph{Provenance.} Code: \texttt{run\_family\_scramble.py}. Data: \texttt{logs/r40\_family\_scramble.json}.
+
+\subsection*{F. Reproducibility Statement}
+
+All reported numbers are traceable to provenance tags (Appendix~K). The diagnostic protocol was applied first to the authors' own results, where it identified and corrected multiple initial over-claims before submission; the protocol's sensitivity is calibrated by this internal use. Code and run logs are included in the supplementary material.
+
+\paragraph{Revision note on §\ref{sec:alpha_rename} circularity check.}  A prior draft of this paper reported an alpha-augmented E3b result of renamed $= 0.212 \pm 0.098$, $p{=}0.008$.  That number was an editing error: no alpha-augmented Feynman experiment had been run at the time of that draft; the value was carried over from an intermediate annotation that was never computed.  The experiment reported in §\ref{sec:alpha_rename} (tag \texttt{r17\_feynman\_alpha\_matched}, 25 seeds) is the first genuine evaluation, yielding renamed $= 0.104 \pm 0.082$ ($p{=}0.81$, encoder collapses).  We regret the error and have implemented log-file traceability (all reported numbers cite their provenance tag) to prevent recurrence.
+
+\paragraph{Multi-form E3b: schema-based OOL forms (tag \texttt{r22\_schema\_multiform\_e3b}).}  To establish that the E3b leakage estimate $\ell'{=}0.88$ is form-agnostic, we implemented nine mechanical rewrite schemas (half-of-double: $a \to (a{+}a)/2$; scale-and-divide: $a \to (2a)/2$; triple-of-third: $a \to (3a)/3$; add-subtract: $a \to (a{+}a){-}a$; reciprocal-multiplication: $a/b \to a {\cdot} (1/b)$; numerator-doubling: $a/b \to (a{+}a)/(2b)$; fraction-splitting: $(ab)/c \to a{\cdot}(b/c)$; fraction-split-rev: $(ab)/c \to b{\cdot}(a/c)$; constant-repositioning: $(ka)/b \to (k/b){\cdot}a$) as an automated OOL generator (\texttt{schema\_ool\_generator.py}). All schemas are provably absent from the paraphrase library $\mathcal{R}$. The generator applies each schema at every eligible sub-term of the canonical expression tree, syntactically deduplicates against the canonical and hand-crafted held-out, then verifies algebraic equivalence via \texttt{sympy.simplify(canonical - candidate) == 0} with a 3-second timeout. Result: all 10 Feynman equations yield exactly 5 verified OOL forms each (50 forms total). Each form was evaluated under the E3b protocol (baseline encoder, 25 seeds), replacing that equation's hand-crafted held-out form while the other 9 equations keep their original forms. \emph{Results (tag \texttt{r22\_schema\_multiform\_e3b}, 50 form/equation pairs, 25 seeds each):} $\ell'$ values across all 50 pairs: mean $= 0.778$, median $= 0.750$, std $= 0.088$, range $[0.647, 0.926]$. The hand-crafted baseline is $\ell'{=}0.88$ $[0.80, 0.94]$. The schema-generated forms span a distribution centred around the hand-crafted estimate: 44 of 50 forms yield $\ell' > 0.65$, and 22 of 50 yield $\ell' > 0.83$. The variation within an equation across forms (e.g.\ gaussian: $0.705$--$0.873$) reflects that some schema applications produce forms structurally closer to the training paraphrases than others, reducing the distributional shift. No form yields $\ell' < 0.65$, confirming that high leakage is robust across mechanically-generated OOL forms. The distribution of $\ell'$ confirms that the OOL leakage finding is not artefactual to the hand-crafted forms: automated schema-based forms spanning all 10 equations consistently reproduce high leakage ($\ell' \gg 0$).
+
+\paragraph{Natural OOL rewrites (tag \texttt{r26\_natural\_ool\_rewrites\_v2}).} A reviewer raised the question of whether OOL forms constructed by practitioners, using standard algebraic manipulation rather than mechanical schemas, would also show high leakage.  We applied SymPy algebraic strategies (factor, partial fractions, explicit reciprocal) and node-level structural rewrites (product reassociation, factor-to-denominator) to the 10 Feynman canonical expressions, excluding any form matching the canonical, training paraphrases, hand-crafted held-out, or mechanical schemas.
+
+\emph{Deduplication audit.} A preliminary run (tag \texttt{r26\_natural\_ool\_rewrites}, 13 forms) included doppler\_factor's SymPy \texttt{factor} strategy form $x_{11}/(x_{11}-x_{12})$, which is algebraically and structurally identical to the hand-crafted held-out form $c/(c-v)$, the same recurrence as the r20 incident. The deduplication logic checked string distinctness (correctly excluding the tree-string match) but not SymPy structural equality against the held-out. After adding a SymPy structural-identity check (\texttt{sym2 == heldout\_sym} after round-trip through the Node representation), the factor and together/cancel forms are correctly excluded, leaving 12 forms. This check is applied only when the held-out's SymPy representation differs from the canonical (i.e., doppler\_factor, where the held-out $x_{11}/(x_{11}-x_{12})$ has a different SymPy normal form than the canonical $1/(1-x_{12}/x_{11})$); for the other 9 equations, SymPy normalises canonical and held-out to the same expression, so structural-identity deduplication would incorrectly exclude all valid rewrites.
+
+Result: 12 verified natural OOL forms across 8 of 10 equations, evaluated under the E3b protocol (tag \texttt{r26\_natural\_ool\_rewrites\_v2}, $n{=}25$ seeds each, derived from tag \texttt{r26\_natural\_ool\_rewrites} by excluding the doppler/factor duplicate).  \emph{Results:} $\ell'$ mean $= 0.800$, median $= 0.813$, std $= 0.065$, range $[0.705, 0.885]$.  All 12 surviving forms were verified non-equivalent to their equation's hand-crafted held-out via the structural-identity check, and algebraically equivalent to the canonical via \texttt{sympy.simplify(form - canonical) == 0}.  The natural-OOL distribution matches the mechanical-schema distribution (mean $0.778$) and lies within the hand-crafted range $[0.80, 0.94]$, confirming that high leakage is not an artefact of how OOL forms are constructed.
+
+\paragraph{Self-validation note (r20 incident).} An earlier attempt (tag \texttt{r20\_feynman\_multiform\_e3b}) produced a doppler\_factor form that was algebraically identical to the hand-crafted held-out; this vacuous comparison was identified and retracted before submission. The schema-based approach (r22) fixes this via syntactic deduplication against both canonical and held-out forms and SymPy structural-identity checks.
+
+\paragraph{Triplet-loss reconciliation (tags r17, r18).} Both the baseline Feynman encoder (r17) and the alpha-augmented Feynman encoder (r18) exhibit triplet loss $= 0.0000$ by epoch 6 (identical training configuration). This does \emph{not} imply encoder collapse. A prior draft cited zero triplet loss as evidence of representation collapse; that inference was incorrect: r18's E3 diagnostic shows E3-plain $= 0.95$ under zero triplet loss, confirming the encoder learned correctly within the library. Zero triplet loss on a small corpus (500 Feynman training samples) means all training triplets are satisfied: the encoder has memorised all in-distribution relationships. The failure is \emph{transfer}: this memorisation does not extend to structurally novel out-of-library forms (E3b-plain $= 0.12$).
+
+\paragraph{Synthetic OOL transfer test (tag \texttt{r19\_alpha\_ool\_synthetic}).} To evaluate transfer on a \emph{functioning} (non-collapsed) alpha-augmented encoder, we trained both the alpha-augmented and baseline encoders on 8 synthetic laws (same recipe as Table~\ref{tab:alpha_rename}, 2000 expressions, 3 epochs) and evaluated both on 5 hand-crafted OOL synthetic forms from the synthetic benchmark (Appendix~E; all 5 are algebraically equivalent to their canonical forms and verifiable by inspection; 2 of the 5 additionally pass automated \texttt{sympy.simplify(a-b)==0} verification, namely newton\_gravity and hooke; the other 3 involve representation differences (e.g.\ $m v^2/2$ as a tree \texttt{div(mul(mul(m,v),v),2)} versus $\frac{1}{2}mv^2$) that SymPy's \texttt{simplify} does not resolve within the timeout, a known limitation of the automated check). Results ($n{=}5$ seeds; chance $= 0.125$): alpha OOL plain $= 0.52 \pm 0.10$, renamed $= 0.28 \pm 0.10$, $\ell' = 0.61$; baseline OOL plain $= 0.68 \pm 0.16$, renamed $= 0.40 \pm 0.13$, $\ell' = 0.51$. The alpha-augmented encoder is not collapsed ($4.2{\times}$ chance plain), confirming it functions correctly. However, alpha augmentation does not reduce OOL leakage: $\ell'_{\alpha} = 0.61$ vs $\ell'_{\text{base}} = 0.51$ (directional; $n{=}5$ seeds). This is consistent with the Feynman TRANSFER\_FAILURE result (r18): variable-invariance learned within the training distribution does not transfer to OOL forms, regardless of whether the encoder collapses or not.
+
+\subsection*{G. Tree-Edit-Distance Analysis}
+\label{app:ted}
+
+\paragraph{Algorithm.} We compute the tree-edit-distance (TED) between expression trees using a recursive dynamic-programming algorithm on ordered labelled trees with unit costs (insert $= $ delete $= $ rename $= 1$). Each node in the expression tree carries a label derived from its kind and content: variables are labelled \texttt{var\_$i$} (where $i$ is the variable index), constants are labelled \texttt{const\_$v$} (rounded to 4 decimal places), and operators are labelled \texttt{unary\_$f$} or \texttt{binary\_$\circ$}. Children are ordered (left before right for binary nodes). This is a simplified variant of the Zhang--Shasha algorithm~\citep{zhang1989simple} that exploits the small tree sizes in our corpus (5--20 nodes) to avoid the full keyroot/leftmost-leaf decomposition.
+
+\paragraph{Protocol.} For each held-out form, we compute the minimum TED to its nearest training form (the canonical expression plus $k{=}4$ paraphrases generated with seed 0). TED$_{\min}$ is deterministic (Zhang--Shasha on fixed tree pairs; no random seed is involved). Lower TED indicates a held-out form that is structurally closer to the training distribution.
+
+\paragraph{Sample.} 74 data points from four protocols:
+\begin{itemize}[nosep]
+\item \textbf{E3 library forms} ($n{=}10$): one library-generated paraphrase per equation held out (seed 999); aggregate $\ell'{=}0.17$ over all ten equations (tag \texttt{r21}; note this is the 10-equation figure, not the TED-cleaned eight of Table~\ref{tab:diversity_sweep}).
+\item \textbf{E3m in-library forms} ($n{=}4$): exp/log/power rewrites for the 4 eligible equations; aggregate $\ell'{=}0.41$.
+\item \textbf{E3b hand-crafted forms} ($n{=}10$): expert-written held-out forms; aggregate $\ell'{=}0.88$ over all ten equations (tag \texttt{r13}; again the 10-equation figure).
+\item \textbf{Schema-generated OOL forms} ($n{=}50$): 5 forms per equation from \texttt{schema\_ool\_generator.py}; per-form $\ell'$ from tag \texttt{r22\_schema\_multiform\_e3b} (25 seeds each).
+\end{itemize}
+
+\paragraph{Results (tag \texttt{r23\_tree\_edit\_distance}).}
+
+\begin{table}[h]
+\centering
+\small
+\caption{TED vs.\ $\ell'$: summary statistics by protocol cluster. E3m forms are in-library (same paraphrase library) but use exp/log/power rewrites, showing high TED overlapping the OOL range.}
+\label{tab:ted_summary}
+\begin{tabular}{lcccc}
+\toprule
+Protocol cluster & Membership & $n$ & TED$_{\min}$ (mean $[$ range $]$) & $\ell'$ (mean) \\
+\midrule
+E3 library & in-library & 10 & $2.7$ $[0, 5]$ & $0.17$ \\
+E3m exp/log rewrites & in-library & 4 & $6.3$ $[3, 8]$ & $0.41$ \\
+E3b hand-crafted & OOL & 10 & $6.1$ $[3, 8]$ & $0.88$ \\
+r22 schema & OOL & 50 & $7.5$ $[5, 18]$ & $0.78$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\small
+\caption{Cluster contrast and within-OOL correlation for TED$_{\min}$ vs.\ $\ell'$. The Mann-Whitney test shows that in-library and OOL TED distributions are well separated, but TED does not predict $\ell'$ within OOL: the training-coverage boundary is the operative predictor.}
+\label{tab:ted_correlation}
+\begin{tabular}{lccc}
+\toprule
+Test & Subset & Statistic & $p$-value \\
+\midrule
+Mann-Whitney $U$ (TED: in-lib vs.\ OOL) & $n{=}10$ vs $n{=}60$ & $U{=}50.5$, $z{=}{-}4.19$ & $<0.001$ \\
+Spearman $\rho$ (TED vs.\ $\ell'$, within OOL) & $n{=}50$ & $\rho{=}{-}0.13$ & n.s. \\
+Pearson $r$ (TED vs.\ $\ell'$, within OOL) & $n{=}50$ & $r{=}{-}0.06$ & n.s. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretation.} The key result is that \emph{the training-coverage boundary, not continuous structural distance, governs leakage}. Three pieces of evidence converge on this conclusion:
+
+\textbf{(1) TED ranges overlap.} E3 library forms span TED $[0, 5]$ and E3b hand-crafted OOL forms span TED $[3, 8]$. The ranges overlap substantially: thermal\_energy's E3b form has TED$=3$ (lower than gaussian's E3 form at TED$=5$), yet it shows $\ell'{=}0.88$ vs $\ell'{=}0.17$. The clearest example: thermal\_energy E3b (TED$=3$, $\ell'{=}0.88$) vs gaussian E3 (TED$=5$, $\ell'{=}0.17$): a form with lower TED shows drastically higher leakage, purely because it lies outside the paraphrase library.
+
+\textbf{(2) TED=0 E3 forms.} Two E3 library held-out forms (wavenumber and doppler\_factor) have TED$=0$ to a training form, meaning the encoder saw a structurally identical expression during training. Identification is trivially solvable for these forms. This mechanically explains E3's low $\ell'{=}0.17$: the protocol admitted training duplicates into the held-out set. This is not a bug in the TED analysis but a revelation about E3's leniency.
+
+\textbf{(3) In-library but high-TED E3m forms.} The 4 E3m exp/log/power rewrites are \emph{in the paraphrase library} yet have high TED (mean $6.3$, range $[3, 8]$), overlapping the E3b OOL range. They show $\ell'{=}0.41$ (intermediate). This directly falsifies the prediction that ``high TED implies high leakage.'' A form at TED$=7$ inside the paraphrase library ($\ell'{=}0.41$) shows far less leakage than a form at TED$=3$ outside the library ($\ell'{=}0.88$).
+
+Together, these three observations establish that the protocol boundary operationalises the training-coverage boundary, not structural distance. Within the OOL cluster ($n{=}50$ schema forms with individual $\ell'$ estimates), TED does not predict leakage variation: $r{=}{-}0.06$, $\rho{=}{-}0.13$ (both non-significant at $\alpha{=}0.05$). The Mann-Whitney $U$ test confirms that in-library and OOL TED distributions are statistically separated ($p{<}0.001$), but this reflects an indirect correlation: OOL forms tend to have higher TED because they are designed to be structurally different, not because TED is the causal mechanism for leakage. The causal mechanism is whether the encoder's training distribution included the held-out tree structure.
+
+\paragraph{Full data table.} Table~\ref{tab:ted_full} reports all 74 data points (70 original + 4 E3m).
+
+\begin{table}[h]
+\centering
+\footnotesize
+\caption{Full TED analysis data (tag \texttt{r23\_tree\_edit\_distance}). TED$_{\min}$ = minimum edit distance to nearest training form (canonical $+$ 4 paraphrases, seed 0).}
+\label{tab:ted_full}
+\begin{tabular}{llccc}
+\toprule
+Equation & Protocol & Form & TED$_{\min}$ & $\ell'$ \\
+\midrule
+gaussian & E3 library & --- & 5 & 0.17 \\
+coulomb\_force & E3 library & --- & 2 & 0.17 \\
+grav\_pe & E3 library & --- & 2 & 0.17 \\
+spring\_pe & E3 library & --- & 5 & 0.17 \\
+capacitor\_v & E3 library & --- & 3 & 0.17 \\
+wavenumber & E3 library & --- & 0 & 0.17 \\
+cyclotron & E3 library & --- & 3 & 0.17 \\
+thermal\_energy & E3 library & --- & 2 & 0.17 \\
+energy\_density & E3 library & --- & 5 & 0.17 \\
+doppler\_factor & E3 library & --- & 0 & 0.17 \\
+\midrule
+gaussian & E3m in-library & exp/log rewrite & 7 & 0.41 \\
+spring\_pe & E3m in-library & exp/log rewrite & 8 & 0.41 \\
+energy\_density & E3m in-library & exp/log rewrite & 3 & 0.41 \\
+doppler\_factor & E3m in-library & exp/log rewrite & 7 & 0.41 \\
+\midrule
+gaussian & E3b hand-crafted & --- & 7 & 0.88 \\
+coulomb\_force & E3b hand-crafted & --- & 7 & 0.88 \\
+grav\_pe & E3b hand-crafted & --- & 8 & 0.88 \\
+spring\_pe & E3b hand-crafted & --- & 8 & 0.88 \\
+capacitor\_v & E3b hand-crafted & --- & 4 & 0.88 \\
+wavenumber & E3b hand-crafted & --- & 6 & 0.88 \\
+cyclotron & E3b hand-crafted & --- & 8 & 0.88 \\
+thermal\_energy & E3b hand-crafted & --- & 3 & 0.88 \\
+energy\_density & E3b hand-crafted & --- & 5 & 0.88 \\
+doppler\_factor & E3b hand-crafted & --- & 5 & 0.88 \\
+\midrule
+gaussian & r22 schema & 0 & 18 & 0.873 \\
+gaussian & r22 schema & 1 & 13 & 0.705 \\
+gaussian & r22 schema & 2 & 11 & 0.705 \\
+gaussian & r22 schema & 3 & 5 & 0.705 \\
+gaussian & r22 schema & 4 & 7 & 0.705 \\
+coulomb\_force & r22 schema & 0 & 5 & 0.831 \\
+coulomb\_force & r22 schema & 1 & 5 & 0.862 \\
+coulomb\_force & r22 schema & 2 & 5 & 0.880 \\
+coulomb\_force & r22 schema & 3 & 5 & 0.888 \\
+coulomb\_force & r22 schema & 4 & 5 & 0.892 \\
+grav\_pe & r22 schema & 0 & 12 & 0.887 \\
+grav\_pe & r22 schema & 1 & 9 & 0.738 \\
+grav\_pe & r22 schema & 2 & 5 & 0.706 \\
+grav\_pe & r22 schema & 3 & 5 & 0.706 \\
+grav\_pe & r22 schema & 4 & 5 & 0.738 \\
+spring\_pe & r22 schema & 0 & 14 & 0.667 \\
+spring\_pe & r22 schema & 1 & 12 & 0.657 \\
+spring\_pe & r22 schema & 2 & 5 & 0.647 \\
+spring\_pe & r22 schema & 3 & 9 & 0.647 \\
+spring\_pe & r22 schema & 4 & 10 & 0.667 \\
+capacitor\_v & r22 schema & 0 & 7 & 0.912 \\
+capacitor\_v & r22 schema & 1 & 5 & 0.853 \\
+capacitor\_v & r22 schema & 2 & 5 & 0.833 \\
+capacitor\_v & r22 schema & 3 & 5 & 0.922 \\
+capacitor\_v & r22 schema & 4 & 5 & 0.926 \\
+wavenumber & r22 schema & 0 & 7 & 0.838 \\
+wavenumber & r22 schema & 1 & 5 & 0.762 \\
+wavenumber & r22 schema & 2 & 5 & 0.808 \\
+wavenumber & r22 schema & 3 & 5 & 0.882 \\
+wavenumber & r22 schema & 4 & 5 & 0.857 \\
+cyclotron & r22 schema & 0 & 15 & 0.876 \\
+cyclotron & r22 schema & 1 & 11 & 0.683 \\
+cyclotron & r22 schema & 2 & 7 & 0.683 \\
+cyclotron & r22 schema & 3 & 5 & 0.683 \\
+cyclotron & r22 schema & 4 & 5 & 0.683 \\
+thermal\_energy & r22 schema & 0 & 12 & 0.886 \\
+thermal\_energy & r22 schema & 1 & 5 & 0.736 \\
+thermal\_energy & r22 schema & 2 & 9 & 0.816 \\
+thermal\_energy & r22 schema & 3 & 5 & 0.704 \\
+thermal\_energy & r22 schema & 4 & 5 & 0.704 \\
+energy\_density & r22 schema & 0 & 9 & 0.846 \\
+energy\_density & r22 schema & 1 & 9 & 0.846 \\
+energy\_density & r22 schema & 2 & 10 & 0.846 \\
+energy\_density & r22 schema & 3 & 5 & 0.846 \\
+energy\_density & r22 schema & 4 & 5 & 0.846 \\
+doppler\_factor & r22 schema & 0 & 13 & 0.714 \\
+doppler\_factor & r22 schema & 1 & 5 & 0.706 \\
+doppler\_factor & r22 schema & 2 & 10 & 0.706 \\
+doppler\_factor & r22 schema & 3 & 5 & 0.706 \\
+doppler\_factor & r22 schema & 4 & 7 & 0.706 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Per-equation $\ell'$.} Table~\ref{tab:per_eq_ell_prime} reports per-equation $\ell'$ for E3 (from tag \texttt{r21\_feynman\_trained\_perequation}; $n{=}25$ seeds, 10-way classification) and E3m (from tag \texttt{r16\_feynman\_middle}; $n{=}25$ seeds, 4-way classification over the 4 eligible equations). Per-equation values show wide variation: wavenumber has $\ell'{\approx}1.12$ because its held-out form has TED${=}0$ to a training form (identification is trivially solvable; renaming destroys the only cue). Negative $\ell'$ (e.g.\ energy\_density E3m) indicates renamed accuracy exceeds plain, noise-dominated at the single-equation level. Doppler has E3m plain $= 0.000$ (the encoder completely fails to identify this form even without renaming), rendering $\ell'$ undefined.
+
+\emph{E3m instability:} The four E3m per-equation values span an extreme range: gaussian $0.053$, spring\_pe $>1$ (clipped), energy\_density $-0.686$, doppler undefined.  The aggregate $\ell'{=}0.41$ is thus a mean over one near-zero, one maximal, one negative, and one degenerate equation: it should not be interpreted as a coherent ``intermediate regime'' but rather as an unstable probe whose mean happens to fall between E3 ($0.17$) and E3b ($0.88$).  The robust claim is the \emph{two-point} E3/E3b contrast ($0.17$ vs $0.88$, both computed over 10 equations with stable per-equation behavior); the E3m point is consistent with the ordering E3 $<$ E3m $<$ E3b but carries high per-equation instability that prevents claims about the functional form.  Per-equation E3b values are not available because the 10-equation centroid protocol evaluates all equations jointly (each equation's identification depends on all 10 centroids).
+
+\begin{table}[h]
+\centering
+\small
+\caption{Per-equation $\ell'$ for E3 and E3m protocols. E3: 10-way, $n{=}25$ seeds, $c{=}0.10$. E3m: 4-way over 4 eligible equations, $n{=}25$ seeds, $c{=}0.25$. $\dagger$: raw $\ell' > 1$ (renamed below chance), clipped to 1 per \S\ref{sec:method}. Negative values indicate renamed above plain (noise-dominated at single-equation level). Dashes: equation not in E3m subset, or undefined (plain $= 0$).}
+\label{tab:per_eq_ell_prime}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{E3 (in-library)} & \multicolumn{3}{c}{E3m (held-out family)} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Equation & plain & ren & $\ell'$ & plain & ren & $\ell'$ \\
+\midrule
+gaussian        & 1.000 & 1.000 & 0.000 & 1.000 & 0.960 & 0.053 \\
+coulomb         & 1.000 & 0.840 & 0.178 & --- & --- & --- \\
+grav\_pe        & 1.000 & 0.920 & 0.089 & --- & --- & --- \\
+spring\_pe      & 1.000 & 0.920 & 0.089 & 0.960 & 0.120 & $1.00^{\dagger}$ \\
+capacitor       & 0.960 & 0.840 & 0.140 & --- & --- & --- \\
+wavenumber      & 0.960 & 0.000 & 1.116 & --- & --- & --- \\
+cyclotron       & 1.000 & 1.000 & 0.000 & --- & --- & --- \\
+thermal         & 1.000 & 0.880 & 0.133 & --- & --- & --- \\
+energy\_density & 0.920 & 0.960 & $-$0.049 & 0.600 & 0.840 & $-$0.686 \\
+doppler         & 0.880 & 0.880 & 0.000 & 0.000 & 0.000 & --- \\
+\midrule
+\textit{Aggregate} & 0.972 & 0.824 & 0.17 & 0.643 & 0.480 & 0.41 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Provenance.} Code: \texttt{run\_tree\_edit\_distance.py} in the supplementary material. Data: \texttt{logs/r23\_tree\_edit\_distance.json}. The r22 schema forms have individual per-form $\ell'$ because each is evaluated in a one-form-swapped design (only the target equation's held-out is replaced; the other 9 retain their hand-crafted forms). The within-OOL TED range for hand-crafted E3b forms is narrow (TED $\in [3, 8]$); the broader schema-generated set ($n{=}50$, TED $\in [5, 18]$) provides more range, and the null correlation ($\rho{=}{-}0.13$, n.s.) is not an artefact of restricted range.
+
+\subsection*{H. Hardened Training Recipe}
+\label{app:hardened_recipe}
+
+\paragraph{Motivation.} The hardened recipe addresses the objection that our baseline Feynman training (10 epochs, single-rewrite paraphrases) is too weak to learn invariant features, and that a more aggressive augmentation strategy might overcome the variable-identity shortcut.
+
+\paragraph{Recipe parameters.}
+\begin{itemize}[nosep]
+\item \textbf{Paraphrase generation:} $k{=}8$ chained paraphrases per equation via \texttt{paraphrase\_chain(tree, k=8, depth=4, rewrite\_list=\_REWRITES\_WITH\_ALPHA\_FULL)}.  At each of the 4 chain steps, a random subtree node is selected and a random rewrite is applied from the 13-element list (12 structural rewrites: commutativity, distributivity, identity insertion/removal, exp/log, power rewrites; plus 1 full random-permutation alpha rename over all variable indices in the subtree).  Alpha renaming is thus applied with probability ${\approx}1/13$ per step, and to a random subtree rather than the full tree.  Most positives receive 0--1 alpha-rename operations; the dominant augmentation is structural.
+\item \textbf{Training:} 20 encoder epochs (vs.\ 10 baseline), $n{=}25$ independent seeds.
+\item \textbf{Corpus:} 10 Feynman equations $\times$ 5 base forms $\times$ 10 variable assignments $= 500$ base samples; chained paraphrases expand to $500 \times 8 = 4{,}000$ augmented positives.
+\end{itemize}
+
+\paragraph{Results.}
+\begin{itemize}[nosep]
+\item \textbf{E3 (in-library):} plain $= 0.992 \pm 0.040$, renamed $= 0.752 \pm 0.098$, $\ell'{=}0.37$ $[0.29, 0.44]$.
+\item \textbf{E3b (out-of-library):} plain $= 0.480 \pm 0.071$, renamed $= 0.104 \pm 0.043$, $\ell'{=}0.99$ $[0.95, 1.00]$.
+\end{itemize}
+Near-perfect in-library identification confirms the encoder learns from the augmented data; the simultaneous $\ell'{=}0.99$ out-of-library confirms that what it learns is variable-identity dependent, not structurally invariant.
+
+\paragraph{Provenance.} Code: \texttt{run\_hardened\_recipe.py}. Data: \texttt{logs/r31\_hardened\_recipe.json}.
+
+\subsection*{I. External Portability: NeSymReS}
+\label{app:nesymres}
+
+\paragraph{Purpose.} To demonstrate that the diagnostic protocol ports beyond our training pipeline, we apply it to NeSymReS \citep{biggio2021neural}, a published Set-Transformer encoder for symbolic regression (ICML 2021).
+
+\paragraph{Protocol.} NeSymReS maps numerical point-sets $(X, y)$ to encoder embeddings via induced set-attention blocks; it shares no code, architecture, or training data with our pipeline.  We extract encoder embeddings from the published 10M-parameter checkpoint for 10 Feynman equations (500 points each, 25 random seeds) and run the centroid-matching identification protocol.  The analogue of within-range variable renaming for numerical inputs is \emph{column permutation}: cyclically shifting which input column corresponds to which physical variable.
+
+\paragraph{Results.} Plain accuracy $= 0.624 \pm 0.156$, column-permuted accuracy $= 0.392 \pm 0.086$ (chance $= 0.10$; paired $t = 7.25$, $p < 10^{-6}$, $d = 1.45$).  Chance-corrected $\ell' = 0.44$ $[0.36, 0.51]$, moderate but highly significant.
+
+\paragraph{Interpretive caveat.} Unlike symbolic variable tokens (which are purely notational and should be interchangeable for algebraically equivalent expressions), column position in numerical inputs carries legitimate semantic information: it binds physical variables to input dimensions.  A model that were column-permutation-invariant would conflate physical quantities and be broken.  Column-convention sensitivity is therefore \emph{partially task-appropriate} rather than purely a shortcut; the result demonstrates that the diagnostic protocol ports to published numerical-input models and detects input-convention dependence, but the ``leakage'' interpretation is weaker here than for symbolic encoders where variable identity is purely notational.  The lower $\ell'$ relative to our Tree-LSTM ($\ell'{=}0.88$ for E3b) is consistent with this distinction: column permutation disrupts convention cues but preserves the joint $(X, y)$ distribution, whereas symbolic renaming removes all notational signal.
+
+\paragraph{Provenance.} Code: \texttt{run\_external\_audit\_nesymres.py}. Data: \texttt{logs/r28\_external\_audit\_nesymres.json}.
+
+\subsection*{J. Evaluation-Head Robustness}
+\label{app:head_robustness}
+
+\paragraph{Purpose.} Given that Table~\ref{tab:triplet_factorial} shows the evaluation head can flip conclusions about training objectives, we verify that the headline $\ell'$ metric is stable across identification heads.
+
+\paragraph{Method.} We train 25 encoders (same protocol as the main E3b experiment) and evaluate each under three identification heads: nearest-centroid, $k$NN with $k{=}3$, and $k$NN with $k{=}5$. For each head, we compute $\ell'$ with bootstrap 95\% CIs.
+
+\paragraph{Results.}
+\begin{center}
+\small
+\begin{tabular}{lcccl}
+\toprule
+Head & Plain & Renamed & $\ell'$ & 95\% CI \\
+\midrule
+Centroid & $0.504$ & $0.148$ & $0.88$ & $[0.80, 0.96]$ \\
+$k$NN ($k{=}3$) & $0.508$ & $0.168$ & $0.83$ & $[0.73, 0.94]$ \\
+$k$NN ($k{=}5$) & $0.500$ & $0.164$ & $0.84$ & $[0.75, 0.93]$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+All three heads produce $\ell'$ within $\pm 0.05$ of each other (CIs overlap substantially). The leakage index is not an artefact of the centroid evaluation choice. Note that $k$NN slightly lowers $\ell'$ because it is more sensitive to local embedding geometry, but the qualitative conclusion (high leakage, $\ell' > 0.8$) is unchanged.
+
+\paragraph{Provenance.} Code: \texttt{run\_head\_robustness.py}. Data: \texttt{logs/r41\_head\_robustness.json}.
+
+\subsection*{K. Run-Tag Provenance}
+\label{app:provenance}
+
+All reported results derive from the following tagged experiment runs. Each tag names the script, configuration, and random-seed family used; logs and checkpoints are archived under \texttt{logs/<tag>.json}. This table is the single source of truth; all local provenance citations in other appendices refer to these tags.
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}p{0.34\textwidth}p{0.42\textwidth}p{0.16\textwidth}@{}}
+\toprule
+Tag & Result & Section \\
+\midrule
+\texttt{r8\_overlap} & Overlap-law baseline & App.~E \\
+\texttt{r9\_heldout\_ext} & Extended held-out forms & --- \\
+\texttt{r11\_feynman\_trained} & Table~\ref{tab:held_out_form} (E3, $n{=}25$) & \S\ref{sec:experiments} \\
+\texttt{r12\_diversity\_cpu} & Calibration table (historical) & --- \\
+\texttt{r13\_feynman\_matched} & E3b matched evaluation ($n{=}25$) & App.~E \\
+\texttt{r16\_feynman\_middle} & E3m middle protocol ($n{=}25$) & App.~D \\
+\texttt{r11/r13/r16\_feynman} & 10-equation E3/E3b/E3m measurements & App.~E \\
+\texttt{r17\_feynman\_alpha\_matched} & Alpha-augmented Feynman transfer & App.~F \\
+\texttt{r19\_alpha\_ool\_synthetic} & Alpha OOL synthetic transfer & App.~F \\
+\texttt{r20\_feynman\_multiform\_e3b} & Multi-form E3b ($n{=}25$) & App.~F \\
+\texttt{r21\_feynman\_trained\_perequation} & Per-equation E3 ($n{=}25$) & \S\ref{sec:robustness} \\
+\texttt{r22\_schema\_multiform\_e3b} & Schema-generated OOL forms & App.~F \\
+\texttt{r23\_tree\_edit\_distance} & Tree-edit-distance analysis & App.~G \\
+\texttt{r26\_natural\_ool\_rewrites} & Practitioner-style OOL rewrites & App.~F \\
+\texttt{r30\_crossover\_manipulation} & Crossover DID ($n{=}25$) & \S\ref{sec:loso} \\
+\texttt{r31\_hardened\_recipe} & Hardened training recipe & \S\ref{sec:alpha_rename} \\
+\texttt{r34\_scale\_20k\_powered} & 20K augmentation-volume point ($n{=}25$) & \S\ref{sec:scale_curve} \\
+\texttt{r35\_triplet\_harm\_factorial} & Table~\ref{tab:triplet_factorial} (triplet ablation, $n{=}25$) & \S\ref{sec:experiments} \\
+\texttt{r36\_positive\_control} & Positive control ($\ell'{=}0.08$, $n{=}25$) & \S\ref{sec:positive_control} \\
+\texttt{r37\_feynman\_shared\_var} & Shared-variable remap ($\ell'{=}0.00$, $n{=}25$) & \S\ref{sec:positive_control} \\
+\texttt{r39b/d/f\_leakage\_vs\_scale} & Augmentation-volume curve (Fig.~\ref{fig:scale_curve}) & \S\ref{sec:scale_curve} \\
+\texttt{r40\_family\_scramble} & Token-similarity alignment (App.~E, $n{=}25$) & App.~E \\
+\texttt{r41\_head\_robustness} & Evaluation-head robustness (App.~J, $n{=}25$) & App.~J \\
+\texttt{r42\_triplet\_only\_mlp} & Triplet-only MLP identification ($n{=}10$) & \S\ref{sec:experiments} \\
+\texttt{r44\_lample\_charton\_encoder} & Lample-Charton trained encoder audit ($n{=}25$) & App.~B \\
+\texttt{r45\_triplet\_only\_e3b} & Triplet-only under E3b protocol ($n{=}25$) & App.~L \\
+\texttt{r46\_bce\_mechanism} & BCE mechanism $\lambda$-sweep ($n{=}10$) & App.~R \\
+\texttt{r47\_equation\_level\_stats} & Equation-level bootstrap analysis & \S\ref{sec:robustness} \\
+\texttt{r48\_triplet\_only\_shared\_var} & Triplet-only shared-variable, identity-renaming (superseded by \texttt{r52}) & \S\ref{sec:positive_control} \\
+\texttt{r49\_triplet\_only\_mlp\_n25} & Triplet-only MLP ($0.77$, $n{=}25$) & \S\ref{sec:experiments} \\
+\texttt{r50\_bce\_mechanism\_mlp} & BCE mechanism $\lambda$-sweep with MLP ($n{=}10$) & App.~R \\
+\texttt{r51\_r22\_equation\_bootstrap} & Equation-level OOL CI (from r22) & \S\ref{sec:robustness} \\
+\texttt{r52\_shared\_var\_permutation\_rename} & Shared-var, genuine within-range renaming ($0.93$, $\ell'{\approx}0$, $n{=}25$) & \S\ref{sec:positive_control} \\
+\texttt{r53\_shared\_var\_op\_scramble} & Shared-var operator-scramble audit ($0.93{\to}0.28$, $n{=}25$) & \S\ref{sec:positive_control} \\
+\texttt{r54\_shared\_var\_arity\_controlled} & Shared-var arity-controlled audit ($0.89$ vs $0.17$ chance) & \S\ref{sec:positive_control} \\
+\texttt{r56\_overlap\_extended} & 12-law leakage-proof suite ($0.61$ vs $0.46$ random, eq-level CI; $n{=}25$) & \S\ref{sec:overlap} \\
+\texttt{r55\_benchmark\_survey} & \emph{superseded by} \texttt{r57} (adds EQNET and the tier-2 column) & --- \\
+\texttt{r57\_eqnet\_survey} & Unified separability survey, 23 corpora (Table~\ref{tab:benchmark_survey}) & \S\ref{sec:survey} \\
+\texttt{r58\_eqnet\_diagnostic} & Full diagnostic on EQNET \citep{allamanis2017learning}, their splits & \S\ref{sec:causal_external} \\
+\texttt{r59\_leave\_one\_schema\_out} & Leave-one-schema-out coverage manipulation (TED held constant) & \S\ref{sec:loso} \\
+\texttt{r60\_separability\_predicts\_skyline} & Screening prediction across 12 corpora (negative result) & \S\ref{sec:prediction} \\
+\texttt{r61\_equation\_level\_positive} & Equation-level CIs for the positive control and arity control & \S\ref{sec:positive_control} \\
+\texttt{r62\_nesymres\_global\_permutation} & Global-permutation external control on NeSymReS (null) & \S\ref{sec:causal_external} \\
+\texttt{r63\_matched\_contrast} & Table~\ref{tab:diversity_sweep}; supersedes r21/r33 pairing & \S\ref{sec:coverage} \\
+\texttt{r64\_overlap12\_tier2} & Overlap-12 bag/scramble skylines (retracts the 12-law claim) & \S\ref{sec:overlap} \\
+\texttt{r66\_eqnet\_duplicate\_check} & EQNET held-out forms vs training forms (0/747 identical) & \S\ref{sec:causal_external} \\
+\texttt{r67\_score5\_skyline} & \emph{superseded by} \texttt{r68} (non-matching protocol) & App.~T \\
+\texttt{r68\_score5\_exact} & Table~\ref{tab:score5}: floor under EqNet's own protocol & \S\ref{sec:causal_external} \\
+\texttt{r28\_external\_audit\_nesymres} & \emph{superseded by} \texttt{r62} (its control permuted held-out sets only) & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{L. Triplet-Only Under E3b (Out-of-Library Transfer)}
+\label{app:triplet_e3b}
+
+The triplet-only encoder reaches $0.77$ on the 5-law overlap suite. \S\ref{sec:overlap} withdraws that as evidence of structural identification (a variable-blind bag scores $0.824$ on the same suite) but the transfer question below is still worth asking of the same encoder, and its answer does not depend on the withdrawn claim. Does this structure transfer to out-of-library held-out forms? We train a triplet-only encoder on the Feynman corpus (same protocol as r42) and evaluate under the E3b protocol ($n{=}25$ seeds; tag \texttt{r45\_triplet\_only\_e3b}).
+
+Result: triplet-only E3b plain $= 0.52 \pm 0.05$, renamed $= 0.08 \pm 0.07$; joint E3b plain $= 0.53 \pm 0.05$, renamed $= 0.08 \pm 0.08$ (chance $= 0.10$). The two objectives are indistinguishable under E3b ($t{=}-0.59$, $p{=}0.56$). The structural identification that triplet-only achieves in-distribution (on leakage-proof laws with shared variables) does \emph{not} transfer to out-of-library forms. This cleanly separates two findings: (1)~triplet-only identifies structure when the benchmark design permits it (shared variables, in-distribution); (2)~no training objective tested, including triplet-only, generalizes structurally to forms outside the training library on the Feynman benchmark.
+
+This result strengthens rather than weakens the paper's constructive recommendation: proper benchmark design (shared variables) is necessary for structural learning to \emph{manifest}; the transfer failure is a property of the benchmark's equation diversity (10 equations with distinct variable subsets) rather than the training objective.
+
+\paragraph{Provenance.} Code: \texttt{run\_triplet\_only\_e3b.py}. Data: \texttt{logs/r45\_triplet\_only\_e3b.json}.
+
+\subsection*{M. Leakage Is Not a Small-Data or Training-Strength Artefact}
+
+\paragraph{Augmentation-volume robustness.}\label{sec:scale_curve}
+To test whether leakage is a small-data artefact that vanishes with more training data, we vary \emph{augmentation volume}, paraphrases per equation, while holding equation diversity fixed at 10 Feynman equations under the E3b (out-of-library) protocol. Tree-LSTM encoders are trained at four volume points: 500, 2{,}000, 8{,}000, and 20{,}000 training expressions ($n{=}10$, $5$, $5$, $25$ seeds respectively; bootstrap 95\% CIs; Figure~\ref{fig:scale_curve}). Results: $\ell'{=}0.78$ [0.68, 0.92] at 500; $0.82$ [0.70, 0.92] at 2K; $0.78$ [0.67, 0.89] at 8K; $0.75$ [0.64, 0.85] at 20K.\footnote{The 500-expression point ($\ell'{=}0.78$, $n{=}10$, tag \texttt{r39b}) differs from Table~\ref{tab:diversity_sweep}'s E3b ($\ell'{=}0.88$, $n{=}25$, tag \texttt{r26}) because the curve uses fewer seeds and a separate run family; the 95\% CIs overlap $[0.68, 0.92]$ vs $[0.80, 0.94]$.} Leakage remains high ($\ell'{\geq}0.75$) at every volume tested. We do not fit a slope because the between-run-family spread (${\sim}0.10$ between tags \texttt{r34} and \texttt{r39}) exceeds any volume effect over the $40\times$ range; the data support a \emph{level} claim, not a \emph{trend} claim. This rules out training insufficiency as an explanation \emph{within fixed-diversity regimes}: more gradient exposure to paraphrases of the same 10 equations does not teach variable-identity invariance. The meaningful ``scale'' dimensions, equation diversity and model capacity, require architectures beyond scope; the NeSymReS audit (Appendix~I, 10M-param Transformer trained on 100+ equations) shows the diagnostic detects sensitivity ($\ell'{=}0.44$) in such a model, though that value partly reflects column-convention sensitivity rather than clean variable-identity leakage (see Appendix~I for interpretive caveats). A hardened training recipe (\S\ref{sec:alpha_rename}) further confirms this at the recipe level: near-perfect in-library accuracy ($0.992$) coexists with $\ell'{=}0.99$ out-of-library.
+
+\paragraph{Hardened training recipe.} To rule out the objection that our baseline training is too weak to learn invariant features, we train the strongest recipe available on the Feynman corpus: $k{=}8$ chained paraphrases (depth 4, composing 4 sequential rewrites drawn from a 13-rewrite list that includes full random-permutation alpha renaming as one option; at each step a random rewrite targets a random subtree, so alpha is applied with probability ${\approx}1/13$ per step), 20 epochs ($n{=}25$ seeds; Appendix~H). This produces structurally distant positives with low token overlap, explicitly forcing the triplet objective beyond surface cues. Results: E3 (in-library) plain $= 0.992 \pm 0.040$, $\ell'{=}0.37$. Training succeeds (near-perfect plain accuracy), but in-library leakage \emph{increases} relative to the baseline ($\ell'$ rises from $0.17$ to $0.37$): since most chain steps apply structural rewrites (commutativity, distribution, exp/log) that preserve variable indices, most positives share substantial variable-index overlap with the anchor, and the triplet loss learns more refined variable-pattern features to discriminate structurally similar but variable-distinct negatives. E3b (out-of-library) plain $= 0.480 \pm 0.071$, $\ell'{=}0.99$ $[0.95, 1.00]$: leakage is even higher than the baseline ($\ell'{=}0.88$). Stronger training amplifies the variable-identity shortcut in-library while transferring no structural knowledge to out-of-library forms. This is not a training-insufficiency artefact: the encoder demonstrably learns (E3 near-perfect) yet the learned representations remain distribution-specific.
+
+\subsection*{N. Disclosure vs.\ Fix: Full Taxonomy}
+\label{sec:alpha_rename}
+
+Not all responses to variable-identity leakage are equivalent. We distinguish three categories, ordered by the strength of the guarantee they provide:
+\begin{itemize}[noitemsep]
+  \item A \emph{disclosure} technique removes the leakage signal from the encoder (collapsing performance to the random-encoder level) but does not restore structural identification.
+  \item A \emph{within-library fix} restores above-chance structural identification within the training distribution, i.e.\ under variable renamings the encoder was trained to be invariant to.
+  \item A \emph{transfer fix} would additionally hold on out-of-library algebraic forms: the encoder generalises its structural invariance beyond the training distribution.
+\end{itemize}
+De~Bruijn canonicalization is a disclosure technique; alpha-renaming augmentation is a within-library fix but \emph{not} a transfer fix, as we establish below.
+
+\emph{De~Bruijn canonicalization} (E2): replacing variable indices with canonical de~Bruijn positional indices before tokenization eliminates variable-identity information at the input. Result: within-range diagonal-correctness $0.210 \pm 0.092$, equivalent to the random encoder's $0.200 \pm 0.079$ by TOST ($p{=}0.0002$). Leakage is gone, but so is any trained advantage: the encoded representations carry no variable-identity signal, and the encoder has not learned to substitute anything structural in its place.
+
+\emph{Alpha-renaming augmentation}: adding random cyclic shifts of variable indices within $\{0,\ldots,3\}$ to the paraphrase library forces the encoder to learn variable-independent features. All three encoders are re-trained from scratch (25 seeds). Under within-range renaming, the alpha-augmented encoder achieves $0.330 \pm 0.162$ versus baseline $0.170 \pm 0.093$ and random $0.180 \pm 0.062$ ($p{=}0.0002$, $d{=}0.90$): $2.6\times$ chance vs $1.4\times$ for baseline (Table~\ref{tab:alpha_rename}). A practitioner who applies de~Bruijn to ``solve'' the leakage problem has disclosed it, not fixed it. Alpha-renaming is the within-library fix.
+
+\paragraph{Transfer check: alpha-augmented encoder on out-of-library forms.} Does the within-library fix transfer to out-of-library forms? We train the alpha-augmented encoder and evaluate under both E3 and E3b protocols (25 seeds; Appendix~F). Result: E3-plain $= 0.95 \pm 0.08$ (encoder works in-library), E3b-plain $= 0.12 \pm 0.09$ (collapses on OOL forms), a genuine \emph{transfer failure}, not a training failure.  \emph{Unified account of OOL plain accuracies across recipes:} three training regimes produce qualitatively different OOL outcomes: alpha-only collapses ($0.12$), baseline is near-chance ($0.50$), hardened recipe is also near-chance ($0.48$).  Alpha-only augmentation uses cyclic shifts within a 4-variable vocabulary: too narrow for the encoder to learn genuine invariance; instead it memorizes the shift pattern itself, and OOL forms that violate this pattern produce incoherent embeddings.  The hardened recipe (chained rewrites with alpha as one of 13 possible rewrites per step) generates structurally diverse positives that receive alpha renaming on at most 1--2 of 4 chain steps (probability ${\approx}1/13$ per step) and typically on subtrees rather than the full expression, so most positives share substantial variable-index overlap with the anchor; the encoder neither collapses nor generalises, and OOL accuracy matches the no-augmentation baseline ($0.50 \approx 0.48$; $\ell'{=}0.99$).  The common thread is that none of the three recipes transfers structural knowledge to OOL forms: they differ only in whether the training distribution is narrow enough to cause catastrophic collapse. Together these confirm alpha-renaming is a within-library fix only. Variable-identity tokens are the dominant discriminative cue in this small-data regime (Appendices~E,~B). Multi-form robustness: 50 schema-generated OOL forms across all 10 Feynman equations yield $\ell'$ mean $= 0.778$, range $[0.647, 0.926]$ (25 seeds per form; Appendix~F).  An independent evaluation using practitioner-style algebraic rewrites (SymPy factor/apart/explicit-reciprocal, product reassociation; 12 forms across 8 equations after SymPy structural-identity deduplication; $n{=}25$ seeds each) yields $\ell'$ mean $= 0.800$, range $[0.705, 0.885]$: high leakage is robust across both mechanically- and naturally-generated OOL forms (Appendix~F). The contrast confirms on all 10 equations as well as on the TED-cleaned 8 (Table~\ref{tab:diversity_sweep}).
+
+\begin{table}[t]
+\centering
+\caption{Disclosure vs.\ fix (separate run family; all comparisons within-family). Mean $\pm$ std, 25 seeds. Within-range = leakage-free; chance $1/8{=}0.125$ (main) or $1/5{=}0.20$ (overlap).}
+\label{tab:alpha_rename}
+\begin{tabular}{l ccc}
+\toprule
+Encoder & Main plain diag. & Main within-range diag. & Overlap plain diag. \\
+\midrule
+Alpha-augmented Tree-LSTM & $0.805 \pm 0.094$ & $0.330 \pm 0.162$ & $0.35 \pm 0.13$ \\
+Baseline Tree-LSTM        & $0.845 \pm 0.081$ & $0.170 \pm 0.093$ & $0.33 \pm 0.13$ \\
+De Bruijn Tree-LSTM       & $0.855 \pm 0.068$ & $0.210 \pm 0.092$ & --- \\
+Random encoder            & $0.430 \pm 0.062$ & $0.180 \pm 0.062$ & $0.40 \pm 0.06$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{O. Supporting Analyses for the Coverage Section}
+
+\paragraph{Chance correction.} Because different protocols evaluate different equation subsets (chance $c{=}1/K$), the raw $\ell$ values are not directly comparable. The chance-corrected index $\ell' = 1 - (\text{renamed} - c)/(\text{plain} - c)$ normalises above-chance performance and is comparable across protocols. The robust contrast is the $5\times$ swing between E3 and E3b: $\ell'{=}0.17$ $[0.13, 0.21]$ vs $\ell'{=}0.88$ $[0.80, 0.94]$, both computed over all 10 equations with stable per-equation behavior.
+
+\paragraph{Ratio-form stability.} Because $\ell'$ has a ratio form, small denominators ($\text{plain} - c$) could inflate it near chance. A simulation study confirms it recovers a known sensitivity whenever denom$/\text{SE} > 5$, which both protocols in Table~\ref{tab:diversity_sweep} satisfy ($83.6$ and $12.6$). The secondary metric $(\text{renamed} - c)$ preserves the same ordering, so the contrast is not an artefact of the ratio form, but the (plain, renamed) pairs are the evidence regardless.
+
+\paragraph{Token-similarity alignment check (E3b).} A token-similarity oracle that assigns each E3b held-out form to the most bag-similar centroid achieves $0.90$ accuracy (9/10), and the trained encoder's E3b predictions align with the oracle significantly more than independence predicts (observed agreement $= 0.604$, expected under independence $= 0.459$; $t{=}8.15$, $p{<}0.0001$, $n{=}25$; Appendix~E). Token co-occurrence patterns contribute materially to E3b residual identification. The $0.148$ E3b trained renamed is significantly above chance ($p{=}0.011$) but does not constitute a structural residual: an arity-aware bag classifier scores $0.375$ under the same renaming, and a weighted within-arity-group analysis (2-variable group: 6 eqs, chance $= 0.167$, encoder $= 0.067$; 1-variable group: 2 eqs, chance $= 0.500$, encoder $= 0.440$; weighted encoder $= (6{\times}0.067 + 2{\times}0.440)/8 = 0.160$; weighted chance $= 0.250$) shows the trained encoder below within-group chance (Appendix~E).
+
+\paragraph{E3 residual explanation.} The 8-equation E3 retains renamed accuracy $0.920$ (7.4$\times$ the 8-way chance of $0.125$).  This does not constitute structural learning: among the 8 included equations, 8/8 have unique (arity, tree-depth, operator-bag) signatures.  Renaming permutes only \emph{which} variable indices appear, not the number of variables, tree depth, or operator types, so the encoder can discriminate equations by structural fingerprint alone after renaming.  Arity is the dominant cue: the two arity-1 equations achieve $0.98$ renamed accuracy (perfectly distinguishable from all arity${\geq}2$ equations), while the six arity-2 equations average $0.87$ (confusion only within the same arity group).  The residual thus reflects the leniency of the E3 protocol, whose in-library held-out forms are single-rewrite paraphrases preserving all structural cues except variable identity.
+
+\paragraph{Clustered correlation.} The within-OOL $\rho{=}{-}0.13$ (n.s., $n{=}50$ forms) treats 5 forms per equation as independent.  Accounting for within-equation clustering reveals a Simpson's-paradox structure: the equation-level correlation is $\rho{=}{-}0.81$ ($p{=}0.004$, $n{=}10$ equations), but the residualized within-equation correlation is $\rho{=}{+}0.52$ ($p{<}0.001$).  The negative between-equation effect is an arity/operator-diversity confound (equations with more complex OOL forms also have more distinctive structural signatures, lowering $\ell'$), not a causal effect of structural distance on leakage.  The positive within-equation effect (larger TED $\to$ slightly higher $\ell'$) is modest and consistent with the boundary interpretation: more distant OOL forms are less likely to accidentally share structural features with the library.  Critically, even the most TED-proximal OOL forms (TED$=5$) show $\ell' > 0.64$: the boundary, not distance, remains the operative predictor.
+
+\paragraph{Dual-skyline divergence.} The two standard non-learned baselines measure \emph{different things}. In-distribution (E3), bag $0.992$ and random encoder $0.724$ both reflect variable-token geometry; they diverge modestly ($0.99$ vs $0.72$) because the random encoder loses some precision. Under distribution shift (E3b), they diverge $7\times$: bag $0.900$ vs random encoder $0.124$ on identical forms with identical centroid protocol. The bag accumulates token counts regardless of tree structure; the random encoder's recursive nonlinearity decouples from the bag when held-out tree shapes differ from training tree shapes. Practitioners should report both skylines: when they diverge sharply, a distribution shift is present between training and held-out forms, and the random-encoder skyline understates the token-bag ceiling. The gap is itself a distribution-shift diagnostic (Appendix~C).
+
+\FloatBarrier
+\subsection*{P. The Overlap Suite Under the Joint Objective}
+\label{sec:overlap}
+
+\begin{table}[t]
+\centering
+\caption{Variable-leakage-proof overlap laws: five laws all over variables $x_0, x_1$, under the \emph{joint} triplet$+$BCE objective with the jointly-trained readout head. Mean $\pm$ std across $n{=}25$ seeds (Tree-LSTM, Random) or $n{=}5$ (GIN; directional only); chance $= 0.20$. The random encoder's zero variance is not an anomaly: two of the five laws are operator-homogeneous and are separated under \emph{any} projection, so every seed scores exactly $2/5$. Triplet-only results, which are the ones that clear this floor, are in Table~\ref{tab:triplet_factorial}.}
+\label{tab:overlap}
+\begin{tabular}{l c}
+\toprule
+Encoder & Diagonal-correctness \\
+\midrule
+Tree-LSTM (joint) & $0.32 \pm 0.098$ \\
+GIN (joint)       & $0.24 \pm 0.150$ \\
+Random (untrained, deterministic) & $0.40 \pm 0.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Q. Domain Guards and Sampling}
+
+Domain guards are enforced during evaluation: division clamps the denominator to $\max(|\text{denom}|, 10^{-6})$, logarithm operates on $\log(|x| + 10^{-6})$, square root on $\sqrt{|x|}$, and exponential output is clipped to $[-20, 20]$. For each expression, we attempt to sample satisfying and non-satisfying assignments via a mixed random and hard-negative strategy with retry budget $k = 64$. Expressions with no satisfying assignment after $k$ retries are discarded.
+
+Equivalence classes could in principle be merged by numerical signature (expressions with identical satisfaction patterns over a canonical assignment set). We evaluated and rejected this: the post-filter false-merge rate was $13\%$ (100 pairs, 87 verified equivalent by SymPy, 13 refuted). Expressions are filtered by satisfaction rate to $[0.1, 0.9]$, since $46.8\%$ of unfiltered expressions are near-constant over the sampling range and provide no training signal.
+
+\FloatBarrier
+\subsection*{R. Objective $\times$ Evaluation-Head Factorial on the Overlap Suite}
+
+\begin{table}[t]
+\centering
+\caption{Evaluation-method sensitivity on the leakage-proof overlap suite (5 laws, shared variables $x_0, x_1$; chance $= 0.20$). The joint condition produces opposite orderings under MLP-based vs.\ centroid-based identification; triplet-only helps under both. MLP results: $n{=}25$ seeds, all conditions (tag \texttt{r49} for triplet-only). Centroid results: $n{=}25$ seeds, 4 conditions. The joint-MLP row reports $0.32 \pm 0.12$ where Table~\ref{tab:overlap} reports $0.32 \pm 0.098$: these are two independent run families evaluating the same condition; the means agree, and the difference is seed-sampling spread in the standard deviation, not a discrepancy in the estimate. As in Table~\ref{tab:overlap}, the deterministic $0.40 \pm 0.00$ rows arise because two of the five laws are operator-homogeneous and separate under any projection.}
+\label{tab:triplet_factorial}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{l cc cc}
+\toprule
+& \multicolumn{2}{c}{MLP-based (physics predictor)} & \multicolumn{2}{c}{Centroid-based (nearest-mean)} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Condition & Overlap acc.\ & vs.\ random & Overlap acc.\ & vs.\ random \\
+\midrule
+Joint (triplet+BCE) & $0.32 \pm 0.12$ & $-0.08$ ($p{=}0.017$) & $0.66 \pm 0.09$ & $+0.08$ ($p{<}0.001$) \\
+BCE-only            & $0.40 \pm 0.00$ & $\phantom{+}0.00$     & $0.53 \pm 0.10$ & $-0.06$ ($p{<}0.001$) \\
+Triplet-only        & $0.77 \pm 0.14$ & $+0.37$ ($p{<}0.001$)  & $0.70 \pm 0.11$ & $+0.11$ ($p{<}0.001$) \\
+Random encoder      & $0.40 \pm 0.00$ & ---                    & $0.58 \pm 0.05$ & --- \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
+\subsection*{S. Screening: Why No Separability Statistic Predicted the Skyline}
+\label{sec:prediction}
+
+A separability statistic is only useful if it tells a practitioner something they would otherwise have to train a model to learn. We therefore stated a prediction with no free parameters (an untrained recursive encoder is, to first order, a random projection of the token multiset, so its identification accuracy should track token-bag separability) and tested it across 12 corpora (5 ours, 7 EQNET) under one uniform held-out-form protocol (tag \texttt{r60}, $n{=}25$ untrained encoders per corpus).
+
+\paragraph{The prediction fails, and part of that is our own fault.} Measured against the identity
+line, pairwise token-bag separability gives $R^2 = -10.6$ and the zero-parameter bag
+\emph{classifier}'s own accuracy gives $R^2 = -2.8$, with a correlation to untrained-encoder
+accuracy that is if anything negative ($r = -0.32$, $n{=}12$, an interval wide enough that we
+draw no conclusion from the sign). The first number is largely an artefact of our own choice of
+statistic: pairwise separability sits in $[0.92, 1.00]$ on every corpus we measured, and a
+predictor with no variance cannot predict. Restriction of range guarantees the failure, so we
+report the bag-accuracy version as the informative one and do not claim the pairwise result as
+evidence of anything beyond saturation.
+
+What remains after that concession is still a negative result, and it has teeth. Bag accuracy and
+untrained-encoder accuracy measure genuinely different things: on \textsc{EQNET oneVarPoly13} the
+bag scores $0.15$ where the untrained encoder scores $0.66$, and on our Feynman-10 the ordering
+reverses ($1.00$ versus $0.13$). A recursive nonlinearity is sensitive to tree shape a bag
+discards, and blind to count differences a bag sees. So we could not find a training-free statistic
+that predicts what an untrained model will score, and the checklist's step~2 (report \emph{both}
+non-learned baselines, because neither substitutes for the other) is the operational
+consequence. The audit establishes what a shortcut \emph{could} exploit, and at tier~1 whether the
+benchmark is a lookup table by construction; it does not forecast a number. A margin-based
+statistic that does not saturate might do better, and we leave that open rather than claiming the
+question is closed.
+
+\paragraph{The auditor, released.}
+Step~1 of the checklist requires no training and is shipped as a dependency-light command-line tool: \texttt{audit-symbolic-benchmark corpus.json} reports unique var-set fraction, per-tier pairwise separability, arity distribution, and the (appropriately caveated) projected skyline, with adapters for all corpora in Table~\ref{tab:benchmark_survey} and a documented input format for new ones.
+
+\FloatBarrier
+\subsection*{T. The Superseded $\mathrm{score}_5$ Comparison, and Why It Was Wrong}
+
+Our first attempt at the leaderboard comparison of Table~\ref{tab:score5} (tag \texttt{r67})
+computed $\mathrm{score}_5$ with the \textsc{UnseenEqClass} split serving as its own neighbour
+pool, and normalised by $k$. Under that procedure the structure-free floor looked dramatic: a bag
+or an untrained encoder matched or beat the StructEmb ablation on 13 of 14 corpora, beat the
+headline SemEmb system on 3, and reached $69.4$ on \textsc{Bool8} where EqNet reports $58.1$.
+
+It was wrong, and the direction of the error was not random; every difference from the original
+protocol made our numbers larger:
+
+\begin{enumerate}[noitemsep,topsep=2pt]
+  \item \emph{Neighbour pool.} \citet{allamanis2017learning} embed the entire corpus and search
+    neighbours in it; the test split only supplies queries. On \textsc{Bool8} that is $257{,}784$
+    candidate neighbours rather than $13{,}859$. More distractors can only lower a score.
+  \item \emph{Normalisation.} Their score divides by $\min(|\text{class}|, k)$, the number of
+    same-class neighbours actually achievable, not by $k$.
+  \item \emph{Query set.} Their queries are corpus entries whose token string appears in the test
+    split, so each query sits in the pool alongside the rest of its class.
+\end{enumerate}
+
+Reproducing all three (tag \texttt{r68}) moves the comparison from ``matches or beats StructEmb on
+13 of 14'' to 5 of 14, and from ``beats SemEmb on 3'' to none. We record the superseded numbers
+here rather than deleting them, because the failure mode is one this paper is otherwise about: we
+had reported both non-learned baselines under a single internally consistent protocol, satisfying
+our own checklist, and still produced a misleading comparison, because the protocol was ours and
+the numbers beside it were someone else's.
+
+\FloatBarrier
+\subsection*{U. Every Claim Against Its Strongest Skyline}
+
+Four times in this revision, supplying a non-learned baseline we had not measured reversed a
+conclusion we had drawn: the 12-law suite, the 5-law suite, the $\mathrm{score}_5$ leaderboard, and
+the interpretation of Table~\ref{tab:diversity_sweep}. Each time we had fixed the instance in front
+of us without sweeping for the class. Tag \texttt{r69} is the sweep: for every protocol under which
+this paper reports an identification number, it measures all three bag representations and an
+untrained encoder \emph{under that same protocol}, $n{=}25$ seeds.
+
+\begin{center}\small
+\begin{tabular}{l c cccc c}
+\toprule
+Protocol & $K$ & full-token & var-blind & var-only & untrained & trained encoder \\
+\midrule
+Matched contrast, in-library      & 8  & 0.980 & 0.715 & \textbf{1.000} & 0.790 & 0.965 \\
+Matched contrast, out-of-library  & 8  & \textbf{1.000} & 0.600 & \textbf{1.000} & 0.435 & 0.832 \\
+Feynman E3 (10 equations)         & 10 & 0.932 & 0.636 & \textbf{1.000} & 0.748 & 0.972 \\
+Shared-variable Feynman           & 10 & 0.624 & 0.564 & 0.496 & 0.628 & \textbf{0.932} \\
+EQNET \textsc{simplepoly5}        & 38 & 0.368 & 0.105 & 0.342 & 0.289 & \textbf{0.944} \\
+EQNET \textsc{simplepoly8}        & 90 & 0.467 & 0.056 & 0.244 & 0.407 & \textbf{1.000} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Read down the boldface. On the three physics-derived protocols a zero-parameter bag over variable
+tokens alone is perfect or near-perfect, and the trained encoder is at or below it: these
+protocols cannot license a claim about structure, which is the paper's thesis applied to its own
+measurements. Only the shared-variable Feynman suite and the two EQNET corpora have a trained
+encoder above every non-learned baseline, and those are the only identification claims we
+advance. The EQNET rows use the sweep's uniform protocol (up to 90 classes, one held-out form per
+class) and so differ from the numbers in \S\ref{sec:causal_external}, which follow EQNET's own
+splits; both are reported rather than reconciled into one, since they answer different questions.
+
+\FloatBarrier
+\subsection*{V. The $\mathrm{score}_5$ Leaderboard Floor, in Full}
+
+\input{table_score5.tex}
+
+\FloatBarrier
+\subsection*{W. Coverage Is Causal: Full LOSO Design and the Matched Contrast}
+
+A leave-one-schema-out design establishes coverage causally (tag \texttt{r59}). For each of eight out-of-library rewrite schemas we train two encoders whose held-out trees are \emph{byte-identical}, varying only whether that schema is in the training paraphrase library. Five schemas are at ceiling in the \textsc{out} arm; on the three with headroom the effect is unambiguous ($\Delta$plain $= +0.170$, $+0.170$, $+0.150$, all with intervals excluding zero), pooling to $+0.061$ $[0.019, 0.123]$. Library membership \emph{per se} raises identification with structural distance held fixed. It is a supported mechanism, not the sole explanation: the effect is ${\approx}{+}0.16$ where headroom exists against a ${-}0.13$ drop across the two arms of Table~\ref{tab:diversity_sweep} (details and the full schema breakdown in Appendix~O).
+
+Table~\ref{tab:diversity_sweep} is the paper's single quoted contrast: holding equation set, encoder, procedure and run family fixed, the (plain, renamed) pair moves from $(0.965, 0.880)$ to $(0.832, 0.662)$. It must be read with its non-learned rows: a bag over variable tokens alone scores $1.000$ in \emph{both} arms, and the trained encoder is below that in both. Leakage is heterogeneous across equations ($\ell$ from $-0.05$ to $1.12$), so seed-level intervals understate equation-level uncertainty by ${\sim}6{\times}$; we bootstrap over equations throughout.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{The matched protocol-sensitivity contrast, with its skylines} (tags \texttt{r63}, \texttt{r69}). One equation set, one encoder trained once per seed and evaluated under both rows, one run family, the same three held-out forms per equation, and every equation's held-out slot drawn from the same construction at once. Training duplicates excluded; $K{=}8$, chance $0.125$, $n{=}25$ seeds. Intervals are equation-level 95\% bootstraps (Appendix~E). \textbf{The non-learned rows are the context}: a bag over variable tokens alone identifies every held-out form in \emph{both} conditions (tier-1 solvable by construction). The trained encoder is below that baseline in both arms.}
+\label{tab:diversity_sweep}
+\small
+\begin{tabular}{l cc}
+\toprule
+Held-out form is\ldots & Plain [95\% CI] & Renamed [95\% CI] \\
+\midrule
+\multicolumn{3}{l}{\emph{Trained Tree-LSTM:}} \\
+\ldots a library paraphrase (in-library)  & $0.965$ $[0.950, 0.977]$ & $0.880$ $[0.842, 0.918]$ \\
+\ldots an out-of-library equivalent       & $0.832$ $[0.727, 0.933]$ & $0.662$ $[0.483, 0.820]$ \\
+\midrule
+\multicolumn{3}{l}{\emph{Structure-free, no training, same protocol:}} \\
+\quad variable-token bag, in-library      & $\mathbf{1.000}$ & --- \\
+\quad variable-token bag, out-of-library  & $\mathbf{1.000}$ & --- \\
+\quad full token bag (in-lib / OOL)       & $0.980$ / $1.000$ & --- \\
+\quad variable-blind bag (in-lib / OOL)   & $0.715$ / $0.600$ & --- \\
+\quad untrained encoder (in-lib / OOL)    & $0.790$ / $0.435$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+\subsection*{X. The AI Feynman Held-Out-Form Suite, Full Rows}
+
+\begin{table}[t]
+\centering
+\caption{\textbf{The AI~Feynman held-out-form suite, with both non-learned baselines} ($n{=}25$ seeds, 10 equations, chance $0.100$). Encoder rows from tags \texttt{r21}/\texttt{r24}; bag rows from the E3 run. \textbf{The variable-only row is deterministic} (sd $0.000$) rather than an estimate, and exceeds the trained encoder at every seed, so plain accuracy here carries no evidence about structural learning. Under within-range renaming the variable-blind bag still reaches ${\approx}6\times$ chance from operator content alone (tier~2). Full-token bag accuracy varies across runs with the held-out paraphrase draw: a replication (tag \texttt{r69}) gives $0.932$ and random $0.748$, straddling the trained encoder (Appendix~D).}
+\label{tab:held_out_form}
+\begin{tabular}{l cc}
+\toprule
+Model & Plain & Renamed (in-range) \\
+\midrule
+Bag-of-tokens, variable-only (0 params)  & $\mathbf{1.000 \pm 0.000}$ & --- \\
+Bag-of-tokens, variable-aware (0 params) & $0.992 \pm 0.027$ & --- \\
+Trained Tree-LSTM                        & $0.972 \pm 0.060$ & $0.824 \pm 0.086$ \\
+Random (untrained) encoder               & $0.724 \pm 0.184$ & $0.624 \pm 0.145$ \\
+Bag-of-tokens, variable-blind (0 params) & $0.636 \pm 0.111$ & --- \\
+\midrule
+Chance                                   & $0.100$ & $0.100$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+\subsection*{Y. The Targeted Corpus Audit, Full Table}
+
+\input{table_survey.tex}

@@ -1,0 +1,54 @@
+\begin{table}[t]
+\centering
+\caption{\textbf{The controlled-probe matrix, every cell} (tag \texttt{r74}; 3 seeds; chance $0.500$;
+$K \leq 150$). Each row pairs every held-out form with a twin of \emph{identical} token and operator
+multisets. The three transformations form a ladder: rotation matches inventory but perturbs local
+shape; the sibling swap matches shape too but changes order; \textbf{relocation matches inventory,
+shape \emph{and} order}, leaving only the variable-to-position binding. Values in \textbf{bold} are
+pinned at exactly $0.500$ \emph{by construction}: verified per instance, not measured. The
+trained--untrained gap survives on every corpus under the strictest probe, so the residual is not
+argument order. \emph{Skipped and bags-only cells are shown, not omitted}: relocation needs two
+distinct variables, which \textsc{oneVarPoly13} lacks; \textsc{boolean8} has no encoder row because
+the encoder vocabulary contains no boolean operators. $n$ is twins constructed (coverage in
+parentheses).}
+\label{tab:probes_full}
+\small
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{l l r rrr rr r}
+\toprule
+& & & \multicolumn{3}{c}{\emph{non-learned baselines}} & \multicolumn{2}{c}{\emph{encoder}} & \\
+\cmidrule(lr){4-6} \cmidrule(lr){7-8}
+Corpus & Probe & $n$ (cov.) & full & shape & order & untr. & trained & gap \\
+\midrule
+\multirow{3}{*}{\textsc{poly8}}
+ & rotate   & 116 (.77) & \textbf{.500} & .832 & .569 & .940 & 1.000 & $+.060$ \\
+ & swap     & 104 (.69) & \textbf{.500} & \textbf{.500} & .625 & .808 & 1.000 & $+.192$ \\
+ & relocate & 113 (.75) & \textbf{.500} & \textbf{.500} & \textbf{.500} & .823 & .965 & $\mathbf{+.142}$ \\
+\midrule
+\multirow{3}{*}{\textsc{simplepoly8}}
+ & rotate   &  37 (.39) & \textbf{.500} & .365 & .568 & .586 & 1.000 & $+.414$ \\
+ & swap     &  70 (.74) & \textbf{.500} & \textbf{.500} & .436 & .748 & 1.000 & $+.252$ \\
+ & relocate &  54 (.57) & \textbf{.500} & \textbf{.500} & \textbf{.500} & .617 & 1.000 & $\mathbf{+.383}$ \\
+\midrule
+\multirow{3}{*}{\textsc{simplepoly10}}
+ & rotate   &  57 (.38) & \textbf{.500} & .570 & .456 & .637 & 1.000 & $+.363$ \\
+ & swap     & 116 (.77) & \textbf{.500} & \textbf{.500} & .634 & .779 & 1.000 & $+.221$ \\
+ & relocate &  84 (.56) & \textbf{.500} & \textbf{.500} & \textbf{.500} & .790 & 1.000 & $\mathbf{+.210}$ \\
+\midrule
+\multirow{3}{*}{\textsc{poly5}}
+ & rotate   &  66 (.60) & \textbf{.500} & .909 & .424 & .838 & 1.000 & $+.162$ \\
+ & swap     &  58 (.53) & \textbf{.500} & \textbf{.500} & .509 & .897 & 1.000 & $+.103$ \\
+ & relocate &  69 (.63) & \textbf{.500} & \textbf{.500} & \textbf{.500} & .802 & .986 & $\mathbf{+.184}$ \\
+\midrule
+\multirow{3}{*}{\textsc{oneVarPoly13}}
+ & rotate   & 134 (.89) & \textbf{.500} & .881 & .545 & .751 & .975 & $+.224$ \\
+ & swap     & 106 (.71) & \textbf{.500} & \textbf{.500} & .769 & .846 & 1.000 & $+.154$ \\
+ & relocate & \multicolumn{7}{l}{\emph{skipped: one variable, so no relocation exists}} \\
+\midrule
+\multirow{3}{*}{\textsc{boolean8}}
+ & rotate   &  71 (.47) & \textbf{.500} & .831 & .775 & --- & --- & --- \\
+ & swap     &  52 (.35) & \textbf{.500} & \textbf{.500} & .721 & --- & --- & --- \\
+ & relocate & 111 (.74) & \textbf{.500} & \textbf{.500} & \textbf{.500} & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}

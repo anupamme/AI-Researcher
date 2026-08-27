@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\caption{\textbf{Two twin probes, and what closing the shape loophole does} (EQNET \texttt{poly8},
+$K{=}500$, 3 seeds, chance $0.500$; tags \texttt{r72}, \texttt{r73}). Both twins have token and
+operator multisets identical to the original, so inventory baselines are pinned at exactly $0.500$
+by construction. The \emph{rotation} twin additionally changes depths, parent--child pairs and
+subtree sizes (tier-3 cues), which is why the tree-local bag reaches $0.861$ there. The
+\emph{swap} twin exchanges two siblings under a non-commutative operator, leaving the tree-local bag
+exactly invariant, so shape is pinned too. Under the stricter probe the untrained encoder loses most
+of its advantage while the trained encoder does not.}
+\label{tab:twin}
+\small
+\begin{tabular}{l l rr}
+\toprule
+Baseline & Cue it can still see & Rotation & \textbf{Swap} \\
+\midrule
+Bag, full token (0 params)      & --- (pinned)            & $0.500$ & $0.500$ \\
+Bag, tree-local (0 params)      & shape (rotation only)   & $0.861$ & $0.500$ \\
+Bag, token n-gram (0 params)    & order                   & $0.559$ & $0.681$ \\
+Untrained encoder (non-learned) & order, shape, recursion & $0.925$ & $0.788$ \\
+\midrule
+\textbf{Trained Tree-LSTM}      & learned                 & $\mathbf{1.000}$ & $\mathbf{0.994}$ \\
+\midrule
+\multicolumn{2}{l}{\emph{margin over the untrained architecture}} & $0.075$ & $\mathbf{0.206}$ \\
+\multicolumn{2}{l}{\emph{classes probed}} & 395/500 & 348/500 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,47 @@
+\section{Reporting Practice: Units of Inference and Sweeping for the Class}
+\label{sec:reporting}
+
+Two further findings concern how results are reported rather than what they are, and both cost us
+claims.
+
+\paragraph{The unit of inference is equations, not seeds.} A seed-level interval answers ``would a
+rerun give this number?'' when the question of interest is ``would other equations give this
+number?'' The two differ substantially: per-equation leakage on the 10-equation suite ranges from
+$-0.05$ to $1.12$, so resampling equations rather than seeds widens the interval by roughly
+$6\times$ (Appendix~\ref{app:units}). We report equation-level bootstraps throughout.
+
+\paragraph{Fix the class, not the instance.} Four times in this work, supplying a non-learned
+baseline we had not previously measured reversed a conclusion we had drawn: on a purpose-built
+12-law suite, on a 5-law suite, on the $\mathrm{score}_5$ leaderboard (\S\ref{sec:retraction}), and
+on the interpretation of a protocol-sensitivity contrast. Each time we had fixed the instance in
+front of us without sweeping for the class.
+
+The two suites are worth naming, because we built them specifically to be ``leakage-proof'' and the
+audit says they are, at the wrong tier. Both appear in the last block of
+Table~\ref{tab:benchmark_survey} at exactly $0\%$ unique variable sets: every law is defined over
+the same shared variables, so the variable-identity shortcut we set out to eliminate is genuinely
+gone. Both also measure exactly $100\%$ operator-bag separability at tier~2. On the 5-law suite under the joint objective, the consequence is
+unambiguous: an \emph{untrained} encoder scores $0.40$ against the trained Tree-LSTM's
+$0.32 \pm 0.098$ ($n{=}25$, chance $0.20$); two of the five laws are operator-homogeneous and are
+separated under any projection, so every random seed scores exactly $2/5$. We had removed tier~1 and
+declared victory without measuring tier~2.
+
+The remedy is mechanical. For \emph{every} protocol under which we state an identification number we
+measure all three bag representations and an untrained encoder \emph{under that same protocol}, at
+$n{=}25$ seeds (Appendix~\ref{app:sweep}).
+
+
+The verdicts split cleanly. On the three physics-derived protocols a zero-parameter bag over
+variable tokens alone is perfect and the trained encoder is \emph{below} it, so those protocols
+cannot license a claim about structure, this paper's thesis applied to its own measurements. Only
+the shared-variable design and the two EQNET corpora put the trained encoder above every non-learned
+baseline, and those are the only identification claims we advance. Knowing which rows survive is
+possible only because the sweep was run for every row, not for the rows we doubted.
+
+One row audits the sweep itself. The Feynman E3 full-token bag reads $0.932$ here against the
+$0.992$ of \S\ref{sec:introduction}. These are \emph{not} different protocols: the sweep re-runs
+it exactly, and the two disagree only because the held-out paraphrase is redrawn. The estimates are
+within one standard deviation, but they straddle the trained encoder's $0.972$, so a comparison
+resting on that margin reverses between two runs of the same experiment. Hence the claim in
+\S\ref{sec:introduction} is stated against the variable-only bag: $1.000$ with sd $0.000$, perfect
+by construction rather than an estimate that happened to land high.

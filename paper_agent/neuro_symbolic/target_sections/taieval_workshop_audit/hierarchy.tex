@@ -1,0 +1,57 @@
+\section{A Hierarchy of Cues}
+\label{sec:tiers}
+
+A benchmark can be solvable at several levels, and those levels deserve different verdicts. We fix
+a four-tier hierarchy and use it consistently, including when judging our own results.
+
+\begin{description}[noitemsep,topsep=2pt,leftmargin=1.2em]
+  \item[Tier 1: variable identity.] \emph{Which} variable symbols appear. Purely notational:
+    under a consistent relabelling the expression denotes the same function, so any identification
+    that depends on it is a shortcut, always.
+  \item[Tier 2: operator and arity inventory.] \emph{Which} operators appear, how many, and over
+    how many variables. Semantically meaningful, $x_0/x_1$ really is a different function from
+    $x_0 \cdot x_1$, but still bag-level: a model reading only the multiset has not parsed
+    anything.
+  \item[Tier 3: order, depth and local shape.] Token adjacency, depth profile, parent--child
+    operator statistics, subtree sizes. $x_0 + x_1 \cdot x_2$ and $(x_0 + x_1) \cdot x_2$ differ in
+    all of these. Crucially, \emph{none of it requires composition}: these are surface statistics of
+    a tree, computable without recursion.
+  \item[Tier 4: compositional structure.] How the operators actually combine.
+\end{description}
+
+\paragraph{Why tier 3 has to exist.} An earlier version of this hierarchy went straight from tier 2
+to composition, licensing a bad inference: \emph{encoder beats a bag $\Rightarrow$ encoder learned
+structure}. Everything in tier 3 is available to a model that never composes anything, so clearing a
+bag establishes only that the representation uses information beyond the tested bag cues.
+\S\ref{sec:tier3} measures that gap.
+
+\paragraph{Non-learned is not structure-free.} Our \emph{bag classifiers} (variable-only,
+variable-blind, full-token, and the tier-3 baggers) are nearest-centroid over a multiset with no
+parameters. The \emph{untrained encoder} is the trained architecture, randomly initialised. Both are
+\emph{non-learned}, but only the bags are structure-free: a random Tree-LSTM still has recursive
+composition, parent/child interaction and depth sensitivity, computing over structure without having
+learned any. Hence \textbf{non-learned baselines}, not ``structure-free'' ones, a distinction
+\S\ref{sec:tier3} measures rather than stipulates. Claims must accordingly name their tier: we report
+identification \emph{above the strongest non-learned baseline}, and reserve claims about composition
+for the twin probe.
+
+\subsection{Setup}
+\label{sec:setup}
+
+Expressions are binary trees over $\{+, -, *, /, \sin, \cos, \exp, \log, \sqrt{\ }\}$. The physics
+suite is the 10 AI~Feynman equations \citep{udrescu2020ai} with 1--3 variables, each mapped to a
+distinct variable subset of a 16-symbol pool; that mapping is the convention under audit.
+Equivalence classes come from a 13-schema paraphrase library and have ${\approx}3$ members differing
+by a single rewrite, the easiest possible positive, which bounds every number we report. Encoders
+are Tree-LSTMs \citep{tai2015improved}, GINs \citep{xu2019powerful} and Transformers
+\citep{vaswani2017attention}, 128-dimensional, trained with satisfaction classification plus a
+semi-hard triplet loss \citep{schroff2015facenet}. The metric is the fraction of held-out embeddings
+whose nearest training-class centroid is correct; chance $1/K$ is a uniform-class conceptual
+baseline, not the empirical expectation under every retrieval construction. Every baseline is
+evaluated under the identical centroid protocol, which is what makes it comparable to the trained
+number rather than merely adjacent to it.
+
+\paragraph{Neither baseline substitutes for the other.} On EQNET \textsc{oneVarPoly13} the bag
+scores $0.15$ where the untrained encoder scores $0.66$; on Feynman-10 the ordering reverses ($1.00$
+versus $0.13$). A recursive nonlinearity is sensitive to shape a bag discards, and blind to counts a
+bag sees, so both are reported, always.

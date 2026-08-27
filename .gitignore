@@ -30,3 +30,17 @@ research_agent/.env
 research_agent/*_tmp/*
 
 .env
+
+# Large generated / vendored artifacts (not source)
+/workplace_paper/
+/artifact/
+/paper_db/
+texput.log
+
+# LaTeX build artifacts
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg

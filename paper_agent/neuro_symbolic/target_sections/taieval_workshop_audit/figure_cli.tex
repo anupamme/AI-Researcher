@@ -1,0 +1,26 @@
+\begin{figure}[t]
+\centering
+\begin{minipage}{0.99\linewidth}
+\footnotesize
+\begin{verbatim}
+$ audit-symbolic-benchmark --builtin feynman100
+tier 1  unique var-set   84.0%     tier 2  op-bag sep.  98.9%
+WARNING: a majority of classes have a unique variable set. A held-out-form
+protocol on this corpus is largely solvable by token lookup; report a renaming
+control before attributing identification to learned structure.
+
+$ audit-symbolic-benchmark --builtin eqnet:poly8
+tier 1  unique var-set    0.0%     tier 2  op-bag sep.  82.2%
+MEASURED bag accuracy    0.148
+NOTE: pairwise separability is far above the measured bag accuracy (98% vs 15%).
+Separability says the classes *differ*; accuracy says whether a bag can actually
+place a held-out form. Report the measured number.
+\end{verbatim}
+\end{minipage}
+\caption{\textbf{Stage 1 of the pipeline, on two corpora} (abridged real output; runs in seconds,
+no training). On the physics corpus it fires the tier-1 warning that motivates this paper. On
+\texttt{poly8} it reports tier-1 clean and then, unprompted, warns that pairwise separability far
+exceeds what a bag actually \emph{scores}: the tool enforcing the distinction of
+\S\ref{sec:auditor} rather than leaving it to the reader.}
+\label{fig:cli}
+\end{figure}

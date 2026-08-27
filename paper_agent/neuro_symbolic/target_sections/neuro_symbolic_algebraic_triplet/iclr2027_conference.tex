@@ -1,0 +1,66 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2027_conference,times}
+
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{math_commands.tex}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[section]{placeins}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{enumitem}
+\usepackage{makecell}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit}
+\newtheorem{proposition}{Proposition}
+\newtheorem{hypothesis}{Hypothesis}
+
+
+\title{When Does Held-Out-Form Generalization Test Structure? A Hierarchical Audit of Neuro-Symbolic Expression Benchmarks}
+
+% Authors are hidden for double-blind review (the \iclrfinalcopy macro below
+% is commented out). Replace this block before the camera-ready submission.
+\author{Anonymous Authors \\
+Paper under double-blind review}
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+%\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
+
+\begin{document}
+
+\maketitle
+
+% abstract.tex is expected to provide its own \begin{abstract}...\end{abstract}
+% wrapper (see paper_agent/abstract_composing.py).
+\input{abstract.tex}
+
+\input{introduction.tex}
+
+\input{related_work.tex}
+
+\input{methodology.tex}
+
+\input{experiments.tex}
+
+\input{conclusion.tex}
+
+
+\bibliography{iclr2027_conference}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{figure_overview.tex}
+\input{appendix_domain_guards.tex}
+
+\input{figure_scale_curve.tex}
+
+\end{document}

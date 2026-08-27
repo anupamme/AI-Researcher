@@ -1,0 +1,32 @@
+\section{Where Do Published Benchmarks Expose Low-Tier Cues?}
+\label{sec:survey}
+
+Before diagnosing any encoder, we ask whether lower-tier separability is a property of the
+\emph{corpora} the field uses. Table~\ref{tab:benchmark_survey} (Appendix~\ref{app:survey}) applies the auditor to 23 corpora from
+four benchmark families, a targeted audit, not a comprehensive survey. Nothing here is trained and nothing is fitted.
+
+\paragraph{The tier-1 flaw is real, and it is confined to one family.} AI~Feynman
+\citep{udrescu2020ai} gives $84\%$ of its equations a variable set no other equation shares, so a
+protocol built on it is largely solvable without algebraic reasoning, as \S\ref{sec:introduction}
+showed directly. But that is a property of a \emph{tokenization convention}: physics equations are
+written with named quantities, and giving each its own symbol index makes the variable set a class
+fingerprint. It is not a property of equivalence-class benchmarks generally. Generated corpora
+(NeSymReS \citep{biggio2021neural}, Lample--Charton \citep{lample2019deep}) reuse a tiny pool and
+score $0\%$; so, decisively, does \textbf{EQNET} \citep{allamanis2017learning}, at most $3.2\%$
+across all 15 of its corpora: there variable identity is \emph{semantic} ($a - b$ and $b - a$ are
+different classes), so there is no tier-1 shortcut to remove.
+
+We state this narrowly because the survey supports nothing broader: we cannot cite published work
+running this protocol on a physics corpus and attributing the result to structural learning. The
+defensible claim is design hygiene, and the screen says so in advance. This is a targeted audit of
+selected published corpora, not a comprehensive survey.
+
+\paragraph{Tier 2 is the general exposure, and it is not a cheat.} Read the last column instead:
+operator-bag separability is $66$--$100\%$ across every family, including corpora perfectly clean at
+tier~1. Unlike tier~1, this is not illegitimate information. Distinguishing $x_0 + x_1$ from
+$x_0 / x_1$ by operator inventory is \emph{meaningful}: they are different functions, and a model
+that notices is not cheating. The problem is only ever a mismatch between cue and claim: a corpus at
+$0\%$ tier~1 and $92\%$ tier~2 supports ``the encoder distinguishes these classes'' and not ``the
+encoder parses these expressions''. That is the finding we would most like taken away, because the
+community has largely closed tier~1 by adopting shared variable pools while leaving tier~2 open,
+and \S\ref{sec:tier3} shows tier~3 sits between even those.

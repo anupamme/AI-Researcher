@@ -1,0 +1,23 @@
+\section{The Auditor: Stage One of Three}
+\label{sec:auditor}
+
+Figure~\ref{fig:pipeline} states the pipeline and, for each stage, what it does and does not
+license; conflating those stages is what produces overclaims. This section is stage 1.
+
+Tiers 1--3 are properties of the corpus, so they can be screened with no model, no GPU and no
+forward pass. Given a corpus of equivalence classes the auditor reports, per tier, whether class
+representatives are separable by that tier's features alone: the \emph{unique var-set fraction}
+(tier 1: if high, knowing which variables appear pins the class before any model exists),
+\emph{operator-bag separability} with its collision profile (tier 2), the \emph{arity distribution}
+(which often partitions a small suite into near-singleton groups, a confound aggregate accuracy
+hides), and the tier-3 statistics of \S\ref{sec:tier3}. Figure~\ref{fig:cli} (Appendix~\ref{app:cli}) shows it on two corpora;
+the tool is dependency-light and takes a documented JSON format, with adapters for every corpus in
+Table~\ref{tab:benchmark_survey}.
+
+\paragraph{What it does not do.} These columns measure whether class \emph{representatives} differ;
+they do not predict what a baseline scores on \emph{held-out forms}. Across 12 corpora no
+zero-parameter separability statistic we tried predicts untrained-encoder accuracy ($R^2 = -2.8$;
+Appendix~\ref{app:screen}), reported as a limitation rather than tuned until it correlated.
+Separability is a \emph{diagnostic}; measured baseline performance is the \emph{evidentiary}
+criterion. A cheap pre-training screen that tells you where to look is worth having even when it
+cannot tell you how much the cue will be worth.

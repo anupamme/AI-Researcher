@@ -1,19 +1,22 @@
 import os
 from typing import List, Dict
-from research_agent.inno.memory.rag_memory import Memory, Reranker
-import openai
+from research_agent.inno.memory.rag_memory import Memory, Reranker, _litellm_embed
 import re
 from research_agent.inno.memory.code_tree.code_parser import CodeParser, to_dataframe_row
 from tree_sitter import Language
 from loguru import logger
-from openai import OpenAI
 import pandas as pd
 class CodeTreeMemory(Memory):
-    def __init__(self, project_path: str, db_name: str = '.code_tree', platform: str = 'OpenAI', api_key: str = None, embedding_model: str = "text-embedding-ada-002"):
+    def __init__(self, project_path: str, db_name: str = '.code_tree', platform: str = 'OpenAI', api_key: str = None, embedding_model: str = None):
         super().__init__(project_path, db_name, platform, api_key, embedding_model)
         self.collection_name = 'code_tree_memory'
-        self.embedder = OpenAI(api_key=api_key)
-        
+        # Inherit the litellm-backed embedder from Memory; keep an alias
+        # for backwards-compat with callers that reference `self.embed`.
+        self._api_key = api_key or os.environ.get("OPENAI_API_KEY")
+
+    def _embed_texts(self, texts: List[str]) -> List[List[float]]:
+        return _litellm_embed(texts, model=self.embedding_model, api_key=self._api_key)
+
 
     def add_code_files(self, directory: str, exclude_prefix: List[str] = ["workplace_"]):
         """
@@ -40,13 +43,13 @@ class CodeTreeMemory(Memory):
             directory
         )
         snippet_texts = list(map(lambda x: x.snippet.decode("ISO-8859-1"), parsed_snippets))
-        embedded_texts = self.embedder.embeddings.create(input=snippet_texts, model="text-embedding-3-small").data
+        embedded_texts = self._embed_texts(snippet_texts)
         embedded_snippets = []
-        for code_text, embedding, snippet in zip(
+        for code_text, embedding_vec, snippet in zip(
             snippet_texts, embedded_texts, parsed_snippets
         ):
             snippet.snippet = code_text
-            snippet.embedding = embedding.embedding
+            snippet.embedding = embedding_vec
             embedded_snippets.append(snippet)
 
         # Convert Snippets to DataFrame for ChromaDB Ingestion
@@ -77,7 +80,7 @@ class CodeTreeMemory(Memory):
         Returns:
             List[Dict]: The query results list
         """
-        query_embedding = self.embedder.embeddings.create(input=[query_text], model="text-embedding-3-small").data[0].embedding
+        query_embedding = self._embed_texts([query_text])[0]
         results = self.client.get_or_create_collection(self.collection_name).query(query_embeddings=[query_embedding], n_results=n_results)
         return [
             {
@@ -104,7 +107,7 @@ class DummyReranker(Reranker):
 
 # 使用示例
 if __name__ == "__main__":
-    code_memory = CodeTreeMemory(project_path = './code_db', db_name='code_tree', platform='OpenAI', api_key='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')
+    code_memory = CodeTreeMemory(project_path = './code_db', db_name='code_tree', platform='OpenAI', api_key=os.environ.get("OPENAI_API_KEY"))
     
     # 添加代码文件到内存
     code_memory.add_code_files("/Users/tangjiabin/Documents/reasoning/SelfAgent/workplace_test/SelfAgent", exclude_prefix=['workplace_', '__pycache__', 'code_db', '.git'])

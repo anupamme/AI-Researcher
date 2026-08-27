@@ -1,0 +1,33 @@
+\section{Protocol Mismatch Manufactures Evidence: A Retraction}
+\label{sec:retraction}
+
+Our first attempt at this comparison produced the opposite result, and the way it failed is the
+most transferable finding in this paper.
+
+That attempt computed $\mathrm{score}_5$ with the \textsc{UnseenEqClass} split serving as its own
+neighbour pool, and normalised by $k$. Under that procedure the non-learned floor looked dramatic: a
+bag or an untrained encoder matched or beat the StructEmb ablation on 13 of 14 corpora, beat the
+headline SemEmb system on 3, and reached $69.4$ on \textsc{Bool8} where EqNet reports $58.1$. Had we
+stopped there, we would have published a claim that a zero-parameter baseline undercuts a published
+leaderboard.
+
+It was wrong, and the direction of the error was not random. Three differences from the published
+procedure, neighbour pool, normalisation, and query construction
+(Appendix~\ref{app:retraction}), \emph{each} pushed our numbers up. On \textsc{Bool8} the
+published protocol searches $257{,}784$ candidate neighbours where ours searched $13{,}859$, and
+more distractors can only lower a score. Reproducing all three moves the comparison from ``matches
+or beats StructEmb on 13 of 14'' to 5 of 14, and from ``beats SemEmb on 3'' to none.
+
+\paragraph{Why this is not just our bug.} We had done what a careful auditor is supposed to do. We
+reported \emph{both} non-learned baselines, under a \emph{single, internally consistent}
+protocol, satisfying our own checklist, and still produced a badly misleading comparison,
+because the protocol was ours and the numbers beside it were someone else's. Internal consistency
+is not the relevant property when a baseline is placed in a table next to published results; what
+matters is whether the baseline was computed under \emph{the same evaluation} as the numbers it is
+being compared against. Every non-learned floor, hypothesis-only baseline, or majority-class
+control reported against an external leaderboard is exposed to this error, and the error has a
+direction: the shortcuts that make a protocol convenient to re-implement (evaluate within the
+test split, normalise by $k$) are the ones that inflate the floor.
+
+We keep the superseded numbers on record rather than deleting them, and we add a checklist step for
+it (step~7, \S\ref{sec:checklist}): verify the evaluation matches what you compare against.

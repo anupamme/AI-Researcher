@@ -1,0 +1,102 @@
+\appendix
+
+\section{The Screen, on Two Corpora}
+\label{app:cli}
+
+\input{figure_cli.tex}
+
+\section{The Controlled-Probe Matrix, Every Cell}
+\label{app:probes}
+
+\input{figure_tiers.tex}
+
+\input{table_probes_full.tex}
+
+\section{The Targeted Corpus Audit, Full Table}
+\label{app:survey}
+
+\input{table_survey.tex}
+
+\section{The Full Non-Learned Baseline Sweep}
+\label{app:sweep}
+
+For every protocol under which the paper states an identification number, all three bag
+representations and an untrained encoder, measured under that same protocol ($n{=}25$ seeds):
+
+\begin{center}\small
+\begin{tabular}{l c c c c}
+\toprule
+Protocol & $K$ & strongest non-learned & trained & verdict \\
+\midrule
+Matched contrast, in-library      & 8  & \textbf{1.000} (var-only)   & 0.965 & no claim \\
+Matched contrast, out-of-library  & 8  & \textbf{1.000} (var-only)   & 0.832 & no claim \\
+Feynman E3 (10 equations)         & 10 & \textbf{1.000} (var-only)   & 0.972 & no claim \\
+Shared-variable Feynman           & 10 & 0.628 (untrained)           & \textbf{0.932} & survives \\
+EQNET \textsc{simplepoly5}        & 38 & 0.368 (full-token)          & \textbf{0.944} & survives \\
+EQNET \textsc{simplepoly8}        & 90 & 0.467 (full-token)          & \textbf{1.000} & survives \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\section{Twin Probes: Full Numbers}
+\label{app:twin}
+
+\input{table_twin.tex}
+
+\section{The $\mathrm{score}_5$ Leaderboard Floor, in Full}
+\label{app:score5}
+
+\input{table_score5.tex}
+
+\section{The Superseded $\mathrm{score}_5$ Comparison, in Full}
+\label{app:retraction}
+
+Our first attempt at the leaderboard comparison of \S\ref{sec:leaderboard} computed
+$\mathrm{score}_5$ with the \textsc{UnseenEqClass} split serving as its own neighbour pool, and
+normalised by $k$. Under that procedure a bag or an untrained encoder matched or beat the StructEmb
+ablation on 13 of 14 corpora, beat the headline SemEmb system on 3, and reached $69.4$ on
+\textsc{Bool8} where EqNet reports $58.1$. Every difference from the published procedure pushed our
+numbers up:
+
+\begin{enumerate}[noitemsep,topsep=2pt,leftmargin=1.4em]
+  \item \emph{Neighbour pool.} \citet{allamanis2017learning} embed the entire corpus and search
+    neighbours in it; the test split only supplies queries. On \textsc{Bool8} that is $257{,}784$
+    candidate neighbours rather than $13{,}859$. More distractors can only lower a score.
+  \item \emph{Normalisation.} Their score divides by $\min(|\text{class}|, k)$, the number of
+    same-class neighbours actually achievable, not by $k$.
+  \item \emph{Query set.} Their queries are corpus entries whose token string appears in the test
+    split, so each query sits in the pool alongside the rest of its class.
+\end{enumerate}
+
+Reproducing all three moves the comparison from ``matches or beats StructEmb on 13 of 14'' to 5 of
+14, and from ``beats SemEmb on 3'' to none. We keep the superseded numbers on record rather than
+deleting them.
+
+\section{What the Separability Screen Does Not Predict}
+\label{app:screen}
+
+The auditor's separability columns measure whether class \emph{representatives} differ; they do not
+predict what a baseline scores on \emph{held-out forms}, and the two diverge sharply. Across 12
+corpora no zero-parameter separability statistic we tried predicts untrained-encoder accuracy
+($R^2 = -2.8$): the statistic saturates while accuracy does not. We report this as a limitation of
+the tool rather than tuning a statistic until it correlated. The operational consequence is step~2
+of the checklist: run both baselines rather than reading a projection off the screen.
+
+Relatedly, the two baseline families measure different things and neither substitutes for the
+other. On EQNET \textsc{oneVarPoly13} the bag scores $0.15$ where the untrained encoder scores
+$0.66$; on Feynman-10 the ordering reverses ($1.00$ versus $0.13$). A recursive nonlinearity is
+sensitive to tree shape a bag discards, and blind to count differences a bag sees.
+
+\section{Per-Equation Heterogeneity}
+\label{app:units}
+
+Identification accuracy on a $K$-equation suite is usually reported as a mean over seeds with a
+seed-level interval. That answers ``would a rerun give this number?'' when the question of interest
+is ``would other equations give this number?'' The two differ substantially here: per-equation
+leakage on the 10-equation suite ranges from $-0.05$ (energy density) to $1.12$ (wavenumber, whose
+held-out form is a training duplicate: trivially solvable, so renaming destroys the only cue).
+Resampling equations rather than seeds widens the interval by roughly $6\times$. We report
+equation-level bootstraps throughout and recommend that any benchmark with fewer than a few dozen
+classes do the same; with $K{=}10$ a seed-level interval is close to meaningless as a statement
+about the task.

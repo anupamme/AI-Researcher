@@ -1,0 +1,104 @@
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Setup}
+
+All experiments use a single frozen pipeline. The primary corpus is the AI~Feynman held-out-form suite (10 equations, one withheld equivalent form each, $n{=}25$ seeds); the shared-variable and overlap suites are described where used. Appendix~A documents that all tables derive from one run family under satisfaction-rate filter $[0.1,0.9]$ and paraphrase-only equivalence, and lists every run tag.
+
+\subsection{Where Do Benchmarks Expose Low-Tier Cues?}
+\label{sec:survey}
+
+Before diagnosing any encoder, we ask whether the token-lookup shortcut is a property of the benchmark \emph{corpora} the field uses. Table~\ref{tab:benchmark_survey} (Appendix~Y) applies a zero-parameter classifier (no training, nothing fitted) to 23 corpora from four benchmark families, reporting separability at each cue tier (\S\ref{sec:tiers}). We released this as a command-line auditor so a corpus can be screened before any model is trained (\S\ref{sec:artifact}).
+
+\paragraph{The tier-1 flaw is real, and it is confined to one family.} The AI~Feynman corpus \citep{udrescu2020ai} gives $84\%$ of its equations a variable set no other equation shares, so a held-out-form protocol built on it is almost entirely solvable without algebraic reasoning. But this is a property of a \emph{tokenization convention}, not of equivalence-class benchmarks in general. Generated symbolic-regression corpora (NeSymReS \citep{biggio2021neural}, Lample--Charton \citep{lample2019deep}) reuse a tiny variable pool and score $0\%$. So, decisively, does \textbf{EQNET} \citep{allamanis2017learning}: across all 15 of its corpora, at most $3.2\%$ of classes have a unique variable set.
+
+We therefore state the finding narrowly: we cannot cite published work that runs this protocol on a physics corpus and attributes the result to structural learning. The defensible claim is design hygiene: \emph{build a held-out-form protocol on a physics corpus under the natural tokenization and you get a lookup task}. This is a targeted audit of selected corpora, not a comprehensive survey.
+
+\subsection{Held-Out-Form Suite: Variable-Identity Leakage}
+\label{sec:held_out_form}
+
+We now apply the diagnostic to the AI~Feynman held-out-form suite, where one equivalent form per equation is withheld from training and tested at inference.
+
+\paragraph{Apparent success, and a zero-parameter classifier that beats it.} Under plain held-out evaluation, the Tree-LSTM identifies held-out Feynman forms at $0.972 \pm 0.060$ ($n{=}25$, chance $0.10$) against a random encoder's $0.724 \pm 0.184$. Read naively, this is structural identification. But the survey has already ruled that out: this corpus gives \emph{every} equation a variable set no other equation shares (Table~\ref{tab:benchmark_survey}), so a bag over variable tokens alone is a complete lookup solution \emph{by construction}, and scores $\mathbf{1.000}$ (sd $0.000$), above the trained encoder at every seed, with no training and no parameters. This is the \emph{token-bag skyline}, and it is the reason step~1 of the checklist is to compute it before training anything. Table~\ref{tab:held_out_form} (Appendix~X) gives the full rows, including a replication in which the full-token bag falls \emph{below} the trained encoder, which is why we anchor this comparison on the deterministic variable-only row rather than on a near-tied one.
+
+Under within-range renaming the (plain, renamed) pair is $(0.972, 0.824)$ for the trained encoder and $(0.724, 0.624)$ for the random one; the variable-blind bag scores $0.636$, ${\approx}6\times$ chance from operator content alone. Variable identity is the dominant cue; tier-2 is what remains. With genuine out-of-library rewrites the pair collapses to $(0.50, 0.15)$ (Appendix~E).
+
+
+\subsection{The Fix: Shared-Variable Design}
+\label{sec:the_fix}
+\label{sec:positive_control}
+
+The diagnostic prescribes its own remedy. If variable identity is what the encoder is exploiting, then a benchmark whose equivalence classes share a variable pool removes the cue by construction, and makes whatever remains measurable.
+
+\paragraph{The fix: shared-variable design, with a non-trivial renaming control.} We remap all 10 Feynman equations to a shared pool via de~Bruijn normalization; 7/10 then share $\{x_0, x_1\}$, so variable identity can no longer disambiguate them. Evaluating under \emph{genuine} within-range renaming, a random injective relabeling into the trained vocabulary (tags \texttt{r52}, \texttt{r61}, $n{=}25$), a triplet encoder identifies held-out forms at plain $= 0.932$ with renamed accuracy \emph{preserved} at $0.972$, against a random encoder at $0.604$/$0.672$ and zero-parameter bags at $0.624$, $0.564$ and $0.496$. \textbf{This is the one identification result in the paper that clears every non-learned baseline available to it.} Resampling \emph{equations}, the trained-minus-random gap is $+0.328$ $[0.192, 0.472]$ plain.
+
+\paragraph{Auditing the positive result.} Under \emph{operator scrambling} (each held-out operator replaced by a random one of the same arity; tags \texttt{r53}, \texttt{r54}, \texttt{r61}) trained identification falls from $0.932$ to $0.312$ $[0.184, 0.460]$ against a random skyline falling to $0.140$, a gap of $+0.172$ $[0.044, 0.300]$. Operator content is the dominant cue, with a small shape residual; under arity control the six two-variable equations reach $0.887$ $[0.753, 1.000]$ against within-group chance $0.167$. The defensible claim is identification \emph{above the operator-bag skyline}, narrower than ``structural identification''.
+
+\subsection{A Floor Under a Published Leaderboard}
+\label{sec:eqnet_audit}
+\label{sec:causal_external}
+
+The strongest form of the audit is to point it at numbers someone is currently standing behind. Three published systems report $\mathrm{score}_5$ on the \textsc{UnseenEqClass} split of the 14 SemVec corpora: EqNet \citep{allamanis2017learning}, and the StructEmb ablation and headline SemEmb system of \citet{gangwar2023semantic}. The metric needs only a distance, so it is computable for a bag of tokens exactly as for a learned embedding. Table~\ref{tab:score5} (Appendix~V) does, under those authors' own evaluation: neighbours searched in the full corpus, normalisation by $\min(|\text{class}|,5)$ (tag \texttt{r68}).
+
+\emph{The leaderboard is robust.} No non-learned representation we tried reaches EqNet or SemEmb on \emph{any} of the 14 corpora, usually by a wide margin (\textsc{Bool8}: bag $12.7$ against EqNet's $58.1$; \textsc{SimpPoly10}: untrained encoder $36.1$ against $99.3$). Five corpora see a non-learned representation reach the StructEmb autoencoder ablation, the weakest of the three published columns. The verdict is a \emph{non-learned baseline floor under the published evaluation protocol}, not a certification: these systems exceed every non-learned baseline we could construct, on every corpus (Appendix~T documents the protocol verification that was necessary). As \S\ref{sec:structural_scale} shows, exceeding such baselines does not by itself establish that the information used is compositional.
+
+\paragraph{Auditing EQNET: a benchmark we did not build.} Running the full diagnostic on the EQNET corpora \citep{allamanis2017learning} under \emph{their} splits: variable identity is semantic there, so the corpora are tier-1 immune by construction. On \textsc{simplepoly8} (86 classes, chance $0.012$) the trained encoder reaches $1.000$ $[1.000,1.000]$ against bag $0.242$ and random $0.115$, with zero of 747 held-out forms string-identical to a training form (tag \texttt{r66}); on their \textsc{UnseenEqClass} split, $0.980$ against bag $0.741$. On the smaller \textsc{simplepoly5} unseen split the bag nearly matches the encoder ($0.433$ vs.\ $0.467$): exactly the condition the checklist exists to surface before training.
+
+\subsection{Structural Generalization at Scale}
+\label{sec:structural_scale}
+
+\textbf{EQNET \texttt{poly8}} provides exactly the benchmark the formal criterion demands: 1102 equivalence classes over a shared variable pool $\{x_0,x_1,x_2\}$ (tier-1 immune by construction) with \emph{zero} classes having a unique operator bag (tier-2 immune: mean collision = 73.5 classes per bag, largest = 348 classes sharing one bag). Any identification above the bag skyline on this corpus \emph{must} use tree-compositional features.
+
+We train Tree-LSTM, GIN, and Transformer encoders (triplet loss, same recipe as the main experiments) on $K$ training classes and evaluate on two protocols: \textsc{SeenEqClass}, identify the held-out form of a training class (centroid matching); \textsc{UnseenEqClass}, $k$-NN class precision on held-out classes never seen during training. The second protocol is the OOD test the reviewer requested. Table~\ref{tab:poly8_structural} reports results at $K = 50, 100, 200, 500, 1000$ (tag \texttt{r70\_poly8\_structural}, 5 seeds).
+
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{\textbf{Structural generalization at scale on EQNET \texttt{poly8}} (tags \texttt{r70}, \texttt{r70\_k1000}; 5 seeds; 10 epochs). \texttt{poly8} is tier-1 \emph{and} tier-2 immune by construction (0/1102 unique operator bags). \textsc{Unseen} is $k$-NN class precision on classes \emph{never seen in training}, the OOD test. At every scale, Tree-LSTM substantially exceeds both non-learned baselines on unseen classes. The bag\_blind skyline falls as $K$ grows while Tree-LSTM unseen precision holds above $0.86$. Class-level 95\% bootstrap CIs for seen identification in brackets.}
+\label{tab:poly8_structural}
+\small
+\begin{tabular}{l rrrrr}
+\toprule
+ & $K{=}50$ & $K{=}100$ & $K{=}200$ & $K{=}500$ & $K{=}1000$ \\
+\midrule
+\multicolumn{6}{l}{\emph{SeenEqClass (centroid identification, in-distribution):}} \\
+Tree-LSTM & $0.976$ $[0.94,1.00]$ & $0.984$ $[0.97,1.00]$ & $0.992$ $[0.98,1.00]$ & $0.990$ $[0.98,1.00]$ & $0.980$ $[0.97,0.99]$ \\
+GIN       & $0.964$ & $0.924$ & $0.806$ & $0.667$ & $0.527$ \\
+Transformer & $0.724$ & $0.670$ & $0.667$ & $0.566$ & $0.443$ \\
+Random encoder & $0.628$ & $0.642$ & $0.587$ & $0.476$ & $0.436$ \\
+Bag (full token) & $0.680$ & $0.500$ & $0.390$ & $0.212$ & $0.147$ \\
+Bag (variable-blind) & $0.200$ & $0.130$ & $0.065$ & $0.024$ & $0.012$ \\
+\midrule
+\multicolumn{6}{l}{\emph{UnseenEqClass ($k$-NN precision, OOD classes never seen in training):}} \\
+Tree-LSTM & $\mathbf{0.843}$ & $\mathbf{0.882}$ & $\mathbf{0.872}$ & $\mathbf{0.896}$ & $\mathbf{0.866}$ \\
+GIN       & $0.832$ & $0.884$ & $0.867$ & $0.740$ & $0.763$ \\
+Transformer & $0.825$ & $0.806$ & $0.837$ & $0.729$ & $0.736$ \\
+Random encoder & $0.711$ & $0.673$ & $0.673$ & $0.525$ & $0.538$ \\
+Bag (full token) & $0.800$ & $0.770$ & $0.685$ & $0.518$ & $0.560$ \\
+Bag (tree-local, tier 3) & $0.726$ & $0.658$ & $0.564$ & $0.411$ & $0.371$ \\
+Bag (token n-gram, tier 3) & $0.426$ & $0.603$ & $0.315$ & $0.230$ & $0.197$ \\
+Bag (variable-blind) & $0.535$ & $0.425$ & $0.287$ & $0.186$ & $0.228$ \\
+Chance & $0.100$ & $0.050$ & $0.025$ & $0.010$ & $0.001$ \\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{table}
+
+\paragraph{Trained encoders exceed every non-learned baseline on unseen classes.} At $K{=}500$, Tree-LSTM unseen $= 0.896$ against the strongest non-learned baseline (full-token bag) at $0.518$, the tier-3 tree-local bag at $0.411$, and the variable-blind bag at $0.186$. The comparison that matters is the strongest of these, not the weakest: against bag\_blind the ratio is $4.8\times$, but against the full-token bag it is $1.7\times$, and that is the honest figure. The margin \emph{grows with scale} (at $K{=}50$ the encoder leads the strongest baseline by only $0.843$ vs $0.800$), which is itself the more interesting claim, since a shortcut that survives at 50 classes should not survive at 1000.
+
+\paragraph{Tier 3 holds most of the apparent headroom.} The tree-local bag reaches $0.411$ at $K{=}500$ where the operator bag reaches $0.186$: more than half the gap one might attribute to ``structure beyond operator content'' comes from parent--child and subtree-size statistics alone, untrained. Claims resting on distance to a bag skyline must be restated against it, which is why criterion condition~(3) (\S\ref{sec:tiers}) requires clearing it.
+
+\paragraph{Holding the lower tiers fixed: twin probes.} Exceeding a baseline on unseen classes still does not say \emph{which} cue the encoder uses. We therefore pair each held-out form with a \emph{twin} of identical token and operator multisets, differing only in how they combine, and ask whether the encoder places the true form closer to its class centroid than the twin (chance $0.5$). Inventory baselines are then pinned at exactly $0.500$ by construction. Our first twin was a rotation, $(a \mathbin{\text{op}_1} b) \mathbin{\text{op}_2} c \to a \mathbin{\text{op}_1} (b \mathbin{\text{op}_2} c)$ (tag \texttt{r72}), but a rotation also changes depths, parent--child pairs and subtree sizes, which are tier-3 cues, and our own tree-local bag scores $0.861$ on it. That probe therefore licenses only ``more sensitive than the measured tier-3 baseline''.
+
+\paragraph{The shape-matched twin (tag \texttt{r73}).} Swapping two \emph{sibling} subtrees under a non-commutative operator ($x - y \to y - x$) leaves the tree-local bag \emph{exactly} invariant, verified per instance, so inventory \emph{and} local shape are both pinned at $0.500$. At $K{=}500$ over 348 probed classes the ladder reads: full-token bag $0.500$, tree-local $0.500$, token n-gram $0.681$, untrained encoder $0.788$, trained Tree-LSTM $\mathbf{0.994}$. Closing the shape loophole costs the untrained encoder $0.925 \to 0.788$ while the trained encoder holds, so the trained--untrained gap \emph{widens} from $0.075$ to $0.206$.
+
+\paragraph{Order too, and across corpora (tag \texttt{r74}).} A swap still changes left/right order, so it could be read as testing argument order alone. We therefore add \emph{operand relocation}: exchange two leaves holding \emph{different} variables, $(x_0 - x_1)\cdot x_2 \to (x_0 - x_2)\cdot x_1$. The tier-3 baggers being variable-blind, inventory, shape \emph{and} order are all invariant, leaving only the variable-to-position binding. Across 17 cells over six corpora and two symbolic families every construction guarantee held and every encoder gap was positive; under relocation the trained--untrained gap is $+0.142$, $+0.383$, $+0.210$, $+0.184$: the swap's range, so the residual is not argument order. The matrix records its own limits: \textsc{oneVarPoly13} admits no relocation (one variable), and \textsc{boolean8} has no encoder row, the encoder vocabulary having no boolean operators.
+
+\paragraph{What this licenses, and what it does not.} Poly8 is tier-1 and tier-2 immune, the encoder exceeds every non-learned baseline including both tier-3 ones, and all held-out forms are genuine EQNET test classes; this clears the criterion of \S\ref{sec:tiers}: the highest floor we can build, which is not the same as demonstrating composition. We claim no clean partition: a complete set of local relations determines a tree, so tiers 3 and 4 are separated by the \emph{boundedness} of the statistic rather than categorically. And the effect is bounded, not decomposed: training adds \emph{at most} $0.206$ over the randomly initialised architecture under this probe, which does not split into architectural and learned parts that could be summed. That an untrained recursive encoder reaches $0.788$ at all is why we report it as \emph{non-learned} rather than structure-free. GIN and Transformer degrade at large $K$ on seen identification while maintaining strong unseen precision, a split that merits further study.
+
+\subsection{Coverage Is Causal (LOSO)}
+\label{sec:loso}
+\label{sec:coverage}
+\label{sec:robustness}
+
+A leave-one-schema-out design establishes coverage causally (tag \texttt{r59}): for eight out-of-library rewrite schemas we train two encoders whose held-out trees are \emph{byte-identical}, varying only whether that schema is in the training library. On the three schemas with headroom, $\Delta$plain $= +0.170$, $+0.170$, $+0.150$, pooling to $+0.061$ $[0.019, 0.123]$: library membership \emph{per se} raises identification with structural distance held fixed, though it is not the sole explanation. The matched contrast motivating it (Table~\ref{tab:diversity_sweep}) moves the (plain, renamed) pair from $(0.965, 0.880)$ to $(0.832, 0.662)$ when only the held-out construction changes, while a variable-token bag scores $1.000$ in \emph{both} arms. Full design and table: Appendix~W.

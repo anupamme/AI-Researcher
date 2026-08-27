@@ -35,6 +35,9 @@ LOG_PATH = os.getenv('LOG_PATH', None)
 LOG_PATH = global_state.LOG_PATH
 EVAL_MODE = str_to_bool(os.getenv('EVAL_MODE', False))
 BASE_IMAGES = os.getenv('BASE_IMAGES', "tjbtech1/paperapp:latest")
+# Docker `--platform` for containers. Default to linux/amd64 so the pipeline
+# runs the x86_64 airesearcher image under emulation on Apple Silicon.
+PLATFORM = os.getenv('PLATFORM', "linux/amd64")
 
 COMPLETION_MODEL = os.getenv('COMPLETION_MODEL', "gpt-4o-2024-08-06") # gpt-4o-2024-08-06
 EMBEDDING_MODEL = os.getenv('EMBEDDING_MODEL', "text-embedding-3-small")
@@ -42,7 +45,11 @@ CHEEP_MODEL = os.getenv('CHEEP_MODEL', "gpt-4o-mini-2024-07-18")
 # BASE_URL = os.getenv('BASE_URL', None)
 
 # GPUS = os.getenv('GPUS', "all")
+# Treat empty / literal "None" / "null" as "no GPU passthrough". Docker rejects
+# `--gpus None` because it tries to parse it as an int.
 GPUS = os.getenv('GPUS', None)
+if GPUS in (None, '', 'None', 'none', 'null'):
+    GPUS = None
 
 FN_CALL = str_to_bool(os.getenv('FN_CALL', True))
 API_BASE_URL = os.getenv('API_BASE_URL', None)

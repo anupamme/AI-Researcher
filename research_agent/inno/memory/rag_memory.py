@@ -1,3 +1,4 @@
+import os
 import uuid
 import os.path
 from datetime import datetime
@@ -5,41 +6,78 @@ from typing import List, Dict
 import chromadb
 from chromadb.utils import embedding_functions
 from abc import ABC, abstractmethod
-from openai import OpenAI
+import litellm
+from litellm import embedding as litellm_embedding
 import numpy as np
 from chromadb.api.types import QueryResult
 chromadb.logger.setLevel(chromadb.logging.ERROR)
 from research_agent.constant import API_BASE_URL
+
+
+def _litellm_embed(texts, model: str, api_key: str = None, api_base: str = None):
+    """Embed `texts` via litellm.
+
+    litellm.embedding handles OpenAI, AWS Bedrock (Titan, Cohere), Voyage,
+    Azure, etc. Some Bedrock embedding models (notably Titan Text Embeddings
+    V2) accept only one input per call, so we loop one-by-one for any
+    bedrock/* model.
+    """
+    if isinstance(texts, str):
+        texts = [texts]
+    kwargs = {"model": model}
+    if api_key:
+        kwargs["api_key"] = api_key
+    if api_base:
+        kwargs["api_base"] = api_base
+
+    if model.startswith("bedrock/"):
+        out = []
+        for t in texts:
+            r = litellm_embedding(input=[t], **kwargs)
+            out.append(r["data"][0]["embedding"])
+        return out
+    r = litellm_embedding(input=list(texts), **kwargs)
+    return [d["embedding"] for d in r["data"]]
+
 
 class Memory:
     def __init__(
             self,
             project_path: str,
             db_name: str = '.sa',
-            platform: str = 'OpenAI', 
-            api_key: str = None, 
-            embedding_model: str = "text-embedding-3-small"
+            platform: str = 'OpenAI',
+            api_key: str = None,
+            embedding_model: str = None,
     ):
         """
         Memory: memory and external knowledge management.
-        Args:
-            project_path: the path to store the data.
-            embedding_model: the embedding model to use, default will use the embedding model from ChromaDB,
-             if the OpenAI has been set in the configuration, it will use the OpenAI embedding model
-             "text-embedding-ada-002".
+
+        The embedding backend is selected by `embedding_model`. Any
+        litellm-supported model ID works, e.g. ``text-embedding-3-small``,
+        ``bedrock/amazon.titan-embed-text-v2:0``, ``bedrock/cohere.embed-english-v3``.
+        If `embedding_model` is None we fall back to the `EMBEDDING_MODEL`
+        environment variable, then to OpenAI ``text-embedding-3-small``.
         """
         self.db_name = db_name
         self.collection_name = 'memory'
         self.client = chromadb.PersistentClient(path=os.path.join(project_path, self.db_name))
         self.client.get_or_create_collection(
                 self.collection_name,
-            ) 
-        # use the OpenAI embedding function if the openai section is set in the configuration.
+            )
+
+        if embedding_model is None:
+            embedding_model = os.environ.get("EMBEDDING_MODEL", "text-embedding-3-small")
+        self.embedding_model = embedding_model
+
         if platform == 'OpenAI':
-            openai_client = OpenAI(api_key=api_key or os.environ["OPENAI_API_KEY"], base_url=API_BASE_URL)
-            self.embedder = lambda x: [i.embedding for i in openai_client.embeddings.create(input=x, model=embedding_model).data]
+            resolved_key = api_key or os.environ.get("OPENAI_API_KEY")
+            self.embedder = lambda x: _litellm_embed(
+                x,
+                model=embedding_model,
+                api_key=resolved_key,
+                api_base=API_BASE_URL,
+            )
         else:
-            # self.embedder = embedding_functions.DefaultEmbeddingFunction()
             self.embedder = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
 
     def add_query(

@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\caption{\textbf{Three controlled probes, across six corpora} (tag \texttt{r74}; 3 seeds; chance
+$0.500$; ranges over corpora). Each probe pairs every held-out form with a twin of identical token
+and operator multisets; they differ in \emph{which} lower-tier cues they additionally hold fixed.
+\textbf{Bold} entries are pinned at exactly $0.500$ \emph{by construction}, verified per instance
+rather than measured. Reading down: rotation leaves shape free and the shape bag exploits it
+($0.365$--$0.909$); the swap closes shape but leaves order; relocation closes order too. The
+trained--untrained gap survives all three, so the residual is not argument order. Per-cell values,
+coverage, and the skipped and bags-only cells are in Appendix~\ref{app:probes}.}
+\label{tab:probes}
+\small
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{l ccc cc c c}
+\toprule
+& \multicolumn{3}{c}{\emph{non-learned baselines}} & \multicolumn{2}{c}{\emph{encoder}} & & \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-6}
+Probe & inventory & shape & order & untrained & trained & gap & corpora \\
+\midrule
+Rotation   & \textbf{.500} & .365--.909    & .424--.775    & .586--.940 & .975--1.000 & $+.060$--$+.414$ & 5 \\
+Swap       & \textbf{.500} & \textbf{.500} & .436--.769    & .748--.897 & $1.000$     & $+.103$--$+.252$ & 5 \\
+\textbf{Relocation} & \textbf{.500} & \textbf{.500} & \textbf{.500} & .617--.823 & .965--1.000 & $\mathbf{+.142}$--$\mathbf{+.383}$ & 4 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -9,8 +9,8 @@ from benchmark_collection.utils.openai_utils import GPTClient
 from paper_agent.section_composer import SectionComposer, setup_logging
 
 class ExperimentsComposer(SectionComposer):
-    def __init__(self, research_field: str, structure_iterations: int = 3, gpt_model='gpt-4o-mini-2024-07-18'):
-        super().__init__(research_field, "experiments", structure_iterations)
+    def __init__(self, research_field: str, structure_iterations: int = 3, gpt_model=None):
+        super().__init__(research_field, "experiments", structure_iterations, gpt_model=gpt_model)
 
     def read_project_structure(self, project_dir):
         """Read entire project directory structure and code files"""

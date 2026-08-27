@@ -1,0 +1,39 @@
+\begin{table}[t]
+\centering
+\caption{\textbf{Targeted audit of 23 corpora from four benchmark families} (no training, nothing
+fitted; tag \texttt{r57}). \emph{Unique var-set} (tier 1): fraction of classes whose variable
+\emph{set} no other class shares; if high, the protocol is solvable by token lookup.
+\emph{Op-bag sep.} (tier 2): fraction of class pairs separable by the operator/arity bag alone.
+\textbf{The tier-1 failure is confined to the physics block}; the canonical published family, EQNET
+\citep{allamanis2017learning}, is immune ($\leq 3.2\%$ across all 15 corpora), as are generated
+corpora. \textbf{Tier 2 is high everywhere, including where tier 1 is clean}, which is the
+generalizable finding. These columns measure whether class \emph{representatives} differ, not what a
+bag scores on held-out forms; the two diverge (Appendix~\ref{app:screen}). $N$ is the class count;
+corpora above $600$ classes are subsampled (seeded) for the $O(n^2)$ pairwise columns.}
+\label{tab:benchmark_survey}
+\footnotesize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{l r r r r}
+\toprule
+Benchmark & $N$ & Var.\ pool & Unique var-set (T1) & Op-bag sep.\ (T2) \\
+\midrule
+\multicolumn{5}{l}{\emph{Physics-derived held-out-form benchmarks (one variable subset per equation):}} \\
+AI~Feynman \citep{udrescu2020ai}      & 100 & 93 & $\mathbf{84\%}$  & $99\%$ \\
+\quad Feynman-10 (this work)          & 10  & 15 & $\mathbf{100\%}$ & $98\%$ \\
+\quad Synthetic 8-law (this work)     & 8   & 11 & $\mathbf{100\%}$ & $96\%$ \\
+\midrule
+\multicolumn{5}{l}{\emph{EQNET / semvec \citep{allamanis2017learning}: the published equivalence-class family:}} \\
+\quad \textsc{poly} (7 corpora)       & 47--1102 & 1--3 & $0\%$   & $66$--$92\%$ \\
+\quad \textsc{bool} (8 corpora)       & 95--7312 & 3--10 & $0$--$3\%$ & $69$--$97\%$ \\
+\midrule
+\multicolumn{5}{l}{\emph{Generated SR / integration corpora (shared variable pool):}} \\
+NeSymReS \citep{biggio2021neural}     & 200 & 3  & $0\%$   & $100\%$ \\
+Lample--Charton \citep{lample2019deep}& 320 & 1  & $0\%$   & $99\%$ \\
+\midrule
+\multicolumn{5}{l}{\emph{Shared-variable designs (this work, the fix):}} \\
+Feynman-10 shared (de~Bruijn)         & 10  & 4  & $20\%$  & $98\%$ \\
+Overlap-5 (shared $x_0,x_1$)          & 5   & 2  & $0\%$   & $100\%$ \\
+Overlap-12 (shared $x_0,x_1$)         & 12  & 2  & $0\%$   & $100\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}

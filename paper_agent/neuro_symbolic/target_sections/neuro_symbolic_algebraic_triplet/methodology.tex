@@ -1,0 +1,44 @@
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Data and Equivalence Classes}
+
+We work with binary expression trees over an operator vocabulary \{+, -, *, /, sin, cos, exp, log, sqrt\}. The primary corpus is the AI~Feynman benchmark \citep{udrescu2020ai}: 10 equations selected as the subset with 1--3 variables and closed-form algebraic structure, each using a distinct variable subset from a 16-symbol pool: the selection criterion under audit. Equivalence classes are defined solely by a syntactic paraphrase library of 13 rewrite schemas (commutativity, associativity, distributivity, identity rules, double negation, and exp/log/power rewrites); domain guards and the rejected numerical-signature alternative are documented in Appendix~A.
+
+\paragraph{A disclosure that bounds everything below.} Equivalence classes as generated here have ${\approx}3$ members, and each positive is a \emph{single-rewrite} paraphrase of its anchor with near-total token overlap: the easiest possible positives. Every result in this paper should be read against that ceiling.
+
+\subsection{Encoder Architectures and Training}
+
+We compare three encoder architectures, all producing 128-dimensional embeddings: a Tree-LSTM \citep{tai2015improved} (N-ary Child-Sum cell over binary expression trees); a Graph Isomorphism Network \citep{xu2019powerful} over the expression DAG; and a Transformer \citep{vaswani2017attention} over a bracketed depth-first linearisation. All three are trained with binary cross-entropy satisfaction classification plus semi-hard triplet loss \citep{schroff2015facenet} at margin $\alpha = 0.2$ (3 epochs, batch 128, Adam lr $10^{-3}$, OneCycleLR).
+
+\subsection{A Hierarchy of Cues}
+\label{sec:tiers}
+
+``Structure'' is not one thing, and a benchmark can be solvable at several levels that deserve different verdicts. We therefore fix a four-tier hierarchy and use it consistently, including when judging our own positive results.
+
+\begin{description}[noitemsep,topsep=2pt,leftmargin=1.2em]
+  \item[Tier 1: variable identity.] \emph{Which} variable symbols appear. Purely notational: under a consistent relabelling the expression denotes the same function, so any identification that depends on it is a shortcut, always.
+  \item[Tier 2: operator and arity inventory.] \emph{Which} operators appear, how many, and over how many variables. Semantically meaningful ($x_0/x_1$ really is a different function from $x_0 \cdot x_1$) but still bag-level: a model that reads only the multiset has not parsed the expression.
+  \item[Tier 3: order, depth and local shape.] Token adjacency, depth profile, parent--child operator statistics, subtree sizes. $x_0 + x_1 \cdot x_2$ and $(x_0 + x_1) \cdot x_2$ differ in all of these, yet none of it requires composition: these are surface statistics of a tree, computable without recursion.
+  \item[Tier 4: compositional structure.] How the operators actually combine. This is what held-out-form protocols are meant to be testing.
+\end{description}
+
+A benchmark can be immune at tier~1 and still be a lookup table at tier~2, and clearing tier~2 still leaves tier~3. Claims must therefore name their tier: we report identification \emph{above the strongest non-learned baseline}, not identification ``of structure''.
+
+\paragraph{Non-learned is not structure-free.} We report bag classifiers (no training, no parameters) and an untrained encoder (same architecture, randomly initialised). Both are \emph{non-learned}, but only the bags are structure-free: a randomly initialised Tree-LSTM has recursive composition, parent/child interaction and depth sensitivity; it computes over structure without having learned any. On a probe where every bag is pinned at chance it scores $0.925$ (\S\ref{sec:structural_scale}), so the distinction is measured rather than stipulated.
+
+\paragraph{Formal criterion for compositional generalization.} A benchmark supports a claim of Tier-4 compositional generalization only if: (1)~no class is identifiable by variable set; (2)~no class is identifiable by operator/arity bag; (3)~the trained encoder exceeds \emph{every} non-learned baseline, including the tier-3 order and local-shape baselines and the untrained encoder, with class-level intervals excluding zero; and (4)~held-out forms are outside the training rewrite library. Condition~(3) is deliberately stricter than requiring only that bags be beaten, a bar tier-3 cues clear without composing anything, and it is tested by controls that hold inventory, local shape and order fixed by construction across six corpora (\S\ref{sec:structural_scale}). We state the criterion as a \emph{falsification} device: failing a condition invalidates the stronger reading, while clearing all four establishes insensitivity to the cues actually tested, not composition, which no probe of this kind can isolate.
+
+\subsection{Held-Out-Form Protocol and Leakage Controls}
+
+For each equation in a suite, we withhold one equivalent form from training and test exclusively on that form. The headline metric is \emph{diagonal-correctness}: the fraction of held-out embeddings whose nearest training-equation centroid matches the true equation. Chance is $1/K$ for a $K$-equation suite.
+
+Two renaming controls isolate the tier-1 contribution. \emph{Renamed-fresh} remaps held-out variables to indices never used in training. \emph{Renamed-in-range} remaps variables to other indices \emph{inside} the trained range, removing variable identity without the untrained-slot confound; this is the control we rely on. On a de~Bruijn--normalised corpus the naive in-range remap is the identity map, so we draw a random injective relabelling into the trained vocabulary instead (\S\ref{sec:positive_control}). Tier-2 contributions are isolated by \emph{operator scrambling} and by \emph{arity control}.
+
+\paragraph{Primary evidence: (plain, renamed) pairs.} Throughout, the primary reported quantity is the \emph{pair} of accuracies, plain and renamed, together with the two non-learned baselines. A convenience index $\ell' = 1 - (\text{renamed} - c) / (\text{plain} - c)$ is retained in appendix tables; its limitations (floor effect, undefined when plain $\leq c$, per-equation heterogeneity from $-0.05$ to $1.12$) are why we lead with pairs rather than a summary statistic (Appendix~O).
+
+When a benchmark's bag skyline matches or exceeds the trained encoder, plain-evaluation accuracy is uninformative about structural learning.
+
+\paragraph{Audit protocol.}
+\label{sec:artifact}
+The diagnostic tools compose into a reusable checklist: (1)~screen the corpus before training (the released auditor reports per-tier separability); (2)~report both non-learned baselines under the identical protocol; (3)~run within-range renaming and report the (plain, renamed) pair; (4)~audit any positive result at tier~2 with operator-scramble and arity controls; (5)~verify the control is an isomorphism of the benchmark; (6)~verify held-out forms are genuinely out-of-library; (7)~verify the evaluation matches what you compare against (Appendix~T); (8)~make equations the unit of inference. The auditor is released as \texttt{audit-symbolic-benchmark} (Appendix~S).

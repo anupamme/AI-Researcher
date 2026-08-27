@@ -1,0 +1,31 @@
+\begin{abstract}
+A held-out-form benchmark asks a model to recognise that two syntactically different expressions
+denote the same thing, and accuracy on it is routinely read as evidence that the model has learned
+algebraic \emph{structure}. That reading is an assumption connecting a protocol to a claim, and it
+is rarely tested. We test it. On the canonical physics-derived suite every equation carries a
+variable set no other equation shares, so a \emph{zero-parameter} bag over variable tokens alone is
+a complete lookup solution by construction, and scores $1.000$ where a trained Tree-LSTM scores
+$0.972$: accuracy on this benchmark carries no information about structural learning.
+We give a four-tier account of what such a benchmark can be solved by (variable identity,
+operator and arity inventory, order and local tree shape, and genuine composition), release a
+training-free auditor that measures the lower tiers before any model is trained, and run a targeted
+audit of 23 corpora from four benchmark families with it. The third tier is the one usually skipped, and it matters: on EQNET
+\texttt{poly8} a zero-parameter bag over parent--child and subtree-size statistics reaches $0.411$
+where the operator bag reaches $0.186$, so beating an operator bag establishes far less than it
+appears to. To hold the lower tiers fixed we pair each held-out form with a \emph{twin} of identical
+token and operator multisets differing only in how they combine. A rotation twin pins inventory at
+chance but still leaks shape (our own tree-local bag scores $0.861$ on it), so we build a
+\emph{shape-matched} twin by swapping siblings under a non-commutative operator, which leaves that
+bag exactly invariant. With inventory and shape both pinned at chance by construction, the untrained
+encoder falls from $0.925$ to $0.788$ while the trained one holds at $0.994$: the trained--untrained
+gap \emph{widens} from $0.075$ to $0.206$. That an untrained recursive encoder
+scores $0.788$ at all is why we call these baselines \emph{non-learned} rather than
+``structure-free''.
+Pointed at a live leaderboard, the audit yields a non-learned baseline floor under that leaderboard's own protocol, not a certificate: computing
+$\mathrm{score}_5$ for a token bag and an untrained encoder on the 14 SemVec corpora, under those
+authors' own procedure, no non-learned representation reaches the published systems on any corpus. We report this having
+first retracted the opposite conclusion, which our own internally-consistent-but-non-matching
+protocol had produced: a skyline is only a skyline for the evaluation it was computed under.
+We distil the result into an eight-step checklist, ship step~1 as a command-line tool, and ship a
+script that recomputes and asserts every non-learned number in this paper.
+\end{abstract}

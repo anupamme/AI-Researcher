@@ -1,0 +1,31 @@
+\section{Introduction}
+\label{sec:introduction}
+
+When a learned encoder clusters held-out equivalent forms of a known law with high accuracy, has it recognised algebraic \emph{structure}, or merely which \emph{variables} appear? We show that on held-out-form benchmarks built from physics corpora the second, trivial explanation suffices; that a cheap audit says in advance when it will; and that the flaw is a property of how those benchmarks are constructed rather than of the task, because the canonical published benchmark family for this problem does not have it.
+
+\paragraph{A floor nobody had drawn.} Three published systems report $\mathrm{score}_5$ on the
+\textsc{UnseenEqClass} split of the 14 SemVec corpora \citep{allamanis2017learning,
+gangwar2023semantic}. We computed it for a token bag and an untrained Tree-LSTM, reproducing
+those authors' evaluation procedure rather than inventing one
+(\S\ref{sec:eqnet_audit}, Table~\ref{tab:score5}). The result establishes a non-learned baseline floor under that leaderboard's own protocol: no non-learned representation reaches EqNet or the headline SemEmb system on any of
+the 14 corpora.
+We report this having first retracted a stronger claim: computing the metric our own way made the
+same floor appear to beat a published ablation on 13 of 14 corpora instead of 5. \emph{A skyline is
+only a skyline for the evaluation it was computed under.}
+
+\paragraph{Where the variable-identity flaw actually lives.} A per-symbol tokenization convention
+makes physics-derived held-out-form protocols solvable by lookup: on AI~Feynman
+\citep{udrescu2020ai}, $84\%$ of equations have a variable set no other equation shares
+(Table~\ref{tab:benchmark_survey}), and on the resulting 10-equation suite every equation's
+variable set is unique, so a \emph{zero-parameter} bag over variable tokens alone solves the
+benchmark outright ($1.000$, deterministically) against a trained Tree-LSTM's $0.972$. \textbf{That 10-equation suite is a constructed counterexample, not evidence of prevalence}; prevalence is assessed separately by the 23-corpus audit. Across those 23 corpora, the EQNET family
+and its successors \citep{gangwar2023semantic, zheng2025egen} define classes over a shared variable
+pool and are immune at tier~1. Tier~2 is where the exposure is: not because operator inventory is illegitimate (distinguishing $x_0{+}x_1$ from $x_0/x_1$ by it is meaningful), but because it defeats a \emph{compositional} claim, which is why every identification claim here is stated against the operator-bag skyline.
+
+\paragraph{The diagnostic and its limits.} The tools form a three-stage pipeline: a training-free \emph{screen} for potential shortcut structure (\S\ref{sec:artifact}); a \emph{baseline sweep} measuring whether a shortcut actually solves the evaluation under the same protocol as the claim; and a \emph{controlled probe} testing what the model uses. Only the second licenses a statement about a benchmark, and only the third about a model; across 12 corpora no separability statistic predicts untrained-encoder accuracy ($R^2 = -2.8$; Appendix~S), so the screen is a diagnostic, never a difficulty predictor.
+
+\paragraph{The fix, audited by our own standard.} Sharing variables across equivalence classes removes the tier-1 cue by design. Under \emph{genuine} within-range renaming, a triplet encoder identifies held-out forms at $0.932$ versus $0.604$ for a random encoder and $0.56$ for a variable-blind bag (\S\ref{sec:positive_control}). That identification rests on operator content and arity (tier~2): it survives arity control and collapses under operator scrambling ($0.932 \to 0.312$). We state it as identification \emph{above the operator-bag skyline} and note that it does not transfer out-of-library (Appendix~L).
+
+\paragraph{Compositional generalization at scale.} On EQNET \texttt{poly8}, 1102 equivalence classes with a shared variable pool and zero unique operator bags (tier-1 \emph{and} tier-2 immune), a Tree-LSTM achieves unseen-class $k$-NN precision of $0.896$ at $K{=}500$ against the strongest non-learned baseline's $0.518$, a margin that grows with $K$ (\S\ref{sec:structural_scale}). Because clearing a bag does not establish composition (a tier-3 bag over local shape statistics reaches $0.411$ on the same protocol), we use a \emph{twin} probe in which inventory and local-shape baselines are pinned at chance by construction, testing sensitivity to compositional distinctions the measured tier-3 statistics cannot explain. There the trained encoder reaches $0.994$ and an untrained one $0.788$, bounding the trained--untrained gap at $0.206$ rather than decomposing it. This clears the criterion of \S\ref{sec:tiers}: the highest floor we can build. It is not a demonstration of composition, and \S\ref{sec:conclusion} says why none is available.
+
+\paragraph{What predicts leakage.} On one equation set, changing only whether the held-out form is an in-library paraphrase or an out-of-library equivalent moves the pair from $(0.965, 0.880)$ to $(0.832, 0.662)$ (Table~\ref{tab:diversity_sweep}). A leave-one-schema-out experiment holding the held-out tree byte-identical shows library \emph{coverage} is a causal part of this: $\Delta$plain $= +0.16$ where headroom exists (\S\ref{sec:loso}).
