@@ -1,28 +1,21 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Human Validation of the Behavioral Features}
+\paragraph{Human validation of the behavioral features.}
 \label{sec:icc_caveat}
 \label{sec:icc_owned}
 
-Four of five behavioral features fail human inter-rater reliability: the $n\!=\!100$/3-annotator study (Appendix~\ref{app:human_icc_n100}) gives $\alpha\!=\!0.606$ for correction-marker density but 0.070--0.264 for the rest. We claim \emph{reliability} only, not construct validity: $\alpha$ shows annotators agree with one another, not that the feature measures deception, and the construct-overlap evidence is weaker still (extractor vs.\ human ratings, Pearson $r\!=\!0.360$). Restricting the pipeline to the one feature that clears reliability moves accuracy from 64.7\% to \textbf{54.5\%} (Appendix~\ref{app:feature_validity}); we let that comparison stand rather than attributing a share of the signal. The L-indep claims (the rule, the 30--41\,pp collapse) are unaffected.
-
-\subsection{Transfer Beyond Instructed Roleplay (Secondary)}
 \label{sec:transfer_regimes}
 \label{sec:blackbox_vs_whitebox}
-
 \label{sec:haiku_defensiveness}
-Detection degrades as the instruction is withdrawn (§\ref{sec:paraphrase_invariance}). Two frontier targets fail in opposite ways (marker suppression on Claude Sonnet~4.5, classifier-transfer failure on Llama~4~Maverick) but at $n\!=\!2$ with a same-family confound neither is interpretable (Appendix~\ref{app:frontier_preliminary}).
+The $n\!=\!100$/3-annotator study (Appendix~\ref{app:human_icc_n100}) gives Krippendorff's $\alpha\!=\!0.606$ for correction-marker density but 0.070--0.264 for the other four, so we claim \emph{reliability} only, not construct validity; keeping only the feature that clears it moves accuracy from 64.7\% to \textbf{54.5\%} (Appendix~\ref{app:feature_validity}), leaving the L-indep claims unaffected. Transfer beyond instructed roleplay is exploratory and null or near-null once the system prompt is controlled for (Appendices~\ref{app:autonomous_transfer},~\ref{app:frontier_preliminary}).
 
-\subsection{Summary of Contributions}
+\paragraph{Scope, generalization, and limitations.}
 \label{sec:novelty}
-
-The contribution is the \textbf{causal evaluation protocol}: three diagnostics attribute reported accuracy to instruction-following (30--41\,pp), extractor quality ($+$7--10\,pp), and surface-lexical patterns, with the factorial (§\ref{sec:factorial}) supplying the causal test. Applied to prior work's own detector, the conclusion is not contingent on our pipeline: the same collapse appears in the mechanism of \citet{pacchiardi2023catch} and in white-box SAPLMA-style probes (§\ref{sec:saplma_application}).
 \label{sec:protocol_generality}
-
-\paragraph{Generalization, false positives, and limitations.}
 \label{sec:loo_across_models}
 \label{sec:limitations}
 \label{sec:interrogation_role}
 \label{sec:deployment}
-Leave-one-model-out yields \textbf{64.2\%} [CI: 59--69\%], within 3.0\,pp of pooled LOO (67.1\%); leave-one-claim-pair-out yields \textbf{67.4\%}, matching trial LOO to 0.3\,pp and ruling out claim-level leakage. The rule fired once in 300 benign trials (0.3\%). Targets are instruction-tuned $\leq$70B; frontier and multilingual/autonomous regimes are open (Appendices~\ref{app:loo_across_models},~\ref{app:limitations_detail},~\ref{app:future_directions}).
+
+Leave-one-model-out yields \textbf{64.2\%} [59--69\%]. Two claims must not be conflated: the \emph{collapse} replicates across two detectors, two claim sets and two probe banks and is the paper's general finding, whereas the \emph{residual signal} does not transfer across models. \textbf{That non-transfer supports the thesis rather than undercutting it}: a robust deception representation would transfer; a model-specific behavioral residual is what the identification argument predicts is left over. \textbf{Intervention (B) remains unsupplied} (EXP-IB is null on its primary target and could not be built at scale, Appendix~\ref{app:intervention_b}), and criterion 4 is testable only externally, where the one corpus that can express it returns a null, so \textbf{no design reported here attributes the signal to deception}---the paper's claim rather than a gap in it. Targets are instruction-tuned $\leq$70B; larger models and multilingual regimes are open (Appendices~\ref{app:loo_across_models},~\ref{app:limitations_detail}).

@@ -134,20 +134,30 @@
     "missing": []
   },
   {
-    "key": "anthropic2024claude",
+    "key": "anthropic2025haiku45",
     "type": "techreport",
-    "title": "Claude 4.5 Model Family: Sonnet, Opus, Haiku",
+    "title": "Claude Haiku 4.5 System Card",
     "authors": "Anthropic",
     "arxiv": null,
     "doi": null,
     "has_others": false,
     "mode": "title",
-    "query": "Claude 4.5 Model Family: Sonnet, Opus, Haiku",
-    "status": "NO_DATA",
-    "fetched_title": "",
-    "fetched_authors": "",
-    "extra": [],
-    "missing": []
+    "query": "Claude Haiku 4.5 System Card",
+    "status": "SUSPECT_AUTHORS",
+    "fetched_title": "Automatic credit card approval prediction system",
+    "fetched_authors": "Bhaskar, Astha and Rani, Ritu and Jaiswal, Garima and Dev, Amita and Sharma, Arun and Bansal, Poonam and Gupta, Umesh",
+    "extra": [
+      "anthropic"
+    ],
+    "missing": [
+      "bhaskar",
+      "rani",
+      "jaiswal",
+      "dev",
+      "sharma",
+      "bansal",
+      "gupta"
+    ]
   },
   {
     "key": "burns2022discovering",
@@ -1169,6 +1179,61 @@
       "kenealy",
       "dadashi",
       "andreev"
+    ]
+  },
+  {
+    "key": "kretschmar2025liarsbench",
+    "type": "article",
+    "title": "Liars' Bench: Evaluating Lie Detectors for Language Models",
+    "authors": "Kretschmar, Kieron and Laurito, Walter and Maiya, Sharan and Marks, Samuel",
+    "arxiv": "2511.16035",
+    "doi": null,
+    "has_others": false,
+    "mode": "arxiv",
+    "query": "2511.16035",
+    "status": "OK",
+    "fetched_title": "Liars' Bench: Evaluating Lie Detectors for Language Models",
+    "fetched_authors": "Kretschmar, Kieron and Laurito, Walter and Maiya, Sharan and Marks, Samuel",
+    "extra": [],
+    "missing": []
+  },
+  {
+    "key": "cooney2026didyoulie",
+    "type": "article",
+    "title": "``Did you lie?'' Evaluating Lie Detectors across Model Scale and Belief-Verified Model Organisms",
+    "authors": "Cooney, Alan and Africa, David and Irving, Geoffrey",
+    "arxiv": "2606.12618",
+    "doi": null,
+    "has_others": false,
+    "mode": "arxiv",
+    "query": "2606.12618",
+    "status": "OK",
+    "fetched_title": "\"Did you lie?\" Evaluating Lie Detectors across Model Scale and Belief-Verified Model Organisms",
+    "fetched_authors": "Cooney, Alan and Africa, David and Irving, Geoffrey",
+    "extra": [],
+    "missing": []
+  },
+  {
+    "key": "hopkins2026liedetectors",
+    "type": "misc",
+    "title": "Fine-Tuned Lie Detectors Failed to Generalize",
+    "authors": "Hopkins, Jack and Khullar, Dipika and Wang, Rowan and Roger, Fabien",
+    "arxiv": null,
+    "doi": null,
+    "has_others": false,
+    "mode": "title",
+    "query": "Fine-Tuned Lie Detectors Failed to Generalize",
+    "status": "SUSPECT_AUTHORS",
+    "fetched_title": "Humans as Lie Detectors",
+    "fetched_authors": "Kraut, Robert",
+    "extra": [
+      "hopkins",
+      "khullar",
+      "wang",
+      "roger"
+    ],
+    "missing": [
+      "kraut"
     ]
   }
 ]

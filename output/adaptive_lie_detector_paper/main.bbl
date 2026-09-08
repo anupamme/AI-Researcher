@@ -1,15 +1,15 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{25}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[{Anthropic}(2025)]{anthropic2024claude}
+\bibitem[{Anthropic}(2025)]{anthropic2025haiku45}
 {Anthropic}.
-\newblock Claude 4.5 model family: {Sonnet}, {Opus}, {Haiku}.
-\newblock Technical report, Anthropic, 2025.
-\newblock URL \url{https://www.anthropic.com/claude}.
+\newblock Claude {Haiku} 4.5 system card.
+\newblock Technical report, Anthropic, oct 2025.
+\newblock URL \url{https://www.anthropic.com/claude-haiku-4-5-system-card}.
 
 \bibitem[Azaria \& Mitchell(2023)Azaria and Mitchell]{azaria2023internal}
 Amos Azaria and Tom Mitchell.
@@ -21,6 +21,13 @@ Amos Azaria and Tom Mitchell.
 Collin Burns, Haotian Ye, Dan Klein, and Jacob Steinhardt.
 \newblock Discovering latent knowledge in language models without supervision.
 \newblock \emph{arXiv preprint arXiv:2212.03827}, 2022.
+
+\bibitem[Cooney et~al.(2026)Cooney, Africa, and Irving]{cooney2026didyoulie}
+Alan Cooney, David Africa, and Geoffrey Irving.
+\newblock ``did you lie?'' evaluating lie detectors across model scale and
+  belief-verified model organisms.
+\newblock \emph{arXiv preprint arXiv:2606.12618}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.12618}.
 
 \bibitem[Denison et~al.(2024)Denison, MacDiarmid, Barez, Duvenaud, Kravec,
   Marks, Schiefer, Soklaski, Tamkin, Kaplan, Shlegeris, Bowman, Perez, and
@@ -48,6 +55,13 @@ Deep Ganguli, Liane Lovitt, Jackson Kernion, Amanda Askell, Yuntao Bai, Saurav
   behaviors, and lessons learned.
 \newblock \emph{arXiv preprint arXiv:2209.07858}, 2022.
 
+\bibitem[Goldowsky-Dill et~al.(2025)Goldowsky-Dill, Chughtai, Heimersheim, and
+  Hobbhahn]{goldowskydill2025probes}
+Nicholas Goldowsky-Dill, Bilal Chughtai, Stefan Heimersheim, and Marius
+  Hobbhahn.
+\newblock Detecting strategic deception using linear probes.
+\newblock \emph{arXiv preprint arXiv:2502.03407}, 2025.
+
 \bibitem[Goodfellow et~al.(2014)Goodfellow, Shlens, and
   Szegedy]{goodfellow2014explaining}
 Ian~J. Goodfellow, Jonathon Shlens, and Christian Szegedy.
@@ -71,6 +85,13 @@ Thilo Hagendorff.
 \newblock Deception abilities emerge in large language models.
 \newblock \emph{Proceedings of the National Academy of Sciences}, 121\penalty0
   (24):\penalty0 e2317967121, 2024.
+
+\bibitem[Hopkins et~al.(2026)Hopkins, Khullar, Wang, and
+  Roger]{hopkins2026liedetectors}
+Jack Hopkins, Dipika Khullar, Rowan Wang, and Fabien Roger.
+\newblock Fine-tuned lie detectors failed to generalize.
+\newblock Anthropic Alignment Science Blog, August 2026.
+\newblock URL \url{https://alignment.anthropic.com/2026/lie-detectors/}.
 
 \bibitem[Hubinger et~al.(2019)Hubinger, van Merwijk, Mikulik, Skalse, and
   Garrabrant]{hubinger2019risks}
@@ -108,6 +129,13 @@ Albert~Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford,
   Timoth{\'e}e Lacroix, and William~El Sayed.
 \newblock Mistral 7b.
 \newblock \emph{arXiv preprint arXiv:2310.06825}, 2023.
+
+\bibitem[Kretschmar et~al.(2025)Kretschmar, Laurito, Maiya, and
+  Marks]{kretschmar2025liarsbench}
+Kieron Kretschmar, Walter Laurito, Sharan Maiya, and Samuel Marks.
+\newblock Liars' bench: Evaluating lie detectors for language models.
+\newblock \emph{arXiv preprint arXiv:2511.16035}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2511.16035}.
 
 \bibitem[Li et~al.(2023)Li, Patel, Vi{\'e}gas, Pfister, and
   Wattenberg]{li2024inference}
