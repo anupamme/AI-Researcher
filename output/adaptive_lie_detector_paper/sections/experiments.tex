@@ -6,27 +6,6 @@
 
 We evaluate seven LLMs across three families---Llama~3.2~3B, Llama~3.1~8B, Llama~3.3~70B~\cite{meta2024llama3}, Mistral~7B~\cite{jiang2023mistral}, Qwen~2.5~7B/14B~\cite{qwen2025qwen25}, Claude Haiku~4.5~\cite{anthropic2025haiku45}---at $n=50$--100 balanced trials per condition, plus Qwen~2.5~32B in the scale sweep and EXP-R1. Claude Haiku~4.5 is the interrogator and feature extractor throughout (cross-family for every target but itself). Claims are 50 matched true/false factual pairs (``Water boils at 100\textdegree C'' vs.\ ``at 85\textdegree C''; Appendix~\ref{app:claims}), tested \emph{instructed} and \emph{prompt-equalized}. Model diversity here shows the failure is not tied to one detector/model pair; it is \emph{not} an exhaustive survey of frontier models. \textbf{Four experiments carry the argument}---§\ref{sec:r1_faithful}, §\ref{sec:prompt_equalized}, §\ref{sec:hedging_baseline} and §\ref{sec:external_audit}---with the factorial of §\ref{sec:factorial} a \emph{diagnostic} that sizes what they leave unattributable; Table~\ref{tab:what_establishes} states what each establishes and the nearest overclaim it does not, Table~\ref{tab:experiment_summary} the full inventory.
 
-\begin{table}[t]
-\centering
-\caption{What each experiment establishes---and the nearest conclusion it does \emph{not} support. Four experiments carry the argument (§\ref{sec:r1_faithful}, §\ref{sec:prompt_equalized}, §\ref{sec:hedging_baseline}, §\ref{sec:external_audit}); the factorial is a diagnostic and transfer and human validation are in §\ref{sec:discussion}. Results are given in the text. \emph{Unattributable} means the design cannot assign an effect to deception rather than to compliance with the instruction that produced it (§\ref{sec:identification}).}
-\label{tab:what_establishes}
-\begin{scriptsize}
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}p{1.35in}p{3.90in}@{}}
-\toprule
-\textbf{Experiment} & \textbf{What it establishes---and what it does not} \\
-\midrule
-\textbf{1--2.} Both detectors collapse under equalization (EXP-R1, R1b/R1c; EXP-A) & The collapse belongs to the \emph{paradigm}, not one pipeline: two mechanistically unrelated detectors fail under one control, on two claim sets and two probe banks. \emph{Not}: that no deception-specific signal exists, nor that the residual \emph{is} compliance \\
-\addlinespace[1pt]
-\emph{Diagnostic:} $2\!\times\!2$ factorial & The size of the unattributable component, and that output moves within one identically-labelled condition. \emph{Not}: that latent $D$ was held fixed, nor a causal attribution \\
-\addlinespace[1pt]
-\textbf{3.} Regex baseline, adversary, and belief strata (EXP-B, pre-registered; \emph{observational}) & Measured accuracy is achievable from a surface feature that is neither deception-specific nor paraphrase-robust, and part of the residual tracks whether the model \emph{knows} the claim, where no deception exists. \emph{Not}: that no latent deception signal exists; not a causal $B\!\to\!S$ effect \\
-\addlinespace[1pt]
-\textbf{4.} External audit of 10 published rollout sets (EXP-XA) & Criterion 4 gets a verdict from data we did not collect, and the channel scored is itself an audit criterion. \emph{Not}: that these corpora hold no deception-specific signal---only that this rule finds none in the channel a deployed detector reads \\
-\bottomrule
-\end{tabular}
-\end{scriptsize}
-\end{table}
 
 \paragraph{Statistical analysis policy.} \textbf{Confirmatory} (permutation-tested): the equalization collapse (EXP-R1, EXP-A), below-chance factorial detection, cross-model LOO. \textbf{Pre-registered}: EXP-R1b, EXP-B, EXP-XA's confirmatory arm. All else is exploratory or descriptive. The inferential unit is the \textbf{target~$\times$~claim-pair}: trials within a claim pair are clustered and never treated as independent, so every cross-validation split is grouped by claim pair and permutations are drawn within it. Pooled accuracies are descriptive summaries, not tests.
 
@@ -74,30 +53,32 @@ EXP-B holds the neutral prompt fixed---so no cell contains a deception instructi
 \subsection{Experiment 4: No Published Benchmark Supplies Criterion 4 (EXP-XA)}
 \label{sec:external_audit}
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering
-\caption{EXP-XA: criterion 4 on ten rollout sets released with \citet{goldowskydill2025probes}, scored by §\ref{sec:hedging_baseline}'s rule offline with no model calls. Gates are pre-specified: $E$ counts as fixed only if every rollout shares one byte-identical system prompt, and the rule must fire on 5--95\% of some cell of at least 10 rollouts to be applicable, so a rule undefined outside its native format is reported as \emph{inapplicable} rather than as 0\% accuracy. One set is testable; it is null (Appendix~\ref{app:external_audit}).}
+\caption{Criterion 4 on ten published rollout sets, scored offline with no model calls. Gates are pre-specified: $E$ counts as fixed only if every rollout shares one byte-identical system prompt, and a rule must fire on 5--95\% of some cell of $\geq$10 rollouts to be applicable. Two sets are testable and they disagree, for reasons the last column gives (Appendices~\ref{app:external_audit},~\ref{app:insider_audit}).}
 \label{tab:external_audit}
 \begin{scriptsize}
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}p{1.28in}p{0.50in}p{0.60in}p{2.42in}@{}}
+\begin{tabular}{@{}p{1.20in}p{0.42in}p{3.10in}@{}}
 \toprule
-\textbf{Rollout set} & \textbf{$n$} & \textbf{Fire rate} & \textbf{Criterion-4 verdict} \\
+\textbf{Rollout set} & \textbf{$n$} & \textbf{Criterion-4 verdict} \\
 \midrule
-Sandbagging, WMDP/MMLU & 1000 & 6.6--14.3\% & \textbf{Testable---and NULL}: $+4.1$\,pp ($p\!=\!0.32$), $+7.7$\,pp ($p\!=\!0.17$) \\
+Sandbagging, WMDP/MMLU & 1000 & \textbf{Testable---NULL}: $+4.1$/$+7.7$\,pp ($p\!\geq\!0.17$) on the visible channel, while its \emph{hidden} scaffold would report $+84.3$\,pp \\
 \addlinespace[1pt]
-Sandbagging held-out tag; insider trading; paired-fact honesty; AI audit ($\times$2) & 366; 173; 40; 8, 16 & 0.0--12.5\% & Inapplicable: the rule is degenerate or underpowered in every cell---criterion 5 failing outside the format it was written for, not an accuracy of 0\% \\
+Insider trading, on-policy & 173 & \textbf{Testable---POSITIVE} with a format-matched rule: $-77.1$\,pp, larger on the visible channel than the full transcript. Exploratory, unreplicated, and \emph{construct-recovery}: the corpus's own annotation reproduces it at 1.9\% vs.\ 100\% \\
 \addlinespace[1pt]
-Roleplaying ($\times$2); AI Liar & 371; 371; 54 & --- & \textbf{Ineligible}: 371/371/54 distinct system prompts---$E$ is not fixed, so intervention (A) is unavailable by construction \\
+Sandbagging held-out tag; paired-fact honesty; AI audit ($\times$2) & 366; 40; 8, 16 & Inapplicable \emph{to our rule}: degenerate or underpowered in every cell---criterion 5 failing outside the format it was written for, not an accuracy of 0\% \\
 \addlinespace[1pt]
-Goal-directed lying & 27 & --- & Ineligible: prompt materials, no model outputs \\
+Roleplaying ($\times$2); AI Liar; goal-directed lying & 371; 371; 54; 27 & \textbf{Ineligible}: 371/371/54 distinct system prompts, so $E$ is not fixed by construction; the fourth is prompt materials with no model outputs \\
 \bottomrule
 \end{tabular}
 \end{scriptsize}
 \end{table}
 
-Criterion 4 needs a corpus in which $D$ varies while $E$ does not, which our own materials cannot be. We audit ten rollout sets released with \citet{goldowskydill2025probes}, applying §\ref{sec:hedging_baseline}'s rule unchanged and offline and reading $D$ from each corpus's own per-rollout deception grade, which is distinct from the condition label. The sandbagging arm was inspected before pre-registration and is \textbf{exploratory}; a \textbf{pre-registered} arm on five held-out sets fixed the hypothesis, the pattern list, the text channel, both gates and all four reporting branches before any number was computed.
+Criterion 4 needs a corpus in which $D$ varies while $E$ does not, which our own materials cannot be. We audit ten rollout sets released with \citet{goldowskydill2025probes} offline, reading $D$ from each corpus's own per-rollout deception grade, which is distinct from the condition label. Sets inspected before pre-registration are \textbf{exploratory}; a \textbf{pre-registered} arm on held-out sets fixed every hypothesis, gate and reporting branch in advance.
 
-\paragraph{Result: one set can supply criterion 4, and it returns a null.} Three sets vary the system prompt per item and so cannot supply criterion 4 at all; five leave the rule inapplicable, firing on 0.0--12.5\% of trials with no cell both informative and of usable size---criterion 5 failing outside the format the rule was written for; one carries no model outputs. The single set clearing both gates is sandbagging ($n\!=\!1000$, one system prompt across all rollouts): at fixed condition label, realized deception moves the rule $+4.1$\,pp ($p\!=\!0.32$) and $+7.7$\,pp ($p\!=\!0.17$)---\textbf{null}. Restating $D$ without the corpus's LLM grader (final answer $\neq$ the item's key, 99.7\% parsed) is null as well, $+2.5$ and $+2.7$\,pp---criterion~4 needs an \emph{independently validated} proxy for $D$, not a second LLM judge reading the text the detector reads. \textbf{This is no evidence of a signal in the deployed-observable channel, not evidence that none exists}.
+\paragraph{Result: one set supplies criterion 4 for our rule, and returns a null.} Table~\ref{tab:external_audit} gives the per-set verdicts. The set clearing both gates is sandbagging ($n\!=\!1000$, one system prompt throughout): at fixed condition label, realized deception moves the rule $+4.1$\,pp ($p\!=\!0.32$) and $+7.7$\,pp ($p\!=\!0.17$)---\textbf{null}. Restating $D$ without the corpus's LLM grader (final answer $\neq$ the item's key, 99.7\% parsed) is null as well, $+2.5$ and $+2.7$\,pp---criterion~4 needs an \emph{independently validated} proxy for $D$, not a second LLM judge reading the text the detector reads. \textbf{This is no evidence of a signal in the deployed-observable channel, not evidence that none exists}.
 
-\paragraph{The channel a detector reads is itself an audit criterion.} On the \emph{full} transcript the same rule instead looks decisive---$+84.3$\,pp (92.0\% vs.\ 7.7\%, $p\!=\!0.0001$)---and the gap between those two numbers is the finding. The benchmark mandates a four-step scaffold whose system prompt declares steps 1--3 hidden from the user and asks for an ``\emph{incorrect} answer''; one pattern, \texttt{incorrect}, fires on 91.5\% of graded-deceptive full transcripts but 10.8\% of the same trials' visible answers, and no other exceeds 8\% anywhere. \textbf{The apparent effect is the model echoing its own instruction in a channel no deployed detector could read}, and it reproduces on the held-out tag ($+74.3$ vs.\ $+1.4$\,pp). That is §\ref{sec:identification}'s confound one level down---not the instruction producing the deception, but its \emph{wording} leaking into the scored text---and it adds a fourth requirement: a corpus supplies criterion 4 only if it (i)~fixes the elicitation prompt, (ii)~grades $D$ independently of the condition label, (iii)~observes the same item under both conditions, so incapability is separable from deception, and (iv)~exposes only the channel a deployed detector would read. \textbf{No audited set satisfies all four}: sandbagging meets (i)--(ii), fails (iii)--(iv), and every other set fails (i) or the applicability gate.
+\paragraph{The channel a detector reads is itself an audit criterion.} On the \emph{full} transcript the same rule looks decisive ($+84.3$\,pp, $p\!=\!0.0001$), and the gap is the finding. The benchmark mandates a four-step scaffold whose system prompt declares steps 1--3 hidden and asks for an ``\emph{incorrect} answer''; one pattern, \texttt{incorrect}, fires on 91.5\% of graded-deceptive full transcripts but 10.8\% of the same trials' visible answers, no other exceeding 8\%. \textbf{The apparent effect is the model echoing its own instruction in a channel no deployed detector could read}, and it reproduces on the held-out tag ($+74.3$ vs.\ $+1.4$\,pp). That is §\ref{sec:identification}'s confound one level down---the instruction's \emph{wording} leaking into the scored text---and it adds a fourth requirement: a corpus supplies criterion 4 only if it (i)~fixes the elicitation prompt, (ii)~grades $D$ independently of the condition label, (iii)~observes the same item under both conditions, so incapability is separable from deception, and (iv)~exposes only the channel a deployed detector would read. Sandbagging meets (i)--(ii) and fails (iii)--(iv).
+
+\paragraph{One corpus meets all four and passes---which is why a fifth is needed (EXP-IT).} One audited set fails only \emph{our rule}: on-policy insider trading fixes the system prompt, holds the label \emph{constant} and resamples each scenario ${\sim}16$ times, so (i)--(iii) hold, and its 0.0\% fire rate above is our interrogation regex meeting an agentic transcript. A format-matched disclosure rule separates realized deception by $-77.1$\,pp within scenario, \emph{more} on the visible channel than the full transcript, so (iv) holds too. But the corpus's own annotation reproduces that split at 1.9\% vs.\ 100.0\%---degenerate by our own gate---because here deceiving \emph{is} omitting the source, so rule and grader share evidence by construction. Passing is \textbf{construct-recovery, not detection}, and it is exploratory and unreplicated (Appendix~\ref{app:insider_audit}). Hence (v)~$D$ must rest on evidence not definitionally equivalent to the detector's input. \textbf{No audited set satisfies all five.}

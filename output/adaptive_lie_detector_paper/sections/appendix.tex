@@ -1345,6 +1345,43 @@ Qwen 2.5 14B & \multicolumn{5}{l}{unrunnable: 3/164 endorsed, below the pre-regi
 
 \paragraph{Deviations, and what this appendix does not establish.} Four deviations from the pre-registration are recorded in \texttt{docs/PREREG\_EXP\_XA.md}: the original scaffold-stripping rule was vacuous (it would have deleted \texttt{<step4>}, the answer itself) and was replaced \emph{before any number was computed} by the stricter user-visible channel; per-grader grade lists required a majority rule; the capability screen proved unrunnable; and one held-out file stores its grade under a different key while another turned out to be prompt materials with no model outputs. This audit does \textbf{not} show that no deception-specific signal exists in the sandbagging corpus---it shows that \emph{this} rule does not detect one in the channel a deployed detector could read, and that a detector reading the hidden channel would report a large effect that is entirely an artifact of prompt wording. Nor does the inapplicability of the rule on five sets license any claim about detectors built for those formats. Reproduction: \texttt{experiments/run\_external\_audit.py} and \texttt{experiments/analyze\_external\_audit.py} regenerate every number above from vendored JSON with no model calls.
 
+\begin{table}[h]
+\centering
+\caption{What each experiment establishes---and the nearest conclusion it does \emph{not} support. Four experiments carry the argument (§\ref{sec:r1_faithful}, §\ref{sec:prompt_equalized}, §\ref{sec:hedging_baseline}, §\ref{sec:external_audit}); the factorial is a diagnostic and transfer and human validation are in §\ref{sec:discussion}. Results are given in the text. \emph{Unattributable} means the design cannot assign an effect to deception rather than to compliance with the instruction that produced it (§\ref{sec:identification}).}
+\label{tab:what_establishes}
+\begin{scriptsize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{1.35in}p{3.90in}@{}}
+\toprule
+\textbf{Experiment} & \textbf{What it establishes---and what it does not} \\
+\midrule
+\textbf{1--2.} Both detectors collapse under equalization (EXP-R1, R1b/R1c; EXP-A) & The collapse belongs to the \emph{paradigm}, not one pipeline: two mechanistically unrelated detectors fail under one control, on two claim sets and two probe banks. \emph{Not}: that no deception-specific signal exists, nor that the residual \emph{is} compliance \\
+\addlinespace[1pt]
+\emph{Diagnostic:} $2\!\times\!2$ factorial & The size of the unattributable component, and that output moves within one identically-labelled condition. \emph{Not}: that latent $D$ was held fixed, nor a causal attribution \\
+\addlinespace[1pt]
+\textbf{3.} Regex baseline, adversary, and belief strata (EXP-B, pre-registered; \emph{observational}) & Measured accuracy is achievable from a surface feature that is neither deception-specific nor paraphrase-robust, and part of the residual tracks whether the model \emph{knows} the claim, where no deception exists. \emph{Not}: that no latent deception signal exists; not a causal $B\!\to\!S$ effect \\
+\addlinespace[1pt]
+\textbf{4.} External audit of 10 published rollout sets (EXP-XA) & Criterion 4 gets a verdict from data we did not collect, and the channel scored is itself an audit criterion. \emph{Not}: that these corpora hold no deception-specific signal---only that this rule finds none in the channel a deployed detector reads \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
+\section{EXP-IT: Criterion 4 on an On-Policy, Incentive-Elicited Corpus}
+\label{app:insider_audit}
+
+\paragraph{Why this corpus, and what EXP-XA got wrong about it.} EXP-XA recorded on-policy insider trading as \emph{inapplicable} because the 14-pattern refusal/correction rule fires on 0.0\% of its 173 rollouts. That verdict is a fact about the rule, which was written for a multi-turn interrogation format and is undefined in an agentic tool-calling transcript, and not about the dataset. Structurally the corpus is the strongest criterion-4 instrument in the vendored release: one byte-identical system prompt across all 173 rollouts, an \texttt{expected\_label} that is \emph{constant} (\texttt{deceptive}) so the label carries no information, and 11 distinct scenarios resampled ${\sim}16$ times each, so the same item is observed under both realised conditions. Requirements (i)--(iii) of §\ref{sec:external_audit} hold where sandbagging failed (iii). No system prompt in the corpus contains deception vocabulary: the deception is elicited by goal conflict, not instruction.
+
+\paragraph{Materials, channel and rule.} Vendored from the same public Apollo release as EXP-XA; no model call and no network access. $D$ is read from the corpus's own \texttt{graded\_deception}. The \textbf{deployed-observable channel} is the body of the message the agent sends its manager, extracted positionally from the \texttt{Action Input:} block; the full transcript, which additionally carries the agent's \texttt{Reasoning:} preamble, is the secondary variant. The rule is one hand-specified parameter-free regex over disclosure vocabulary (\texttt{insider}, \texttt{non-public}, \texttt{confidential}, \texttt{colleague}, \dots), the format-matched analogue of §\ref{sec:hedging_baseline}'s refusal-count rule. Because disclosure indicates \emph{honesty} here, the directional hypothesis is negative, and it was fixed in the pre-registration before the confirmatory arm was opened.
+
+\paragraph{Result (exploratory).} Contrasts are computed \emph{within} scenario, where the elicitation is byte-identical, by scenario-stratified label permutation, 10{,}000 draws, seed 42, with a minimum of 5 rollouts per cell leaving 3 of 11 scenarios and 150 of 173 rollouts. On the visible channel the rule fires on 8.9\% of graded-deceptive against 85.9\% of graded-honest rollouts ($-77.1$\,pp, $p\!=\!0.0001$); per scenario the differences are $-83.8$, $-57.6$ and $-78.5$\,pp. On the full transcript the same contrast is $-55.8$\,pp: \textbf{smaller}, the inverse of the sandbagging artifact, so the signal here lives in the channel a deployed monitor would actually read.
+
+\paragraph{Why the positive is construct-recovery rather than detection.} Replacing the LLM grade with the corpus's own \texttt{report\_classification} (\texttt{Concealed} $\to$ deceptive, \texttt{Explicit} $\to$ honest, \texttt{Implied} excluded, a dichotomisation fixed in advance) separates the cells at 1.9\% versus 100.0\%. That is near-perfect, and the pre-registered applicability gate of §\ref{sec:external_audit} rejects it as degenerate rather than treating it as a stronger result. The reason is structural: on this corpus deceiving \emph{is} omitting the information source from the report, so any annotation of $D$ and any rule reading the report key on the same evidence. The corpus's grader reasoning states this outright, justifying a deceptive grade by quoting the report's own reference to insider information. Hence requirement (v): $D$ must be established by evidence that is not definitionally equivalent to the detector's input.
+
+\paragraph{The pre-registered replication could not be run.} The held-out doubling-down corpus (91 rollouts, 8 scenarios, elicitation again fixed) yields 85 graded-deceptive against 4 graded-honest, and no scenario reaches the minimum cell size in both cells; the largest pairs are 40/1, 25/1 and 11/0. The corpus also carries no \texttt{report\_classification}, so the annotation-independent test is unavailable there, recorded as DEVIATION~1. This is reported as inapplicable with its counts and never as an accuracy. It is itself a finding: \textbf{a corpus can hold the elicitation perfectly fixed and still be unable to express criterion 4, because the behaviour it elicits does not vary}---once the model has concealed the source, it doubles down almost always.
+
+\paragraph{What this does and does not establish.} It establishes that criterion 4 is testable on an on-policy incentive-elicited corpus, that it returns a positive there on the deployed-observable channel, and that EXP-XA's inapplicability verdict reflected our rule rather than the dataset. It does \textbf{not} establish that a deception-specific signal has been detected, and the positive is \textbf{not} replicated. Reproduction: \texttt{experiments/run\_insider\_audit.py} and \texttt{experiments/analyze\_insider\_audit.py}, pre-registration in \texttt{docs/PREREG\_EXP\_IT.md}.
+
 \section{Adversarial Paraphrase: n=50 Per-Model Results}
 \label{app:adv_n50}
 
