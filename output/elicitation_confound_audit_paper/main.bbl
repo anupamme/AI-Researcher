@@ -5,11 +5,11 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[{Anthropic}(2025)]{anthropic2024claude}
+\bibitem[{Anthropic}(2025)]{anthropic2025haiku45}
 {Anthropic}.
-\newblock Claude 4.5 model family: {Sonnet}, {Opus}, {Haiku}.
-\newblock Technical report, Anthropic, 2025.
-\newblock URL \url{https://www.anthropic.com/claude}.
+\newblock Claude {Haiku} 4.5 system card.
+\newblock Technical report, Anthropic, oct 2025.
+\newblock URL \url{https://www.anthropic.com/claude-haiku-4-5-system-card}.
 
 \bibitem[Azaria and Mitchell(2023)]{azaria2023internal}
 Amos Azaria and Tom Mitchell.
