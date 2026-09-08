@@ -87,8 +87,14 @@ construction is in Appendix~\ref{app:claims}; the interrogation pipeline is
 specified in Appendix~\ref{app:adage_details}; and the regex patterns for the
 label-free rule are in Appendix~\ref{app:regex_patterns}. Appendix~\ref{app:audit_protocol}
 opens with a roadmap separating the appendices the four main results rest on from
-those that are exploratory. Codebase, raw transcripts, per-trial result files, and
-a table-reproduction script will be released publicly.
+those that are exploratory. The external audits (§\ref{sec:external_audit},
+Appendices~\ref{app:external_audit},~\ref{app:insider_audit}) read a third-party
+corpus we do not redistribute: it is a git submodule pinned to one upstream
+commit, fetched with a single \texttt{git submodule update --init}, after which
+all eighteen audit result files regenerate byte-identically with no model call
+and no further network access (\texttt{docs/EXTERNAL\_DATA.md}). Codebase, raw
+transcripts, per-trial result files, and a table-reproduction script will be
+released publicly.
 
 \bibliographystyle{iclr2027_conference}
 \bibliography{references}
