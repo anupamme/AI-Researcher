@@ -92,7 +92,7 @@ A style-constraint adversary (Table~\ref{tab:adv_multimodel}) has a mechanical e
 \midrule
 Our claim benchmark, \textbf{black-box behavioral}: prior work's probe battery (EXP-R1/R1c), ADAGE (EXP-A), the parameter-free rule & $\times$ & \checkmark & $\times$ & --- & $\times$ & \textbf{Not attributable.} 97.0$\to$43.3\% under equalization, 69--80\% reachable with no fitting, LOO 64.2\%; criterion~4 is \emph{not expressible} by any instructed design \\
 \addlinespace[1.5pt]
-The same benchmark, \textbf{white-box linear probe} on residual activations (EXP-WP) & $\times$ & --- & $\times$ & --- & --- & \textbf{Reads the instruction.} At ceiling on $E$, transfers to equalized responses \emph{at chance}, and surface features alone reach 92.5--95.5\% vs.\ its 100.0\% \\
+The same benchmark, \textbf{white-box linear probe} on residual activations (EXP-WP) & $\times$ & --- & $\times$ & --- & \checkmark & \textbf{Reads the instruction.} At ceiling on $E$, transfers to equalized responses \emph{at chance}, and surface features alone reach 92.5--95.5\% vs.\ its 100.0\%. Both replicate on a disjoint claim set, so \emph{what} transfers is the $E$-decoding \\
 \addlinespace[1.5pt]
 Apollo sandbagging, \textbf{visible channel}: our surface rule against the \emph{release authors' own} LLM judge (EXP-XA/XJ) & \checkmark & \checkmark & \checkmark & \checkmark$^{\dagger}$ & --- & \textbf{Actual deception signal}, and \textbf{rule-null}: the judge separates realized deception at fixed $E$ (AUROC 0.71/0.94) where our rule does not ($+4.1$/$+7.7$\,pp) \\
 \addlinespace[1.5pt]
