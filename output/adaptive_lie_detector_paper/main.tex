@@ -45,7 +45,7 @@
 \providecommand{\answerTODO}[1][]{\textcolor{red}{[TODO] #1}}
 \providecommand{\justificationTODO}[1][]{\textcolor{red}{[Justification TODO] #1}}
 
-\title{What Does Lie-Detection Accuracy Measure? Causal Underidentification in Instructed LLM Deception Benchmarks}
+\title{Lie Detection or Instruction Following? Identifying What LLM Deception Benchmarks Actually Measure}
 
 % ICLR submissions are DOUBLE-BLIND. Authors must not appear in the submitted
 % version; non-anonymous submissions are rejected without review. Uncomment
@@ -78,9 +78,18 @@ all numbers in the text were checked against the emitted result files. AI tools
 were not used to generate data, results, or findings.
 
 \subsection*{Reproducibility statement}
-All experiments run against open-weight models served locally via Ollama, with
-fixed claim sets and fixed elicitation-question banks; no closed-model API is
-required to reproduce the central result (EXP-R1, §\ref{sec:r1_faithful}).
+\textbf{The central result requires no closed-model API.} EXP-R1/R1b/R1c
+(§\ref{sec:r1_faithful}) run against six open-weight targets served locally via
+Ollama---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B---with
+fixed claim sets, fixed elicitation-question banks, and \emph{no} LLM feature
+scoring: that detector is a logistic regression over binarised yes/no replies,
+so no API-served model enters its pipeline at any stage.
+The interrogation-pipeline experiments \emph{do} use a closed model: Claude
+Haiku~4.5 is the interrogator and feature extractor throughout, via AWS
+Bedrock, and Llama~3.1~8B, Llama~3.3~70B, Mistral Large~3 and Llama~4~Maverick
+are Bedrock-served as targets, the remaining open-weight targets running locally
+under Ollama (per-experiment infrastructure and cost in
+Appendix~\ref{app:compute_cost}).
 The protocol, the full 16-question elicitation bank, condition prompts, and
 answer-parsing rules are given in Appendix~\ref{app:r1_protocol}; claim
 construction is in Appendix~\ref{app:claims}; the interrogation pipeline is

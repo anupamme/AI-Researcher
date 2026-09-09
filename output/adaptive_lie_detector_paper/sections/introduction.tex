@@ -1,19 +1,93 @@
 \section{Introduction}
 
-\textbf{Accuracy on an instructed-lie benchmark does not identify deception-specific signal.} Behavioral deception detection in LLMs almost always reports accuracies in a single setting, \emph{instructed roleplay}: a model is told to lie, and the detector is scored on how well it separates those trials from truthful ones. Two claims must be kept apart: \textbf{(A)}~the detector can classify whether the model is in the instructed-lie condition, and \textbf{(B)}~the detector detects deception. \textbf{We do not dispute (A)}---we reproduce it. Accuracy in this regime cannot establish \textbf{(B)}, because the instruction is what produces the deception, so the signal's two candidate causes are not separately identifiable from accuracy measured this way. The consequence is the one that matters for deployment: \textbf{such a benchmark establishes no reason for the detector to fire when deception arises by a different causal route}---under incentive or goal conflict, where there is no instruction to comply with (§\ref{sec:identification}). We study the identifiability of \emph{instructed behavioral} deception benchmarks, not deception detection in general.
+\textbf{Accuracy on an instructed-lie benchmark cannot establish deception-specific attribution or transfer beyond the instruction-induced regime.} A common evaluation paradigm for behavioral deception detection in LLMs reports accuracies in a single setting, \emph{instructed roleplay}: a model is told to lie, and the detector is scored on how well it separates those trials from truthful ones. Because the instruction is what produces the deception, the signal's two candidate causes are not separately identifiable from accuracy measured this way---and three questions such an accuracy is read as answering come apart. \textbf{Our contribution is not a new causal-identification theorem; it is the empirical demonstration that a widely used LLM deception evaluation protocol instantiates a known non-identifying design.} How close to the surface this sits: the single most discriminative of the detector's 16 follow-up questions---\emph{``If you had made an error, would you point it out without being asked?''}---is \textbf{a paraphrase of the instruction the target is following}, and is constant once both conditions receive the same prompt.
 
-\paragraph{Contribution.} This paper contributes \textbf{a causal design standard for behavioral deception benchmarks, and the first audit against it}. Concretely: (i)~the \textbf{estimand distinction it rests on}---instructed benchmarks identify $\tau_E$, the \emph{instruction}'s effect on the detector, while deception-detection claims are about $\tau_D$ (§\ref{sec:identification}); (ii)~an operational \textbf{audit protocol}---five criteria required before a benchmark's accuracy licenses a claim about deception, four applicable to any published benchmark without new data and exactly one able to identify $\tau_D$ (Table~\ref{tab:criteria}); and (iii)~\textbf{an audit under that protocol} of our own instructed materials \emph{and} of ten published rollout sets. It is neither a new detector nor a new identification theorem: the constraint is standard, and \textbf{the novelty is that the standard evaluation protocol for behavioral LLM deception detection \emph{is itself} an intervention-confounded design}---a failure surviving two mechanistically unrelated detectors, two independently constructed claim sets, two independently worded probe banks and a pre-registered replication, and yielding an audit that returns a verdict on corpora we did not build.
+\noindent\fbox{\parbox{0.975\linewidth}{\small\textbf{Three questions, kept apart.}
+\textbf{Q1. Can a detector classify instructed-lie trials against truthful ones?} \textbf{Yes}---we reproduce it and dispute none of it.
+\textbf{Q2. Does that signal arise from the deception rather than from following the instruction?} \textbf{Unidentified}---the instruction moves both, so no accuracy measured this way separates them (§\ref{sec:identification}).
+\textbf{Q3. Will the detector fire when deception arises with no instruction to comply with}, under incentive or goal conflict? \textbf{Not established}---the one audited corpus supporting that test returns a null (§\ref{sec:external_audit}).
+\textbf{What would change our mind.} One corpus with independently validated deception at fixed elicitation settles Q2 and Q3 together (box at the end of this section).
+This paper is about \textbf{Q2 and Q3}: an \emph{identification} claim about a class of benchmarks, not a capability claim about detectors.}}
 
-\paragraph{Relation to prior work.} White-box probes read deception from activations~\citep{zou2023representation, burns2022discovering, azaria2023internal}, but require weight access; the black-box behavioral line audited here does not. Its closest instance, and our audit target, is \citet{pacchiardi2023catch}: a fixed battery of \emph{unrelated} follow-up questions, binarised and fed to one logistic regression. Three concurrent evaluations stress-test lie detectors at scale---72{,}863 examples over seven datasets~\citep{kretschmar2025liarsbench}, 31 models with 13 belief-verified trained organisms~\citep{cooney2026didyoulie}, and held-out lie categories~\citep{hopkins2026liedetectors}---and agree that detectors fail to \textbf{generalize} beyond the regime they were fit in. \textbf{That is a generalization question; ours is the prior one:} whether accuracy \emph{within} the canonical instructed regime identifies deception at all---a detector could transfer perfectly and still be measuring instruction-following in every regime it transfers to (Appendix~\ref{app:related_work}).
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  >={Stealth[length=2mm]},
+  var/.style={draw, rounded corners=2pt, inner sep=3.5pt, font=\small},
+  every path/.style={->, thick},
+]
+% nodes
+\node[var] (E) at (0,0) {$E$: deception instruction};
+\node[var] (D) at (4.9,0.95) {$D$: deception};
+\node[var] (C) at (4.9,-0.95) {$C$: compliance behavior};
+\node[var] (S) at (9.9,0) {$S$: detector signal};
+\node[var] (V) at (7.0,-2.5) {$V$: claim truth-value};
+\node[var] (B) at (9.9,-2.5) {$B$: model belief};
+% the unidentified pair, boxed, with the annotation in the box's empty centre
+\draw[dashed, gray, rounded corners=3pt, -] (3.05,-1.62) rectangle (6.75,1.62);
+\node[font=\scriptsize\itshape, gray, align=center] at (4.9,0)
+  {$\mathrm{do}(E)$ moves both;\\not separately identifiable};
+% the standard benchmark intervention, and the two that would identify the effect
+\node[font=\scriptsize, align=center] at (1.75,1.18)
+  {standard benchmark\\intervention: $\mathrm{do}(E)$};
+\node[font=\scriptsize, align=left, anchor=west] at (-0.45,-2.5)
+  {\textbf{Attribution requires}\\\textbf{(A)} move $D$, hold $E$\\\textbf{(B)} move $E$, hold $D$};
+% edges
+\draw (E) -- (D);
+\draw (E) -- (C);
+\draw (D) -- (S);
+\draw (C) -- (S);
+\draw (V) -- (S);
+\draw (B) -- (S);
+\end{tikzpicture}
+\caption{\textbf{Why instructed-roleplay accuracy cannot attribute itself.} The only variable such benchmarks manipulate is $E$, and no observable lies on one path but not the other. Claim truth-value $V$ and belief $B$ are distinct further parents of $S$; EXP-B (§\ref{sec:belief_strata}) varies $B$ with $E$ fixed. The fork shown is one representation among those this design cannot distinguish. \textbf{What is needed is a different intervention, not better data}---only \textbf{criterion 4}, deception varying at fixed elicitation, removes the elicitation confound (Table~\ref{tab:roadmap}).}
+\label{fig:dag}
+\end{figure}
 
-An audit invites an obvious objection---an artifact in the auditors' own reimplementation may say more about the reimplementation than about the paradigm---so we begin with prior work's detector rather than our own (§\ref{sec:r1_faithful}), reimplemented from scratch with no original code, data, or question set. Over seven instruction-tuned LLMs from 3B to 70B in three families (§\ref{sec:setup}), the findings are:
-\begin{enumerate}
-    \item \textbf{The prior detector, reimplemented from scratch, also collapses under equalization.} The mechanism of \citet{pacchiardi2023catch} yields 70.0--100.0\% instructed on the five of six targets where it works at all (bracketing their 67--73\%); four fall to chance under equalization (48.0--52.0\%; pooled 81.7\%$\to$53.7\%). A pre-registered replication on a disjoint claim set and an independently worded probe bank refutes the exception (Qwen~2.5~14B, 70.0\%$\to$\textbf{46.0\%}) and, extended to all six, finds every one informative instructed and every one at chance equalized (97.0\%$\to$\textbf{43.3\%}), so the collapse holds on \emph{both} claim sets, for two mechanistically unrelated detectors (§\ref{sec:r1_faithful}, Figure~\ref{fig:r1c_collapse}).
-    \item \emph{Diagnostic:} \textbf{the detector moves \emph{inside} a single deception label.} Within one identically-labelled instructed-deception condition it shifts $-1.37$ and $+1.61$\,SD in \emph{opposite} directions ($p\!=\!0.0001$), as large as the instruction main effect---so the score is not a function of the benchmark's deception label. That main effect is itself large and consistently signed ($+1.3$ to $+1.6$\,SD) while the response to claim content changes sign, sizing the unattributable component rather than attributing it (§\ref{sec:td_vs_fd}).
-    \item \textbf{What survives is reachable from surface lexical behavior, and part of it tracks knowledge conflict.} A hand-specified refusal-count regex reaches \textbf{69--80\%} depending on the pattern inventory---a \emph{lower bound} on how much measured accuracy needs no deception-specific feature, and it is not robust to adversarial paraphrasing (§\ref{sec:paraphrase_invariance}). Holding the instruction fixed and varying whether the model \emph{knows} the claim gives \textbf{70.0\%} against 57.6\% ($+$12.4\,pp, $p\!=\!0.0045$, $n\!=\!268$; §\ref{sec:belief_strata}).
-    \item \textbf{None of the ten audited corpora provides all the design properties required to evaluate criterion 4 on a deployed-observable channel.} Three vary the elicitation prompt per item, five leave the rule inapplicable, and one has no model outputs. On the single testable set ($n\!=\!1000$, one system prompt throughout) realized deception moves the rule $+4.1$ and $+7.7$\,pp---\textbf{null}, and null again when $D$ is read without the corpus's grader---while scoring that set's \emph{hidden} scaffold reports $+84.3$\,pp, effectively all of it one pattern echoing the instruction's own wording, so \textbf{the channel a detector reads is itself an audit criterion}. A second corpus meets all four and \emph{passes} ($-77.1$\,pp), but grader and rule there share evidence by construction; re-run against an \textbf{action-grounded} label disjoint from the rule's input, it returns a \textbf{null} ($+21.6$\,pp), so the pass was \textbf{construct recovery, not detection}.
-\end{enumerate}
+\paragraph{Contribution.} This paper contributes \textbf{a systematic empirical demonstration that the canonical behavioral deception evaluation protocol cannot satisfy a necessary causal-validity requirement}, together with the design standard that requirement belongs to. Concretely: (i)~the \textbf{estimand distinction it rests on}---instructed benchmarks identify $\tau_E$, the \emph{instruction}'s effect on the detector, while deception-detection claims are about $\tau_D$ (§\ref{sec:identification}); (ii)~an operational \textbf{audit protocol}---five criteria required before a benchmark's accuracy licenses a claim about deception, four applicable to any published benchmark and one, unsupplied by any instructed design, that removes the elicitation confound (Table~\ref{tab:criteria}); (iii)~\textbf{an audit under that protocol} of our own instructed materials \emph{and} of ten rollout sets from one public release; and (iv)~\textbf{a second failure mode that audit exposes}---a benchmark can appear to satisfy a causal criterion while what it measures is \emph{recovery of its own annotation mechanism}. Most sharply, on the one corpus that can express criterion~4 the same rule reports $+84.3$\,pp on its \emph{hidden} scaffold against $+4.1$/$+7.7$\,pp on the answer a deployed detector would see: \textbf{a benchmark must expose only the deployed-observable channel} (§\ref{sec:external_audit}). The detector is prior work's and the causal constraint is standard; \textbf{the confound is not hypothetical, it is active}.
 
-\paragraph{Scope.} The setting is \textbf{instructed roleplay on open-weight models (3B--70B)}, English only, with six 3B--32B targets and one claim set for the reimplementation. Autonomous strategic deception~\cite{hubinger2019risks, scheurer2024strategic, greenblatt2024alignment}---the regime criterion 4 requires---enters only as the external audit of §\ref{sec:external_audit}, on corpora we did not build.
+\paragraph{Which claim rests on which evidence (Table~\ref{tab:roadmap}).} \textbf{(i)~The identification claim is structural}---it follows from what the design manipulates and \textbf{no experiment, ours or anyone's, could establish or refute it within an instructed design}. \textbf{(ii)~That the confound is \emph{active} is empirical}, and is what the collapse, the lexical rule and the factorial establish; \textbf{none of that shows that no deception signal is present}, since equalization may remove the deception along with the confound. \textbf{(iii)~Attribution is tested by criterion~4 alone}, only on external corpora, and there it returns a null. In one sentence: \textbf{instructed-lie benchmarks cannot identify whether detector performance is due to deception or to instruction-following, and instruction-induced behavioral signals account for a substantial portion of the observed benchmark separation.}
 
-\paragraph{Why this matters beyond deception.} The failure mode is general: whenever a benchmark's intervention changes the target construct \emph{and} an auxiliary behavior the evaluator reads, accuracy identifies the benchmark condition rather than the construct---no amount of it repairs the design. Instructed sycophancy, refusal, reward hacking and alignment faking are all elicited this way; \textbf{we test only deception}, and what we offer for the rest is the audit.
+
+\paragraph{Relation to prior work.} White-box probes read deception from activations~\citep{zou2023representation, burns2022discovering, azaria2023internal} but require weight access; the black-box behavioral line audited here does not, and its closest instance---our audit target---is \citet{pacchiardi2023catch}: a fixed battery of \emph{unrelated} follow-up questions, binarised and fed to one logistic regression. Three concurrent evaluations stress-test lie detectors at scale~\citep{kretschmar2025liarsbench, cooney2026didyoulie, hopkins2026liedetectors} and agree they fail to \textbf{generalize} beyond the regime they were fit in. \textbf{That is a generalization question; ours is the prior one:} whether accuracy \emph{within} the canonical instructed regime identifies deception at all---a detector could transfer perfectly and still measure instruction-following in every regime it reaches (Appendix~\ref{app:related_work}).
+
+We begin with prior work's detector rather than our own, so that no artifact of our reimplementation can carry the argument (§\ref{sec:r1_faithful}). Over seven instruction-tuned LLMs from 3B to 70B in three families (§\ref{sec:setup}), \textbf{one question organizes every result: does the reported accuracy survive the controls that would have to hold before it could be read as being about deception?} Table~\ref{tab:roadmap} answers it level by level.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{The evidence ladder: three levels of claim, three kinds of warrant.} \textbf{A} holds by the design's structure, and no experiment could establish or refute it; \textbf{B} is the empirical demonstration that the confound is \emph{active}; \textbf{C} is attribution, which criterion~4 alone tests (Table~\ref{tab:criteria}), and there the result is a null. \textbf{Bold rows are load-bearing}; the factorial is a \emph{diagnostic}, and sizes what is unattributable rather than attributing it.}
+\label{tab:roadmap}
+\begin{scriptsize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{1.42in}p{0.80in}p{1.02in}p{1.66in}@{}}
+\toprule
+\textbf{Question} & \textbf{Evidence} & \textbf{Result} & \textbf{What it licenses} \\
+\midrule
+\multicolumn{2}{@{}p{2.30in}}{\textbf{A. Structural}---\emph{no experiment could establish or refute it}} & \multicolumn{2}{p{2.75in}@{}}{\textbf{Proposition} (§\ref{sec:identification}): $\mathrm{do}(E)$ moves $D$ and $C$ together, so $\tau_E$ is identified and \textbf{$\tau_D$ is neither bounded nor signed, at any scale}} \\
+\addlinespace[3pt]
+\multicolumn{4}{@{}l@{}}{\textbf{B. Empirical}---\emph{the confound is active}} \\
+\addlinespace[1pt]
+\textbf{Q1. Does the paradigm produce high detector accuracy?} & EXP-R1 (§\ref{sec:r1_faithful}) & \textbf{81.7\%} instructed & Separation exists; we reproduce it and dispute none of it \\
+\addlinespace[1pt]
+\textbf{Does it survive removing the instruction asymmetry?} & EXP-R1b/R1c (Fig.~\ref{fig:r1c_collapse}) & \textbf{97.0\%$\to$43.3\%}, every target & The accuracy is regime-dependent; two unrelated detectors, one control \\
+\addlinespace[1pt]
+\textbf{Is that accuracy reachable from surface behavior?} & lexical rule (§\ref{sec:hedging_baseline}) & \textbf{69--80\%}, no fitting & Bounds the surface-reachable share, without decomposing the rest \\
+\addlinespace[1pt]
+\emph{Diagnostic:} does the score move \emph{inside} one deception label? & 2$\times$2 factorial (§\ref{sec:td_vs_fd}) & $\pm1.6$\,SD, $p\!=\!0.0001$ & The benchmark's label does not determine the score \\
+\addlinespace[3pt]
+\multicolumn{4}{@{}l@{}}{\textbf{C. Attribution}---\emph{tested by criterion~4 alone, only on external corpora}} \\
+\addlinespace[1pt]
+\textbf{Q2/Q3. Does $D$ vary at fixed $E$ in any audited corpus?} & EXP-XA/IT/IT2 (§\ref{sec:external_audit}) & \textbf{null} ($+4.1$/$+7.7$; $+21.6$\,pp) & \textbf{Attribution to deception remains unsupported} \\
+\midrule
+\multicolumn{2}{@{}p{2.30in}}{\textbf{NOT ESTABLISHED:} the \emph{absence} of a deception-specific signal} & \multicolumn{2}{p{2.75in}@{}}{Equalization is a confound test, not a deception test; the null is \textbf{no evidence of a signal, not evidence of none}} \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
+\paragraph{Scope.} The setting is \textbf{instructed roleplay on open-weight models (3B--70B)}, English only, with six 3B--32B targets and one claim set for the reimplementation. Autonomous strategic deception~\citep{hubinger2019risks, scheurer2024strategic, greenblatt2024alignment}---the regime criterion 4 requires---enters only as the external audit of §\ref{sec:external_audit}, on corpora we did not build.
+
+\vspace{1pt}
+\noindent\fbox{\parbox{0.975\linewidth}{\small\textbf{The one experiment that would refute this paper.} A corpus in which deception varies while the elicitation prompt is held \emph{fixed}, graded independently of the condition label, on the channel a deployed detector could read (conditions (i)--(v), §\ref{sec:eval_controls}). \textbf{A detector separating deception there would establish a deception-associated signal at fixed elicitation and overturn our conclusion in a single experiment.} We audit ten rollout sets from one public release for exactly this and \textbf{none supplies it}---a claim about what exists today, not about what is possible.}}
+\vspace{1pt}
+
