@@ -12,8 +12,7 @@ Write $E$ for the deception instruction, $C$ for compliance behavior, and $S$ fo
 \paragraph{Two estimands.} \textbf{A benchmark of this kind measures the effect of the \emph{instruction} on the detector. The claim it is read as supporting is about the effect of \emph{deception} on the detector.} These are different quantities:
 \begin{equation*}
 \tau_E \;=\; \mathbb{E}[S \mid \mathrm{do}(E{=}1)] - \mathbb{E}[S \mid \mathrm{do}(E{=}0)],
-\qquad
-\tau_D \;=\; \mathbb{E}[S \mid \mathrm{do}(D{=}1)] - \mathbb{E}[S \mid \mathrm{do}(D{=}0)],
+\qquad \tau_D \;\text{likewise, with } D \text{ in place of } E,
 \end{equation*}
 and benchmark accuracy is a monotone summary of $\tau_E$. \textbf{$\tau_D$ is the estimand the claim is about, not one we estimate}: $D$ is latent and not directly settable, so $\mathrm{do}(D)$ is a conceptual target rather than an available intervention, and the strongest thing an audit can ask for is the weaker quantity criterion~4 reaches---a deception-\emph{associated} signal at fixed elicitation (§\ref{sec:eval_controls}).
 
@@ -21,20 +20,14 @@ and benchmark accuracy is a monotone summary of $\tau_E$. \textbf{$\tau_D$ is th
 
 \paragraph{Corollary (scale does not help).} \emph{No estimator that is a function of interventions on $E$ and observations of $(V,E,S)$ identifies $\tau_D$, however precisely $\tau_E$ is estimated.} \textbf{No increase in accuracy, model scale, or detector sophistication resolves this unless the evaluation introduces an intervention that separates deception from instruction-following.} Reported accuracies are not wrong; none is evidence about which path a detector reads. Nor is the distinction semantic if complying \emph{is} how the deception is manifested: instruction-following explains instructed-benchmark accuracy and nothing outside it, while deception under incentive or goal conflict---the field's stated motivation---has no instruction to follow, and evaluations there report the predicted drop~\citep{cooney2026didyoulie, hopkins2026liedetectors}.
 
-\paragraph{What would license an attribution to $\tau_D$.} Two designs stand in for $\mathrm{do}(D)$, and \textbf{neither is it}. \textbf{(A)}, our \textbf{criterion 4} (§\ref{sec:eval_controls}): vary $D$ with $E$ fixed---deception arising uninstructed, under incentive or goal conflict. Being \emph{observational at fixed $E$} it removes the \emph{elicitation} confound and establishes a deception-\emph{associated} signal, whereas $\tau_D$ needs $D$ \textbf{manipulated or randomized}---trained-in and belief-verified~\citep{cooney2026didyoulie}---which no design audited here is. \textbf{(B)}~vary $E$ with $D$ fixed, instructing deception about a proposition the target does \emph{not} believe, so compliance is sincere. \textbf{We attempt both and our own materials supply neither}: (B) proved \emph{empirically infeasible at useful scale under this model class} (pre-registered null: EXP-IB, Appendix~\ref{app:intervention_b}), and (A) needs a prompt fixed by construction, which no instructed design is (§\ref{sec:external_audit}).
+\paragraph{What would license an attribution to $\tau_D$.} Two designs stand in for $\mathrm{do}(D)$, and \textbf{neither is it}. \textbf{(A)}, our \textbf{criterion 4} (§\ref{sec:eval_controls}): vary $D$ with $E$ fixed---deception arising uninstructed, under incentive or goal conflict. Being \emph{observational at fixed $E$} it removes the \emph{elicitation} confound and establishes a deception-\emph{associated} signal, whereas $\tau_D$ needs $D$ \textbf{manipulated or randomized}---trained-in and belief-verified~\citep{cooney2026didyoulie}---which no audited design is. \textbf{(B)}~vary $E$ with $D$ fixed, instructing deception about a proposition the target does \emph{not} believe, so compliance is sincere. \textbf{We attempt both and our own materials supply neither}: (B) proved \emph{empirically infeasible at useful scale under this model class} (pre-registered null: EXP-IB, Appendix~\ref{app:intervention_b}), and (A) needs a prompt fixed by construction (§\ref{sec:external_audit}).
 
 \subsection{An Audit Protocol for Behavioral Deception Benchmarks}
 \label{sec:eval_controls}
 
-\vspace{1pt}
-\noindent\fbox{\parbox{0.975\linewidth}{\centering\small
-\textbf{Criterion 4: can $D$ vary while $E$ is held fixed?}\\[1pt]
-\textbf{The one criterion an auditor cannot add after publication.} Criteria 1--3 and 5 are testable on any released benchmark by whoever did not build it; criterion~4 must be \emph{designed into} the corpus, so an instruction-only design can be \emph{failed} by it but never \emph{passed}.}}
-\vspace{1pt}
-
 \begin{table}[h]
 \centering
-\caption{\textbf{The audit protocol as an evidence ladder}: what each control establishes, ending at a rung no design audited here reaches. \textbf{Criterion~4 is necessary}---it removes the elicitation confound---but what it establishes is a deception-\emph{associated} signal, not $\tau_D$ (Appendix~\ref{app:criteria_taxonomy}).}
+\caption{\textbf{The audit protocol as an evidence ladder}: what each control establishes, ending at a rung no design audited here reaches. \textbf{Criterion~4 is necessary}---it removes the elicitation confound---but what it establishes is a deception-\emph{associated} signal, not $\tau_D$. It is also \textbf{the one criterion an auditor cannot add after publication}: an instruction-only design can be \emph{failed} by it but never \emph{passed} (Appendix~\ref{app:criteria_taxonomy}).}
 \label{tab:criteria}
 \begin{scriptsize}
 \setlength{\tabcolsep}{4pt}
@@ -42,19 +35,21 @@ and benchmark accuracy is a monotone summary of $\tau_E$. \textbf{$\tau_D$ is th
 \toprule
 \textbf{Criterion} & \textbf{What the benchmark must do, and what it tests} & \textbf{What it establishes} \\
 \midrule
-\multicolumn{3}{@{}l@{}}{\emph{Diagnostics---testable on any published benchmark by whoever did not build it}} \\
+\multicolumn{3}{@{}l@{}}{\textbf{Three alternative-explanation diagnostics}---\emph{testable on any published benchmark by whoever did not build it}} \\
 \addlinespace[1pt]
-1. Prompt equalization & Replace the asymmetric pair (``answer honestly'' vs.\ ``the claim is FALSE, defend it by lying'') with one neutral prompt & Rules out instruction asymmetry \\
+1. Prompt equalization & Replace the asymmetric pair (``answer honestly'' vs.\ ``the claim is FALSE, defend it by lying'') with one neutral prompt & Rules out \emph{instruction-following} \\
 \addlinespace[1pt]
-2. Cross-family extraction & Re-extract every feature with a different family's extractor, which the target's own family could inflate by self-preference & Reduces an evaluator artifact \\
+2. Cross-family extraction & Re-extract every feature with a different family's extractor, which the target's own family could inflate by self-preference & Rules out an \emph{evaluator artifact} \\
 \addlinespace[1pt]
-3. Matched surface baseline & Is the accuracy reachable from lexical form alone, by a pattern-matched rule with no LLM-extracted features? & Bounds surface-reachable accuracy \\
-\addlinespace[1pt]
-5. Cross-model / cross-claim transfer & Whether the signal is specific to one target or one claim set & Robustness, not construct validity \\
+3. Matched surface baseline & Is the accuracy reachable from lexical form alone, by a pattern-matched rule with no LLM-extracted features? & Bounds \emph{surface behavior}; with $E$ fixed it also bounds \emph{knowledge conflict} \\
 \addlinespace[3pt]
-\multicolumn{3}{@{}l@{}}{\emph{The critical construct-validity test---must be designed in, and cannot be added by an auditor}} \\
+\multicolumn{3}{@{}l@{}}{\textbf{One construct-validity test}---\emph{must be designed in, and cannot be added by an auditor}} \\
 \addlinespace[1pt]
 \textbf{4. Deception at fixed elicitation} & \textbf{Supply a contrast in which $D$ varies and $E$ does not}, with $D$ graded \textbf{independently of the condition label} & \textbf{Deception-\emph{associated} signal at fixed $E$---necessary, but not $\tau_D$} \\
+\addlinespace[3pt]
+\multicolumn{3}{@{}l@{}}{\textbf{One robustness test}---\emph{not a construct-validity test, and not equally fundamental}} \\
+\addlinespace[1pt]
+5. Cross-model / cross-claim transfer & Whether the signal is specific to one target or one claim set & Robustness, not construct validity \\
 \midrule
 \emph{Beyond the protocol:} $D$ manipulated or randomized & Deception \emph{set} rather than observed---e.g.\ a trained-in, belief-verified deceptive policy~\citep{cooney2026didyoulie} & \textbf{Causal identification of $D\!\to\!S$ ($\tau_D$)---supplied by no design audited here} \\
 \bottomrule
@@ -62,6 +57,6 @@ and benchmark accuracy is a monotone summary of $\tau_E$. \textbf{$\tau_D$ is th
 \end{scriptsize}
 \end{table}
 
-\paragraph{How the criteria divide (Table~\ref{tab:criteria}).} \textbf{Passing criterion~4 is necessary, not sufficient}: at fixed $E$ deception varies \emph{naturally}, so any latent $U$ with $U\!\to\!D$ and $U\!\to\!S$ survives it---criterion~4 removes the \emph{elicitation} confound and no other. The output is a \textbf{verdict on a benchmark}, not a detector, and \textbf{the protocol falsifies validity claims rather than certifying them}: passing all five leaves a deception-associated signal at fixed elicitation, the causal rung---$D$ manipulated or randomized---sitting outside the protocol by construction. Our own materials fail 1, 3 and 5 with 4 unidentified; §\ref{sec:external_audit} obtains criterion-4 verdicts where the prompt \emph{is} fixed.
+\paragraph{How the criteria divide: 3 + 1 + 1 (Table~\ref{tab:criteria}).} \textbf{Criteria 1--3 are diagnostics, each ruling out one alternative explanation} (instruction-following, evaluator artifact, surface behavior---and, at fixed $E$, knowledge conflict); \textbf{criterion~4 is the one construct-validity test}; \textbf{criterion~5 is robustness, and is not equally fundamental}. \textbf{Passing criterion~4 is necessary, not sufficient}: at fixed $E$ deception varies \emph{naturally}, so any latent $U$ with $U\!\to\!D$ and $U\!\to\!S$ survives it---criterion~4 removes the \emph{elicitation} confound and no other. The output is a \textbf{verdict on a benchmark}, not a detector, and \textbf{the protocol falsifies validity claims rather than certifying them}: passing all five leaves a deception-associated signal at fixed elicitation, the causal rung---$D$ manipulated or randomized---sitting outside the protocol by construction. Our own materials fail 1, 3 and 5 with 4 unidentified; §\ref{sec:external_audit} obtains criterion-4 verdicts where the prompt \emph{is} fixed.
 
-\paragraph{What this paper does not claim.} \textbf{(1)}~Anything against Q1, or that published detectors measure only instruction-following: we audit what their evaluations attribute, not what their features encode. \textbf{(2)}~That equalization establishes the \emph{absence} of a signal---it may remove the deception with the confound (box above). \textbf{(3)}~That the residual is entirely lexical: a rule \emph{reaching} benchmark accuracy bounds what is surface-reachable without decomposing it. \textbf{(4)}~That the audited rollout sets contain no deception: none \emph{can attribute} one on a deployed-observable channel---a property of the designs, not the models. \textbf{The positive claim is empirical}: this paradigm instantiates the Proposition's constraint, and the confound in it is active (long form: Table~\ref{tab:what_establishes}).
+\paragraph{What this paper does not claim.} \textbf{(1)}~Anything against Q1, or that published detectors measure only instruction-following: we audit what their evaluations attribute, not what their features encode. \textbf{(2)}~That equalization establishes the \emph{absence} of a signal---it may remove the deception with the confound (Table~\ref{tab:roadmap}). \textbf{(3)}~That the residual is entirely lexical: a rule \emph{reaching} benchmark accuracy bounds what is surface-reachable without decomposing it. \textbf{(4)}~That the audited rollout sets contain no deception: none \emph{can attribute} one on a deployed-observable channel---a property of the designs, not the models. \textbf{The positive claim is empirical}: this paradigm instantiates the Proposition's constraint, and the confound in it is active (long form: Table~\ref{tab:what_establishes}).

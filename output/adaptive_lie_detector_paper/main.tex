@@ -110,7 +110,21 @@ unmodified, served through AWS Bedrock as
 \texttt{us.anthropic.claude-haiku-4-5-20251001-v1:0} at temperature~0 with
 \texttt{max\_tokens}~1000. Its 3{,}605 raw judgements are committed as JSONL, so
 every EXP-XJ number in the paper recomputes from the repository with no model call
-(Appendix~\ref{app:external_audit_judge}). Codebase, raw
+(Appendix~\ref{app:external_audit_judge}).
+\textbf{EXP-WP (§\ref{sec:td_vs_fd}) needs weight access, and its activations are
+not committed}: the probe reads residual hidden states from local
+\texttt{Qwen3-4B-Instruct-2507} weights under MPS at fp16, and the extracted
+tensors run to ${\sim}200$\,MB per configuration, so we commit the pre-registration
+(\texttt{docs/PREREG\_EXP\_WP.md}), the generation and probing scripts, and every
+per-step result JSON, but not the activations themselves; re-extraction from the
+released scripts and the fixed seed is what reproduces them
+(Appendix~\ref{app:probe_audit}).
+\textbf{The second public release we pre-registered is gated and we could not
+obtain row-level access}, so unlike the Apollo corpus it is neither pinned as a
+submodule nor represented by committed derived scores---there are none, because
+nothing was scored. What is committed is the pre-registration and the access
+record; we report the attempt rather than dropping it, and no number in this paper
+depends on it (Appendix~\ref{app:liars_bench}). Codebase, raw
 transcripts, per-trial result files, and a table-reproduction script will be
 released publicly.
 
