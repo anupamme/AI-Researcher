@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  9 SEP 2026 19:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  9 SEP 2026 19:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1498,13 +1498,6 @@ xperiments/analyze_insider_audit.py --arm
 
 [49]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 5681) has occurred while \output is active []
-
-
-
 [50]
 
 [51]
@@ -1530,11 +1523,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 1639--1640
  []
 
 
+Underfull \vbox (badness 1062) has occurred while \output is active []
+
+
 
 [53]
-Underfull \vbox (badness 1297) has occurred while \output is active []
-
-
 
 [54]
 Underfull \hbox (badness 10000) in paragraph at lines 1701--1702
@@ -1579,8 +1572,9 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1765.
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[57]
+
 Underfull \hbox (badness 1331) in paragraph at lines 1797--1798
 \T1/ptm/b/n/10 (+20) Pre-registered de-sign. \T1/ptm/m/n/10 (+20) Hold-ing clar
 -ity (high), turn-count (multi-turn adap-tive), and tar-
@@ -1604,6 +1598,9 @@ Underfull \hbox (badness 4621) in paragraph at lines 1797--1798
 m/m/n/10 (+20) , so the only cross-scenario vari-able is
  []
 
+
+
+[57]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1816.
@@ -1688,10 +1685,10 @@ onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/ti
 mes/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (60 pages, 661846 bytes).
+Output written on main.pdf (60 pages, 662856 bytes).
 PDF statistics:
- 1673 PDF objects out of 1728 (max. 8388607)
- 1388 compressed objects within 14 object streams
+ 1674 PDF objects out of 1728 (max. 8388607)
+ 1389 compressed objects within 14 object streams
  366 named destinations out of 1000 (max. 500000)
  95863 words of extra memory for PDF output out of 106986 (max. 10000000)
 
