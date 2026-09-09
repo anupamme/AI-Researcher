@@ -18,4 +18,32 @@ Red-teaming, human~\citep{ganguli2022red} and automated~\citep{perez2022red}, fo
 
 \paragraph{Concurrent evaluations of lie detectors.} A recent line of work stress-tests lie detectors across settings rather than auditing one. \citet{kretschmar2025liarsbench} assemble 72{,}863 lie and honest-response examples over seven datasets and find black- and white-box techniques fail systematically on lie types not adjudicable from the transcript alone. \citet{cooney2026didyoulie} evaluate four detectors on 31 models (2B--1T) and 13 \emph{trained} organisms with verified hidden beliefs: all four scale positively on \emph{prompted} lying, while activation- and logprob-based detectors drop sharply on the organisms. \citet{hopkins2026liedetectors} report the same for fine-tuned detectors, at AUROC 0.95 in-distribution but 0.70--0.75 across held-out lie categories, barely beating prompted baselines. Those trained organisms instance intervention~(A)---deception varying with elicitation fixed---and the prompted-to-trained gap all three report is what the Proposition predicts: accuracy earned by manipulating the instruction carries no commitment about deception arising another way.
 
+\begin{table}[htbp]
+\centering
+\caption{\textbf{Prior work and the audited corpora against the five requirements} of §1's box (§\ref{sec:eval_controls}): \textbf{(i)}~$E$ fixed, \textbf{(ii)}~$D$ graded independently of the condition label, \textbf{(iii)}~same item under both conditions, \textbf{(iv)}~deployed-observable channel only, \textbf{(v)}~$D$ not definitionally equivalent to the detector's input. \checkmark~= satisfied, $\times$~= not, \emph{p}~= satisfied in some settings or for some detector families, \checkmark$^{*}$~= exceeded, with $D$ \emph{set} rather than observed. The last column asks the question this paper is about. \textbf{Reading the table:} fixed elicitation is not new---\citet{cooney2026didyoulie}'s trained organisms have it, and go beyond it (Table~\ref{tab:criteria}'s last row)---but no entry combines it with a deployed-observable channel, an independently grounded $D$, and a test of whether \emph{instructed}-benchmark accuracy was attributable to deception; the sandbagging row is the near-miss, failing only~(iii). That combination is what criterion~4 asks for and what §\ref{sec:external_audit} audits.}
+\label{tab:prior_work_criteria}
+\begin{scriptsize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{1.72in}ccccc p{1.44in}@{}}
+\toprule
+\textbf{Design or corpus} & \textbf{(i)} & \textbf{(ii)} & \textbf{(iii)} & \textbf{(iv)} & \textbf{(v)} & \textbf{Tests attribution?} \\
+\midrule
+\citet{pacchiardi2023catch} --- instructed roleplay, the audit target & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & $\times$ --- $E$ is the manipulation \\
+\addlinespace[1pt]
+\citet{kretschmar2025liarsbench} --- 7 datasets, 72{,}863 examples & \emph{p} & \emph{p} & \emph{p} & \emph{p} & \emph{p} & $\times$ --- generalizes across lie types \\
+\addlinespace[1pt]
+\citet{cooney2026didyoulie} --- 13 trained organisms, verified beliefs & \checkmark & \checkmark$^{*}$ & \checkmark & \emph{p} & \checkmark & \emph{indirect} --- prompted-vs-trained gap, as predicted \\
+\addlinespace[1pt]
+\citet{hopkins2026liedetectors} --- fine-tuned detectors, held-out categories & \emph{p} & \emph{p} & \emph{p} & \checkmark & \checkmark & $\times$ --- generalizes across categories \\
+\midrule
+Sandbagging, WMDP/MMLU~\citep{goldowskydill2025probes} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark\ \textbf{tested: null} for our surface rule, \textbf{positive} for the corpus authors' own judge (EXP-XJ) \\
+\addlinespace[1pt]
+Insider trading, on-policy~\citep{goldowskydill2025probes} & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark\ \textbf{tested: construct recovery} \\
+\midrule
+\textbf{This work} & \multicolumn{5}{c}{\emph{states (i)--(v) and audits ten rollout sets against them}} & \checkmark\ \textbf{the question asked} \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
 \paragraph{Summary of the gap.} These establish that lie detectors fail to \emph{generalize} across lie types, organisms, and training regimes. None isolates the identifiability problem created when the intervention that induces deception also induces instruction-following---so none answers whether the accuracy reported in the standard paradigm was ever attributable to deception. That is the question addressed here. The constraint itself is a standard non-identifiability result; what is new is enforcing it on a widely used paradigm and turning it into the five-criterion protocol of §\ref{sec:eval_controls}.

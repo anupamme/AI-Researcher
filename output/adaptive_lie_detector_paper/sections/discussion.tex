@@ -1,21 +1,18 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\paragraph{A structural result and a survey result, not to be conflated.} \textbf{(i)~Instructed designs identify $\tau_E$ and cannot bound $\tau_D$}---a property of the design, established by the Proposition however the latent mechanisms are arranged, and repairable only by a different intervention, not by better data. \textbf{(ii)~None of ten rollout sets from one public release meets criterion~4 on a deployed-observable channel with an independently grounded $D$}---a \emph{survey} result about today. \textbf{Neither denies Q1.}
+\paragraph{A structural result and a survey result, not to be conflated.} \textbf{(i)~Instructed designs identify $\tau_E$ and cannot bound $\tau_D$}---a property of the design, established by the Proposition however the latent mechanisms are arranged, and repairable only by a different intervention, not by better data. \textbf{(ii)~Of ten rollout sets from one public release, one supplies criterion~4 with an independently grounded $D$; there prior work's own judge separates deception on the deployed-observable channel and our surface rule does not, and no set meets all five requirements}---a \emph{survey} result about today. \textbf{Neither denies Q1.}
 
-\paragraph{Human validation, and what stays exploratory.}
+\paragraph{Human validation, scope and limitations.}
 \label{sec:icc_caveat}
 \label{sec:icc_owned}
 \label{sec:transfer_regimes}
 \label{sec:blackbox_vs_whitebox}
 \label{sec:haiku_defensiveness}
-Only correction-marker density clears reliability (Krippendorff's $\alpha\!=\!0.606$, vs.\ 0.070--0.264 for the other four); keeping only it moves accuracy 64.7\%$\,\to\,$\textbf{54.5\%}, leaving the extractor-independent claims unaffected. Transfer beyond instructed roleplay is \textbf{exploratory}, and null or near-null with the system prompt controlled (Appendices~\ref{app:human_icc_n100},~\ref{app:feature_validity},~\ref{app:autonomous_transfer},~\ref{app:frontier_preliminary}).
-
-\paragraph{Scope and limitations.}
 \label{sec:novelty}
 \label{sec:protocol_generality}
 \label{sec:loo_across_models}
 \label{sec:limitations}
 \label{sec:interrogation_role}
 \label{sec:deployment}
-Leave-one-model-out yields \textbf{64.2\%} [59--69\%]: the \emph{collapse} replicates across two detectors and two claim sets, while the \emph{residual signal} does not transfer---as a robust deception representation would. \textbf{Our attempted fixed-$D$ intervention was empirically infeasible at useful scale under this model class} (EXP-IB null); criterion 4 is testable only externally, and only on ten sets from one release, every rollout Llama-70B; targets are instruction-tuned $\leq$70B (Appendices~\ref{app:intervention_b},~\ref{app:loo_across_models},~\ref{app:limitations_detail}).
+Only correction-marker density clears reliability (Krippendorff's $\alpha\!=\!0.606$, vs.\ 0.070--0.264 for the other four), and the extractor-independent claims are unaffected; transfer beyond instructed roleplay is \textbf{exploratory}, null or near-null with the system prompt controlled. Leave-one-model-out yields \textbf{64.2\%} [59--69\%]: the \emph{collapse} replicates across two detectors and two claim sets, while the \emph{residual signal} does not transfer---as a robust deception representation would. \textbf{Our attempted fixed-$D$ intervention was empirically infeasible at useful scale under this model class} (EXP-IB null); criterion 4 is testable only externally, and only on ten sets from one release, every rollout Llama-70B. Targets are \textbf{English-language instructed roleplay on instruction-tuned open-weight models, 3B--70B}, with autonomous strategic deception~\citep{hubinger2019risks, scheurer2024strategic, greenblatt2024alignment} entering only through §\ref{sec:external_audit}'s audit of corpora we did not build (Appendices~\ref{app:human_icc_n100},~\ref{app:feature_validity},~\ref{app:autonomous_transfer},~\ref{app:frontier_preliminary},~\ref{app:intervention_b},~\ref{app:loo_across_models},~\ref{app:limitations_detail}).

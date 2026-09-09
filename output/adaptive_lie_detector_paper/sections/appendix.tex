@@ -1,8 +1,49 @@
+\section*{A reader's guide to this appendix}
+\label{app:reader_guide}
+
+\textbf{This appendix is an audit trail, not required reading.} The paper's argument is complete in
+§\ref{sec:identification}--§\ref{sec:conclusion}; what follows exists so that a reader who disbelieves
+any single number can check it, and so that a reader auditing a benchmark of their own can copy the
+procedure. It is long because an audit that asks benchmarks to publish their negative results should
+publish its own.
+
+\textbf{Every number in the main text is recomputed in one of five places}, and a reader who reads
+only these has the whole evidential basis: the EXP-R1 protocol and its pre-registered replication
+(Appendices~\ref{app:pacchiardi},~\ref{app:r1b}), the parameter-free rule's pattern list
+(\ref{app:regex_patterns}), the belief stratification (\ref{app:belief_strata}), and the two external
+criterion-4 audits (\ref{app:external_audit},~\ref{app:insider_audit},~\ref{app:external_audit_judge}). Table~\ref{tab:appendix_roadmap}
+groups the rest. \textbf{No claim in §\ref{sec:r1_faithful}--§\ref{sec:external_audit} depends on
+anything in bucket~4.}
+
+\begin{table}[htbp]
+\centering
+\caption{\textbf{Appendix roadmap.} Five buckets by role in the argument. Bucket~2 carries every
+load-bearing number; bucket~3 is the robustness the reviewer of a single claim may want; bucket~4 is
+marked exploratory in its own section titles and is load-bearing for nothing.}
+\label{tab:appendix_roadmap}
+\begin{scriptsize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{1.20in}p{4.00in}@{}}
+\toprule
+\textbf{Bucket} & \textbf{Sections} \\
+\midrule
+\textbf{1. Protocol \& prior work} & The five criteria in full, with how to apply them to a benchmark you did not build (\ref{app:criteria_taxonomy}); related work, including Table~\ref{tab:prior_work_criteria}'s comparison against requirements (i)--(v) (\ref{app:related_work}) \\
+\addlinespace[1.5pt]
+\textbf{2. Load-bearing evidence} & EXP-R1 protocol, elicitation bank and EXP-R1b/R1c (\ref{app:pacchiardi},~\ref{app:r1_protocol},~\ref{app:r1b}); the regex specification (\ref{app:regex_patterns}); EXP-B (\ref{app:belief_strata}); intervention~(B) and why it could not be built (\ref{app:intervention_b}); the external audits EXP-XA, EXP-IT, EXP-IT2 and EXP-XJ, prior work's own black-box judge on the same rollouts (\ref{app:external_audit},~\ref{app:insider_audit},~\ref{app:insider_audit2},~\ref{app:external_audit_judge}); the factorial diagnostic (\ref{app:factorial_txd}); adversarial paraphrase (\ref{app:adv_n50},~\ref{app:adv_qualitative}); the human ICC study (\ref{app:human_icc_n100}); leave-one-model-out (\ref{app:loo_across_models}); headline numbers and the multiple-testing policy (\ref{app:headlines},~\ref{app:scale_details}) \\
+\addlinespace[1.5pt]
+\textbf{3. Robustness \& diagnostics} & Per-model instructed and equalized tables (\ref{app:instructed_results},~\ref{app:equalized_details}); cross-family extraction (\ref{app:cross_family_details},~\ref{app:expg_details}); feature validity and the machine-rater proxy (\ref{app:feature_validity},~\ref{app:machine_icc}); validation and threshold tests (\ref{app:validation_tests}); zero-shot and instructed-data baselines (\ref{app:zero_shot},~\ref{app:hedging_instructed}); supporting diagnostics and causal probes (\ref{app:supporting_diagnostics},~\ref{app:causal_probes}); the ADAGE pipeline (\ref{app:adage_details}); human baseline (\ref{app:human_baseline_full}) \\
+\addlinespace[1.5pt]
+\textbf{4. Exploratory, not load-bearing for any claim} & Frontier-scale preliminaries (\ref{app:frontier_preliminary}); Llama~4~Maverick (\ref{app:llama405b_results}); white-box probing (\ref{app:whitebox}); sycophancy and autonomous transfer (\ref{app:autonomous_transfer},~\ref{app:partial_transfer_detail}); the persona spot-check (\ref{app:qwen_persona_qual}); algorithmic sanity checks on mock transcripts (\ref{app:mock_summary}); future directions (\ref{app:future_directions}) \\
+\addlinespace[1.5pt]
+\textbf{5. Reproducibility, pre-registrations \& compute} & Claim construction and the claim sets (\ref{app:claims},~\ref{app:claim_construction}); target configuration and transcripts (\ref{app:target_config},~\ref{app:transcripts}); sample sizes (\ref{app:sample_sizes}); compute cost and reproduction (\ref{app:compute_cost}); additional limitations (\ref{app:limitations_detail}) \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
 \section{The Audit Protocol: Full Specification, and How to Apply It to a Benchmark You Did Not Build}
 \label{app:criteria_taxonomy}
 \label{app:audit_protocol}
-
-\paragraph{Appendix roadmap.} The appendices divide into two kinds. \textbf{Load-bearing} for the four main results: this section (the protocol), Related Work (\ref{app:related_work}), the experiment summary and headline numbers (\ref{app:experiment_summary},~\ref{app:headlines}), the scale and equalization tables with the multiple-testing policy (\ref{app:scale_details}), leave-one-model-out (\ref{app:loo_across_models}), feature-extraction validity (\ref{app:feature_validity}), the EXP-R1 protocol and elicitation bank with the pre-registered replication (\ref{app:pacchiardi},~\ref{app:r1b}), belief stratification (\ref{app:belief_strata}), intervention~(B) and why it could not be built at scale (\ref{app:intervention_b}), the factorial's full results (\ref{app:factorial_txd}), the regex specification (\ref{app:regex_patterns}), the adversarial-paraphrase results (\ref{app:adv_n50},~\ref{app:adv_qualitative}), and the human ICC study (\ref{app:human_icc_n100}). \textbf{Exploratory and not part of the argument}, each so marked in its title: frontier-scale preliminaries (\ref{app:frontier_preliminary}), Llama~4~Maverick (\ref{app:llama405b_results}), white-box probing (\ref{app:whitebox}), sycophancy and autonomous transfer (\ref{app:autonomous_transfer}), the persona spot-check (\ref{app:qwen_persona_qual}), and future directions (\ref{app:future_directions}). No claim in §\ref{sec:r1_faithful}--§\ref{sec:external_audit} depends on anything in the second list.
 
 \paragraph{Truth-value, belief, and deception are three different variables.} $V$ is a property of the proposition, $B$ of the model, $D$ of the act: a model can sincerely assert a false claim it believes ($V$ false, $B$ false, $D$ absent), or knowingly contradict a true one ($V$ true, $B$ true, $D$ present). Instructed benchmarks label trials by $V$ and by the instruction, never by $B$ or $D$, which is why §\ref{sec:identification} insists the ground-truth label is an experimental condition rather than an observation of latent intent. EXP-B (§\ref{sec:belief_strata}) varies $B$ at fixed $E$; no design in this paper varies $D$ at fixed $E$ on materials we built.
 
@@ -1463,6 +1504,52 @@ To classify adversarial-prompt failure modes, we dumped the first assistant resp
 \label{sec:exp_i_4th_scenario}\label{sec:exp_i_5th_scenario}\label{sec:factorial_2x2}
 
 None of these is load-bearing for any claim in the main text. A single interrogation question achieves 90.8--99\%, within 1--3\,pp of the full system (Tables~\ref{tab:refusal_only},~\ref{tab:multiturn_equalized}). \textbf{Two controls bound the EXP-A result of §\ref{sec:prompt_equalized}}, and neither claim-pair memorization nor same-family extractor bias explains it: holding out an \emph{entire} claim pair at a time---every trial sharing a pair scored by a detector calibrated without it---moves pooled accuracy by 0.3\,pp, to \textbf{67.4\%} ($n\!=\!639$); and cross-family re-extraction of all seven equalized targets gives \textbf{64.7}/66.9\% (Mistral Large~3 / Llama~3.3~70B) against Haiku's 74.3\% (Table~\ref{tab:cross_family_panel}). With internals, SAPLMA-style probes~\citep{azaria2023internal} reach 67.0--71.1\%, bounded by the rule on 2 of 3 targets. Of the scale effects only Llama 8B$\to$70B survives correction ($+$18.9\,pp, $p\!=\!0.003$). Details in Appendices~\ref{app:cross_claim},~\ref{app:whitebox},~\ref{app:scale_details}.
+
+\subsection{EXP-XJ: Criterion 4 With Prior Work's Own Black-Box Judge}
+\label{app:external_audit_judge}
+
+\paragraph{The objection this answers.} EXP-XA and EXP-IT tested criterion~4 with one instrument, a 14-pattern regex. A reader may reasonably reply that a surface rule is simply blind to autonomous deception. The audited release answers that itself: it ships \emph{its authors' own black-box detector}, an LLM-judge prompt that reads \texttt{<context>} and \texttt{<output>} and returns a 1--7 deception score in \texttt{<judgement>} tags (\texttt{data/black\_box\_baseline/prompt.txt}, wired by \texttt{deception\_detection/baselines.py}). EXP-XJ runs \textbf{that} detector on the same corpora, the same channels and the same contrasts. The prompt is used \textbf{verbatim} (md5 \texttt{83ddc4bd}, 1373 chars, recorded with every judgement); the channel extractors, grade normalisers and permutation tests are \textbf{imported} from the committed EXP-XA/EXP-IT code, not reimplemented. Pre-registration: \texttt{docs/PREREG\_EXP\_XJ.md}, written before the runner existed; both corpora had been inspected beforehand, so this is a \textbf{confirmatory analysis on previously seen corpora}, stated as such in its §0.
+
+\paragraph{Judge, transport and deviations.} The authors' judge models (\texttt{gpt-4o-2024-08-06}, \texttt{claude-3-5-sonnet-20241022}) were unavailable to us; the judge is Claude~Haiku~4.5 on Bedrock at \texttt{temperature}~0.0 (DEVIATION~0, recorded in advance), called through \texttt{boto3} rather than the \texttt{anthropic} client (DEVIATION~1, a client-library change only: identical wire body, model id, prompt and \texttt{max\_tokens}). Because the judge is not theirs, its \emph{stability} is measured rather than assumed (H7 below). 3{,}605 judgements, 0 transport errors; \texttt{unknown} parse rates 0.7--6.0\%, all far under the pre-registered 20\% ceiling; 60 responses hit \texttt{max\_tokens} and are handled by the pre-registered parse rule, not re-rolled.
+
+\begin{table}[htbp]
+\centering
+\caption{\textbf{EXP-XJ: the corpus authors' own black-box judge on the criterion-4 contrasts.} Difference in mean judge score (1--7, higher $=$ more deceptive), one-sided label permutation, 10{,}000 draws, seed 42. \textbf{H1} is criterion~4 on the deployed-observable channel: within a fixed condition label, rollouts the corpus grades deceptive against rollouts it grades honest, with $E$ byte-identically fixed. \textbf{H8} repeats H1 with the sandbagging instruction removed from the judge's own context. MDE is the minimum detectable effect at 80\% power, $\alpha=0.05$, at the observed cell sizes.}
+\label{tab:external_audit_judge}
+\begin{scriptsize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{1.95in}rrrrrr@{}}
+\toprule
+\textbf{Arm} & \textbf{$n$ dec/hon} & \textbf{diff} & \textbf{$p$} & \textbf{AUROC} & \textbf{MDE} & \textbf{$\geq$4 fire} \\
+\midrule
+\textbf{H1} sandbagging, visible, label\,$=$\,dec & 395 / 38 & \textbf{$+$1.476} & 0.0001 & 0.706 & 0.39 & $+$26.1\,pp \\
+\textbf{H1} sandbagging, visible, label\,$=$\,hon & 21 / 469 & \textbf{$+$4.041} & 0.0001 & 0.938 & 1.07 & $+$82.9\,pp \\
+\addlinespace[2pt]
+\textbf{H8} instruction stripped, label\,$=$\,dec & 399 / 38 & \textbf{$+$1.995} & 0.0001 & 0.777 & 0.56 & $+$37.1\,pp \\
+\textbf{H8} instruction stripped, label\,$=$\,hon & 21 / 467 & \textbf{$+$4.155} & 0.0001 & 0.949 & 1.09 & $+$82.7\,pp \\
+\addlinespace[2pt]
+H4 sandbagging, \emph{full} transcript, label\,$=$\,dec & 399 / 39 & $+$2.265 & 0.0001 & 0.877 & 0.45 & $+$40.5\,pp \\
+H4 sandbagging, \emph{full} transcript, label\,$=$\,hon & 21 / 466 & $+$3.644 & 0.0001 & 0.944 & 1.00 & $+$75.3\,pp \\
+\midrule
+H2 insider, visible report, corpus grade & 73 / 64 & $+$0.666 & 0.0001 & --- & --- & --- \\
+H3 insider, visible report, \textbf{action-grounded} & 41 / 5 & $-$0.512 & 1.0000 & --- & --- & --- \\
+H5 insider, unrestricted context, corpus grade & 74 / 69 & $+$0.670 & 0.0001 & --- & --- & --- \\
+\midrule
+\emph{H6} ($\tau_E$ at fixed grade; \textbf{never} criterion 4) & 395/21; 38/469 & $+$0.134; $+$2.698 & 0.096; 0.0001 & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
+\paragraph{H1: the corpus does supply criterion 4, and the judge is positive on it.} Sandbagging holds one byte-identical system prompt across all 1000 rollouts, so $E$ is fixed by construction, and its per-rollout grade is \emph{not} an LLM annotation: \texttt{SandbaggingV2Dataset.label\_response} sets $D\!=\!1$ iff the model's hidden \texttt{<step1-results>} declares \texttt{sandbag} \emph{and} its hidden \texttt{<step2-results>} answer differs from the answer it finally gives. The visible-channel detector never sees either tag, so \textbf{requirement~(v) is satisfied and this is not construct recovery}---the label is defined on a channel disjoint from the detector's input. Against that label the judge separates realized deception by $+1.476$ score points inside the deceptive condition label and $+4.041$ inside the honest one, both $p\!=\!0.0001$, AUROC 0.706 and 0.938. Every positive exceeds its own MDE; the 38- and 21-rollout cells are the binding power constraint, as the pre-registration anticipated.
+
+\paragraph{H8: the judge is reading the output, not the instruction.} The judge's \texttt{<context>} contains the corpus's system message, and its own \texttt{<step1>} reasoning cites it (``\emph{The system prompt instructs the AI to `sandbag'}''), which raises the possibility that it verifies \emph{compliance with an instruction it can read} rather than detecting deception---this paper's confound relocated to the detector's input. On this corpus the two are separable, because the entire sandbagging instruction sits in the system message while the user message is the bare question plus an answer-format line. H8 (AMENDMENT~1, \textbf{exploratory and pre-specified but not blind}: written after H1 was seen, before any H8 judgement existed, with its four interpretation branches and the $R\!\geq\!0.5$ threshold fixed in advance) removes every system message and changes nothing else. \textbf{The separation increases}: $R = $ H8/H1 $= 1.35$ and $1.03$, AUROC $0.706\!\to\!0.777$ and $0.938\!\to\!0.949$. Paired on 982 rollouts the arms track each other closely (Spearman 0.814; 8.7\% of $\geq$4 flags flip; mean score $4.06\!\to\!3.71$). This is \textbf{prompt equalization applied to the detector's context}, and the effect survives it.
+
+\paragraph{H7: instrument stability.} A fixed random 100-rollout subsample (seed drawn before any score was seen) re-judged on the visible channel gives mean $|\Delta|=0.071$ score points, \textbf{94.9\%} exact agreement, Spearman \textbf{0.983}, cell means $4.46\!\to\!4.39$. \textbf{No verdict flips.} Topic stratification is directionally consistent wherever a cell clears the floor---\texttt{cyber} $+1.453$ ($p\!=\!0.0001$, $n\!=\!94/35$), \texttt{astronomy} $+4.343$ ($p\!=\!0.0001$, $n\!=\!10/137$)---and every other topic cell is reported \textbf{UNDERPOWERED} rather than pooled in.
+
+\paragraph{Insider trading: construct recovery reproduced with the stronger instrument.} H2 is positive on the corpus's own grade ($+0.666$, $p\!=\!0.0001$) and H3 is null against the action-grounded trade label ($-0.512$, opposite sign to pre-registration, $p\!=\!1.0000$), the same split EXP-IT2 found with a regex. Requirement~(v) therefore has independent support from a second, much stronger detector. H3's honest cell holds 5 rollouts, so it is reported as a \textbf{directional failure at the power floor} and never as evidence of absence; H5 shows the H2 effect is not carried by the agent's earlier reasoning turns.
+
+\paragraph{What EXP-XJ establishes, and what it does not.} It establishes that \textbf{criterion~4 is satisfiable by a public artifact}, that the sandbagging corpus satisfies it for a black-box detector, and that on it \textbf{the criterion-4 verdict depends on the instrument}: the parameter-free surface rule is null (${+}4.1$/${+}7.7$\,pp) where the judge is strongly positive, on the same rollouts and the same visible text. It does \textbf{not} establish that instructed-benchmark accuracy was measuring deception---H1/H8 are about deception arising at fixed elicitation in a corpus we did not build, and leave §\ref{sec:identification} and §\ref{sec:r1_faithful}--§\ref{sec:td_vs_fd} untouched. It does \textbf{not} establish $\tau_D$: being observational at fixed $E$, a latent $U$ with $U\!\to\!D$ and $U\!\to\!S$ survives it, so what is established is a deception-\emph{associated} signal. It does \textbf{not} make the corpus satisfy all five requirements: (iii) still fails, since no item appears under both conditions and the pre-registered capability screen remains unrunnable. And it is \textbf{not} a second corpus: EXP-XJ adds a second \emph{detector} to ten rollout sets from one release, every rollout Llama-70B. The judge's affordances are also benchmark-specific---four-option questions with a checkable answer, and a 1--7 score with reasoning---so nothing here is a deployment claim. Reproduction: \texttt{experiments/run\_external\_audit\_judge.py --corpus sandbagging} (then \texttt{--corpus insider}, \texttt{--stability}, \texttt{--h8}) and \texttt{experiments/analyze\_external\_audit\_judge.py}, which recomputes every number above from the committed \texttt{data/results/external\_audit\_judge\_raw.jsonl} with \textbf{no model calls}; outcome, may-claim and may-not-claim lists in \texttt{docs/PREREG\_EXP\_XJ.md} §10.
 
 \subsection{Adversarial Compliance Check: Truth vs.\ Lying Refusal Distribution}
 \label{app:q1_refusal_dist}
