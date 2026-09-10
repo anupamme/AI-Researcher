@@ -113,18 +113,26 @@ every EXP-XJ number in the paper recomputes from the repository with no model ca
 (Appendix~\ref{app:external_audit_judge}).
 \textbf{EXP-WP (§\ref{sec:td_vs_fd}) needs weight access, and its activation
 tensors are not a release artifact}: the probe reads residual hidden states from
-local \texttt{Qwen3-4B-Instruct-2507} weights under MPS at fp16, and the extracted
-tensors run to ${\sim}210$\,MB per claim set, so the release carries the two
+local \texttt{Qwen3-4B-Instruct-2507} weights under MPS at fp16 and from
+\texttt{google/gemma-3-4b-it} at bf16 stored as float32---Gemma-3's residual stream
+carries outlier features above fp16 range, so the narrower storage is not an
+option---and the extracted tensors run to ${\sim}210$\,MB per fp16 configuration and
+${\sim}430$\,MB for the float32 one. The release therefore carries the two
 pre-registrations, the generation and probing scripts, every per-step result JSON
-for both the v1 and the v2 claim set, and the per-trial metadata including every
+for all three configurations, and the per-trial metadata including every
 stored model response---but not the tensors, which re-extract from the released
 scripts at the fixed seed (Appendix~\ref{app:probe_audit}).
-\textbf{The second public release we pre-registered is gated and we could not
-obtain row-level access}, so unlike the Apollo corpus it is neither pinned as a
-submodule nor represented by committed derived scores---there are none, because
-nothing was scored. What is committed is the pre-registration and the access
-record; we report the attempt rather than dropping it, and no number in this paper
-depends on it (Appendix~\ref{app:liars_bench}). Codebase, raw
+\textbf{The second public release (EXP-XL) is gated, so we make no claim of
+reproducibility parity with Apollo}: it can be neither vendored nor
+submodule-pinned, and the path there is a committed sha256 manifest (revision,
+per-file hash, byte size, verified row counts) plus every committed derived
+artifact---eight per-configuration rule records, the eligibility survey, and
+1{,}356 raw judgements---from which every EXP-XL number recomputes with no model
+call and no network. \textbf{A manifest is weaker than a pin}: it lets a reader
+detect that the corpus changed, not fetch the revision we audited. Accepting the
+host's gate under one's own account is required to re-derive those artifacts from
+raw rows, and is not required to reproduce any reported figure
+(Appendix~\ref{app:liars_bench}). Codebase, raw
 transcripts, per-trial result files, and a table-reproduction script will be
 released publicly.
 
