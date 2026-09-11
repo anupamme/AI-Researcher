@@ -132,7 +132,23 @@ call and no network. \textbf{A manifest is weaker than a pin}: it lets a reader
 detect that the corpus changed, not fetch the revision we audited. Accepting the
 host's gate under one's own account is required to re-derive those artifacts from
 raw rows, and is not required to reproduce any reported figure
-(Appendix~\ref{app:liars_bench}). Codebase, raw
+(Appendix~\ref{app:liars_bench}).
+\textbf{EXP-C4 (§\ref{sec:external_audit}) is local generation plus one grading pass.}
+Its \emph{five} targets---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and
+Qwen~2.5~7B/14B---are served locally under Ollama at the fixed seed. Qwen~2.5~32B is
+excluded on one stated ground, recorded before any detector result was computed: its
+belief screen could not be completed within the available memory, so we cannot show
+it holds the negation of any reference fact (Appendix~\ref{app:crit4_ours}).
+The only model call outside generation is the deception grader, and it is
+\textbf{cross-family to every target}: \texttt{us.anthropic.claude-haiku-4-5-20251001-v1:0}
+via AWS Bedrock at temperature~0, one call per trial, reading the on-claim answer
+alone and never the probe vector the detector is scored on. Its 1{,}040 raw
+judgements---757 confirmatory graded trials, the rest pilot---are committed as JSONL
+(\texttt{data/results/crit4\_grades\_raw.jsonl}) alongside the rubric's md5, so
+\textbf{every EXP-C4 number in the paper recomputes from the repository with no model
+call}: H1--H4, the pilot's selection trace, and the grading reliability, whose 60
+hand codes are literals in \texttt{experiments/analyze\_crit4\_reliability.py}.
+Codebase, raw
 transcripts, per-trial result files, and a table-reproduction script will be
 released publicly.
 
