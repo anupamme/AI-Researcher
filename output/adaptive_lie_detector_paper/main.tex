@@ -146,7 +146,9 @@ alone and never the probe vector the detector is scored on. Its 1{,}040 raw
 judgements---757 confirmatory graded trials, the rest pilot---are committed as JSONL
 (\texttt{data/results/crit4\_grades\_raw.jsonl}) alongside the rubric's md5, so
 \textbf{every EXP-C4 number in the paper recomputes from the repository with no model
-call}: H1--H4, the pilot's selection trace, and the grading reliability, whose 60
+call}: H1--H4, the pilot's selection trace, the exploratory leave-one-target-out
+transfer arm (\texttt{analyze\_crit4.py --phase transfer} $\to$
+\texttt{data/results/crit4\_transfer.json}), and the grading reliability, whose 60
 hand codes are literals in \texttt{experiments/analyze\_crit4\_reliability.py}.
 Codebase, raw
 transcripts, per-trial result files, and a table-reproduction script will be

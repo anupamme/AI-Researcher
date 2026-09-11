@@ -1534,7 +1534,44 @@ Mistral~7B   & $-21.1$ & 0.48 & $+3.1$ & 0.93 \\
 
 \paragraph{What EXP-C4 does not establish.} \textbf{Not $\tau_D$.} It is stratified observational at fixed $E$, so any latent $U$ with $U\!\to\!D$ and $U\!\to\!S$---sampling temperature realizations, per-claim difficulty, whatever makes a given rollout hedge---survives it, and the signal is \textbf{deception-\emph{associated}}, not causal. \textbf{Not a scaling or capability claim}: five open-weight targets, 3B--14B, one claim pool, one wording, and Qwen~2.5~32B absent for a memory limit. \textbf{Not evidence that any published detector is valid}: what is validated is a \emph{contrast}, and the same battery collapses to chance on the instructed contrast under equalization (§\ref{sec:r1_faithful}). \textbf{Not a clean base rate}: the pressure wording P3 is artificial, chosen for a base rate near 0.5, and a benchmark built this way inherits whatever the wording selects for. And \textbf{not a null result on the two null targets}: with MDE 0.80 and 0.90 those cells cannot distinguish absence from lack of power.
 
-\paragraph{Reproduction.} \texttt{experiments/run\_crit4\_fixed\_elicitation.py} (generation, local Ollama), \texttt{experiments/grade\_crit4\_deception.py} (grading, one Bedrock pass, raw judgements committed to \texttt{data/results/crit4\_grades\_raw.jsonl}), \texttt{experiments/analyze\_crit4.py} and \texttt{experiments/analyze\_crit4\_reliability.py}, which recompute \emph{every} number in this section from the committed transcripts and judgements \textbf{with no model call}. The pre-registration, its selection sentence, and DEVIATIONS~(1)--(7) are in \texttt{docs/PREREG\_EXP\_C4.md}.
+\paragraph{Reproduction.} \texttt{experiments/run\_crit4\_fixed\_elicitation.py} (generation, local Ollama), \texttt{experiments/grade\_crit4\_deception.py} (grading, one Bedrock pass, raw judgements committed to \texttt{data/results/crit4\_grades\_raw.jsonl}), \texttt{experiments/analyze\_crit4.py --phase confirm} and \texttt{experiments/analyze\_crit4\_reliability.py}, which recompute \emph{every} confirmatory number above from the committed transcripts and judgements \textbf{with no model call}. The pre-registration, its selection sentence, and DEVIATIONS~(1)--(7) are in \texttt{docs/PREREG\_EXP\_C4.md}.
+
+\subsection{Criterion 5 on EXP-C4: Leave-One-Target-Out Transfer (Exploratory)}
+\label{app:crit4_transfer}
+
+\textbf{This subsection is exploratory and post-hoc.} It is \emph{not} in \texttt{docs/PREREG\_EXP\_C4.md}, it was computed after the confirmatory result was known, and nothing in it can change a criterion-4 verdict---criterion~5 is a \textbf{robustness} test, not a construct-validity test (Table~\ref{tab:criteria}). It exists because a natural question follows the confirmatory result: is the fixed-elicitation signal specific to one target, or does a detector fit on other models carry over?
+
+\paragraph{Design.} Leave-one-\emph{target}-out. For each of the five confirmatory cells, fit the same estimator the primary analysis uses---\texttt{LogisticRegression(max\_iter=1000, C=1.0)} on the 16-dimensional probe vector---on the \emph{pooled} graded rows of the other four targets, then score the held-out target. Because the fitted model never saw the held-out target, no cross-validation is needed and its predictions are fixed; the null therefore permutes the held-out target's $D$ \textbf{within claim strata} against those same predictions, the same stratification H1 uses, at $N\!=\!10{,}000$ and \texttt{SEED=42}. Reported per held-out target: transfer accuracy with its Wilson interval, that target's own majority-class baseline, and the one-sided-higher $p$. No model call; recomputed from the committed cells and grades.
+
+\paragraph{What this does and does not hold out.} \textbf{It holds out a model, and only partly a claim.} Each target's 20 claims are knowledge-screened \emph{for that target}, so the five cells do not share one claim set---pairwise overlaps run 6--20 of 20---but each held-out target still shares 12--19 of its 20 claims with the union of the four training targets, leaving \textbf{1--8 claims unseen} (1, 1, 1, 2 and 8). \textbf{So this supplies the cross-model half of criterion~5 and only a thin slice of the cross-claim half}, and Table~\ref{tab:external_audit} marks column~5 accordingly rather than giving EXP-C4 an unqualified \checkmark.
+
+\begin{center}
+\begin{scriptsize}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Held-out target} & $n$ & \textbf{Transfer acc.\ [95\% CI]} & \textbf{Majority} & \textbf{Unseen claims} & $p$ \\
+\midrule
+llama3.1:8b  & 155 & \textbf{0.813} [0.744, 0.866] & 0.594 & 1/20 & \textbf{0.0022} \\
+qwen2.5:7b   & 160 & \textbf{0.650} [0.573, 0.720] & 0.575 & 2/20 & \textbf{0.0014} \\
+\addlinespace[2pt]
+qwen2.5:14b  & 160 & 0.787 [0.718, 0.844] & 0.694 & 1/20 & 1.000$^{\ddagger}$ \\
+mistral:7b   & 157 & 0.682 [0.605, 0.749] & 0.682 & 1/20 & 1.000$^{\ddagger}$ \\
+llama3.2:3b  & 125 & 0.800 [0.721, 0.861] & 0.832 & 8/20 & 0.476 \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+
+\begin{scriptsize}
+$^{\ddagger}$\,\textbf{Degenerate null, so uninformative rather than negative} (see below).
+\end{scriptsize}
+\end{center}
+
+\paragraph{Result: 2 of 5 transfer, 2 are uninformative, 1 is a genuine null.} \textbf{llama3.1:8b and qwen2.5:7b exceed both chance and their own majority baseline} ($p\!=\!0.0022$ and $0.0014$), and llama3.1:8b's transfer accuracy (0.813) slightly \emph{exceeds} its own within-target confirmatory accuracy (0.807), so for that target training on four other models costs nothing. \textbf{Two cells are uninformative for a mechanical reason we state rather than absorb into the null count}: for mistral:7b and qwen2.5:14b, no claim group has both a mixed prediction and a mixed $D$, so permuting $D$ within claims cannot move the accuracy at all and the permutation null collapses to a \emph{point mass} at the observed value---$p\!=\!1$ \textbf{by construction}, not by evidence. mistral:7b's transferred classifier predicts $D\!=\!1$ on every trial, which is why its accuracy equals its $D\!=\!1$ rate exactly (0.682). The reading is that the transferred detector carries no \emph{within-claim} information for those two targets, which is the conservative verdict, but it is not a measured absence of signal. \textbf{llama3.2:3b is the one genuine null}: 0.800 against a 0.832 majority, i.e.\ below it, and it is both the thinnest cell (21 of 125 graded trials deceptive) and by far the most claim-disjoint (8 of 20 claims unseen in training)---the same MDE-style reading the confirmatory analysis applies to its two nulls.
+
+\paragraph{What to conclude, and what not to.} \textbf{Partial cross-model transfer, on an exploratory test.} Two of the three targets that were positive in the confirmatory analysis remain positive when the detector is fit entirely on other models; the third (mistral:7b) yields a degenerate null. \textbf{This does not make criterion~5 a pass for EXP-C4}, it does not bear on criteria 1--4 or on any claim in §\ref{sec:external_audit}, and it does not license a claim that the fixed-elicitation signal is model-general---five targets, 3B--14B, one wording, one claim pool, and a mostly shared claim set.
+
+\paragraph{Reproduction.} \texttt{experiments/analyze\_crit4.py --phase transfer}, which recomputes every number in this subsection from the same committed cells and grades \textbf{with no model call} and writes \texttt{data/results/crit4\_transfer.json}. It reads the confirmatory artifacts and writes only its own file, so it cannot perturb \texttt{--phase confirm}'s output.
 
 \section{EXP-XA: Criterion 4 on Ten Released Rollout Sets (Exploratory Arm Plus Pre-Registered Replication)}
 \label{app:external_audit}
@@ -1760,7 +1797,7 @@ To classify adversarial-prompt failure modes, we dumped the first assistant resp
 \label{sec:autonomous_matched}
 \label{sec:exp_i_4th_scenario}\label{sec:exp_i_5th_scenario}\label{sec:factorial_2x2}
 
-None of these is load-bearing for any claim in the main text. A single interrogation question achieves 90.8--99\%, within 1--3\,pp of the full system (Tables~\ref{tab:refusal_only},~\ref{tab:multiturn_equalized}). \textbf{Two controls bound the EXP-A result of §\ref{sec:prompt_equalized}}, and neither claim-pair memorization nor same-family extractor bias explains it: holding out an \emph{entire} claim pair at a time---every trial sharing a pair scored by a detector calibrated without it---moves pooled accuracy by 0.3\,pp, to \textbf{67.4\%} ($n\!=\!639$); and cross-family re-extraction of all seven equalized targets gives \textbf{64.7}/66.9\% (Mistral Large~3 / Llama~3.3~70B) against Haiku's 74.3\% (Table~\ref{tab:cross_family_panel}). With internals, SAPLMA-style probes~\citep{azaria2023internal} reach 67.0--71.1\%, bounded by the rule on 2 of 3 targets. Of the scale effects only Llama 8B$\to$70B survives correction ($+$18.9\,pp, $p\!=\!0.003$). Details in Appendices~\ref{app:cross_claim},~\ref{app:whitebox},~\ref{app:scale_details}.
+None of these \emph{establishes} a claim in the main text; two of them---the claim-pair holdout and the cross-family re-extraction, both below---are cited there as controls that bound one, so they are load-bearing in the weaker sense of ruling an alternative explanation out. A single interrogation question achieves 90.8--99\%, within 1--3\,pp of the full system (Tables~\ref{tab:refusal_only},~\ref{tab:multiturn_equalized}). \textbf{Two controls bound the EXP-A result of §\ref{sec:prompt_equalized}}, and neither claim-pair memorization nor same-family extractor bias explains it: holding out an \emph{entire} claim pair at a time---every trial sharing a pair scored by a detector calibrated without it---moves pooled accuracy by 0.3\,pp, to \textbf{67.4\%} ($n\!=\!639$); and cross-family re-extraction of all seven equalized targets gives \textbf{64.7}/66.9\% (Mistral Large~3 / Llama~3.3~70B) against Haiku's 74.3\% (Table~\ref{tab:cross_family_panel}). With internals, SAPLMA-style probes~\citep{azaria2023internal} reach 67.0--71.1\%, bounded by the rule on 2 of 3 targets. Of the scale effects only Llama 8B$\to$70B survives correction ($+$18.9\,pp, $p\!=\!0.003$). Details in Appendices~\ref{app:cross_claim},~\ref{app:whitebox},~\ref{app:scale_details}.
 
 \subsection{EXP-XJ: Criterion 4 With Prior Work's Own Black-Box Judge}
 \label{app:external_audit_judge}

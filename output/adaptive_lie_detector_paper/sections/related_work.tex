@@ -20,7 +20,7 @@ Red-teaming, human~\citep{ganguli2022red} and automated~\citep{perez2022red}, fo
 
 \begin{table}[htbp]
 \centering
-\caption{\textbf{Prior work and the audited corpora against the five requirements} of §1's box (§\ref{sec:eval_controls}): \textbf{(i)}~$E$ fixed, \textbf{(ii)}~$D$ graded independently of the condition label, \textbf{(iii)}~the same scenario independently realized under both behavioral outcomes, \textbf{(iv)}~deployed-observable channel only, \textbf{(v)}~$D$ not definitionally equivalent to the detector's input. \checkmark~= satisfied, $\times$~= not, \emph{p}~= satisfied in some settings or for some detector families, \checkmark$^{*}$~= exceeded, with $D$ \emph{set} rather than observed. The last column asks the question this paper is about. \textbf{Reading the table:} fixed elicitation is not new---\citet{cooney2026didyoulie}'s trained organisms have it, and go beyond it (Table~\ref{tab:criteria}'s last row)---but no entry combines it with a deployed-observable channel, an independently grounded $D$, and a test of whether \emph{instructed}-benchmark accuracy was attributable to deception; the sandbagging row is the near-miss, failing only~(iii). That combination is what criterion~4 asks for and what §\ref{sec:external_audit} audits.}
+\caption{\textbf{Prior work and the audited corpora against the five requirements} of §1's box (§\ref{sec:eval_controls}): \textbf{(i)}~$E$ fixed, \textbf{(ii)}~$D$ graded independently of the condition label, \textbf{(iii)}~the same scenario independently realized under both behavioral outcomes, \textbf{(iv)}~deployed-observable channel only, \textbf{(v)}~$D$ not definitionally equivalent to the detector's input. \checkmark~= satisfied, $\times$~= not, \emph{p}~= satisfied in some settings or for some detector families, \checkmark$^{*}$~= exceeded, with $D$ \emph{set} rather than observed. The last column asks the question this paper is about. \textbf{Rows are grouped by what kind of thing each entry is}---(a)~instructed-lie benchmarks, (b)~generalization studies, (c)~belief-verified model organisms, (d)~public rollout corpora---because the four are answering different questions, and only (a) is what our identification claim is \emph{about}. \textbf{Reading the table:} fixed elicitation is not new---\citet{cooney2026didyoulie}'s trained organisms have it, and go beyond it (Table~\ref{tab:criteria}'s last row)---but no entry combines it with a deployed-observable channel, an independently grounded $D$, and a test of whether \emph{instructed}-benchmark accuracy was attributable to deception; the sandbagging row is the near-miss, failing only~(iii). That combination is what criterion~4 asks for and what §\ref{sec:external_audit} audits. \textbf{This work} states~(i)--(v), audits \emph{both} public releases against them---ten rollout sets and 35 cells---and builds materials meeting all five (EXP-C4).}
 \label{tab:prior_work_criteria}
 \begin{scriptsize}
 \setlength{\tabcolsep}{4pt}
@@ -28,19 +28,27 @@ Red-teaming, human~\citep{ganguli2022red} and automated~\citep{perez2022red}, fo
 \toprule
 \textbf{Design or corpus} & \textbf{(i)} & \textbf{(ii)} & \textbf{(iii)} & \textbf{(iv)} & \textbf{(v)} & \textbf{Tests attribution?} \\
 \midrule
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(a) Instructed-lie benchmarks}---the paradigm audited here}} \\
+\addlinespace[1pt]
 \citet{pacchiardi2023catch} --- instructed roleplay, the audit target & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & $\times$ --- $E$ is the manipulation \\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(b) Generalization studies}---a different question}} \\
 \addlinespace[1pt]
 \citet{kretschmar2025liarsbench} --- 7 datasets, 72{,}863 examples & \emph{p} & \emph{p} & \emph{p} & \emph{p} & \emph{p} & $\times$ --- generalizes across lie types \\
 \addlinespace[1pt]
-\citet{cooney2026didyoulie} --- 13 trained organisms, verified beliefs & \checkmark & \checkmark$^{*}$ & \checkmark & \emph{p} & \checkmark & \emph{indirect} --- prompted-vs-trained gap, as predicted \\
-\addlinespace[1pt]
 \citet{hopkins2026liedetectors} --- fine-tuned detectors, held-out categories & \emph{p} & \emph{p} & \emph{p} & \checkmark & \checkmark & $\times$ --- generalizes across categories \\
-\midrule
+\addlinespace[3pt]
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(c) Belief-verified model organisms}---$D$ \emph{set}, so \emph{above} criterion~4}} \\
+\addlinespace[1pt]
+\citet{cooney2026didyoulie} --- 13 trained organisms, verified beliefs & \checkmark & \checkmark$^{*}$ & \checkmark & \emph{p} & \checkmark & \emph{indirect} --- prompted-vs-trained gap, as predicted \\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(d) Public rollout corpora}---what §\ref{sec:external_audit} audits}} \\
+\addlinespace[1pt]
 Sandbagging, WMDP/MMLU~\citep{goldowskydill2025probes} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark\ \textbf{tested: null} for our surface rule, \textbf{positive} for the corpus authors' own judge (EXP-XJ) \\
 \addlinespace[1pt]
 Insider trading, on-policy~\citep{goldowskydill2025probes} & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark\ \textbf{tested: construct recovery} \\
 \midrule
-\textbf{This work} & \multicolumn{5}{c}{\emph{states (i)--(v) and audits ten rollout sets against them}} & \checkmark\ \textbf{the question asked} \\
+\textbf{This work} & \multicolumn{5}{c}{\emph{states (i)--(v)}} & \checkmark\ \textbf{the question asked} \\
 \bottomrule
 \end{tabular}
 \end{scriptsize}
