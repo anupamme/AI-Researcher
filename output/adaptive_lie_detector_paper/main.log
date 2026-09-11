@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  11 SEP 2026 09:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  11 SEP 2026 11:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1114,17 +1114,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--49
 [5]
 
 [6]
-Underfull \hbox (badness 1533) in paragraph at lines 100--100
+Underfull \hbox (badness 1533) in paragraph at lines 102--102
 []\T1/ptm/m/n/7 (+20) Our claim bench-mark, \T1/ptm/b/n/7 (+20) black-box be-
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 100--100
+Underfull \hbox (badness 1648) in paragraph at lines 102--102
 \T1/ptm/b/n/7 (+20) hav-ioral\T1/ptm/m/n/7 (+20) : prior work's probe bat-tery
  []
 
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
-0.
+2.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -1133,7 +1133,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 3049) in paragraph at lines 112--112
+Underfull \hbox (badness 3049) in paragraph at lines 114--114
 []\T1/ptm/b/n/7 (+20) Materials we built for cri-te-rion 4\T1/ptm/m/n/7 (+20) :
 
  []
@@ -1799,7 +1799,7 @@ onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/ti
 mes/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (67 pages, 707383 bytes).
+Output written on main.pdf (67 pages, 707385 bytes).
 PDF statistics:
  1748 PDF objects out of 2073 (max. 8388607)
  1457 compressed objects within 15 object streams

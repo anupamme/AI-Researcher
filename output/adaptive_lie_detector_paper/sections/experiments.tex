@@ -41,8 +41,10 @@ We evaluate seven LLMs across three families---Llama~3.2~3B, Llama~3.1~8B, Llama
   \node[circle, draw=black, fill=white, line width=0.5pt, inner sep=1.15pt] at (\eq,\yy) {};
   \node[circle, fill=black, inner sep=1.3pt] at (\inst,\yy) {};
   \node[font=\scriptsize, anchor=west, inner sep=2pt] at (102,\yy) {\dl\,pp};}
-% the one sub-chance point, with its leakage-check value on the same cell
-\node[font=\scriptsize, gray!55!black, anchor=south, inner sep=1.5pt] at (26,6.16)
+% the one sub-chance point, with its leakage-check value on the same cell.
+% Hangs BELOW 3B's row: anchored south at 6.16 the \scriptsize box reaches y=7.0
+% and collides with the legend row at 7.05.
+\node[font=\scriptsize, gray!55!black, anchor=north west, inner sep=1.5pt] at (23.5,5.84)
   {46.0\% grouped};
 % pooled
 \node[font=\scriptsize\bfseries, anchor=east, inner sep=2pt] at (19,0) {Pooled};
