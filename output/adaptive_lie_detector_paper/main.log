@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  11 SEP 2026 16:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  11 SEP 2026 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1096,10 +1096,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--77
  []
 
 
-Underfull \hbox (badness 1303) in paragraph at lines 79--80
-[]\T1/ptm/b/n/7 (+20) Deception is de-tectable at fixed $\OML/cmm/m/it/7 E$\T1/
-ptm/m/n/7 (+20) ---
- []
+Underfull \vbox (badness 5231) has occurred while \output is active []
 
 
 
@@ -1781,11 +1778,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 57316BAFA09CF8F1328503FE069EE46E;23051.
  ) 
 Here is how much of TeX's memory you used:
- 40560 strings out of 473190
- 895653 string characters out of 5715801
- 1467514 words of memory out of 5000000
- 61867 multiletter control sequences out of 15000+600000
- 696525 words of font info for 689 fonts, out of 8000000 for 9000
+ 40573 strings out of 473190
+ 895765 string characters out of 5715801
+ 1467466 words of memory out of 5000000
+ 61868 multiletter control sequences out of 15000+600000
+ 697104 words of font info for 697 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,87p,3395b,848s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb>
@@ -1814,7 +1811,7 @@ onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/ti
 mes/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (69 pages, 719906 bytes).
+Output written on main.pdf (69 pages, 719850 bytes).
 PDF statistics:
  1784 PDF objects out of 2073 (max. 8388607)
  1486 compressed objects within 15 object streams
