@@ -15,6 +15,7 @@
 \newlabel{tab:roadmap}{{1}{3}{\textbf {The evidence ladder: three levels of claim, three kinds of warrant.} \textbf {A} holds by the design's structure and no experiment could establish or refute it; \textbf {B} is \textbf {one empirical demonstration} that the canonical black-box benchmark instantiates it, the confound being \emph {active}; \textbf {C} is \textbf {a survey} of what public corpora supply---attribution, which criterion~4 alone tests, and there the verdict is instrument-specific. \textbf {Bold rows are load-bearing}; the factorial is a \emph {diagnostic}, and sizes what is unattributable rather than attributing it. \textbf {The spine, in one line}: non-identification $\to $ the collapse $\to $ it replicates across three paradigms $\to $ the residual is surface and knowledge $\to $ public corpora lack the design that would test attribution $\to $ \textbf {so benchmark accuracy is not evidence of deception-specific detection}}{table.caption.3}{}}
 \@writefile{toc}{\contentsline {paragraph}{Relation to prior work.}{3}{section*.4}\protected@file@percent }
 \citation{cooney2026didyoulie}
+\citation{cooney2026didyoulie}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Methodology}{4}{section.2}\protected@file@percent }
 \newlabel{sec:methodology}{{2}{4}{Methodology}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The Identification Problem}{4}{subsection.2.1}\protected@file@percent }
@@ -23,11 +24,11 @@
 \@writefile{toc}{\contentsline {paragraph}{Proposition (underidentification).}{4}{section*.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Corollary (scale does not help).}{4}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{What would license an attribution to $\tau _D$.}{4}{section*.8}\protected@file@percent }
-\citation{cooney2026didyoulie}
 \citation{meta2024llama3}
 \citation{jiang2023mistral}
 \citation{qwen2025qwen25}
 \citation{anthropic2025haiku45}
+\citation{pacchiardi2023catch}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}An Audit Protocol for Behavioral Deception Benchmarks}{5}{subsection.2.2}\protected@file@percent }
 \newlabel{sec:eval_controls}{{2.2}{5}{An Audit Protocol for Behavioral Deception Benchmarks}{subsection.2.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {The audit protocol as an evidence ladder}: what each control establishes, ending at a rung no design audited here reaches. \textbf  {Criterion~4 is necessary}---it removes the elicitation confound---but what it establishes is a deception-\emph  {associated} signal, not $\tau _D$. It is also \textbf  {the one criterion an auditor cannot add after publication}: an instruction-only design can be \emph  {failed} by it but never \emph  {passed} (Appendix~\ref {app:criteria_taxonomy}).}}{5}{table.caption.9}\protected@file@percent }
@@ -38,12 +39,11 @@
 \newlabel{sec:experiments}{{3}{5}{Experiments}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Experimental Setup}{5}{subsection.3.1}\protected@file@percent }
 \newlabel{sec:setup}{{3.1}{5}{Experimental Setup}{subsection.3.1}{}}
-\citation{pacchiardi2023catch}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Prior Detector Collapses Under Equalization (EXP-R1, EXP-R1b/R1c)}{5}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:r1_faithful}{{3.2}{5}{The Prior Detector Collapses Under Equalization (EXP-R1, EXP-R1b/R1c)}{subsection.3.2}{}}
 \citation{pacchiardi2023catch}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {EXP-R1c: the pre-registered collapse, on every target.} \textbf  {Prediction} (§\ref {sec:identification}): removing the instruction asymmetry removes any signal attributable to $E$ or $C$. \textbf  {Test}: prompt equalization, pre-registered before any cell was collected, on 50 disjoint claim pairs and 16 independently worded probes ($n\!=\!50$/cell; instructed every $p\!=\!0.001$, equalized every $p\!\geq \!0.173$; Table~\ref {tab:r1c_v2}). The shaded band spans the equalized cells, \textbf  {no one of which discriminates above chance}; points below the dashed chance line mark a \textbf  {degenerate} probe channel (0--2 of 16 dimensions varying)---absence of a usable signal, not inverted discrimination (3B's 24.0\% is stratified 5-fold; claim-pair-grouped folds give 46.0\%).}}{6}{figure.caption.12}\protected@file@percent }
 \newlabel{fig:r1c_collapse}{{2}{6}{\textbf {EXP-R1c: the pre-registered collapse, on every target.} \textbf {Prediction} (§\ref {sec:identification}): removing the instruction asymmetry removes any signal attributable to $E$ or $C$. \textbf {Test}: prompt equalization, pre-registered before any cell was collected, on 50 disjoint claim pairs and 16 independently worded probes ($n\!=\!50$/cell; instructed every $p\!=\!0.001$, equalized every $p\!\geq \!0.173$; Table~\ref {tab:r1c_v2}). The shaded band spans the equalized cells, \textbf {no one of which discriminates above chance}; points below the dashed chance line mark a \textbf {degenerate} probe channel (0--2 of 16 dimensions varying)---absence of a usable signal, not inverted discrimination (3B's 24.0\% is stratified 5-fold; claim-pair-grouped folds give 46.0\%)}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Prior Detector Collapses Under Equalization (EXP-R1, EXP-R1b/R1c)}{6}{subsection.3.2}\protected@file@percent }
-\newlabel{sec:r1_faithful}{{3.2}{6}{The Prior Detector Collapses Under Equalization (EXP-R1, EXP-R1b/R1c)}{subsection.3.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{Result.}{6}{section*.13}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}What Survives Is Reproducible from Surface Behavior and Knowledge Conflict}{6}{subsection.3.3}\protected@file@percent }
 \newlabel{sec:hedging_baseline}{{3.3}{6}{What Survives Is Reproducible from Surface Behavior and Knowledge Conflict}{subsection.3.3}{}}
@@ -65,10 +65,10 @@
 \newlabel{sec:external_audit}{{3.5}{7}{Criterion 4: on Public Corpora, and on Materials Built for It (EXP-XA/XJ/XL, EXP-C4)}{subsection.3.5}{}}
 \@writefile{toc}{\contentsline {paragraph}{Our rule is null where criterion 4 can be tested; prior work's own judge is not (EXP-XA/XJ).}{7}{section*.19}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Annotation-channel leakage, and construct recovery: two more ways to pass without detecting (EXP-XA, EXP-IT).}{7}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{So we built one, and prior work's own battery separates deception in it (EXP-C4, \emph  {pre-registered}).}{7}{section*.21}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {The protocol applied across settings: three detector paradigms, two public releases, one design we built, five distinct failure modes.} Columns are Table~\ref {tab:criteria}'s criteria---\textbf  {1}~equalization, \textbf  {2}~cross-family extraction, \textbf  {3}~matched surface baseline, \textbf  {4}~deception at fixed elicitation, \textbf  {5}~transfer. \text  {$\mathsurround \z@ \mathchar "458$}~passes; $\times $~fails; \textbf  {---}~not expressible or not applicable; \text  {$\mathsurround \z@ \mathchar "458$}$^{\dagger }$~criterion~4 runs and is \emph  {positive} but requirement~(iii) is unmet---so a deception-\emph  {associated} signal, not $\tau _D$, which is all a plain \text  {$\mathsurround \z@ \mathchar "458$}\ in column~4 establishes either, (i)--(v) being necessary and not sufficient. \textbf  {Criterion~4 asks about a \emph  {design}}, and the rollout sets are \textbf  {not independent benchmark efforts}: seven designs from the first release, every rollout Llama-70B (Table~\ref {tab:external_eligibility}), 35 cells over five generator families from the second (Table~\ref {tab:liars_bench}).}}{8}{table.caption.18}\protected@file@percent }
 \newlabel{tab:external_audit}{{3}{8}{\textbf {The protocol applied across settings: three detector paradigms, two public releases, one design we built, five distinct failure modes.} Columns are Table~\ref {tab:criteria}'s criteria---\textbf {1}~equalization, \textbf {2}~cross-family extraction, \textbf {3}~matched surface baseline, \textbf {4}~deception at fixed elicitation, \textbf {5}~transfer. \checkmark ~passes; $\times $~fails; \textbf {---}~not expressible or not applicable; \checkmark $^{\dagger }$~criterion~4 runs and is \emph {positive} but requirement~(iii) is unmet---so a deception-\emph {associated} signal, not $\tau _D$, which is all a plain \checkmark \ in column~4 establishes either, (i)--(v) being necessary and not sufficient. \textbf {Criterion~4 asks about a \emph {design}}, and the rollout sets are \textbf {not independent benchmark efforts}: seven designs from the first release, every rollout Llama-70B (Table~\ref {tab:external_eligibility}), 35 cells over five generator families from the second (Table~\ref {tab:liars_bench})}{table.caption.18}{}}
 \citation{hubinger2019risks,scheurer2024strategic,greenblatt2024alignment}
-\@writefile{toc}{\contentsline {paragraph}{So we built one, and prior work's own battery separates deception in it (EXP-C4, \emph  {pre-registered}).}{9}{section*.21}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{9}{section.4}\protected@file@percent }
 \newlabel{sec:discussion}{{4}{9}{Discussion}{section.4}{}}
 \newlabel{sec:icc_caveat}{{4}{9}{Human validation, scope and limitations}{section*.22}{}}
@@ -470,7 +470,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {Y}EXP-IT: Criterion 4 on an On-Policy, Incentive-Elicited Corpus}{52}{appendix.Y}\protected@file@percent }
 \newlabel{app:insider_audit}{{Y}{52}{EXP-IT: Criterion 4 on an On-Policy, Incentive-Elicited Corpus}{appendix.Y}{}}
 \@writefile{toc}{\contentsline {paragraph}{Why this corpus, and what EXP-XA got wrong about it.}{52}{section*.187}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Materials, channel and rule.}{52}{section*.188}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Materials, channel and rule.}{53}{section*.188}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Result (exploratory).}{53}{section*.189}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Why the positive is construct-recovery rather than detection.}{53}{section*.190}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{The pre-registered replication could not be run.}{53}{section*.191}\protected@file@percent }
@@ -478,14 +478,14 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {Y.1}EXP-IT2: Requirement (v) Tested Directly, With an Action-Grounded $D$}{53}{subsection.Y.1}\protected@file@percent }
 \newlabel{app:insider_audit2}{{Y.1}{53}{EXP-IT2: Requirement (v) Tested Directly, With an Action-Grounded $D$}{subsection.Y.1}{}}
 \@writefile{toc}{\contentsline {paragraph}{Why this is the test requirement (v) calls for.}{53}{section*.193}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Label rule and DEVIATION 1.}{53}{section*.194}\protected@file@percent }
-\citation{kretschmar2025liarsbench}
+\@writefile{toc}{\contentsline {paragraph}{Label rule and DEVIATION 1.}{54}{section*.194}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {45}{\ignorespaces EXP-IT2. The rule against an \textbf  {action-grounded} label ($A$ = the agent traded on the tip), within scenario, scenario-stratified permutation, 10{,}000 draws, seed 42, MIN\_CELL~$=5$. Both hypotheses are \textbf  {null with the sign opposite to the pre-registered direction}, consistently so across all three usable scenarios. 7 of 11 scenarios drop for having no $A\!=\!0$ cell---an agent that never used the tip has nothing to disclose.}}{54}{table.caption.195}\protected@file@percent }
 \newlabel{tab:insider_it2}{{45}{54}{EXP-IT2. The rule against an \textbf {action-grounded} label ($A$ = the agent traded on the tip), within scenario, scenario-stratified permutation, 10{,}000 draws, seed 42, MIN\_CELL~$=5$. Both hypotheses are \textbf {null with the sign opposite to the pre-registered direction}, consistently so across all three usable scenarios. 7 of 11 scenarios drop for having no $A\!=\!0$ cell---an agent that never used the tip has nothing to disclose}{table.caption.195}{}}
 \@writefile{toc}{\contentsline {paragraph}{Result: null, and the direction fails.}{54}{section*.196}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{H6: the disjointness is real, not nominal.}{54}{section*.197}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{H6 makes EXP-IT's construct-recovery diagnosis quantitative.}{54}{section*.198}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{What EXP-IT2 does and does not establish.}{54}{section*.199}\protected@file@percent }
+\citation{kretschmar2025liarsbench}
 \@writefile{toc}{\contentsline {section}{\numberline {Z}EXP-XL: Criterion 4 on a Second Public Release (Liars' Bench)}{55}{appendix.Z}\protected@file@percent }
 \newlabel{app:liars_bench}{{Z}{55}{EXP-XL: Criterion 4 on a Second Public Release (Liars' Bench)}{appendix.Z}{}}
 \@writefile{toc}{\contentsline {paragraph}{Why we went looking for a second release.}{55}{section*.200}\protected@file@percent }
@@ -493,7 +493,7 @@
 \@writefile{toc}{\contentsline {paragraph}{Access: granted, but not pinnable the way Apollo is.}{55}{section*.202}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{The survey is the deliverable, and it is a survey of gates.}{55}{section*.203}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Requirement (iii) is met here---the first time anywhere in this paper.}{55}{section*.204}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The rule arm: positive, but mostly scenario composition.}{55}{section*.205}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The rule arm: positive, but mostly scenario composition.}{56}{section*.205}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{The judge arm: prior work's detector, transferred to a second release.}{56}{section*.206}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{H6: neither instrument is silent, and neither is saturated.}{56}{section*.207}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Annotation-channel leakage replicates, in exactly one cell.}{56}{section*.208}\protected@file@percent }
