@@ -4,7 +4,7 @@
 \subsection{Experimental Setup}
 \label{sec:setup}
 
-We evaluate seven LLMs across four families---Llama~3.2~3B/3.1~8B/3.3~70B~\citep{meta2024llama3}, Mistral~7B~\citep{jiang2023mistral}, Qwen~2.5~7B/14B~\citep{qwen2025qwen25} and Claude Haiku~4.5~\citep{anthropic2025haiku45}---at $n=50$--100 balanced trials per condition, plus Qwen~2.5~32B in the scale sweep and EXP-R1, and Qwen3-4B and Gemma~3~4B in the white-box audit. Claude Haiku~4.5 is the interrogator and feature extractor throughout (cross-family for every target but itself); \textbf{the cross-family control reduces but does not eliminate} dependence on this one implementation. Claims are 50 matched true/false factual pairs, tested \emph{instructed} and \emph{prompt-equalized}. This is \emph{not} a survey of frontier models and no claim below is a scaling or recency claim (Appendices~\ref{app:claims},~\ref{app:scale_details},~\ref{app:cross_family_details},~\ref{app:vintage}). \textbf{The primary evidence uses no LLM-extracted features at all} (Table~\ref{tab:roadmap}'s bold rows) and \textbf{nine pre-registered analyses---one of them a rule that failed, reported as a null---are the only confirmatory results, everything else exploratory} (Appendix Tables~\ref{tab:what_establishes},~\ref{tab:experiment_summary}); the inferential unit is the \textbf{target~$\times$~claim-pair}, so trial counts overstate the effective sample size.
+We evaluate seven LLMs across four families---Llama~3.2~3B/3.1~8B/3.3~70B~\citep{meta2024llama3}, Mistral~7B~\citep{jiang2023mistral}, Qwen~2.5~7B/14B~\citep{qwen2025qwen25} and Claude Haiku~4.5~\citep{anthropic2025haiku45}---at $n=50$--100 balanced trials per condition, plus Qwen~2.5~32B in the scale sweep and EXP-R1, and Qwen3-4B and Gemma~3~4B in the white-box audit. Claude Haiku~4.5 is the interrogator and feature extractor throughout (cross-family for every target but itself); \textbf{the cross-family control reduces but does not eliminate} dependence on this one implementation. Claims are 50 matched true/false factual pairs, tested \emph{instructed} and \emph{prompt-equalized}. This is \emph{not} a survey of frontier models and no claim below is a scaling, recency or effect-magnitude claim (Appendices~\ref{app:claims},~\ref{app:scale_details},~\ref{app:cross_family_details},~\ref{app:vintage}). \textbf{The primary evidence uses no LLM-extracted features at all} (Table~\ref{tab:roadmap}'s bold rows) and \textbf{nine pre-registered analyses---one of them a rule that failed, reported as a null---are the only confirmatory results, everything else exploratory} (Appendix Tables~\ref{tab:what_establishes},~\ref{tab:experiment_summary}); the inferential unit is the \textbf{target~$\times$~claim-pair}, so trial counts overstate the effective sample size.
 
 \subsection{The Prior Detector Collapses Under Equalization (EXP-R1, EXP-R1b/R1c)}
 \label{sec:r1_faithful}
@@ -54,7 +54,7 @@ We evaluate seven LLMs across four families---Llama~3.2~3B/3.1~8B/3.3~70B~\citep
 \node[font=\scriptsize\bfseries, anchor=west, inner sep=2pt] at (102,0) {$-$53.7\,pp};
 \end{tikzpicture}
 
-\caption{\textbf{EXP-R1c: the pre-registered collapse, on every target.} \textbf{Prediction} (§\ref{sec:identification}): removing the instruction asymmetry removes any signal attributable to $E$ or $C$. \textbf{Test}: prompt equalization, pre-registered before any cell was collected, on 50 disjoint claim pairs and 16 independently worded probes ($n\!=\!50$/cell; instructed every $p\!=\!0.001$; Appendix Table~\ref{tab:r1c_v2}). The shaded band spans the equalized cells; points below the dashed chance line mark a \textbf{degenerate} probe channel (0--2 of 16 dimensions varying)---absence of a usable signal, not inverted discrimination (3B's 24.0\% is stratified 5-fold; claim-pair-grouped folds give 46.0\%).}
+\caption{\small\textbf{EXP-R1c: the pre-registered collapse, on every target.} \textbf{Prediction} (§\ref{sec:identification}): removing the instruction asymmetry removes any signal attributable to $E$ or $C$. \textbf{Test}: prompt equalization, pre-registered before any cell was collected, on 50 disjoint claim pairs and 16 independently worded probes ($n\!=\!50$/cell; instructed every $p\!=\!0.001$; Appendix Table~\ref{tab:r1c_v2}). The shaded band spans the equalized cells; points below the dashed chance line mark a \textbf{degenerate} probe channel (0--2 of 16 dimensions varying)---absence of a usable signal, not inverted discrimination (3B's 24.0\% is stratified 5-fold; claim-pair-grouped folds give 46.0\%).}
 \label{fig:r1c_collapse}
 \end{figure}
 
@@ -84,7 +84,7 @@ A style-constraint adversary drops correction markers on \emph{lie} trials 84\%$
 
 \begin{table}[htbp]
 \centering
-\caption{\textbf{The protocol applied across settings: three detector paradigms, two public releases, one design we built, five distinct failure modes.} Columns are Table~\ref{tab:criteria}'s criteria---\textbf{1}~equalization, \textbf{2}~cross-family extraction, \textbf{3}~matched surface baseline, \textbf{4}~deception at fixed elicitation, \textbf{5}~transfer. \checkmark~passes; $\times$~fails; \textbf{---}~not expressible or not applicable; \emph{p}$^{\ast}$~\textbf{partial, exploratory}: leave-one-target-out transfer holds on 2 of 5, but the cells share most claims, so the cross-\emph{claim} half is untested (Appendix~\ref{app:crit4_transfer}); \checkmark$^{\dagger}$~criterion~4 runs and is \emph{positive} but requirement~(iii) is unmet---no more than a plain \checkmark\ in column~4 establishes either, (i)--(v) being necessary and not sufficient. \textbf{Criterion~4 asks about a \emph{design}}, and the rollout sets are \textbf{not independent benchmark efforts}: seven designs from the first release, every rollout Llama-70B (Appendix Table~\ref{tab:external_eligibility}), 35 cells over five generator families from the second (Appendix Table~\ref{tab:liars_bench}).}
+\caption{\small\textbf{The protocol applied across settings: three detector paradigms, two public releases, one design we built, five distinct failure modes.} Columns are Table~\ref{tab:criteria}'s criteria---\textbf{1}~equalization, \textbf{2}~cross-family extraction, \textbf{3}~matched surface baseline, \textbf{4}~deception at fixed elicitation, \textbf{5}~transfer. \checkmark~passes; $\times$~fails; \textbf{---}~not expressible or not applicable; \emph{p}$^{\ast}$~\textbf{partial, exploratory} (criterion~5, §\ref{sec:external_audit}); \checkmark$^{\dagger}$~criterion~4 runs and is \emph{positive} but requirement~(iii) is unmet---no more than a plain \checkmark\ in column~4 establishes either, (i)--(v) being necessary and not sufficient. \textbf{Criterion~4 asks about a \emph{design}}, and the rollout sets are \textbf{not independent benchmark efforts}: seven designs from the first release, every rollout Llama-70B; 35 cells from the second (Appendix Tables~\ref{tab:external_eligibility},~\ref{tab:liars_bench}).}
 \label{tab:external_audit}
 \begin{scriptsize}
 \setlength{\tabcolsep}{3pt}
@@ -92,25 +92,25 @@ A style-constraint adversary drops correction markers on \emph{lie} trials 84\%$
 \toprule
 \textbf{Setting (detector)} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{Verdict} \\
 \midrule
-Our claim benchmark, \textbf{black-box behavioral}: prior work's probe battery (EXP-R1/R1c), ADAGE (EXP-A), the parameter-free rule & $\times$ & \checkmark & $\times$ & --- & $\times$ & \textbf{Not attributable.} 97.0$\to$43.3\% under equalization, 69--80\% reachable with no fitting, LOO 64.2\%; criterion~4 is \emph{not expressible} by any instructed design \\
-\addlinespace[1.5pt]
-The same benchmark, \textbf{white-box linear probe} on residual activations, \textbf{two models in two families} (EXP-WP, \emph{pre-registered}) & $\times$ & --- & $\times$ & --- & \checkmark & \textbf{Reads the instruction.} At ceiling on $E$, transfers to equalized responses \emph{at chance}, and surface features alone reach 92.5--99.0\% vs.\ its 100.0\%. Both replicate on a disjoint claim set, so \emph{what} transfers is the $E$-decoding \\
-\addlinespace[1.5pt]
-Apollo sandbagging, \textbf{visible channel}: our surface rule against the \emph{release authors' own} LLM judge (EXP-XA/XJ) & \checkmark & \checkmark & \checkmark & \checkmark$^{\dagger}$ & --- & \textbf{Actual deception signal}, and \textbf{rule-null}: the judge separates realized deception at fixed $E$ (AUROC 0.71/0.94) where our rule does not ($+4.1$/$+7.7$\,pp) \\
-\addlinespace[1.5pt]
+Our claim benchmark, \textbf{black-box behavioral}: prior work's probe battery (EXP-R1/R1c), ADAGE (EXP-A), the parameter-free rule & $\times$ & \checkmark & $\times$ & --- & $\times$ & \textbf{Not attributable.} 97.0$\to$43.3\% under equalization, 69--80\% reachable with no fitting; criterion~4 is \emph{not expressible} by any instructed design \\
+\addlinespace[0.5pt]
+The same benchmark, \textbf{white-box linear probe} on residual activations, \textbf{two models in two families} (EXP-WP, \emph{pre-registered}) & $\times$ & --- & $\times$ & --- & \checkmark & \textbf{Reads the instruction.} At ceiling on $E$, transfers to equalized responses \emph{at chance}, and surface features alone reach 92.5--99.0\%. Both replicate on a disjoint claim set, so \emph{what} transfers is the $E$-decoding \\
+\addlinespace[0.5pt]
+Apollo sandbagging, \textbf{visible channel}: our surface rule against the \emph{release authors' own} LLM judge (EXP-XA/XJ) & \checkmark & \checkmark & \checkmark & \checkmark$^{\dagger}$ & --- & \textbf{Deception-\emph{associated}}, and \textbf{rule-null}: the judge separates realized deception at fixed $E$ (AUROC 0.71/0.94) where our rule does not ($+4.1$/$+7.7$\,pp) \\
+\addlinespace[0.5pt]
 Apollo sandbagging, \textbf{full transcript}: the same surface rule (EXP-XA) & \checkmark & --- & $\times$ & $\times$ & \checkmark & \textbf{Annotation-channel leakage}, failing~(iv): $+84.3$\,pp, the model echoing its own instruction in a channel no deployed detector reads; replicates on the held-out tag \\
-\addlinespace[1.5pt]
+\addlinespace[0.5pt]
 Apollo insider trading, on-policy: a format-matched rule against an \textbf{action-grounded} label (EXP-IT/IT2) & \checkmark & --- & $\times$ & $\times$ & $\times$ & \textbf{Construct recovery}, failing~(v): $-77.1$\,pp against the corpus's own report grade, but \textbf{null} ($+21.6$\,pp) against whether the agent \emph{traded}---a label disjoint from the rule's input \\
-\addlinespace[1.5pt]
+\addlinespace[0.5pt]
 A \textbf{second public release}, 35 cells over \textbf{five generator families}: the same rule and the same released judge (EXP-XL, \emph{fully} pre-registered) & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \textbf{Construct recovery} again, failing~(v) in \emph{all} 35 cells: the first audited cell satisfying~(iii) (28 paired scenarios), rule $+16.4$\,pp and judge AUROC 0.847---but \texttt{deceptive} grades the report both read, the rule's within-scenario excess over its own null only $+2.3$\,pp \\
-\addlinespace[1.5pt]
-\textbf{Materials we built for criterion~4}: prior work's probe battery on knowledge-screened false references, no lie instruction, \textbf{five} targets (EXP-C4, \emph{pre-registered}) & \checkmark & --- & \checkmark & \checkmark & \emph{p}$^{\ast}$ & \textbf{Actual deception signal}, the first audited setting meeting \emph{all} of~(i)--(v): on 3 of 5 targets 0.650--0.903 vs.\ majority 0.575--0.682, $p\!\le\!0.006$; 2 null, uninformatively (MDE $\ge\!0.80$); \textbf{2 of the 3 replicate blinded}, \textbf{1 of 5} new targets (EXP-C4B) \\
+\addlinespace[0.5pt]
+\textbf{Materials we built for criterion~4}: prior work's probe battery on knowledge-screened false references, no lie instruction, \textbf{five} targets (EXP-C4, \emph{pre-registered}) & \checkmark & --- & \checkmark & \checkmark & \emph{p}$^{\ast}$ & \textbf{Deception-\emph{associated}}, the first audited setting meeting \emph{all} of~(i)--(v): on 3 of 5 targets 0.650--0.903 vs.\ majority 0.575--0.682, $p\!\le\!0.006$; 2 null, uninformatively (MDE $\ge\!0.80$); \textbf{2 of the 3 replicate blinded}, \textbf{1 of 5} new targets (EXP-C4B) \\
 \bottomrule
 \end{tabular}
 \end{scriptsize}
 \end{table}
 
-\paragraph{Three supporting diagnostics (EXP-A, factorial, EXP-G).} \textbf{ADAGE is an apparatus, not a contribution}: it reproduces §\ref{sec:r1_faithful}---93.9--100\% instructed, 61\% (3B)--84\% (70B) under identical neutral prompts, 52--69\% under cross-family re-extraction---and memorization is not the explanation, holding out an \emph{entire} claim pair moving pooled accuracy by \textbf{0.3\,pp}. \textbf{The factorial does not identify deception} either: crossing truth-value with the instruction, $D$ follows $E$ in \emph{both} instructed cells, which the benchmark labels alike, yet the score shifts $-1.37$ and $+1.61$\,SD between them ($p\!=\!0.0001$) in \emph{opposite} directions---so \textbf{$S$ is not a function of the benchmark's deception label}. Matching claim type---the bank pairs modified-false \emph{factual} claims against \emph{first-person experiential} ones---leaves the instruction effect at $+7.5$--31\,pp (EXP-G, five targets). Detail: Figure~\ref{fig:feature_collapse}, Appendices~\ref{app:adage_details},~\ref{app:supporting_diagnostics},~\ref{app:factorial_txd},~\ref{app:expg_details}.
+\paragraph{Three supporting diagnostics (EXP-A, factorial, EXP-G).} \textbf{ADAGE is an apparatus, not a contribution}: it reproduces §\ref{sec:r1_faithful} under identical neutral prompts and under cross-family re-extraction, and memorization is not the explanation---holding out an \emph{entire} claim pair moves pooled accuracy by \textbf{0.3\,pp}. \textbf{The factorial does not identify deception} either: crossing truth-value with the instruction, $D$ follows $E$ in \emph{both} instructed cells, which the benchmark labels alike, yet the score shifts $1.4$ and $1.6$\,SD in \emph{opposite} directions ($p\!=\!0.0001$)---so \textbf{$S$ is not a function of the benchmark's deception label}. Matching claim type leaves the instruction effect positive on all five targets (EXP-G). Detail: Figure~\ref{fig:feature_collapse}, Appendices~\ref{app:adage_details},~\ref{app:supporting_diagnostics},~\ref{app:factorial_txd},~\ref{app:expg_details}.
 
 
 
@@ -118,7 +118,7 @@ A \textbf{second public release}, 35 cells over \textbf{five generator families}
 \centering
 \newcommand{\rungrow}[3]{\makebox[50mm][l]{#1}\makebox[47mm][l]{#2}\makebox[35mm][l]{#3}}
 \begin{tikzpicture}[
-  band/.style={draw,rounded corners=1.5pt,minimum height=5.4mm,text width=133mm,
+  band/.style={draw,rounded corners=1.5pt,minimum height=5.0mm,text width=133mm,
                inner xsep=2.5pt,inner ysep=0pt,anchor=north west,font=\small},
   weak/.style={band,dashed,fill=black!8},
   hd/.style={font=\scriptsize\itshape,anchor=north west,inner sep=0pt},
@@ -126,12 +126,12 @@ A \textbf{second public release}, 35 cells over \textbf{five generator families}
 \node[hd] at (0.5mm,4.9mm) {\rungrow{What a design establishes}{Reached by}{Where the audited work sits}};
 \node[weak] (r5) at (0,0) {\rungrow{\textbf{5. Causal deception signal ($\tau_D$)}}{$\mathrm{do}(D)$: $D$ set or randomised}{\emph{no design audited here}}};
 \node[brk] at (1mm,-6.0mm) {$\uparrow$ \textbf{this paper reaches rung 4, not rung 5}};
-\node[band] (r4) at (0,-10.6mm) {\rungrow{\textbf{4. Deception-\emph{associated}}, at fixed $E$}{criterion 4}{EXP-C4: our own materials}};
-\node[band] (r3) at (0,-16.6mm) {\rungrow{\textbf{3. Behavioural}, not surface form}{criteria 2 and 3}{EXP-B, the lexical rule}};
-\node[band] (r2) at (0,-22.6mm) {\rungrow{\textbf{2. Instruction-independent} signal}{criterion 1}{EXP-R1c: it collapses}};
-\node[band] (r1) at (0,-28.6mm) {\rungrow{\textbf{1. Instructed signal}}{the benchmark as published}{97.0\% pooled}};
+\node[band] (r4) at (0,-10.2mm) {\rungrow{\textbf{4. Deception-\emph{associated}}, at fixed $E$}{criterion 4}{EXP-C4: our own materials}};
+\node[band] (r3) at (0,-15.8mm) {\rungrow{\textbf{3. Behavioural}, not surface form}{criteria 2 and 3}{EXP-B, the lexical rule}};
+\node[band] (r2) at (0,-21.4mm) {\rungrow{\textbf{2. Instruction-independent} signal}{criterion 1}{EXP-R1c: it collapses}};
+\node[band] (r1) at (0,-27.0mm) {\rungrow{\textbf{1. Instructed signal}}{the benchmark as published}{97.0\% pooled}};
 \end{tikzpicture}
-\caption{\textbf{Table~\ref{tab:criteria} drawn as a ladder, and where this paper stops.} Each control rules out one alternative explanation for a detector's accuracy; only the top rung licenses a causal claim about deception. \textbf{This paper reaches the fourth rung, not the fifth}: EXP-C4 exhibits a deception-\emph{associated} signal at byte-identical elicitation---necessary for, but not equal to, $\tau_D$. Rung~5 needs $D$ manipulated or randomised, which \textbf{no design audited here supplies}.}
+\caption{\small\textbf{Table~\ref{tab:criteria} drawn as a ladder, and where this paper stops.} Each control rules out one alternative explanation for a detector's accuracy; only rung~5 licenses a causal claim. \textbf{This paper reaches rung~4}: EXP-C4 exhibits a deception-\emph{associated} signal at byte-identical elicitation---necessary for, but not equal to, $\tau_D$, which needs $D$ manipulated or randomised.}
 \label{fig:ladder}
 \end{figure}
 

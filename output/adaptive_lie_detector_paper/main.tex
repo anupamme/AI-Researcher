@@ -38,6 +38,12 @@
   backgroundcolor=\color{gray!10},
 }
 
+% Float spacing, tightened. The style file specifies neither of these, and the
+% text block, margins and font size are untouched -- this only closes the gap
+% between a float and its caption, and between a float and the body text.
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\textfloatsep}{14pt plus 2pt minus 3pt}
+
 % Checklist macros (providecommand avoids clash if a style defines them)
 \providecommand{\answerYes}[1][]{\textcolor{blue}{[Yes] #1}}
 \providecommand{\answerNo}[1][]{\textcolor{orange}{[No] #1}}
