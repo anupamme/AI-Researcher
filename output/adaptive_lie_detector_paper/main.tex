@@ -65,6 +65,52 @@ Paper under double-blind review}
 \input{sections/discussion}
 \input{sections/conclusion}
 
+\subsection*{Ethics statement}
+\label{sec:ethics}
+\textbf{Human annotators.} One component of this work used human raters: three
+annotators recruited via Prolific rated 100 AI-generated conversation transcripts
+on five behavioural features (Appendix~\ref{app:human_icc_n100}). Annotators were
+blind to ground-truth labels and to one another's ratings, and attention-check
+items were embedded to verify engagement. They rated model-generated text only;
+no personal or identifying data about any human was collected, presented or
+stored. Annotators were paid at a rate of \$10 per hour, and gave their consent
+before beginning the task. \textbf{No institutional review board review applied
+to this work, and none was sought}; we state this rather than imply a safeguard
+that was not in place. The study's per-rater CSVs are released.
+
+\textbf{Model-generated content.} All deceptive content in our own experiments is
+model output, elicited either by an explicit instruction to defend a false claim
+or---in the criterion-4 materials---by presenting a knowledge-screened false
+reference fact with no lie instruction at all. Claims are matched factual pairs
+about neutral subject matter: science, history, geography, technology and culture
+(Appendix~\ref{app:claims}), chosen so that a false claim is verifiable rather
+than harmful. No experiment sought to elicit harmful, private or unsafe content,
+and nothing here trains a model to deceive more effectively.
+
+\textbf{Third-party data.} The two audited rollout releases are used under their
+own terms. One is not redistributed: it is a git submodule pinned to a single
+upstream commit. The other is access-gated, so we redistribute a sha256 manifest
+and our derived artifacts rather than the corpus, and we accessed it under our
+own account. Closed models were accessed via AWS Bedrock under standard terms.
+
+\textbf{Dual use.} This paper is a critique of evaluation practice, not a
+deception capability. It does report that much of a benchmark's accuracy is
+reachable from surface features, and that the most discriminative probe in a
+published battery is a paraphrase of the lie instruction---information that could
+in principle help someone score well on such a benchmark without detecting
+deception. We judge disclosure to be right: the failure mode is a property of the
+benchmark design, published designs are already being used to support attribution
+claims, and naming the mechanism is what allows it to be fixed. Every control we
+describe is one an auditor can apply to a benchmark they did not build.
+
+\textbf{Risk of over-reading a negative result.} The clearest misuse of this work
+would be to cite it as evidence that LLM deception is undetectable, or to dismiss
+deception evaluation as a whole. \textbf{We establish neither}, and say so in
+§\ref{sec:eval_controls} and in claim~(4): under a design that removes the
+elicitation confound, prior work's own battery does separate realized deception.
+The claim is about what a class of benchmarks can license, not about what
+detectors can do.
+
 \subsection*{AI use statement}
 Generative AI tools were used in preparing this work and we take full
 responsibility for its final content. LLM assistance was used for writing and
