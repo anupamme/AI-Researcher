@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  16 SEP 2026 15:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  16 SEP 2026 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -972,24 +972,24 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1018,26 +1018,26 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 64.
+Package hyperref Info: Link coloring OFF on input line 57.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 64.
-Package microtype Info: Applying patch `item' on input line 64.
-Package microtype Info: Applying patch `toc' on input line 64.
-Package microtype Info: Applying patch `eqnum' on input line 64.
-Package microtype Info: Applying patch `footnote' on input line 64.
-Package microtype Info: Applying patch `verbatim' on input line 64.
-LaTeX Info: Redefining \microtypesetup on input line 64.
+LaTeX Info: Redefining \microtypecontext on input line 57.
+Package microtype Info: Applying patch `item' on input line 57.
+Package microtype Info: Applying patch `toc' on input line 57.
+Package microtype Info: Applying patch `eqnum' on input line 57.
+Package microtype Info: Applying patch `footnote' on input line 57.
+Package microtype Info: Applying patch `verbatim' on input line 57.
+LaTeX Info: Redefining \microtypesetup on input line 57.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 64.
+LaTeX Info: Redefining \showhyphens on input line 57.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1054,7 +1054,7 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1063,7 +1063,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1205,11 +1205,6 @@ T1/ptm/m/n/10 (+20) , AWS Bedrock) is a frontier-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (12.10028pt too wide) in paragraph at lines 168--177
- [][] 
- []
-
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
@@ -1224,7 +1219,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <figures/feature_collapse.pdf, id=865, 859.63786pt x 261.91829pt>
 File: figures/feature_collapse.pdf Graphic file (type pdf)
 <use figures/feature_collapse.pdf>
-Package pdftex.def Info: figures/feature_collapse.pdf  used on input line 205.
+Package pdftex.def Info: figures/feature_collapse.pdf  used on input line 206.
 (pdftex.def)             Requested size: 397.48499pt x 121.10733pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1260,7 +1255,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: figures/probe_layer_curve_panel.pdf Graphic file (type pdf)
 <use figures/probe_layer_curve_panel.pdf>
 Package pdftex.def Info: figures/probe_layer_curve_panel.pdf  used on input lin
-e 394.
+e 395.
 (pdftex.def)             Requested size: 337.86465pt x 101.55125pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1271,42 +1266,42 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [19]
-Underfull \hbox (badness 1484) in paragraph at lines 415--415
+Underfull \hbox (badness 1484) in paragraph at lines 416--416
 []$\OML/cmm/m/it/7 E$ \T1/ptm/m/n/7 (+20) is de-cod-able above chance
  []
 
 
-Underfull \hbox (badness 7595) in paragraph at lines 419--420
+Underfull \hbox (badness 7595) in paragraph at lines 420--421
 []\T1/ptm/m/n/7 (+20) Supported: $[]\OT1/cmr/m/n/7 21\OMS/cmsy/m/n/7 ^^B$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--423
+Underfull \hbox (badness 10000) in paragraph at lines 424--424
 []\T1/ptm/m/n/7 (+20) Real ac-cu-racy ex-ceeds the
  []
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 423--423
+Underfull \hbox (badness 3000) in paragraph at lines 424--424
 \T1/ptm/m/n/7 (+20) random-direction and shuffled-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 []\T1/ptm/b/n/7 (+20) Null, as pre-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--428
+Underfull \hbox (badness 10000) in paragraph at lines 428--429
 \T1/ptm/m/n/7 (+20) space, \T1/ptm/b/n/7 (+20) be-hav-iorally
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 []\T1/ptm/b/n/7 (+20) Refuted \T1/ptm/m/n/7 (+20) in all
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 \T1/ptm/m/n/7 (+20) three: \T1/pcr/m/n/7 SURFACE_
  []
 
@@ -1340,13 +1335,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [25]
-Underfull \hbox (badness 2142) in paragraph at lines 511--512
+Underfull \hbox (badness 2142) in paragraph at lines 512--513
 []\T1/ptm/b/n/10 (+20) (7) A re-cency check on the col-lapse, which we did not 
 run. \T1/ptm/m/n/10 (+20) The cheap-est open
  []
 
 
-Underfull \hbox (badness 3503) in paragraph at lines 511--512
+Underfull \hbox (badness 3503) in paragraph at lines 512--513
 \T1/ptm/m/n/10 (+20) test in this pa-per: \T1/pcr/m/n/10 experiments/run_r1_fai
 thful.py --model X --condition
  []
@@ -1357,12 +1352,12 @@ Underfull \vbox (badness 1603) has occurred while \output is active []
 
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 558--559
+Underfull \hbox (badness 10000) in paragraph at lines 559--560
 \T1/ptm/m/n/10 (+20) Claude Haiku 4.5 is ac-cessed via AWS Bedrock us-ing the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 558--559
+Underfull \hbox (badness 10000) in paragraph at lines 559--560
 \T1/pcr/m/n/10 us.anthropic.claude-haiku-4-5-20251001-v1:0 \T1/ptm/m/n/10 (+20)
  model ID. Ol-lama mod-els
  []
@@ -1373,46 +1368,38 @@ Underfull \vbox (badness 1648) has occurred while \output is active []
 
 
 [27]
-Overfull \hbox (12.91455pt too wide) in paragraph at lines 573--573
-[]      \T1/pcr/m/n/9 A: Yes, that's correct. I can provide more specific detai
-ls if needed.[] 
- []
-
-
 
 [28]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [29]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
-16.
+17.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
 [30]
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
 [31]
 
 [32]
-Overfull \hbox (34.51453pt too wide) in paragraph at lines 847--847
-[]\T1/pcr/m/n/9 \bThis (?:claim|statement|information) is (?:incorrect|inaccura
-te|false|wrong)\b[] 
- []
 
-
-
-[33]
-Overfull \hbox (2.55188pt too wide) in paragraph at lines 922--933
- [][] 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
+
+[33]
 
 [34]
 
@@ -1423,36 +1410,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [37]
 
 [38]
+Underfull \vbox (badness 1616) has occurred while \output is active []
+
+
 
 [39]
+
+[40]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[40]
-
 [41]
-Overfull \hbox (16.02995pt too wide) in paragraph at lines 1262--1276
- [][] 
- []
-
-
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 1321--1322
+Underfull \hbox (badness 10000) in paragraph at lines 1324--1325
  []\T1/ptm/b/n/10 (+20) Why new data were re-quired.[] \T1/ptm/m/n/10 (+20) The
  ex-ist-ing re-sult files carry a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1323--1324
+Underfull \hbox (badness 10000) in paragraph at lines 1326--1327
  []\T1/ptm/b/n/10 (+20) Claim pool.[] \T1/ptm/m/n/10 (+20) A fresh pool of 120 
 matched true/-false pairs
  []
 
 
-Underfull \hbox (badness 3965) in paragraph at lines 1323--1324
+Underfull \hbox (badness 3965) in paragraph at lines 1326--1327
 \T1/ptm/m/n/10 (+20) (\T1/pcr/m/n/10 experiments/claims_belief_strata.py\T1/ptm
 /m/n/10 (+20) ) span-ning sci-ence and as-tron-omy (30),
  []
@@ -1466,13 +1451,13 @@ Underfull \hbox (badness 3965) in paragraph at lines 1323--1324
 [45]
 
 [46]
-Underfull \hbox (badness 2285) in paragraph at lines 1436--1437
+Underfull \hbox (badness 2285) in paragraph at lines 1439--1440
 \T1/ptm/m/n/10 (+20) file is the one anal-ysed. Re-pro-duc-tion: \T1/pcr/m/n/10
  experiments/run_intervention_b.py\T1/ptm/m/n/10 (+20) ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1436--1437
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1440
 \T1/pcr/m/n/10 experiments/screen_belief_consistency.py\T1/ptm/m/n/10 (+20) , a
 nd
  []
@@ -1480,18 +1465,18 @@ nd
 
 
 [47]
-Underfull \hbox (badness 1622) in paragraph at lines 1469--1469
+Underfull \hbox (badness 1622) in paragraph at lines 1472--1472
 []\T1/ptm/m/n/9 (+20) One sys-tem prompt per (word-ing $\OMS/cmsy/m/n/9 ^^B$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1477--1478
+Underfull \hbox (badness 10000) in paragraph at lines 1480--1481
 []\T1/ptm/m/n/9 (+20) structural: \T1/pcr/m/n/9 run_single_trial \T1/ptm/m/n/9 
 (+20) stores
  []
 
 
-Underfull \hbox (badness 7832) in paragraph at lines 1477--1478
+Underfull \hbox (badness 7832) in paragraph at lines 1480--1481
 \T1/pcr/m/n/9 on_claim_answer \T1/ptm/m/n/9 (+20) and \T1/pcr/m/n/9 vector \T1/
 ptm/m/n/9 (+20) as sep-a-
  []
@@ -1500,28 +1485,32 @@ ptm/m/n/9 (+20) as sep-a-
 
 [48]
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
 [49]
 
 [50]
-Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
+Underfull \hbox (badness 10000) in paragraph at lines 1556--1557
  []\T1/ptm/b/n/10 (+20) Reproduction.[] \T1/pcr/m/n/10 experiments/run_crit4_fi
 xed_elicitation.py \T1/ptm/m/n/10 (+20) (gen-er-a-tion,
  []
 
 
-Underfull \hbox (badness 3514) in paragraph at lines 1553--1554
+Underfull \hbox (badness 3514) in paragraph at lines 1556--1557
 \T1/ptm/m/n/10 (+20) lo-cal Ol-lama), \T1/pcr/m/n/10 experiments/grade_crit4_de
 ception.py \T1/ptm/m/n/10 (+20) (grad-ing, one Bedrock
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
+Underfull \hbox (badness 10000) in paragraph at lines 1556--1557
 \T1/ptm/m/n/10 (+20) pass, raw judge-ments com-mit-ted to \T1/pcr/m/n/10 data/r
 esults/crit4_grades_raw.jsonl\T1/ptm/m/n/10 (+20) ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
+Underfull \hbox (badness 10000) in paragraph at lines 1556--1557
 \T1/pcr/m/n/10 experiments/analyze_crit4.py --phase confirm \T1/ptm/m/n/10 (+20
 ) and
  []
@@ -1532,31 +1521,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
 
 [52]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
 [53]
-Underfull \vbox (badness 1910) has occurred while \output is active []
-
-
 
 [54]
 
 [55]
-Underfull \hbox (badness 2617) in paragraph at lines 1663--1664
+Underfull \hbox (badness 2617) in paragraph at lines 1666--1667
  []\T1/ptm/b/n/10 (+20) Reproduction.[] \T1/ptm/m/n/10 (+20) Ev-ery num-ber abo
 ve re-com-putes from the com-mit-ted cells and grades
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1663--1664
+Underfull \hbox (badness 10000) in paragraph at lines 1666--1667
 \T1/ptm/m/n/10 (+20) with no model call: \T1/pcr/m/n/10 experiments/analyze_cri
 t4b.py --phase unseal \T1/ptm/m/n/10 (+20) for
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1663--1664
+Underfull \hbox (badness 10000) in paragraph at lines 1666--1667
 \T1/ptm/m/n/10 (+20) Ta-ble []43[] and H2--H4, \T1/pcr/m/n/10 analyze_crit4b_re
 liability.py \T1/ptm/m/n/10 (+20) for both $\OML/cmm/m/it/10 $\T1/ptm/m/n/10 (
 +20) 's, and
@@ -1565,59 +1547,57 @@ liability.py \T1/ptm/m/n/10 (+20) for both $\OML/cmm/m/it/10 $\T1/ptm/m/n/10 (
 
 
 [56]
-Underfull \hbox (badness 10000) in paragraph at lines 1686--1686
+Underfull \hbox (badness 10000) in paragraph at lines 1689--1689
 []\T1/ptm/b/n/7 (+20) Distinct
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1686--1686
+Underfull \hbox (badness 10000) in paragraph at lines 1689--1689
 \T1/ptm/b/n/7 (+20) sys.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1688--1688
+Underfull \hbox (badness 10000) in paragraph at lines 1691--1691
 []\T1/ptm/m/n/7 (+20) Sandbagging, WMD-P/MMLU,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1698--1698
+Underfull \hbox (badness 10000) in paragraph at lines 1701--1701
 []\T1/ptm/m/n/7 (+20) 371;
  []
 
 
 
 [57]
-
-[58]
-Underfull \hbox (badness 2103) in paragraph at lines 1732--1732
+Underfull \hbox (badness 2103) in paragraph at lines 1735--1735
 []\T1/ptm/b/n/7 (+20) 3. \T1/ptm/m/n/7 (+20) Regex base-line, ad-ver-sary,
  []
 
 
-Underfull \hbox (badness 3250) in paragraph at lines 1732--1732
+Underfull \hbox (badness 3250) in paragraph at lines 1735--1735
 \T1/ptm/m/n/7 (+20) and be-lief strata (EXP-B, pre-
  []
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[58]
 
 [59]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1759.
+(hyperref)                removing `math shift' on input line 1762.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1759.
+(hyperref)                removing `math shift' on input line 1762.
 
 
 
 [60]
-Overfull \hbox (3.63623pt too wide) in paragraph at lines 1771--1783
- [][] 
- []
-
-
-Underfull \hbox (badness 3826) in paragraph at lines 1791--1792
+Underfull \hbox (badness 3826) in paragraph at lines 1795--1796
 \T1/pcr/m/n/10 --arm action_grounded \T1/ptm/m/n/10 (+20) then \T1/pcr/m/n/10 e
 xperiments/analyze_insider_audit.py --arm
  []
@@ -1625,7 +1605,7 @@ xperiments/analyze_insider_audit.py --arm
 
 
 [61]
-Underfull \hbox (badness 5077) in paragraph at lines 1804--1805
+Underfull \hbox (badness 5077) in paragraph at lines 1808--1809
  []\T1/ptm/b/n/10 (+20) Requirement (iii) is met here---the first time any-wher
 e in this pa-per.[] \T1/ptm/m/n/10 (+20) All four
  []
@@ -1635,85 +1615,80 @@ e in this pa-per.[] \T1/ptm/m/n/10 (+20) All four
 [62]
 
 [63]
-Underfull \hbox (badness 10000) in paragraph at lines 1820--1821
+Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
  []\T1/ptm/b/n/10 (+20) Reproduction.[] \T1/ptm/m/n/10 (+20) Ac-cept the gate o
 nce un-der your own ac-count, then
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1820--1821
+Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
 \T1/pcr/m/n/10 experiments/fetch_liars_bench.py \T1/ptm/m/n/10 (+20) (writes th
 e man-i-fest; ver-ify with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1820--1821
+Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
 \T1/pcr/m/n/10 git diff \T1/ptm/m/n/10 (+20) on the com-mit-ted one---an empty 
 diff means byte-identical to the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1820--1821
+Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
 \T1/ptm/m/n/10 (+20) au-dited re-vi-sion), \T1/pcr/m/n/10 run_liars_bench_audit
 .py \T1/ptm/m/n/10 (+20) for the of-fline sur-vey, and
  []
 
 
-Underfull \hbox (badness 1308) in paragraph at lines 1820--1821
+Underfull \hbox (badness 1308) in paragraph at lines 1824--1825
 \T1/ptm/b/n/10 (+20) call and no net-work\T1/ptm/m/n/10 (+20) . The judge col-l
 ec-tion step (\T1/pcr/m/n/10 run_external_audit_judge.py
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
 
 [64]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [65]
-Underfull \hbox (badness 1888) in paragraph at lines 1896--1897
+Underfull \hbox (badness 1888) in paragraph at lines 1900--1901
  []\T1/ptm/b/n/10 (+20) Judge, trans-port and de-vi-a-tions.[] \T1/ptm/m/n/10 (
 +20) The au-thors' judge mod-els (\T1/pcr/m/n/10 gpt-4o-2024-08-06\T1/ptm/m/n/1
 0 (+20) ,
  []
 
 
+Underfull \vbox (badness 1137) has occurred while \output is active []
+
+
 
 [66]
-Underfull \hbox (badness 1762) in paragraph at lines 1935--1936
+Underfull \hbox (badness 1762) in paragraph at lines 1939--1940
 \T1/ptm/m/n/10 (+20) de-ploy-ment claim. Re-pro-duc-tion: \T1/pcr/m/n/10 experi
 ments/run_external_audit_judge.py
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1935--1936
+Underfull \hbox (badness 10000) in paragraph at lines 1939--1940
 \T1/pcr/m/n/10 --corpus sandbagging \T1/ptm/m/n/10 (+20) (then \T1/pcr/m/n/10 -
 -corpus insider\T1/ptm/m/n/10 (+20) , \T1/pcr/m/n/10 --stability\T1/ptm/m/n/10 
 (+20) , \T1/pcr/m/n/10 --h8\T1/ptm/m/n/10 (+20) ) and
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [67]
-Underfull \vbox (badness 5771) has occurred while \output is active []
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [68]
-Underfull \hbox (badness 10000) in paragraph at lines 1997--1998
+Underfull \hbox (badness 10000) in paragraph at lines 2001--2002
 \T1/ptm/m/n/10 (+20) A 10-trial qual-i-ta-tive spot-check (5 TRUE $\OT1/cmr/m/n
 /10 +$ \T1/ptm/m/n/10 (+20) 5 FALSE, seed=42) was sam-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1997--1998
+Underfull \hbox (badness 10000) in paragraph at lines 2001--2002
 \T1/ptm/m/n/10 (+20) pled from \T1/pcr/m/n/10 persona_autonomous_qwen2.5_14b_n2
 00_final.json
  []
@@ -1723,102 +1698,101 @@ Underfull \hbox (badness 10000) in paragraph at lines 1997--1998
 [69]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2010.
+(hyperref)                removing `math shift' on input line 2014.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\times' on input line 2010.
+(hyperref)                removing `\times' on input line 2014.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2010.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+(hyperref)                removing `math shift' on input line 2014.
 
 
 
 [70]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2065.
+(hyperref)                removing `math shift' on input line 2069.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\times' on input line 2065.
+(hyperref)                removing `\times' on input line 2069.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2065.
-
-
-
-[71]
-Underfull \hbox (badness 1331) in paragraph at lines 2097--2098
-\T1/ptm/b/n/10 (+20) Pre-registered de-sign. \T1/ptm/m/n/10 (+20) Hold-ing clar
--ity (high), turn-count (multi-turn adap-tive), and tar-
- []
-
-
-Underfull \hbox (badness 2547) in paragraph at lines 2097--2098
-\T1/ptm/m/n/10 (+20) get (Qwen 2.5 14B) fixed, we vary only \T1/ptm/m/it/10 (+2
-0) dis-po-si-tion source\T1/ptm/m/n/10 (+20) : syco-phancy (agree-with-
- []
-
-
-Underfull \hbox (badness 2285) in paragraph at lines 2097--2098
-\T1/ptm/m/n/10 (+20) user sys-tem prompt), per-sona (``Dr. Alex Mor-gan, MIT ph
-ysics ed-u-ca-tor'', reused ver-
- []
-
-
-Underfull \hbox (badness 4621) in paragraph at lines 2097--2098
-\T1/ptm/m/n/10 (+20) ba-tim from \T1/pcr/m/n/10 run_persona_autonomous.py\T1/pt
-m/m/n/10 (+20) , so the only cross-scenario vari-able is
- []
+(hyperref)                removing `math shift' on input line 2069.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
+[71]
+Underfull \hbox (badness 1331) in paragraph at lines 2101--2102
+\T1/ptm/b/n/10 (+20) Pre-registered de-sign. \T1/ptm/m/n/10 (+20) Hold-ing clar
+-ity (high), turn-count (multi-turn adap-tive), and tar-
+ []
+
+
+Underfull \hbox (badness 2547) in paragraph at lines 2101--2102
+\T1/ptm/m/n/10 (+20) get (Qwen 2.5 14B) fixed, we vary only \T1/ptm/m/it/10 (+2
+0) dis-po-si-tion source\T1/ptm/m/n/10 (+20) : syco-phancy (agree-with-
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 2101--2102
+\T1/ptm/m/n/10 (+20) user sys-tem prompt), per-sona (``Dr. Alex Mor-gan, MIT ph
+ysics ed-u-ca-tor'', reused ver-
+ []
+
+
+Underfull \hbox (badness 4621) in paragraph at lines 2101--2102
+\T1/ptm/m/n/10 (+20) ba-tim from \T1/pcr/m/n/10 run_persona_autonomous.py\T1/pt
+m/m/n/10 (+20) , so the only cross-scenario vari-able is
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\times' on input line 2120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\times' on input line 2120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2120.
+
+
+
 [72]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2116.
+(hyperref)                removing `math shift' on input line 2156.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\times' on input line 2116.
+(hyperref)                removing `math shift' on input line 2156.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\times' on input line 2116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2116.
-
-
-
-[73]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2152.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2152.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 )
+
+[73]
 
 [74] (./main.aux)
  ***********
@@ -1829,10 +1803,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D5BD3E841501B5627BD04AC89A870029;24005.
  ) 
 Here is how much of TeX's memory you used:
- 40701 strings out of 473190
- 897023 string characters out of 5715801
- 1476150 words of memory out of 5000000
- 61875 multiletter control sequences out of 15000+600000
+ 40691 strings out of 473190
+ 896914 string characters out of 5715801
+ 1474995 words of memory out of 5000000
+ 61865 multiletter control sequences out of 15000+600000
  706984 words of font info for 760 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,87p,3395b,838s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1863,7 +1837,7 @@ nts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
 e1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/tim
 es/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (74 pages, 769789 bytes).
+Output written on main.pdf (74 pages, 770056 bytes).
 PDF statistics:
  1900 PDF objects out of 2073 (max. 8388607)
  1591 compressed objects within 16 object streams
