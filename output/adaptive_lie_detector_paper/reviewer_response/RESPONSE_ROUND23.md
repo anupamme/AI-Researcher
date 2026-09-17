@@ -173,6 +173,34 @@ disclaimer (1) denies claiming that detectors measure *only* instruction-followi
 
 ---
 
+## Not asked for, found while checking EXP-R1d: a reproducibility defect, now fixed
+
+You scored reproducibility 9, so we should say what the integrity checks around the new experiment turned
+up about the old ones. `requirements.txt` specified `scikit-learn>=1.3.0` — a lower bound, not a pin — and
+under the version we now have installed (1.8.0) the **grouped-5-fold** column did not reproduce the digits
+the paper printed. `GroupKFold`'s fold composition changed between versions; nothing else did.
+
+Everything primary reproduces exactly, and we checked rather than assumed: all six targets' instructed and
+equalized stratified-5-fold and LOO cells in **both** panels, every permutation *p* at 1000 draws, and the
+pooled 97.0% → 43.3% / −53.7 pp at *n* = 300. Four **grouped** cells moved by 2–10 pp:
+
+| Site | Cell | Was | Now |
+|---|---|---|---|
+| `tab:r1c_v2` | Llama 3.2 3B equalized | 46.0% | **36.0%** |
+| `tab:r1c_v2`, `tab:r1_variants` | Mistral 7B equalized (v2) | 54.0% | **58.0%** |
+| `tab:r1c_v2` | Pooled equalized | 47.7% | **48.3%** |
+| `tab:r1_variants` | Mistral 7B equalized (v1) | 62.0% | **60.0%** |
+
+The paper now prints the 1.8.0 values, `requirements.txt` pins `scikit-learn==1.8.0` with the reason, and
+the appendix states the version and which column is version-sensitive. Grouped 5-fold is a secondary
+leakage check throughout and no claim rests on it; all four cells stay near or below chance.
+
+**One of these required rewriting an argument, not just a digit.** EXP-R1c's caveat (ii) explained Llama 3.2
+3B's below-chance equalized 24.0% partly by noting that grouped folds on the same cell gave 46.0%, i.e. near
+chance. At 36.0% that support is gone, so the caveat now rests on what actually carries it — both estimators
+below chance, seven sparse and partly claim-aligned dimensions, and the permutation null at *p* = 0.998.
+Changing the number and keeping the sentence would have left an argument its own data no longer supported.
+
 ## Declined, with reasons
 
 **Item 15 — restructure §3 into Claim 1 / Exp 1–2 / Claim 2 / Exp 3 / Claim 3 / Exp 4.** Declined.
