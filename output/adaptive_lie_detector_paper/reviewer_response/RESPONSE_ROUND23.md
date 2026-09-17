@@ -250,10 +250,10 @@ keeps §3.1's *no claim below is a scaling, recency or effect-magnitude claim* t
 
 77 pages — 75 plus the two appendix pages of `app:r1d`, all after p9; 0 overfull hbox, 0 overfull vbox; no
 undefined references or citations; no bibliography warnings; **main text still ends on the last line of
-p9**, so EXP-R1d cost zero main-text lines. A 501-check verification script confirms every protected phrase
+p9**, so EXP-R1d cost zero main-text lines. A 504-check verification script confirms every protected phrase
 from earlier rounds is still present, that the funding cuts moved no word out of the paper without a named
 surviving site, that the retitle added no line to the title block, and — new this round — that the
 pre-registration was committed before the first result file was written, that every number printed in
 `app:r1d` appears in the collected result files, that no pilot cell is discoverable by the analyzer, that
 all 26 pre-existing result files are byte-identical to their pre-collection hashes, and that the reporting
-branch the appendix claims is the one the ledger's verdicts actually select.
+branch the appendix claims is the one the ledger's verdicts actually select, and that `fig:r1c_collapse` differs from its pre-round baseline by exactly the two reprinted digits.
