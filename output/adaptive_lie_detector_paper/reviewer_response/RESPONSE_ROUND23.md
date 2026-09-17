@@ -111,12 +111,42 @@ Conclusion's existing enumeration, so no new claim is introduced.
 
 ## Item 14 — Modern frontier-model checks
 
-*(Pending — to be completed before submission. EXP-R1d is pre-registered at
-`docs/PREREG_EXP_R1D.md`, committed before any target was pulled, and is in flight as of 2026-09-16.
-This section will report its outcome under whichever branch of the pre-registration's §7 the data
-selects, including a void or inconclusive outcome.)*
+**We ran it, and we are reporting it as inconclusive.** EXP-R1d (new Appendix `app:r1d`) was
+pre-registered at `docs/PREREG_EXP_R1D.md` and committed before any target was pulled. It re-collects
+EXP-R1c's identical v2 contrast on four current-generation ≤ 14B open-weight targets. **Three of the four
+are void on the pre-registration's own admissibility gate**, and the reason is our instrument rather than
+the models:
 
-What can be said now, independent of the outcome:
+| Target | Pilot per-probe ambiguity | §4 verdict and failure mode |
+|---|---|---|
+| `olmo-3:7b` | **100.0%** | VOID — zero response tokens; the whole 40-token budget goes to a reasoning channel |
+| `ministral-3:8b` | **0.0%** | ADMISSIBLE |
+| `granite4.2:8b` | **35.0%** | VOID — answers, but inside an unrequested dialogue continuation a yes/no parser cannot read |
+| `qwen3.5:9b` | **100.0%** | VOID — as `olmo-3`; the one permitted substitution, spent on `granite4.2`'s failure |
+
+The one admissible target behaves as §3.2 predicts — `ministral-3:8b` is informative instructed (100.0%,
+*p* = 0.001) and falls to 54.0% (*p* = 0.327) under equalization, −46.0 pp, with a non-degenerate equalized
+channel (6 of 16 probe dimensions still vary; 10 distinct 16-bit vectors across 50 trials). **We are not
+reporting that as a recency result.** §7 of the pre-registration fixes, before any target was pulled, what
+to do with fewer than two admissible informative targets: report inconclusive, make no recency claim, and
+leave `app:vintage`'s "we do not establish that the collapse reproduces on current-generation models"
+exactly as written. One target consistent with the prediction is not a panel, and reporting it as one after
+three of four targets failed an instrument check would be the move this paper spends its length criticising.
+
+Two consequences you should see stated rather than inferred:
+
+- **We dropped the §3.1 edit we had planned for this item (R7 in our own plan).** It would have promoted
+  `app:vintage`'s nine-model list into the main text alongside a clause licensing a recency reading. Under
+  branch 5 there is no recency claim to license, and the main text's scope sentence — *no claim below is a
+  scaling, recency or effect-magnitude claim* — is true only if we leave it alone. So the concern is
+  answered in the appendix and the main text is unchanged.
+- **We corrected one of our own errors in the process.** `app:future_directions` item (7) called this the
+  cheapest open test in the paper and listed five candidates "each requiring thinking verifiably off",
+  flagging only `granite4.2:8b` and `gemma4:12b` for thinking behaviour. `olmo-3:7b` and `qwen3.5:9b` also
+  advertise a `thinking` capability, and both voided for that reason. Item (7) now says so, and says the
+  test is no longer cheap: the binding constraint is a 40-token probe channel, not model availability.
+
+What holds independent of the outcome:
 
 - The paper's audit machinery already runs against 2025–2026 models — `app:vintage` names nine (Claude
   Haiku 4.5, Sonnet 4.5, Llama 4 Maverick, Mistral Large 3, Qwen3-4B, Gemma 3 4B, Kimi-K2, Palmyra X5,
@@ -124,9 +154,9 @@ What can be said now, independent of the outcome:
   and sealed by `PREREG_EXP_C4B.md`'s substitution rule.
 - EXP-R1d therefore does **not** add criterion-4 targets. It re-runs EXP-R1c's identical v2 equalization
   contrast — same claims, same probe bank, same estimator, same n = 50 — on current-generation targets, so
-  it bounds *recency for that contrast* and nothing else. Three targets, all ≤ 14B, all open-weight, none
-  frontier, none closed, none a reasoning model. We will state that limit in the paper rather than let the
-  run read as a frontier check.
+  it bounds *recency for that contrast* and nothing else. Four targets, all ≤ 14B, all open-weight, none
+  frontier, none closed. `app:r1d` states that limit itself, so the run cannot read as a frontier check —
+  and in the event it bounds nothing, because the roster closed at one admissible target.
 - Identification is vintage-independent either way: §2.1 is structural, so no outcome of this run can
   repair or worsen it. What EXP-R1d bounds is the *empirical* claim of §3.2.
 - The pre-registration fixes an admissibility gate derived from data already in the paper rather than
@@ -169,7 +199,9 @@ exactly what that rule exists to prevent. `app:vintage` argues this at length.
 - **The criteria still embed design judgments.** Item 12's revision says so explicitly; it does not make
   them less judgment-laden.
 - **The main text is still nine dense pages.** Item 15 is declined for that reason.
-- **EXP-R1d is three targets at n = 50**, one generation, ≤ 14B, no frontier or closed model.
+- **EXP-R1d is inconclusive, and its roster closed at one admissible target of four.** Three targets void
+  on a probe-channel gate is a limit on what we could measure, not a finding about the collapse, and the
+  appendix says so in its first sentence.
 
 ## What was dropped to fit
 
@@ -181,9 +213,19 @@ independence*); two of five appendix pointers in §3.4 (`tab:appendix_roadmap` r
 distinguishing the structural from the survey result (Table 1's caption now carries it, on p3 rather than
 p9). No disclaimer, null, MDE, scope statement or `NOT ESTABLISHED` row was cut.
 
+One planned *addition* was also dropped, and for a reason rather than for space: **R7**, the §3.1 sentence
+that would have promoted `app:vintage`'s model list into the main text. See Item 14 — under the
+pre-registration's inconclusive branch there is no recency claim for it to license, and dropping it is what
+keeps §3.1's *no claim below is a scaling, recency or effect-magnitude claim* true.
+
 ## Build state
 
-75 pages; 0 overfull hbox, 0 overfull vbox; no undefined references or citations; no bibliography
-warnings; main text ends on the last line of p9. A 422-check verification script confirms every protected
-phrase from earlier rounds is still present, that the funding cuts moved no word out of the paper without
-a named surviving site, and that the retitle added no line to the title block.
+77 pages — 75 plus the two appendix pages of `app:r1d`, all after p9; 0 overfull hbox, 0 overfull vbox; no
+undefined references or citations; no bibliography warnings; **main text still ends on the last line of
+p9**, so EXP-R1d cost zero main-text lines. A 501-check verification script confirms every protected phrase
+from earlier rounds is still present, that the funding cuts moved no word out of the paper without a named
+surviving site, that the retitle added no line to the title block, and — new this round — that the
+pre-registration was committed before the first result file was written, that every number printed in
+`app:r1d` appears in the collected result files, that no pilot cell is discoverable by the analyzer, that
+all 26 pre-existing result files are byte-identical to their pre-collection hashes, and that the reporting
+branch the appendix claims is the one the ledger's verdicts actually select.
