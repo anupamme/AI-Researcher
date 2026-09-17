@@ -146,6 +146,43 @@ Two consequences you should see stated rather than inferred:
   advertise a `thinking` capability, and both voided for that reason. Item (7) now says so, and says the
   test is no longer cheap: the binding constraint is a 40-token probe channel, not model availability.
 
+**We then tried to repair the instrument, declared it as a deviation, and report what it returned.** The
+pre-registration's §9 permits one deviation; it was written *after* we saw the voids, so we fenced it off
+instead of trusting it not to matter — the deviated cells are archived outside the pre-registered analyzer's
+file glob, and their ledger keys are suffixed `[think:false]` so no reader or script can pool the two arms.
+Re-invoking the runner with `"think": false` clears both empty-channel voids at the gate (`qwen3.5:9b`
+100.0 → **0.0%** pilot ambiguity, `granite4.2:8b` 35.0 → **25.0%**), so both become admissible — and then:
+
+| `[think:false]` | cond | 5-fold | grp-5f | LOO | perm *p* | amb |
+|---|---|---|---|---|---|---|
+| `qwen3.5:9b` | instructed | **92.0%** | 92.0% | 92.0% | **0.001** | 0.0% |
+| | equalized | 54.0% | 54.0% | 4.0% | 0.387 | 0.0% |
+| `granite4.2:8b` | instructed | 54.0% | 54.0% | 50.0% | 0.385 | 31.0% |
+| | equalized | 44.0% | 50.0% | 44.0% | 0.774 | 39.5% |
+
+**The deviation repaired the instrument and did not rescue the experiment**, and we would rather you read
+that from us than find it:
+
+- **Only one of the two admissible targets is informative instructed**, which is the criterion §7 branches
+  on — so **the exploratory arm independently reaches the same fewer-than-two condition branch 5 was written
+  for**. Whether a deviation *could* have overturned the pre-registered verdict is counterfactual: it did not
+  produce a panel either. The sequencing argument holds regardless and we state it too — an instrument changed
+  after seeing which targets failed may not then select the reporting branch, which is the exact ordering
+  criterion 4 exists to detect.
+- **`qwen3.5:9b`'s −38.0 pp looks like the collapse and is weaker than it looks.** Its equalized cell is
+  near-degenerate: 1 of 16 probe dimensions varies, 50 trials give 2 distinct vectors, LOO 4.0%. This paper
+  reads that configuration elsewhere as *absence of a usable signal* rather than as an accuracy estimate, and
+  we read it the same way here. `granite4.2:8b` fails the opposite way — 16 of 16 dimensions vary and 47 of 50
+  trials are distinct, yet the instructed cell is at chance and null, so there was no signal for equalization
+  to remove and its −10.0 pp says nothing about H1.
+- **Our own gate has a defect, and we found it by running the arm.** `granite4.2:8b` passed a 26.0% pilot
+  gate at 25.0%, then ran 31.0% and 39.5% ambiguous on its confirmatory cells — *above* the threshold it was
+  admitted under. We keep the admissible verdict, because §4 fixes the gate as a *pilot* measurement and
+  re-reading a rule after seeing what it admits is the move this paper exists to criticise. But a 160-probe
+  pilot estimates a 25% rate to ±3.4 pp (wider, since probes cluster within claims), so **the gate's
+  resolution is coarser than the 1.0 pp margin granite passed by** and 31.0% sits inside the pilot estimate's
+  own interval. `app:r1d` says so, and says what a future version should do instead.
+
 What holds independent of the outcome:
 
 - The paper's audit machinery already runs against 2025–2026 models — `app:vintage` names nine (Claude
@@ -248,12 +285,19 @@ keeps §3.1's *no claim below is a scaling, recency or effect-magnitude claim* t
 
 ## Build state
 
-77 pages — 75 plus the two appendix pages of `app:r1d`, all after p9; 0 overfull hbox, 0 overfull vbox; no
-undefined references or citations; no bibliography warnings; **main text still ends on the last line of
-p9**, so EXP-R1d cost zero main-text lines. A 504-check verification script confirms every protected phrase
+78 pages — 75 plus the three appendix pages of `app:r1d` and its `think:false` arm, all after p9; 0 overfull
+hbox, 0 overfull vbox; no undefined references or citations; no bibliography warnings; **main text still ends
+on the last line of p9**, so EXP-R1d and its exploratory arm cost zero main-text lines. A 554-check
+verification script confirms every protected phrase
 from earlier rounds is still present, that the funding cuts moved no word out of the paper without a named
 surviving site, that the retitle added no line to the title block, and — new this round — that the
 pre-registration was committed before the first result file was written, that every number printed in
 `app:r1d` appears in the collected result files, that no pilot cell is discoverable by the analyzer, that
 all 26 pre-existing result files are byte-identical to their pre-collection hashes, and that the reporting
-branch the appendix claims is the one the ledger's verdicts actually select, and that `fig:r1c_collapse` differs from its pre-round baseline by exactly the two reprinted digits.
+branch the appendix claims is the one the ledger's verdicts actually select, and that `fig:r1c_collapse`
+differs from its pre-round baseline by exactly the two reprinted digits. The exploratory arm is held to the
+same standard: every accuracy and *p* it prints is traced to its own summary artifact, no deviated checkpoint
+is left anywhere the pre-registered analyzer's glob would reach it, any confirmatory cell above the 26.0% gate
+must be disclosed with its rate, and **how many exploratory targets are informative is derived from the data
+rather than asserted** — so if that count ever reached two, the check would start demanding the sequencing
+argument be load-bearing and explicit instead of letting the appendix rest on the count.
