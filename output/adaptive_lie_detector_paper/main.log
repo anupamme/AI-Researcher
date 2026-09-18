@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  18 SEP 2026 19:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  18 SEP 2026 20:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1080,18 +1080,14 @@ ocal/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 ]
 
 [2]) (./sections/methodology.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [3]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
 [4]) (./sections/experiments.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1888) has occurred while \output is active []
 
 
 
@@ -1252,7 +1248,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/feature_collapse.pdf, id=984, 859.63786pt x 261.91829pt>
+<figures/feature_collapse.pdf, id=987, 859.63786pt x 261.91829pt>
 File: figures/feature_collapse.pdf Graphic file (type pdf)
 <use figures/feature_collapse.pdf>
 Package pdftex.def Info: figures/feature_collapse.pdf  used on input line 306.
@@ -1293,7 +1289,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/probe_layer_curve_panel.pdf, id=1006, 787.27187pt x 236.62376pt>
+<figures/probe_layer_curve_panel.pdf, id=1009, 787.27187pt x 236.62376pt>
 File: figures/probe_layer_curve_panel.pdf Graphic file (type pdf)
 <use figures/probe_layer_curve_panel.pdf>
 Package pdftex.def Info: figures/probe_layer_curve_panel.pdf  used on input lin
@@ -1972,7 +1968,7 @@ Here is how much of TeX's memory you used:
  61888 multiletter control sequences out of 15000+600000
  724171 words of font info for 847 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,14n,87p,3543b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,87p,3543b,848s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
@@ -2002,10 +1998,10 @@ ype1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/ut
 mbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (89 pages, 889439 bytes).
+Output written on main.pdf (89 pages, 890217 bytes).
 PDF statistics:
- 2158 PDF objects out of 2487 (max. 8388607)
- 1825 compressed objects within 19 object streams
+ 2161 PDF objects out of 2487 (max. 8388607)
+ 1828 compressed objects within 19 object streams
  509 named destinations out of 1000 (max. 500000)
  122559 words of extra memory for PDF output out of 128383 (max. 10000000)
 
