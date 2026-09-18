@@ -220,9 +220,13 @@ recorded in the verifier so a later round does not "fix" the paper to match an u
 
 **What we changed so this cannot recur.** Our verification suite had 1373 checks and **not one of them
 recomputed a number from a result file** — every check compared paper text to paper text, which is
-precisely why seven wrong values survived 29 rounds of review. There is now a data-provenance suite
-(56 checks) that recomputes each frontier number from `data/results/*.json`, and that refuses to trust a
-verdict on a disputed cell until the same estimator reproduces the *undisputed* cells in the same table.
+precisely why seven wrong values survived 29 rounds of review. There is now a data-provenance suite —
+`experiments/verify_frontier_provenance.py`, **65 checks, committed and runnable**, not a scratch script
+— that recomputes each frontier number from `data/results/*.json`, and that refuses to trust a verdict on
+a disputed cell until the same estimator reproduces the *undisputed* cells in the same table. It also
+pins each new panel cell **before** any of its numbers is written into the appendix, and fails on any
+completed cell that has no registered expectation, so the path that produced these nine errors is closed
+rather than patched.
 
 ---
 
@@ -267,7 +271,7 @@ verdict on a disputed cell until the same estimator reproduces the *undisputed* 
 | Nine corrected frontier numbers | `appendix.tex` | 0 |
 | Retired recency/vintage disclaimers, five sites | main + appendix | net 0 |
 | Widened scope statements | `abstract.tex`, `discussion.tex` | 0 |
-| Data-provenance verification suite (56 checks) | tooling | — |
+| Data-provenance verification suite (65 checks) | tooling, committed | — |
 
 Main text still ends on p9 at ruler 485 with the same 89-page total, zero overfull boxes, and all eight
 float position pins unmoved.
