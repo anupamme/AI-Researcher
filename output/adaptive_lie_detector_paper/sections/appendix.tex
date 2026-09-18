@@ -30,11 +30,11 @@ marked exploratory in its own section titles and is load-bearing for nothing.}
 \midrule
 \textbf{1. Protocol \& prior work} & The five criteria in full, with how to apply them to a benchmark you did not build (\ref{app:criteria_taxonomy}); the Elicitation--Construct Confounding Principle's decidability census over 28 pinned public corpora, EXP-AF (\ref{app:eccp_decidability}); related work, including Table~\ref{tab:prior_work_criteria}'s comparison against requirements (i)--(v) (\ref{app:related_work}) \\
 \addlinespace[1.5pt]
-\textbf{2. Load-bearing evidence} & EXP-R1 protocol, elicitation bank and EXP-R1b/R1c (\ref{app:pacchiardi},~\ref{app:r1_protocol},~\ref{app:r1b}); the regex specification (\ref{app:regex_patterns}); EXP-B (\ref{app:belief_strata}); intervention~(B) and why it could not be built (\ref{app:intervention_b}); the external audits EXP-XA, EXP-IT, EXP-IT2 and EXP-XJ, prior work's own black-box judge on the same rollouts (\ref{app:external_audit},~\ref{app:insider_audit},~\ref{app:insider_audit2},~\ref{app:external_audit_judge}); the fully pre-registered audit of a \emph{second} public release, EXP-XL (\ref{app:liars_bench}); the pre-registered criterion-4 contrast on materials we built, EXP-C4, and its blinded, Holm-corrected replication EXP-C4B (\ref{app:crit4_ours},~\ref{app:crit4b}); the pre-registered blinded audit of our own audit, EXP-AA (\ref{app:audit_agreement}); the two pre-registered audits of our \emph{own} criterion-4 positive---EXP-AD, whether the audit changes which behavior indicates deception, and EXP-AE, the ten named alternative explanations given the battery's own estimator (\ref{app:dimension_transfer},~\ref{app:covariate_audit}); the pre-registered white-box probe audit EXP-WP, the third detector paradigm (\ref{app:probe_audit}); the factorial diagnostic (\ref{app:factorial_txd}); adversarial paraphrase (\ref{app:adv_n50},~\ref{app:adv_qualitative}); the human ICC study (\ref{app:human_icc_n100}); leave-one-model-out (\ref{app:loo_across_models}); headline numbers and the multiple-testing policy (\ref{app:headlines},~\ref{app:scale_details}) \\
+\textbf{2. Load-bearing evidence} & EXP-R1 protocol, elicitation bank and EXP-R1b/R1c (\ref{app:pacchiardi},~\ref{app:r1_protocol},~\ref{app:r1b}); the regex specification (\ref{app:regex_patterns}); EXP-B (\ref{app:belief_strata}); intervention~(B) and why it could not be built (\ref{app:intervention_b}); the external audits EXP-XA, EXP-IT, EXP-IT2 and EXP-XJ, prior work's own black-box judge on the same rollouts (\ref{app:external_audit},~\ref{app:insider_audit},~\ref{app:insider_audit2},~\ref{app:external_audit_judge}); the fully pre-registered audit of a \emph{second} public release, EXP-XL (\ref{app:liars_bench}); the pre-registered criterion-4 contrast on materials we built, EXP-C4, and its blinded, Holm-corrected replication EXP-C4B (\ref{app:crit4_ours},~\ref{app:crit4b}); the pre-registered blinded audit of our own audit, EXP-AA (\ref{app:audit_agreement}); the two pre-registered audits of our \emph{own} criterion-4 positive---EXP-AD, whether the audit changes which behavior indicates deception, and EXP-AE, the ten named alternative explanations given the battery's own estimator (\ref{app:dimension_transfer},~\ref{app:covariate_audit}); the pre-registered white-box probe audit EXP-WP, the third detector paradigm (\ref{app:probe_audit}); the factorial diagnostic (\ref{app:factorial_txd}); adversarial paraphrase (\ref{app:adv_n50},~\ref{app:adv_qualitative}); the human ICC study (\ref{app:human_icc_n100}); leave-one-model-out (\ref{app:loo_across_models}); headline numbers and the multiple-testing policy (\ref{app:headlines},~\ref{app:scale_details}); the pre-registered frontier-scale panel over seven targets from seven organizations, EXP-FS (\ref{app:frontier_panel},~\ref{app:llama405b_results}) \\
 \addlinespace[1.5pt]
 \textbf{3. Robustness \& diagnostics} & Per-model instructed and equalized tables (\ref{app:instructed_results},~\ref{app:equalized_details}); cross-family extraction (\ref{app:cross_family_details},~\ref{app:expg_details}); feature validity and the machine-rater proxy (\ref{app:feature_validity},~\ref{app:machine_icc}); validation and threshold tests (\ref{app:validation_tests}); zero-shot and instructed-data baselines (\ref{app:zero_shot},~\ref{app:hedging_instructed}); supporting diagnostics and causal probes (\ref{app:supporting_diagnostics},~\ref{app:causal_probes}); the ADAGE pipeline (\ref{app:adage_details}); human baseline (\ref{app:human_baseline_full}); the earlier exploratory white-box probing baseline EXP-P, superseded by \ref{app:probe_audit} (\ref{app:whitebox}) \\
 \addlinespace[1.5pt]
-\textbf{4. Exploratory, not load-bearing for any claim} & Frontier-scale preliminaries (\ref{app:frontier_preliminary}); Llama~4~Maverick (\ref{app:llama405b_results}); sycophancy and autonomous transfer (\ref{app:autonomous_transfer},~\ref{app:partial_transfer_detail}); the persona spot-check (\ref{app:qwen_persona_qual}); algorithmic sanity checks on mock transcripts (\ref{app:mock_summary}); future directions (\ref{app:future_directions}) \\
+\textbf{4. Exploratory, not load-bearing for any claim} & Sycophancy and autonomous transfer (\ref{app:autonomous_transfer},~\ref{app:partial_transfer_detail}); the persona spot-check (\ref{app:qwen_persona_qual}); algorithmic sanity checks on mock transcripts (\ref{app:mock_summary}); future directions (\ref{app:future_directions}) \\
 \addlinespace[1.5pt]
 \textbf{5. Reproducibility, pre-registrations \& compute} & Claim construction and the claim sets (\ref{app:claims},~\ref{app:claim_construction}); target configuration and transcripts (\ref{app:target_config},~\ref{app:transcripts}); sample sizes (\ref{app:sample_sizes}); compute cost and reproduction (\ref{app:compute_cost}); additional limitations (\ref{app:limitations_detail}) \\
 \bottomrule
@@ -180,10 +180,57 @@ The other 23 corpora & $\times$ & 16\,\checkmark & $\times$ & no elicitation ind
 \label{app:related_work}
 \input{sections/related_work}
 
-\section{Frontier-Scale Preliminary Observations (Exploratory: Not Load-Bearing for Any Claim)}
-\label{app:frontier_preliminary}
+\section{Frontier-Scale Results: the Pre-Registered Panel (EXP-FS)}
+\label{app:frontier_panel}
 
-\emph{Preliminary observations, not findings.} These results are not interpretable as findings due to the confounded $n\!=\!2$ design; they are retained solely as documentation of the experimental record. The two targets differ on multiple confounded axes (closed/open weight, dense/MoE architecture, RLHF recipe); the panel is insufficient to attribute any observed pattern to a specific axis. Results are excluded from all open-weight averages and headline summaries.
+\begin{table}[h]
+\centering
+\caption{\textbf{The pre-registered frontier-scale panel} (EXP-FS): 7 targets from 7 organizations, $n\!=\!100$ each, one byte-identical neutral system prompt in both conditions and no target ever instructed to lie. \textbf{Rule} is the parameter-free 14-pattern rule (RC$\,\geq\,1$), with \emph{nothing} fit; \textbf{Pipeline} is the detector trained on $\leq$70B open-weight targets, transferred unchanged. At $n\!=\!100$ the smallest count significantly above chance is 61/100. Rows marked $\dagger$ were already published and are re-scored here by the PREREG~§8.3 gate, not newly collected; Holm correction runs within the 5 new targets, within each outcome family separately.}
+\label{tab:frontier_panel}
+\begin{small}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llccrrc}
+\toprule
+\textbf{Target} & \textbf{Organization} & \textbf{Weights} & \textbf{Arch.} & \textbf{Rule} & \textbf{Pipeline} & \textbf{RC$\,\geq\,1$ (lie/truth)} \\
+\midrule
+Claude Sonnet~4.5$^\dagger$ & Anthropic & closed & dense & \textbf{84.8\%} & 50.5\% & 47/49 vs.\ 13/50 \\
+Amazon Nova~Pro & Amazon & closed & undisc. & \textbf{80.0\%} & 56.0\% & 34/50 vs.\ 4/50 \\
+Llama~4~Maverick$^\dagger$ & Meta & open & MoE & \textbf{83.0\%} & 45.0\% & 39/50 vs.\ 6/50 \\
+DeepSeek-V3 & DeepSeek & open & MoE & \textbf{87.0\%} & 40.0\% & 43/50 vs.\ 6/50 \\
+Mistral Large~3 & Mistral AI & open & MoE & \textbf{88.0\%} & 50.0\% & 44/50 vs.\ 6/50 \\
+Qwen3~235B-A22B & Qwen & open & MoE & \textbf{90.0\%} & 47.0\% & 44/50 vs.\ 4/50 \\
+GLM-5 & Z.AI & open & MoE & \textbf{89.0\%} & 47.0\% & 48/50 vs.\ 9/50 \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{table}
+
+\paragraph{Panel-level outcomes (PREREG~§5, §6).}
+Across the 7 targets the parameter-free rule spans \textbf{80.0--90.0\%} and the transferred pipeline \textbf{40.0--56.0\%}. At $n\!=\!100$ the smallest count significantly above chance is 61/100, so every rule cell clears that floor, and no pipeline cell reaches it, making the split between the two outcomes complete across the panel.
+
+\textbf{H1} (exact two-sided binomial, Holm-corrected within the 5 new targets, within each outcome family separately): the rule is above chance on \textbf{5 of 5} new targets (largest $p_{\mathrm{Holm}}\!<\!0.001$), the pipeline on \textbf{0 of 5} (smallest $p_{\mathrm{Holm}}\!=\!0.284$). Cells between 40\% and 61\% are reported as \emph{not distinguishable from chance at $n\!=\!100$}, never as ``at chance'' (PREREG~§6).
+
+\textbf{H2} (homogeneity of proportions; the version over the new targets alone is the one carrying confirmatory weight, PREREG~§0) --- rule, all 7: $\chi^2\!=\!6.33$, $\mathrm{df}\!=\!6$, $p\!=\!0.387$; rule, 5 new: $\chi^2\!=\!5.48$, $\mathrm{df}\!=\!4$, $p\!=\!0.241$; pipeline, all 7: $\chi^2\!=\!5.98$, $\mathrm{df}\!=\!6$, $p\!=\!0.426$; pipeline, 5 new: $\chi^2\!=\!5.37$, $\mathrm{df}\!=\!4$, $p\!=\!0.252$. No test departs from a common rate, so the panel gives no evidence that these targets differ from one another on either outcome.
+
+\textbf{H3} (closed- versus open-weight, \textbf{descriptive only}) --- rule 164/199 closed vs.\ 437/500 open ($-5.0$\,pp, Fisher exact $p\!=\!0.0918$); pipeline 106/199 vs.\ 229/500 ($+7.5$\,pp, $p\!=\!0.0786$). \textbf{We make no attribution to weight availability.} The pairwise two-proportion MDE at $n\!=\!100$ per cell is 19.4\,pp, ``closed'' is 2 \emph{organizations}, and weight availability, architecture, RLHF recipe and serving stack remain collinear at the panel level (PREREG~§6, §11).
+
+\paragraph{The Anthropic row's two extractor arms (PREREG~§4).}
+Claude Haiku~4.5 extracts features for all 7 targets, so for the Anthropic target alone the extractor is \emph{same-family}. The pre-registration therefore makes the cross-family extractor (Llama-3.3-70B) \textbf{primary} for that row and Haiku the sensitivity arm, and requires both to be reported and never averaged. The transferred pipeline reaches \textbf{49.5\%} (48/97) under the primary arm and 50.5\% (50/99) under the sensitivity arm---1.0\,pp apart, both degenerate (every trial predicted truthful) and both below the 61/100 floor, so which arm is read does not change this row's verdict. The table prints the same-family value, which is the published one. \textbf{How the primary arm was obtained, since it is not a second run:} its committed file re-extracts features with the cross-family extractor but stores the same-family run's detector outputs verbatim, so the classifier was replayed offline over the committed feature trajectories---with no model calls, and only after that replay reproduced the same-family arm's stored confidences, stopping points and predictions bit for bit. The 2 trials whose re-extraction failed at or after the deciding step are excluded and not imputed. The parameter-free rule cannot differ between the arms at all: it reads the target's own turns, which both files share.
+
+Trials terminating in \texttt{status == error} are excluded from both outcomes and never imputed: \textbf{1} across the panel.
+
+% ---- audit trail: the same numbers, unformatted ----
+% H1 Amazon Nova Pro      rule      80.0\%  p_raw=1.116e-09  p_Holm=1.116e-09
+% H1 Amazon Nova Pro      pipeline  56.0\%  p_raw=0.2713  p_Holm=1
+% H1 DeepSeek-V3          rule      87.0\%  p_raw=1.313e-14  p_Holm=2.626e-14
+% H1 DeepSeek-V3          pipeline  40.0\%  p_raw=0.05689  p_Holm=0.2844
+% H1 Mistral Large 3      rule      88.0\%  p_raw=1.911e-15  p_Holm=5.734e-15
+% H1 Mistral Large 3      pipeline  50.0\%  p_raw=1  p_Holm=1
+% H1 Qwen3 235B-A22B      rule      90.0\%  p_raw=3.063e-17  p_Holm=1.532e-16
+% H1 Qwen3 235B-A22B      pipeline  47.0\%  p_raw=0.6173  p_Holm=1
+% H1 GLM-5                rule      89.0\%  p_raw=2.541e-16  p_Holm=1.016e-15
+% H1 GLM-5                pipeline  47.0\%  p_raw=0.6173  p_Holm=1
+% total errored trials across the panel: 1
 
 \paragraph{Claude Sonnet~4.5 equalized ($n\!=\!99$).}
 \label{sec:frontier_sonnet}
@@ -191,7 +238,7 @@ Sonnet~4.5 is a closed-weight frontier-scale (100B+) target. Rule: 84.8\% (RC$\!
 
 \paragraph{Llama~4~Maverick equalized ($n\!=\!100$).}
 \label{sec:frontier_llama405b}
-Llama~4~Maverick (\texttt{us.meta.llama4-maverick-17b-instruct-v1:0}, AWS Bedrock) is a frontier-generation open-weight MoE model (400B+ total parameters, 17B active). Note that Maverick's 17B active parameters complicate direct scale comparison with dense frontier models. Interrogator and extractor: Claude Haiku~4.5 (cross-family). Rule: \textbf{83.0\%} (RC$\,\geq\,1$ in 39/50 lying, 6/50 truth; lie RC mean$=$1.20, truth RC mean$=$0.12). Haiku pipeline: \textbf{45.0\%} (below chance; biased toward ``truthful'' on 79/100 trials). The pipeline failure is a classifier-transfer problem: Llama~4~Maverick produces high consistency and confidence scores in \emph{both} conditions (consistency $\mu_\mathrm{lie}\!=\!8.05$, $\mu_\mathrm{truth}\!=\!7.83$; confidence $\mu_\mathrm{lie}\!=\!7.95$, $\mu_\mathrm{truth}\!=\!7.45$), driving the classifier toward ``truthful'' regardless of condition. The trained classifier learned a signature in which confidence/consistency are suppressed under lying pressure, a signature that Maverick's RLHF training eliminates, producing confident, well-calibrated responses even on lying trials. Both frontier targets behave the same way, not in opposite ways: on each, the parameter-free correction-marker rule succeeds (84.8\%, 83.0\%) while the transferred classifier fails (50.5\%, 45.0\%). The two cells therefore do not constitute a mechanistic double dissociation. A third frontier model from a different organization (e.g., GPT-4o, DeepSeek-V3) would break at least one confound; this is a limitation of the current design. Full results in Appendix~\ref{app:llama405b_results}.
+Llama~4~Maverick (\texttt{us.meta.llama4-maverick-17b-instruct-v1:0}, AWS Bedrock) is a frontier-generation open-weight MoE model (400B+ total parameters, 17B active). Note that Maverick's 17B active parameters complicate direct scale comparison with dense frontier models. Interrogator and extractor: Claude Haiku~4.5 (cross-family). Rule: \textbf{83.0\%} (RC$\,\geq\,1$ in 39/50 lying, 6/50 truth; lie RC mean$=$1.20, truth RC mean$=$0.12). Haiku pipeline: \textbf{45.0\%} (below chance; biased toward ``truthful'' on 79/100 trials). The pipeline failure is a classifier-transfer problem: Llama~4~Maverick produces high consistency and confidence scores in \emph{both} conditions (consistency $\mu_\mathrm{lie}\!=\!8.05$, $\mu_\mathrm{truth}\!=\!7.83$; confidence $\mu_\mathrm{lie}\!=\!7.95$, $\mu_\mathrm{truth}\!=\!7.45$), driving the classifier toward ``truthful'' regardless of condition. The trained classifier learned a signature in which confidence/consistency are suppressed under lying pressure, a signature that Maverick's RLHF training eliminates, producing confident, well-calibrated responses even on lying trials. Both frontier targets behave the same way, not in opposite ways: on each, the parameter-free correction-marker rule succeeds (84.8\%, 83.0\%) while the transferred classifier fails (50.5\%, 45.0\%). The two cells therefore do not constitute a mechanistic double dissociation. \textbf{The confound this design named is now broken}: EXP-FS adds five further targets from five further organizations---including DeepSeek-V3, one of the two this sentence named as an example before any of them was run---so closed/open weight, dense/MoE architecture and RLHF recipe are no longer collinear across the panel (Table~\ref{tab:frontier_panel}). Full results in Appendix~\ref{app:llama405b_results}.
 
 \section{Experiment Summary, Headlines, and Additional Material}
 \label{app:supplementary_overview}
@@ -225,6 +272,7 @@ EXP-AA & 2 & 54 & Blinded audit of our audit (pre-reg.) & App.~\ref{app:audit_ag
 EXP-AD & \textbf{1} & 2{,}650 & Dimension transfer (pre-reg.) & App.~\ref{app:dimension_transfer} & Instructed best probe inert; dim~0 replaces it \\
 EXP-AE & \textbf{1} & 3{,}819 & Ten alternative explanations (pre-reg.) & App.~\ref{app:covariate_audit} & Covariates explain Llama~3.1~8B; standing $\to$ \textbf{1/5} \\
 EXP-AF & 2 & 28 corpora & ECCP decidability census & App.~\ref{app:eccp_decidability} & 2/21/3 of 28 meet one property; none all three \\
+EXP-FS & 2 & 699 & Frontier-scale panel (pre-reg.) & App.~\ref{app:frontier_panel} & Rule 80--90\%; pipeline 40--56\%, none $\geq$61/100 \\
 \midrule
 -- & 2 & 92--100 & Per-model instructed evals & App.~\ref{app:instructed_results} & LOO: 93--100\% after recalibration \\
 -- & 3 & 100 & Mock validation & App.~\ref{app:mock_summary} & 93\% accuracy (synthetic only) \\
@@ -419,7 +467,7 @@ Llama 4 Maverick (OOD reference) & 100 & 45.0\% & 74.0\% & 16.0\% \\
 
 The Claude Haiku fold shows asymmetric accuracy (T-acc 24.5\%, L-acc 98.0\%): the classifier trained without Haiku over-predicts ``lying'' on Haiku truthful trials, because Haiku's RLHF compliance makes its truthful responses behaviorally similar to other models' lying responses (high correction-marker density in both conditions). This is consistent with the main finding that Haiku is an outlier checkpoint.
 
-\section{Llama~4~Maverick Frontier-Scale Results (Exploratory: Not Load-Bearing for Any Claim)}\label{app:llama405b_results}
+\section{Llama~4~Maverick Frontier-Scale Results}\label{app:llama405b_results}
 
 Llama~4~Maverick (\texttt{us.meta.llama4-maverick-17b-instruct-v1:0}, AWS Bedrock) was evaluated under the same prompt-equalized protocol as all other targets ($n\!=\!100$, Haiku interrogator/extractor, cross-family). The script is \texttt{experiments/run\_llama4\_equalized.py}.
 
@@ -580,7 +628,7 @@ Elaboration               & 0.087 & $\times$   & 67.8\% & $-$0.6\,pp  & 0.24 \\
 
 \subsection{Additional Limitations}\label{app:limitations_detail}
 
-\textbf{(f)} The adaptive stopping threshold $\tau$ is vacuous: the classifier produces $P>0.99$ for both correct and incorrect predictions. \textbf{(g)} The instructed condition uses asymmetric claim types; the prompt-equalized control addresses this. \textbf{(h)} The $\leq$7B and $\geq$14B bins differ in family composition; the within-family Qwen pair (Fisher $p=0.17$) is consistent with a scale effect but not individually significant. \textbf{(i)} The initial $n=20$/2-annotator pilot had ICC=0.114 on correction density; the full $n=100$/3-annotator study (Appendix~\ref{app:human_icc_n100}) yields $\alpha=0.606$, clearing the pre-registered threshold. \textbf{(j)} The 5th-scenario persona condition and the false-belief-ICL condition each test a single prompt instantiation; wording-robustness is untested. The Qwen~14B persona result (68.0\%) may be prompt-specific. \textbf{(k)} Human baseline ($\kappa=0.00$; Appendix~\ref{app:human_baseline_full}): annotators collapsed to TRUTH, making the human comparison degenerate; it is reported for completeness, not as evidence of human-vs-machine capability difference. \textbf{(l)} \textbf{Model vintage}: no target in either criterion-4 family is a post-2024 release, one to two generations behind the current wave, and the pre-registration's substitution rule closes the roster once a target's trials are graded---so recency is \emph{not} established here, and the collapse is untested on current-generation models (Appendix~\ref{app:vintage}).
+\textbf{(f)} The adaptive stopping threshold $\tau$ is vacuous: the classifier produces $P>0.99$ for both correct and incorrect predictions. \textbf{(g)} The instructed condition uses asymmetric claim types; the prompt-equalized control addresses this. \textbf{(h)} The $\leq$7B and $\geq$14B bins differ in family composition; the within-family Qwen pair (Fisher $p=0.17$) is consistent with a scale effect but not individually significant. \textbf{(i)} The initial $n=20$/2-annotator pilot had ICC=0.114 on correction density; the full $n=100$/3-annotator study (Appendix~\ref{app:human_icc_n100}) yields $\alpha=0.606$, clearing the pre-registered threshold. \textbf{(j)} The 5th-scenario persona condition and the false-belief-ICL condition each test a single prompt instantiation; wording-robustness is untested. The Qwen~14B persona result (68.0\%) may be prompt-specific. \textbf{(k)} Human baseline ($\kappa=0.00$; Appendix~\ref{app:human_baseline_full}): annotators collapsed to TRUTH, making the human comparison degenerate; it is reported for completeness, not as evidence of human-vs-machine capability difference. \textbf{(l)} \textbf{Model vintage}: no target in either criterion-4 family is a post-2024 release, one to two generations behind the current wave, and the pre-registration's substitution rule closes the roster once a target's trials are graded---so recency is \emph{not} established for the criterion-4 contrast, which has still not been re-run on a current-generation target. The equalization collapse itself now has one: EXP-FS's pre-registered panel finds the transferred pipeline at 40.0--56.0\% on 7 frontier-scale targets, every cell below the 61/100 count that would be significant at $n\!=\!100$ (Appendix~\ref{app:frontier_panel}), while the surface rule \emph{gains} at that scale (Appendix~\ref{app:vintage}).
 
 \subsection{Model Vintage: What the Roster Is, Why It Is Closed, and What It Does Not Bound}
 \label{app:vintage}
@@ -591,7 +639,34 @@ Elaboration               & 0.087 & $\times$   & 67.8\% & $-$0.6\,pp  & 0.24 \\
 
 \paragraph{Why the roster is closed, and why that is deliberate.} The substitution rule is binding and narrow: a named tag may be replaced from the reserve list only \textbf{for a pull failure or a screen shortfall}, and \textbf{never after any EXP-C4B trial for that target has been graded}. All ten targets are graded, so the roster is closed. \textbf{This is a feature of the design, not an inconvenience}: §4's named targets and its reserve list are the only protection a reader has against a roster chosen \emph{after} seeing results, and swapping in newer models now---with Family~E's one-of-five in hand---is exactly the move that rule exists to prevent. A paper whose thesis is that benchmark labels quietly become labels for the procedure that produced them does not get to re-draw its own targets after reading its own count.
 
-\paragraph{What vintage does and does not bound.} \textbf{Identification is vintage-independent.} §\ref{sec:identification}'s proposition is structural: $\mathrm{do}(E)$ moves $D$ and $C$ together, so $\tau_E$ neither bounds nor signs $\tau_D$ \emph{by construction}, on any model of any generation, and no accuracy figure from any newer model can repair it. \textbf{The magnitudes are vintage-dependent, and are claims about these targets only}: the 97.0$\to$43.3\% collapse, the 69--80\% surface-accessible range, the three-of-five and one-of-five criterion-4 counts. \textbf{We do not establish that the collapse reproduces on current-generation models}, and nothing here should be read as evidence that it does or does not. The prediction is sharp, and we attempted to falsify it: \textbf{EXP-R1d (Appendix~\ref{app:r1d}) ran it on four current-generation targets and is \emph{inconclusive}}---three void on a pre-registered probe-channel gate, one admissible target falling $-46.0$\,pp---which is why the sentence above stands unchanged rather than being replaced by a result.
+\paragraph{What vintage does and does not bound.} \textbf{Identification is vintage-independent.} §\ref{sec:identification}'s proposition is structural: $\mathrm{do}(E)$ moves $D$ and $C$ together, so $\tau_E$ neither bounds nor signs $\tau_D$ \emph{by construction}, on any model of any generation, and no accuracy figure from any newer model can repair it. \textbf{The magnitudes are vintage-dependent, and are claims about these targets only}: the 97.0$\to$43.3\% collapse, the 69--80\% surface-accessible range, the three-of-five and one-of-five criterion-4 counts. \textbf{The trained-pipeline collapse now has a current-generation test, and it survives it.} The pre-registered frontier panel (Appendix~\ref{app:frontier_panel}) transfers the trained detector unchanged onto 7 frontier-scale targets from 7 organizations under a byte-identical neutral prompt, and every cell lands at 40.0--56.0\%---below the 61/100 count that would be significant at $n\!=\!100$. No test departs from a common rate across the panel, so \textbf{the pipeline collapse of §\ref{sec:prompt_equalized} is not specific to the $\leq$70B open-weight vintage we measured it on} (PREREG~§7, Branch~A). \textbf{Two things this does not give us.} It is \emph{not} a current-generation test of EXP-R1c's 16-probe battery, a different detector that was not run on these targets; there the recency question stays open, and our attempt on it (Appendix~\ref{app:r1d}) is \emph{inconclusive}---three targets void on a pre-registered probe-channel gate, one admissible target falling $-46.0$\,pp. And it runs the \emph{other} way for the surface rule: the parameter-free 14-pattern rule reaches 80.0--90.0\% across the same panel, \textbf{above} its 69--80\% range on the $\leq$70B roster, so \textbf{surface-accessible accuracy does not collapse at frontier scale} and is the more robust of the two findings---an emphasis shift the pre-registration committed to in advance (PREREG~§8.2).
+
+% ---------------- PREREG §7 BRANCH DIAGNOSTIC ----------------
+% A DECISION AID. §7 branch selection is a judgement call the pre-registration
+% keeps with a human. The prose above is the wording the realized branch LICENSES;
+% confirm the branch below before it goes into the paper.
+%   S_r (new targets, rule, significant after Holm)     = 5 of 5
+%   S_p (new targets, pipeline, significant after Holm) = 0 of 5
+%   per-target (rule sig?, pipeline sig?) pattern: [(True, False), (True, False), (True, False), (True, False), (True, False)]
+%   H2 tests rejecting a common rate: none
+%   A  'S_p = 0, and rule heterogeneous or low':
+%        S_p == 0 ................. True
+%        rule heterogeneous ....... False
+%        rule low (any cell < 61) . False   [range 80.0--90.0\%]
+%   B  'H2 significant, OR S_p and S_r disagree across targets':
+%        any H2 rejection ......... False
+%        channel differs BY TARGET  False   (see the pattern above; S_r != S_p alone is NOT this condition)
+%   C  'S_p >= 3 of 5' -- ABSTRACT reports reduced generality, §3.1 NARROWS: False
+%   D  'two or more primaries fail a §3 gate, no reserve': not visible here --
+%      the analysis sees cells that exist, not gate failures. Check the run log.
+%   -> the text above was generated under Branch A wording.
+%   -> NOTE, and it is the judgement call: A's parenthetical ('rule heterogeneous or
+%      low') is NOT satisfied -- the rule is high AND homogeneous across the panel.
+%      That is PREREG §8.2's situation, not §7's: the rule holds where the pipeline
+%      does not, so surface-accessible accuracy is the more robust finding and the
+%      paper's emphasis shifts to it. The Branch-A sentence above is about the
+%      PIPELINE only and is licensed by S_p = 0; §8.2's shift is carried in the
+%      same paragraph. Confirm both readings before pasting.
 
 \paragraph{What the audit machinery has been exercised on.} The criterion-4 roster is the oldest part of the paper, not all of it. Claude Haiku~4.5 is the interrogator, feature extractor and $D$-grader throughout and is also a target; Claude Sonnet~4.5 appears as a target row (excluded from the open-weight averages); Llama~4~Maverick supplies one equalized cell; Mistral Large~3 and Llama~3.3~70B are the cross-family re-extractors; \textbf{Qwen3-4B and Gemma~3~4B are the two white-box probe targets}; Writer Palmyra~X5 is EXP-C4B's third-family reliability grader; and Kimi-K2 is one of the five generator families in the second audited release. \textbf{So the protocol has been run against 2025--2026 models}; what has not been re-run on them is the criterion-4 contrast, for the reason above.
 
