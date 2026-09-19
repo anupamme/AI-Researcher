@@ -90,9 +90,39 @@ marked exploratory in its own section titles and is load-bearing for nothing.}
 
 \paragraph{Two senses of ``necessary'', and which requirements belong to each.} Requirements~(i)--(v) of §\ref{sec:eval_controls} are not necessary in one sense, and conflating the two would let a reader hear the audit as more demanding than the identification argument supports. \textbf{Necessary for causal identification}: \textbf{(i)}~$E$ held fixed and \textbf{(ii)}~$D$ graded independently of the condition label. Without (i) the Proposition's (A1)--(A2) hold and $\tau_D$ is unidentified whatever the accuracy; without (ii) the ``ground truth'' is the condition label, so (A3)'s observables collapse to $(V,E,S)$ and there is no $D$ to identify. These two are forced by the algebra. \textbf{Necessary for \emph{this} audit to be operational, not for identification}: \textbf{(iii)}~the same scenario realized under both outcomes of $D$---the observable procedure by which an auditor \emph{checks} (A4) on a benchmark they did not build, since an item realized under one outcome only leaves scenario and outcome collinear and no within-item contrast to inspect; \textbf{(iv)}~a deployed-observable channel only, which bounds what the result would mean for deployment rather than what it identifies; and \textbf{(v)}~$D$ not definitionally equivalent to the detector's input, which rules out \emph{construct recovery}---a threat to the \textbf{claim} attached to a score, not to the identification of $\tau_D$. A design could in principle identify a deception-associated signal while failing (iii)--(v), and we would still decline to read its score as evidence about a deployed detector; that is a stance about interpretation, and we mark it as one. \textbf{So the five are jointly necessary for the audit and not jointly necessary for identification}, and the two rows of Table~\ref{tab:criteria} that carry (iii)--(v) should be read accordingly.
 
-\emph{What would break it.} Negating (A4) with an observable that is a child of $D$ and of no other $M_i$---an exclusion restriction, i.e.\ an instrument; negating (A5) with a parametric assumption strong enough to allocate the effect, which then carries the attribution rather than the data; or negating (A2) with $\mathrm{do}(D)$, the top rung of Table~\ref{tab:criteria}, or with intervention~(B), $\mathrm{do}(E)$ at $D$ fixed (EXP-IB, §\ref{app:intervention_b}). \textbf{Criterion~4 negates (A3), not (A2)}: it makes $E$ degenerate and grades $D$ from a channel outside the detector's input, so $D$ becomes observed while remaining unmanipulated. That buys an association at fixed elicitation---rung~4---and not $\tau_D$, because a latent $U$ with $U\!\to\!D$ and $U\!\to\!S$ is untouched. \textbf{The algebra is standard; what this paper contributes is the protocol that enforces it on a published benchmark} (§\ref{app:related_work}).
+\emph{What would break it.} Negating (A4) with an observable that is a child of $D$ and of no other $M_i$---an exclusion restriction, i.e.\ an instrument; negating (A5) with a parametric assumption strong enough to allocate the effect, which then carries the attribution rather than the data; or negating (A2) with $\mathrm{do}(D)$, rung~5 of Figure~\ref{fig:ladder}, or with intervention~(B), $\mathrm{do}(E)$ at $D$ fixed (EXP-IB, §\ref{app:intervention_b}). \textbf{Criterion~4 negates (A3), not (A2)}: it makes $E$ degenerate and grades $D$ from a channel outside the detector's input, so $D$ becomes observed while remaining unmanipulated. That buys an association at fixed elicitation---rung~4---and not $\tau_D$, because a latent $U$ with $U\!\to\!D$ and $U\!\to\!S$ is untouched. \textbf{The algebra is standard; what this paper contributes is the protocol that enforces it on a published benchmark} (§\ref{app:related_work}).
 
-The five criteria of §\ref{sec:eval_controls} are not interchangeable, and conflating them is how a benchmark comes to read a robustness result as an attribution result. \textbf{Only criterion~4 removes the elicitation confound}, and it is therefore necessary---though not sufficient---for an attribution to deception; the other four are supporting validity diagnostics, so failing one of them weakens the evidential basis for an attribution claim whereas failing criterion~4 forecloses attribution from the design itself. Criterion~4 as any published corpus can supply it is observational at fixed $E$: it establishes a deception-\emph{associated} signal, whereas identifying $\tau_D$ requires $D$ manipulated or randomized, the top rung of Table~\ref{tab:criteria}. Table~\ref{tab:criteria_taxonomy} restates the main text's Table~\ref{tab:criteria} by which of the three roles each criterion plays, adding the belief contrast.
+The five criteria of §\ref{sec:eval_controls} are not interchangeable, and conflating them is how a benchmark comes to read a robustness result as an attribution result. \textbf{Only criterion~4 removes the elicitation confound}, and it is therefore necessary---though not sufficient---for an attribution to deception; the other four are supporting validity diagnostics, so failing one of them weakens the evidential basis for an attribution claim whereas failing criterion~4 forecloses attribution from the design itself. Criterion~4 as any published corpus can supply it is observational at fixed $E$: it establishes a deception-\emph{associated} signal, whereas identifying $\tau_D$ requires $D$ manipulated or randomized, rung~5 of Figure~\ref{fig:ladder}. Table~\ref{tab:criteria} below states the protocol criterion by criterion---\textbf{it is the specification behind Figure~\ref{fig:ladder}'s ``Reached by'' column}---and Table~\ref{tab:criteria_taxonomy} then restates it by which of the three roles each criterion plays, adding the belief contrast.
+
+\begin{table}[htbp]
+\centering
+\caption{\small\textbf{The audit protocol, criterion by criterion} (drawn as Figure~\ref{fig:ladder}): what each control establishes. \textbf{Group~A answers Q2; group~B answers Q3.} \textbf{Criterion~4 is the one an auditor cannot add after publication}: an instruction-only design can be \emph{failed} by it but never \emph{passed} (Appendix~\ref{app:criteria_taxonomy}).}
+\label{tab:criteria}
+\begin{scriptsize}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{1.05in}p{2.74in}p{1.42in}@{}}
+\toprule
+\textbf{Criterion} & \textbf{What the benchmark must do, and what it tests} & \textbf{What it establishes} \\
+\midrule
+\multicolumn{3}{@{}l@{}}{$\square$~\textbf{A. Confound diagnostics (1, 2, 3)}---\emph{testable on any published benchmark by whoever did not build it}} \\
+\addlinespace[1pt]
+1. Prompt equalization & Replace the asymmetric instruction pair with one neutral prompt & Rules out \emph{instruction asymmetry} \\
+\addlinespace[1pt]
+2. Cross-family extraction & Re-extract every feature with a different family's extractor, which the target's own family could inflate & Rules out an \emph{evaluator artifact} \\
+\addlinespace[1pt]
+3. Matched surface baseline & Is the accuracy reachable from lexical form alone, by a pattern-matched rule with no LLM-extracted features? & Shows how much is reachable from surface form; with $E$ fixed, also from knowledge conflict \\
+\addlinespace[3pt]
+\multicolumn{3}{@{}l@{}}{$\blacksquare$~\textbf{B. Construct-validity test (4)}---\textbf{different in kind}: \emph{must be designed in, and cannot be added by an auditor}} \\
+\addlinespace[1pt]
+\textbf{4. Deception at fixed elicitation} & \textbf{Supply a contrast in which $D$ varies and $E$ does not}, with $D$ graded \textbf{independently of the condition label} & \textbf{Deception-\emph{associated} signal at fixed $E$---necessary, but not $\tau_D$} \\
+\addlinespace[3pt]
+\multicolumn{3}{@{}l@{}}{$\square$~\textbf{C. Robustness (5)}---\emph{not a construct-validity test, and not equally fundamental}} \\
+\addlinespace[1pt]
+5. Cross-model / cross-claim transfer & Whether the signal is specific to one target or one claim set & Robustness, not construct validity \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{table}
 
 \begin{table}[h]
 \centering
