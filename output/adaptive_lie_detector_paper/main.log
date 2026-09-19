@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  19 SEP 2026 08:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  19 SEP 2026 10:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1275,7 +1275,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/feature_collapse.pdf, id=995, 859.63786pt x 261.91829pt>
+<figures/feature_collapse.pdf, id=994, 859.63786pt x 261.91829pt>
 File: figures/feature_collapse.pdf Graphic file (type pdf)
 <use figures/feature_collapse.pdf>
 Package pdftex.def Info: figures/feature_collapse.pdf  used on input line 384.
@@ -1313,7 +1313,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/probe_layer_curve_panel.pdf, id=1020, 787.27187pt x 236.62376pt>
+<figures/probe_layer_curve_panel.pdf, id=1019, 787.27187pt x 236.62376pt>
 File: figures/probe_layer_curve_panel.pdf Graphic file (type pdf)
 <use figures/probe_layer_curve_panel.pdf>
 Package pdftex.def Info: figures/probe_layer_curve_panel.pdf  used on input lin
@@ -1964,14 +1964,14 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0540F3662C77E5B971CD23DAB4489961;26477.
+(rerunfilecheck)             Checksum: 23DAA7A296643AFD5C050832C198CB01;26818.
  ) 
 Here is how much of TeX's memory you used:
- 40944 strings out of 473190
- 899664 string characters out of 5715801
- 1489820 words of memory out of 5000000
+ 40943 strings out of 473190
+ 899655 string characters out of 5715801
+ 1490098 words of memory out of 5000000
  61895 multiletter control sequences out of 15000+600000
- 725190 words of font info for 861 fonts, out of 8000000 for 9000
+ 725184 words of font info for 861 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,87p,3543b,852s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -2003,10 +2003,10 @@ ype1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/ut
 mbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (91 pages, 902102 bytes).
+Output written on main.pdf (91 pages, 902213 bytes).
 PDF statistics:
- 2186 PDF objects out of 2487 (max. 8388607)
- 1849 compressed objects within 19 object streams
+ 2185 PDF objects out of 2487 (max. 8388607)
+ 1848 compressed objects within 19 object streams
  517 named destinations out of 1000 (max. 500000)
  122559 words of extra memory for PDF output out of 128383 (max. 10000000)
 
