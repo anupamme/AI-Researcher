@@ -1046,6 +1046,28 @@ Table~\ref{tab:sample_sizes} consolidates sample sizes across all experiments. T
 \end{small}
 \end{table}
 
+\paragraph{The inferential unit, and why the trial counts are not the sample size.} Table~\ref{tab:sample_sizes} above counts \emph{trials}. For the criterion-4 evidence---the only place this paper reports a positive---trials are \textbf{nested}, and the unit that carries the inference is the \textbf{paired claim} within a target, not the trial. Table~\ref{tab:inference_ladder} states the nesting explicitly, because the trial totals are three orders of magnitude larger than the level at which the claim is actually made.
+
+\begin{table}[h]
+\centering
+\caption{\textbf{The nesting of the criterion-4 evidence (EXP-C4B).} Reading down: the thousands of graded trials are \textbf{not} thousands of independent samples. Multiplicity is controlled by Holm--Bonferroni \emph{within each family of five} (Table~\ref{tab:crit4b_h1}), and the standing result is \textbf{one of five} targets, whose exact 95\% interval $[0.005,\,0.716]$ spans almost the whole unit interval---five targets cannot distinguish a rare property from a common one. Every figure is the one reported in §\ref{app:crit4b}; none is recomputed here.}
+\label{tab:inference_ladder}
+\begin{small}
+\begin{tabular}{@{}llp{2.05in}@{}}
+\toprule
+\textbf{Level} & \textbf{$n$} & \textbf{Note} \\
+\midrule
+Graded trials & 1{,}760 (R); 1{,}440 (E) & 1{,}419 of Family E analysed, 21 evasive exclusions \\
+Resamples per claim & 8 & not independent observations \\
+Claims per target & 30--50 & after the pre-registered top-up rule \\
+\textbf{Paired claims/target} & \textbf{12--23} (R); \textbf{12--15} (E) & \textbf{the inferential unit}: both $D$ values realized \\
+Targets per family & 5 & Holm correction applied within the five \\
+\textbf{Standing positives} & \textbf{1 of 5} & exact 95\% CI $[0.005,\,0.716]$ \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{table}
+
 \subsection{Compute Cost and Reproducibility}
 \label{app:compute_cost}
 
