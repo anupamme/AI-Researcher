@@ -20,6 +20,12 @@
 \usepackage{algpseudocode}
 \usepackage{hyperref}
 \usepackage{url}
+% iclr2027_conference.bst emits \doi{...} for entries carrying a doi field
+% (FUNCTION {format.doi}). main.bbl ships a plain-text fallback, so this is not
+% needed to compile -- it is defined here, ahead of the bbl, so that the two
+% DOIs resolve as clickable links rather than inert text. \providecommand keeps
+% it inert if a future package supplies its own \doi.
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
 \usepackage{microtype}
 \usepackage{verbatim}
 \usepackage{listings}
@@ -80,7 +86,7 @@ that was not in place. The study's per-rater CSVs are released.
 
 \textbf{Model-generated content.} All deceptive content in our own experiments is
 model output, elicited either by an explicit instruction to defend a false claim
-or---in the criterion-4 materials---by presenting a knowledge-screened false
+or, in the criterion-4 materials, by presenting a knowledge-screened false
 reference fact with no lie instruction at all. Claims are matched factual pairs
 about neutral subject matter: science, history, geography, technology and culture
 (Appendix~\ref{app:claims}), chosen so that a false claim is verifiable rather
@@ -96,7 +102,7 @@ own account. Closed models were accessed via AWS Bedrock under standard terms.
 \textbf{Dual use.} This paper is a critique of evaluation practice, not a
 deception capability. It does report that much of a benchmark's accuracy is
 reachable from surface features, and that the most discriminative probe in a
-published battery is a paraphrase of the lie instruction---information that could
+published battery is a paraphrase of the lie instruction, information that could
 in principle help someone score well on such a benchmark without detecting
 deception. We judge disclosure to be right: the failure mode is a property of the
 benchmark design, published designs are already being used to support attribution
@@ -125,7 +131,7 @@ were not used to generate data, results, or findings.
 \subsection*{Reproducibility statement}
 \textbf{The central result requires no closed-model API.} EXP-R1/R1b/R1c
 (§\ref{sec:r1_faithful}) run against six open-weight targets served locally via
-Ollama---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B---with
+Ollama (Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B) with
 fixed claim sets, fixed elicitation-question banks, and \emph{no} LLM feature
 scoring: that detector is a logistic regression over binarised yes/no replies,
 so no API-served model enters its pipeline at any stage.
@@ -159,28 +165,28 @@ every EXP-XJ number in the paper recomputes from the repository with no model ca
 \textbf{EXP-WP (§\ref{sec:td_vs_fd}) needs weight access, and its activation
 tensors are not a release artifact}: the probe reads residual hidden states from
 local \texttt{Qwen3-4B-Instruct-2507} weights under MPS at fp16 and from
-\texttt{google/gemma-3-4b-it} at bf16 stored as float32---Gemma-3's residual stream
+\texttt{google/gemma-3-4b-it} at bf16 stored as float32 (Gemma-3's residual stream
 carries outlier features above fp16 range, so the narrower storage is not an
-option---and the extracted tensors run to ${\sim}210$\,MB per fp16 configuration and
+option), and the extracted tensors run to ${\sim}210$\,MB per fp16 configuration and
 ${\sim}430$\,MB for the float32 one. The release therefore carries the two
 pre-registrations, the generation and probing scripts, every per-step result JSON
 for all three configurations, and the per-trial metadata including every
-stored model response---but not the tensors, which re-extract from the released
+stored model response, but not the tensors, which re-extract from the released
 scripts at the fixed seed (Appendix~\ref{app:probe_audit}).
 \textbf{The second public release (EXP-XL) is gated, so we make no claim of
 reproducibility parity with Apollo}: it can be neither vendored nor
 submodule-pinned, and the path there is a committed sha256 manifest (revision,
 per-file hash, byte size, verified row counts) plus every committed derived
-artifact---eight per-configuration rule records, the eligibility survey, and
-1{,}356 raw judgements---from which every EXP-XL number recomputes with no model
+artifact (eight per-configuration rule records, the eligibility survey, and
+1{,}356 raw judgements) from which every EXP-XL number recomputes with no model
 call and no network. \textbf{A manifest is weaker than a pin}: it lets a reader
 detect that the corpus changed, not fetch the revision we audited. Accepting the
 host's gate under one's own account is required to re-derive those artifacts from
 raw rows, and is not required to reproduce any reported figure
 (Appendix~\ref{app:liars_bench}).
 \textbf{EXP-C4 (§\ref{sec:external_audit}) is local generation plus one grading pass.}
-Its \emph{five} targets---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and
-Qwen~2.5~7B/14B---are served locally under Ollama at the fixed seed. Qwen~2.5~32B is
+Its \emph{five} targets (Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and
+Qwen~2.5~7B/14B) are served locally under Ollama at the fixed seed. Qwen~2.5~32B is
 excluded on one stated ground, recorded before any detector result was computed: its
 belief screen could not be completed within the available memory, so we cannot show
 it holds the negation of any reference fact (Appendix~\ref{app:crit4_ours}).
@@ -188,7 +194,7 @@ The only model call outside generation is the deception grader, and it is
 \textbf{cross-family to every target}: \texttt{us.anthropic.claude-haiku-4-5-20251001-v1:0}
 via AWS Bedrock at temperature~0, one call per trial, reading the on-claim answer
 alone and never the probe vector the detector is scored on. Its 1{,}040 raw
-judgements---757 confirmatory graded trials, the rest pilot---are committed as JSONL
+judgements (757 confirmatory graded trials, the rest pilot) are committed as JSONL
 (\texttt{data/results/crit4\_grades\_raw.jsonl}) alongside the rubric's md5, so
 \textbf{every EXP-C4 number in the paper recomputes from the repository with no model
 call}: H1--H4, the pilot's selection trace, the exploratory leave-one-target-out
@@ -198,6 +204,9 @@ hand codes are literals in \texttt{experiments/analyze\_crit4\_reliability.py}.
 Codebase, raw
 transcripts, per-trial result files, and a table-reproduction script will be
 released publicly.
+\textbf{Build identity.} Source revision~35, built 20~September~2026 from parent
+commit \texttt{c9718cf}. The revision number increments once per review round, so
+a reader can check which round's tree a given PDF was compiled from.
 
 \bibliographystyle{iclr2027_conference}
 \bibliography{references}

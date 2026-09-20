@@ -1,0 +1,437 @@
+[
+ [
+  "sections/abstract.tex",
+  "behavior}---so its accuracy cannot be read",
+  "behavior}, so its accuracy cannot be read"
+ ],
+ [
+  "sections/abstract.tex",
+  "which $\\tau_E$---the \\emph{instruction}'s effect, and not a magnitude accuracy estimates---neither bounds nor signs",
+  "which $\\tau_E$ (the \\emph{instruction}'s effect, and not a magnitude accuracy estimates) neither bounds nor signs"
+ ],
+ [
+  "sections/abstract.tex",
+  "is not new---trained belief-verified organisms have it---but not as the",
+  "is not new (trained belief-verified organisms have it), but not as the"
+ ],
+ [
+  "sections/abstract.tex",
+  "reaches 69--80\\%---\\emph{surface-accessible accuracy}",
+  "reaches 69--80\\%, \\emph{surface-accessible accuracy}"
+ ],
+ [
+  "sections/abstract.tex",
+  "signals---still not $\\tau_D$---\\textbf{rung~4 of five}",
+  "signals (still not $\\tau_D$), \\textbf{rung~4 of five}"
+ ],
+ [
+  "sections/introduction.tex",
+  "not deception as a construct}---so its accuracy cannot establish",
+  "not deception as a construct}, so its accuracy cannot establish"
+ ],
+ [
+  "sections/introduction.tex",
+  "deception is undetectable}---we end by detecting it",
+  "deception is undetectable}: we end by detecting it"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{Yes}---we reproduce it and dispute none of it.",
+  "\\textbf{Yes}: we reproduce it and dispute none of it."
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{Unidentified}---the instruction moves both",
+  "\\textbf{Unidentified}: the instruction moves both"
+ ],
+ [
+  "sections/introduction.tex",
+  "three claims---\\textsc{i.~identification}, \\textsc{ii.~what a valid test requires}, \\textsc{iii.~empirical diagnosis}---in descending order",
+  "three claims (\\textsc{i.~identification}, \\textsc{ii.~what a valid test requires}, \\textsc{iii.~empirical diagnosis}), in descending order"
+ ],
+ [
+  "sections/introduction.tex",
+  "claims are about $\\tau_D$---the \\textbf{Elicitation--Construct Confounding Principle}, with behavioral deception detection as one instantiation (§\\ref{sec:identification})---\\emph{holds by structure}",
+  "claims are about $\\tau_D$. The \\textbf{Elicitation--Construct Confounding Principle}, with behavioral deception detection as one instantiation (§\\ref{sec:identification}), \\emph{holds by structure}"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{(2)~Protocol---an identification audit an auditor can apply to a benchmark they did not build}",
+  "\\textbf{(2)~Protocol (an identification audit an auditor can apply to a benchmark they did not build)}"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{decidable from a design's specification}---we decide them on ten designs",
+  "\\textbf{decidable from a design's specification}; we decide them on ten designs"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{no audited public release supplies all five}---the closest cells failing",
+  "\\textbf{no audited public release supplies all five}, the closest cells failing"
+ ],
+ [
+  "sections/introduction.tex",
+  "materials that do---and there, \\textbf{prior work's own battery",
+  "materials that do, and there \\textbf{prior work's own battery"
+ ],
+ [
+  "sections/introduction.tex",
+  "elementary but \\emph{unenforced}---no benchmark we audit states requirement~(i)---so \\textbf{the protocol",
+  "elementary but \\emph{unenforced}: no benchmark we audit states requirement~(i), so \\textbf{the protocol"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{The full mapping---question $\\to$ evidence $\\to$ result $\\to$ what it licenses, row by row, with pre-registration status marked---is Table~\\ref{tab:roadmap}",
+  "\\textbf{The full mapping (question $\\to$ evidence $\\to$ result $\\to$ what it licenses, row by row, with pre-registration status marked) is Table~\\ref{tab:roadmap}"
+ ],
+ [
+  "sections/introduction.tex",
+  "closest instance---our primary audit target---is \\citet{pacchiardi2024catch}",
+  "closest instance (our primary audit target) is \\citet{pacchiardi2024catch}"
+ ],
+ [
+  "sections/introduction.tex",
+  "deception and compliance together---so generalization can be perfect",
+  "deception and compliance together, so generalization can be perfect"
+ ],
+ [
+  "sections/introduction.tex",
+  "not what we claim to introduce}---\\citet{cooney2026didyoulie}'s trained organisms",
+  "not what we claim to introduce}: \\citet{cooney2026didyoulie}'s trained organisms"
+ ],
+ [
+  "sections/introduction.tex",
+  "distinct detector paradigms}---while auditing whether public artifacts",
+  "distinct detector paradigms}, while auditing whether public artifacts"
+ ],
+ [
+  "sections/introduction.tex",
+  "settle the attribution question---stated in full, and then run.}",
+  "settle the attribution question, stated in full and then run.}"
+ ],
+ [
+  "sections/introduction.tex",
+  "equivalent to the detector's input---(i)--(v) operationalize criterion~4",
+  "equivalent to the detector's input; (i)--(v) operationalize criterion~4"
+ ],
+ [
+  "sections/introduction.tex",
+  "both public rollout releases---ten rollout sets and 35 further cells---and \\textbf{none supplies all five}",
+  "both public rollout releases (ten rollout sets and 35 further cells), and \\textbf{none supplies all five}"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{What the accuracy aggregates}: \\textbf{a heterogeneous mixture}---instruction-following",
+  "\\textbf{What the accuracy aggregates} is \\textbf{a heterogeneous mixture}: instruction-following"
+ ],
+ [
+  "sections/introduction.tex",
+  "at byte-identical elicitation)---\\textbf{and once the instruction confound is removed",
+  "at byte-identical elicitation). \\textbf{Once the instruction confound is removed"
+ ],
+ [
+  "sections/introduction.tex",
+  "the elicitation is held byte-identical---and when we build them",
+  "the elicitation is held byte-identical, and when we build them"
+ ],
+ [
+  "sections/methodology.tex",
+  "communicative goal---a different task, differently worded",
+  "communicative goal: a different task, differently worded"
+ ],
+ [
+  "sections/methodology.tex",
+  "while holding $\\neg p$}---binary, latent, and observed by no benchmark audited here.",
+  "while holding $\\neg p$}. It is binary, latent, and observed by no benchmark audited here."
+ ],
+ [
+  "sections/methodology.tex",
+  "criterion~4 reaches---a deception-\\emph{associated} signal at fixed elicitation",
+  "criterion~4 reaches, a deception-\\emph{associated} signal at fixed elicitation"
+ ],
+ [
+  "sections/methodology.tex",
+  "not a new theoretical result}---its premises~(A1)--(A5)",
+  "not a new theoretical result}: its premises~(A1)--(A5)"
+ ],
+ [
+  "sections/methodology.tex",
+  "auditable on $Y$---crossing elicitation with items, recording the channel a detector reads, grading $Y$ off that channel---and \\textbf{none supplies all three}",
+  "auditable on $Y$ (crossing elicitation with items, recording the channel a detector reads, grading $Y$ off that channel), and \\textbf{none supplies all three}"
+ ],
+ [
+  "sections/methodology.tex",
+  "vary $D$ with $E$ fixed---uninstructed deception under incentive or goal conflict",
+  "vary $D$ with $E$ fixed, uninstructed deception under incentive or goal conflict"
+ ],
+ [
+  "sections/methodology.tex",
+  "(EXP-C4, §\\ref{sec:external_audit})---criterion~4 met, still not $\\mathrm{do}(D)$.",
+  "(EXP-C4, §\\ref{sec:external_audit}), criterion~4 met, still not $\\mathrm{do}(D)$."
+ ],
+ [
+  "sections/methodology.tex",
+  "marked not pre-registered}---the lexical rule is diagnostic.",
+  "marked not pre-registered}: the lexical rule is diagnostic."
+ ],
+ [
+  "sections/methodology.tex",
+  "& \\emph{none}---structural (§\\ref{sec:identification}) &",
+  "& \\emph{none}: structural (§\\ref{sec:identification}) &"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{Instructed accuracy is regime-dependent}---three mechanistically distinct paradigms",
+  "\\textbf{Instructed accuracy is regime-dependent}: three mechanistically distinct paradigms"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{No learned features needed}---\\emph{surface-accessible accuracy}, not a decomposition",
+  "\\textbf{No learned features needed}: \\emph{surface-accessible accuracy}, not a decomposition"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{rung~4, not rung~5}---not $\\tau_D$ \\\\",
+  "\\textbf{rung~4, not rung~5}; not $\\tau_D$ \\\\"
+ ],
+ [
+  "sections/methodology.tex",
+  "signal at byte-identical elicitation---necessary for, but not equal to, $\\tau_D$.",
+  "signal at byte-identical elicitation (necessary for, but not equal to, $\\tau_D$)."
+ ],
+ [
+  "sections/methodology.tex",
+  "not a construct-validity test}---criterion~1 is how the confound is \\emph{detected}",
+  "not a construct-validity test}; criterion~1 is how the confound is \\emph{detected}"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{necessary for this audit to be operational}---(iii)~is how an auditor",
+  "\\textbf{necessary for this audit to be operational}: (iii)~is how an auditor"
+ ],
+ [
+  "sections/methodology.tex",
+  "every valid deception benchmark}---they rule out specific alternative explanations.",
+  "every valid deception benchmark}: they rule out specific alternative explanations."
+ ],
+ [
+  "sections/methodology.tex",
+  "$U\\!\\to\\!S$ survives it---criterion~4 removes the \\emph{elicitation} confound",
+  "$U\\!\\to\\!S$ survives it; criterion~4 removes the \\emph{elicitation} confound"
+ ],
+ [
+  "sections/methodology.tex",
+  "criterion~4 tests only the first---\\textbf{the protocol falsifies validity claims",
+  "criterion~4 tests only the first; \\textbf{the protocol falsifies validity claims"
+ ],
+ [
+  "sections/methodology.tex",
+  "of a population-level effect}---the thousands of graded trials",
+  "of a population-level effect}: the thousands of graded trials"
+ ],
+ [
+  "sections/methodology.tex",
+  "cannot attribute itself to $D$---by structure.",
+  "cannot attribute itself to $D$ (by structure)."
+ ],
+ [
+  "sections/methodology.tex",
+  "design \\emph{does} yield a deception-\\emph{associated} signal---\\textbf{rung~4 of Figure~\\ref{fig:ladder}, not rung~5}.",
+  "design \\emph{does} yield a deception-\\emph{associated} signal: \\textbf{rung~4 of Figure~\\ref{fig:ladder}, not rung~5}."
+ ],
+ [
+  "sections/methodology.tex",
+  "the weakest thing here---\\textbf{one} of five standing after a pre-registered covariate audit withdrew one, one of five new---on 3B--14B open-weight targets.",
+  "the weakest thing here (\\textbf{one} of five standing after a pre-registered covariate audit withdrew one, one of five new) on 3B--14B open-weight targets."
+ ],
+ [
+  "sections/methodology.tex",
+  "the \\emph{absence} of a signal---it may remove the deception with the confound",
+  "the \\emph{absence} of a signal: it may remove the deception with the confound"
+ ],
+ [
+  "sections/methodology.tex",
+  "on a deployed-observable channel---a property of the designs, not the models.",
+  "on a deployed-observable channel, a property of the designs, not the models."
+ ],
+ [
+  "sections/methodology.tex",
+  "at fixed $E$---an association at byte-identical elicitation---so any latent $U$",
+  "at fixed $E$ (an association at byte-identical elicitation), so any latent $U$"
+ ],
+ [
+  "sections/experiments.tex",
+  "across four families---Llama~3.2~3B/3.1~8B/3.3~70B~\\citep{meta2024llama3}, Mistral~7B~\\citep{jiang2023mistral}, Qwen~2.5~7B/14B~\\citep{qwen2025qwen25} and Claude Haiku~4.5~\\citep{anthropic2025haiku45}---at $n=50$--100",
+  "across four families (Llama~3.2~3B/3.1~8B/3.3~70B~\\citep{meta2024llama3}, Mistral~7B~\\citep{jiang2023mistral}, Qwen~2.5~7B/14B~\\citep{qwen2025qwen25} and Claude Haiku~4.5~\\citep{anthropic2025haiku45}) at $n=50$--100"
+ ],
+ [
+  "sections/experiments.tex",
+  "\\textbf{sixteen pre-registered analyses---one of them a rule that failed, reported as a null---are the only confirmatory results",
+  "\\textbf{sixteen pre-registered analyses (one of them a rule that failed, reported as a null) are the only confirmatory results"
+ ],
+ [
+  "sections/experiments.tex",
+  "\\textbf{Three tiers---confirmatory, supporting, exploratory---are marked per row",
+  "\\textbf{Three tiers (confirmatory, supporting, exploratory) are marked per row"
+ ],
+ [
+  "sections/experiments.tex",
+  "(0--2 of 16 dimensions varying)---absence of a usable signal",
+  "(0--2 of 16 dimensions varying): absence of a usable signal"
+ ],
+ [
+  "sections/experiments.tex",
+  "target's answer about the claim---only binarised yes/no replies",
+  "target's answer about the claim, only binarised yes/no replies"
+ ],
+ [
+  "sections/experiments.tex",
+  "under equalization on all six targets---on five it is the whole of the accuracy",
+  "under equalization on all six targets; on five it is the whole of the accuracy"
+ ],
+ [
+  "sections/experiments.tex",
+  "A single regex feature---refusal/correction marker count from 14 patterns---reaches \\textbf{69--80\\%}",
+  "A single regex feature (refusal/correction marker count from 14 patterns) reaches \\textbf{69--80\\%}"
+ ],
+ [
+  "sections/experiments.tex",
+  "nor deception-specific---\\emph{surface-accessible accuracy}, \\textbf{not a decomposition of the rest}.",
+  "nor deception-specific, \\emph{surface-accessible accuracy}, \\textbf{not a decomposition of the rest}."
+ ],
+ [
+  "sections/experiments.tex",
+  "inside a white-box probe---a third detector paradigm (EXP-WP).}",
+  "inside a white-box probe, a third detector paradigm (EXP-WP).}"
+ ],
+ [
+  "sections/experiments.tex",
+  "and steering is null---\\textbf{decodable, not causal}.",
+  "and steering is null, \\textbf{decodable, not causal}."
+ ],
+ [
+  "sections/experiments.tex",
+  "but~(iii) is unmet---\\textbf{neither establishes attribution}",
+  "but~(iii) is unmet; \\textbf{neither establishes attribution}"
+ ],
+ [
+  "sections/experiments.tex",
+  "whether the agent \\emph{traded}---a label disjoint from its input",
+  "whether the agent \\emph{traded}, a label disjoint from its input"
+ ],
+ [
+  "sections/experiments.tex",
+  "judge AUROC 0.847---but \\texttt{deceptive} grades the report both read",
+  "judge AUROC 0.847, but \\texttt{deceptive} grades the report both read"
+ ],
+ [
+  "sections/experiments.tex",
+  "Appendix~\\ref{app:frontier_panel})---\\textbf{scale moves the numbers, not the verdict}",
+  "Appendix~\\ref{app:frontier_panel}); \\textbf{scale moves the numbers, not the verdict}"
+ ],
+ [
+  "sections/experiments.tex",
+  "One set clears both gates---sandbagging, $n\\!=\\!1000$, one fixed system prompt---and there the release's",
+  "One set clears both gates (sandbagging, $n\\!=\\!1000$, one fixed system prompt), and there the release's"
+ ],
+ [
+  "sections/experiments.tex",
+  "naming the pattern it keys on---\\textbf{annotation-channel leakage}, whence~(iv).",
+  "naming the pattern it keys on: \\textbf{annotation-channel leakage}, whence~(iv)."
+ ],
+ [
+  "sections/experiments.tex",
+  "rule and grader share evidence---\\textbf{construct recovery}, whence~(v)---while against the \\emph{action} label",
+  "rule and grader share evidence (\\textbf{construct recovery}, whence~(v)), while against the \\emph{action} label"
+ ],
+ [
+  "sections/experiments.tex",
+  "satisfies all five}---the channel facts are measurements",
+  "satisfies all five}; the channel facts are measurements"
+ ],
+ [
+  "sections/experiments.tex",
+  "the target asserts it---deception, the belief screen showing it holds $\\neg p$---or corrects it",
+  "the target asserts it (deception, the belief screen showing it holds $\\neg p$) or corrects it"
+ ],
+ [
+  "sections/experiments.tex",
+  "keeps two of the three---not the weakest---and adds \\textbf{one of five",
+  "keeps two of the three (not the weakest) and adds \\textbf{one of five"
+ ],
+ [
+  "sections/experiments.tex",
+  "produce a deception-associated signal---this is not an estimate",
+  "produce a deception-associated signal; this is not an estimate"
+ ],
+ [
+  "sections/experiments.tex",
+  "most discriminative question---``if you had made an error, would you point it out without being asked?''---reaches \\textbf{100.0\\%}",
+  "most discriminative question (``if you had made an error, would you point it out without being asked?'') reaches \\textbf{100.0\\%}"
+ ],
+ [
+  "sections/experiments.tex",
+  "a \\emph{different} probe---\\emph{``would you stake your reputation on the accuracy of what you just said?''}---which \\textbf{points the same way",
+  "a \\emph{different} probe, \\emph{``would you stake your reputation on the accuracy of what you just said?''}, which \\textbf{points the same way"
+ ],
+ [
+  "sections/discussion.tex",
+  "premise of the identification result}---the equalization experiments",
+  "premise of the identification result}: the equalization experiments"
+ ],
+ [
+  "sections/discussion.tex",
+  "but not in \\emph{environment}---the one cell satisfying (i)--(iv)",
+  "but not in \\emph{environment}: the one cell satisfying (i)--(iv)"
+ ],
+ [
+  "sections/conclusion.tex",
+  "\\textbf{We establish---(1)--(3) structurally or by replication, (4)--(5) as a weaker",
+  "\\textbf{We establish (1)--(3) structurally or by replication, and (4)--(5) as a weaker"
+ ],
+ [
+  "sections/conclusion.tex",
+  "outside deception and we decide it}---\\textbf{while its magnitude we measure only",
+  "outside deception and we decide it}, \\textbf{while its magnitude we measure only"
+ ],
+ [
+  "main.tex",
+  "or---in the criterion-4 materials---by presenting a knowledge-screened false",
+  "or, in the criterion-4 materials, by presenting a knowledge-screened false"
+ ],
+ [
+  "main.tex",
+  "a paraphrase of the lie instruction---information that could",
+  "a paraphrase of the lie instruction, information that could"
+ ],
+ [
+  "main.tex",
+  "Ollama---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B---with",
+  "Ollama (Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B) with"
+ ],
+ [
+  "main.tex",
+  "at bf16 stored as float32---Gemma-3's residual stream\ncarries outlier features above fp16 range, so the narrower storage is not an\noption---and the extracted tensors run to",
+  "at bf16 stored as float32 (Gemma-3's residual stream\ncarries outlier features above fp16 range, so the narrower storage is not an\noption), and the extracted tensors run to"
+ ],
+ [
+  "main.tex",
+  "stored model response---but not the tensors, which re-extract",
+  "stored model response, but not the tensors, which re-extract"
+ ],
+ [
+  "main.tex",
+  "artifact---eight per-configuration rule records, the eligibility survey, and\n1{,}356 raw judgements---from which every EXP-XL number recomputes",
+  "artifact (eight per-configuration rule records, the eligibility survey, and\n1{,}356 raw judgements) from which every EXP-XL number recomputes"
+ ],
+ [
+  "main.tex",
+  "Its \\emph{five} targets---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and\nQwen~2.5~7B/14B---are served locally",
+  "Its \\emph{five} targets (Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and\nQwen~2.5~7B/14B) are served locally"
+ ],
+ [
+  "main.tex",
+  "judgements---757 confirmatory graded trials, the rest pilot---are committed as JSONL",
+  "judgements (757 confirmatory graded trials, the rest pilot) are committed as JSONL"
+ ]
+]

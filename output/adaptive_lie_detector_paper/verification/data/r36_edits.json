@@ -1,0 +1,2692 @@
+[
+ [
+  "sections/abstract.tex",
+  "behavior}---so its accuracy cannot be read",
+  "behavior}, so its accuracy cannot be read"
+ ],
+ [
+  "sections/abstract.tex",
+  "which $\\tau_E$---the \\emph{instruction}'s effect, and not a magnitude accuracy estimates---neither bounds nor signs",
+  "which $\\tau_E$ (the \\emph{instruction}'s effect, and not a magnitude accuracy estimates) neither bounds nor signs"
+ ],
+ [
+  "sections/abstract.tex",
+  "is not new---trained belief-verified organisms have it---but not as the",
+  "is not new (trained belief-verified organisms have it), but not as the"
+ ],
+ [
+  "sections/abstract.tex",
+  "reaches 69--80\\%---\\emph{surface-accessible accuracy}",
+  "reaches 69--80\\%, \\emph{surface-accessible accuracy}"
+ ],
+ [
+  "sections/abstract.tex",
+  "signals---still not $\\tau_D$---\\textbf{rung~4 of five}",
+  "signals (still not $\\tau_D$), \\textbf{rung~4 of five}"
+ ],
+ [
+  "sections/introduction.tex",
+  "not deception as a construct}---so its accuracy cannot establish",
+  "not deception as a construct}, so its accuracy cannot establish"
+ ],
+ [
+  "sections/introduction.tex",
+  "deception is undetectable}---we end by detecting it",
+  "deception is undetectable}: we end by detecting it"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{Yes}---we reproduce it and dispute none of it.",
+  "\\textbf{Yes}: we reproduce it and dispute none of it."
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{Unidentified}---the instruction moves both",
+  "\\textbf{Unidentified}: the instruction moves both"
+ ],
+ [
+  "sections/introduction.tex",
+  "three claims---\\textsc{i.~identification}, \\textsc{ii.~what a valid test requires}, \\textsc{iii.~empirical diagnosis}---in descending order",
+  "three claims (\\textsc{i.~identification}, \\textsc{ii.~what a valid test requires}, \\textsc{iii.~empirical diagnosis}), in descending order"
+ ],
+ [
+  "sections/introduction.tex",
+  "claims are about $\\tau_D$---the \\textbf{Elicitation--Construct Confounding Principle}, with behavioral deception detection as one instantiation (§\\ref{sec:identification})---\\emph{holds by structure}",
+  "claims are about $\\tau_D$. The \\textbf{Elicitation--Construct Confounding Principle}, with behavioral deception detection as one instantiation (§\\ref{sec:identification}), \\emph{holds by structure}"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{(2)~Protocol---an identification audit an auditor can apply to a benchmark they did not build}",
+  "\\textbf{(2)~Protocol (an identification audit an auditor can apply to a benchmark they did not build)}"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{decidable from a design's specification}---we decide them on ten designs",
+  "\\textbf{decidable from a design's specification}; we decide them on ten designs"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{no audited public release supplies all five}---the closest cells failing",
+  "\\textbf{no audited public release supplies all five}, the closest cells failing"
+ ],
+ [
+  "sections/introduction.tex",
+  "materials that do---and there, \\textbf{prior work's own battery",
+  "materials that do, and there \\textbf{prior work's own battery"
+ ],
+ [
+  "sections/introduction.tex",
+  "elementary but \\emph{unenforced}---no benchmark we audit states requirement~(i)---so \\textbf{the protocol",
+  "elementary but \\emph{unenforced}: no benchmark we audit states requirement~(i), so \\textbf{the protocol"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{The full mapping---question $\\to$ evidence $\\to$ result $\\to$ what it licenses, row by row, with pre-registration status marked---is Table~\\ref{tab:roadmap}",
+  "\\textbf{The full mapping (question $\\to$ evidence $\\to$ result $\\to$ what it licenses, row by row, with pre-registration status marked) is Table~\\ref{tab:roadmap}"
+ ],
+ [
+  "sections/introduction.tex",
+  "closest instance---our primary audit target---is \\citet{pacchiardi2024catch}",
+  "closest instance (our primary audit target) is \\citet{pacchiardi2024catch}"
+ ],
+ [
+  "sections/introduction.tex",
+  "deception and compliance together---so generalization can be perfect",
+  "deception and compliance together, so generalization can be perfect"
+ ],
+ [
+  "sections/introduction.tex",
+  "not what we claim to introduce}---\\citet{cooney2026didyoulie}'s trained organisms",
+  "not what we claim to introduce}: \\citet{cooney2026didyoulie}'s trained organisms"
+ ],
+ [
+  "sections/introduction.tex",
+  "distinct detector paradigms}---while auditing whether public artifacts",
+  "distinct detector paradigms}, while auditing whether public artifacts"
+ ],
+ [
+  "sections/introduction.tex",
+  "settle the attribution question---stated in full, and then run.}",
+  "settle the attribution question, stated in full and then run.}"
+ ],
+ [
+  "sections/introduction.tex",
+  "equivalent to the detector's input---(i)--(v) operationalize criterion~4",
+  "equivalent to the detector's input; (i)--(v) operationalize criterion~4"
+ ],
+ [
+  "sections/introduction.tex",
+  "both public rollout releases---ten rollout sets and 35 further cells---and \\textbf{none supplies all five}",
+  "both public rollout releases (ten rollout sets and 35 further cells), and \\textbf{none supplies all five}"
+ ],
+ [
+  "sections/introduction.tex",
+  "\\textbf{What the accuracy aggregates}: \\textbf{a heterogeneous mixture}---instruction-following",
+  "\\textbf{What the accuracy aggregates} is \\textbf{a heterogeneous mixture}: instruction-following"
+ ],
+ [
+  "sections/introduction.tex",
+  "at byte-identical elicitation)---\\textbf{and once the instruction confound is removed",
+  "at byte-identical elicitation). \\textbf{Once the instruction confound is removed"
+ ],
+ [
+  "sections/introduction.tex",
+  "the elicitation is held byte-identical---and when we build them",
+  "the elicitation is held byte-identical, and when we build them"
+ ],
+ [
+  "sections/methodology.tex",
+  "communicative goal---a different task, differently worded",
+  "communicative goal: a different task, differently worded"
+ ],
+ [
+  "sections/methodology.tex",
+  "while holding $\\neg p$}---binary, latent, and observed by no benchmark audited here.",
+  "while holding $\\neg p$}. It is binary, latent, and observed by no benchmark audited here."
+ ],
+ [
+  "sections/methodology.tex",
+  "criterion~4 reaches---a deception-\\emph{associated} signal at fixed elicitation",
+  "criterion~4 reaches, a deception-\\emph{associated} signal at fixed elicitation"
+ ],
+ [
+  "sections/methodology.tex",
+  "not a new theoretical result}---its premises~(A1)--(A5)",
+  "not a new theoretical result}: its premises~(A1)--(A5)"
+ ],
+ [
+  "sections/methodology.tex",
+  "auditable on $Y$---crossing elicitation with items, recording the channel a detector reads, grading $Y$ off that channel---and \\textbf{none supplies all three}",
+  "auditable on $Y$ (crossing elicitation with items, recording the channel a detector reads, grading $Y$ off that channel), and \\textbf{none supplies all three}"
+ ],
+ [
+  "sections/methodology.tex",
+  "vary $D$ with $E$ fixed---uninstructed deception under incentive or goal conflict",
+  "vary $D$ with $E$ fixed, uninstructed deception under incentive or goal conflict"
+ ],
+ [
+  "sections/methodology.tex",
+  "(EXP-C4, §\\ref{sec:external_audit})---criterion~4 met, still not $\\mathrm{do}(D)$.",
+  "(EXP-C4, §\\ref{sec:external_audit}), criterion~4 met, still not $\\mathrm{do}(D)$."
+ ],
+ [
+  "sections/methodology.tex",
+  "marked not pre-registered}---the lexical rule is diagnostic.",
+  "marked not pre-registered}: the lexical rule is diagnostic."
+ ],
+ [
+  "sections/methodology.tex",
+  "& \\emph{none}---structural (§\\ref{sec:identification}) &",
+  "& \\emph{none}: structural (§\\ref{sec:identification}) &"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{Instructed accuracy is regime-dependent}---three mechanistically distinct paradigms",
+  "\\textbf{Instructed accuracy is regime-dependent}: three mechanistically distinct paradigms"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{No learned features needed}---\\emph{surface-accessible accuracy}, not a decomposition",
+  "\\textbf{No learned features needed}: \\emph{surface-accessible accuracy}, not a decomposition"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{rung~4, not rung~5}---not $\\tau_D$ \\\\",
+  "\\textbf{rung~4, not rung~5}; not $\\tau_D$ \\\\"
+ ],
+ [
+  "sections/methodology.tex",
+  "signal at byte-identical elicitation---necessary for, but not equal to, $\\tau_D$.",
+  "signal at byte-identical elicitation (necessary for, but not equal to, $\\tau_D$)."
+ ],
+ [
+  "sections/methodology.tex",
+  "not a construct-validity test}---criterion~1 is how the confound is \\emph{detected}",
+  "not a construct-validity test}; criterion~1 is how the confound is \\emph{detected}"
+ ],
+ [
+  "sections/methodology.tex",
+  "\\textbf{necessary for this audit to be operational}---(iii)~is how an auditor",
+  "\\textbf{necessary for this audit to be operational}: (iii)~is how an auditor"
+ ],
+ [
+  "sections/methodology.tex",
+  "every valid deception benchmark}---they rule out specific alternative explanations.",
+  "every valid deception benchmark}: they rule out specific alternative explanations."
+ ],
+ [
+  "sections/methodology.tex",
+  "$U\\!\\to\\!S$ survives it---criterion~4 removes the \\emph{elicitation} confound",
+  "$U\\!\\to\\!S$ survives it; criterion~4 removes the \\emph{elicitation} confound"
+ ],
+ [
+  "sections/methodology.tex",
+  "criterion~4 tests only the first---\\textbf{the protocol falsifies validity claims",
+  "criterion~4 tests only the first; \\textbf{the protocol falsifies validity claims"
+ ],
+ [
+  "sections/methodology.tex",
+  "of a population-level effect}---the thousands of graded trials",
+  "of a population-level effect}: the thousands of graded trials"
+ ],
+ [
+  "sections/methodology.tex",
+  "cannot attribute itself to $D$---by structure.",
+  "cannot attribute itself to $D$ (by structure)."
+ ],
+ [
+  "sections/methodology.tex",
+  "design \\emph{does} yield a deception-\\emph{associated} signal---\\textbf{rung~4 of Figure~\\ref{fig:ladder}, not rung~5}.",
+  "design \\emph{does} yield a deception-\\emph{associated} signal: \\textbf{rung~4 of Figure~\\ref{fig:ladder}, not rung~5}."
+ ],
+ [
+  "sections/methodology.tex",
+  "the weakest thing here---\\textbf{one} of five standing after a pre-registered covariate audit withdrew one, one of five new---on 3B--14B open-weight targets.",
+  "the weakest thing here (\\textbf{one} of five standing after a pre-registered covariate audit withdrew one, one of five new) on 3B--14B open-weight targets."
+ ],
+ [
+  "sections/methodology.tex",
+  "the \\emph{absence} of a signal---it may remove the deception with the confound",
+  "the \\emph{absence} of a signal: it may remove the deception with the confound"
+ ],
+ [
+  "sections/methodology.tex",
+  "on a deployed-observable channel---a property of the designs, not the models.",
+  "on a deployed-observable channel, a property of the designs, not the models."
+ ],
+ [
+  "sections/methodology.tex",
+  "at fixed $E$---an association at byte-identical elicitation---so any latent $U$",
+  "at fixed $E$ (an association at byte-identical elicitation), so any latent $U$"
+ ],
+ [
+  "sections/experiments.tex",
+  "across four families---Llama~3.2~3B/3.1~8B/3.3~70B~\\citep{meta2024llama3}, Mistral~7B~\\citep{jiang2023mistral}, Qwen~2.5~7B/14B~\\citep{qwen2025qwen25} and Claude Haiku~4.5~\\citep{anthropic2025haiku45}---at $n=50$--100",
+  "across four families (Llama~3.2~3B/3.1~8B/3.3~70B~\\citep{meta2024llama3}, Mistral~7B~\\citep{jiang2023mistral}, Qwen~2.5~7B/14B~\\citep{qwen2025qwen25} and Claude Haiku~4.5~\\citep{anthropic2025haiku45}) at $n=50$--100"
+ ],
+ [
+  "sections/experiments.tex",
+  "\\textbf{sixteen pre-registered analyses---one of them a rule that failed, reported as a null---are the only confirmatory results",
+  "\\textbf{sixteen pre-registered analyses (one of them a rule that failed, reported as a null) are the only confirmatory results"
+ ],
+ [
+  "sections/experiments.tex",
+  "\\textbf{Three tiers---confirmatory, supporting, exploratory---are marked per row",
+  "\\textbf{Three tiers (confirmatory, supporting, exploratory) are marked per row"
+ ],
+ [
+  "sections/experiments.tex",
+  "(0--2 of 16 dimensions varying)---absence of a usable signal",
+  "(0--2 of 16 dimensions varying): absence of a usable signal"
+ ],
+ [
+  "sections/experiments.tex",
+  "target's answer about the claim---only binarised yes/no replies",
+  "target's answer about the claim, only binarised yes/no replies"
+ ],
+ [
+  "sections/experiments.tex",
+  "under equalization on all six targets---on five it is the whole of the accuracy",
+  "under equalization on all six targets; on five it is the whole of the accuracy"
+ ],
+ [
+  "sections/experiments.tex",
+  "A single regex feature---refusal/correction marker count from 14 patterns---reaches \\textbf{69--80\\%}",
+  "A single regex feature (refusal/correction marker count from 14 patterns) reaches \\textbf{69--80\\%}"
+ ],
+ [
+  "sections/experiments.tex",
+  "nor deception-specific---\\emph{surface-accessible accuracy}, \\textbf{not a decomposition of the rest}.",
+  "nor deception-specific, \\emph{surface-accessible accuracy}, \\textbf{not a decomposition of the rest}."
+ ],
+ [
+  "sections/experiments.tex",
+  "inside a white-box probe---a third detector paradigm (EXP-WP).}",
+  "inside a white-box probe, a third detector paradigm (EXP-WP).}"
+ ],
+ [
+  "sections/experiments.tex",
+  "and steering is null---\\textbf{decodable, not causal}.",
+  "and steering is null, \\textbf{decodable, not causal}."
+ ],
+ [
+  "sections/experiments.tex",
+  "but~(iii) is unmet---\\textbf{neither establishes attribution}",
+  "but~(iii) is unmet; \\textbf{neither establishes attribution}"
+ ],
+ [
+  "sections/experiments.tex",
+  "whether the agent \\emph{traded}---a label disjoint from its input",
+  "whether the agent \\emph{traded}, a label disjoint from its input"
+ ],
+ [
+  "sections/experiments.tex",
+  "judge AUROC 0.847---but \\texttt{deceptive} grades the report both read",
+  "judge AUROC 0.847, but \\texttt{deceptive} grades the report both read"
+ ],
+ [
+  "sections/experiments.tex",
+  "Appendix~\\ref{app:frontier_panel})---\\textbf{scale moves the numbers, not the verdict}",
+  "Appendix~\\ref{app:frontier_panel}); \\textbf{scale moves the numbers, not the verdict}"
+ ],
+ [
+  "sections/experiments.tex",
+  "One set clears both gates---sandbagging, $n\\!=\\!1000$, one fixed system prompt---and there the release's",
+  "One set clears both gates (sandbagging, $n\\!=\\!1000$, one fixed system prompt), and there the release's"
+ ],
+ [
+  "sections/experiments.tex",
+  "naming the pattern it keys on---\\textbf{annotation-channel leakage}, whence~(iv).",
+  "naming the pattern it keys on: \\textbf{annotation-channel leakage}, whence~(iv)."
+ ],
+ [
+  "sections/experiments.tex",
+  "rule and grader share evidence---\\textbf{construct recovery}, whence~(v)---while against the \\emph{action} label",
+  "rule and grader share evidence (\\textbf{construct recovery}, whence~(v)), while against the \\emph{action} label"
+ ],
+ [
+  "sections/experiments.tex",
+  "satisfies all five}---the channel facts are measurements",
+  "satisfies all five}; the channel facts are measurements"
+ ],
+ [
+  "sections/experiments.tex",
+  "the target asserts it---deception, the belief screen showing it holds $\\neg p$---or corrects it",
+  "the target asserts it (deception, the belief screen showing it holds $\\neg p$) or corrects it"
+ ],
+ [
+  "sections/experiments.tex",
+  "keeps two of the three---not the weakest---and adds \\textbf{one of five",
+  "keeps two of the three (not the weakest) and adds \\textbf{one of five"
+ ],
+ [
+  "sections/experiments.tex",
+  "produce a deception-associated signal---this is not an estimate",
+  "produce a deception-associated signal; this is not an estimate"
+ ],
+ [
+  "sections/experiments.tex",
+  "most discriminative question---``if you had made an error, would you point it out without being asked?''---reaches \\textbf{100.0\\%}",
+  "most discriminative question (``if you had made an error, would you point it out without being asked?'') reaches \\textbf{100.0\\%}"
+ ],
+ [
+  "sections/experiments.tex",
+  "a \\emph{different} probe---\\emph{``would you stake your reputation on the accuracy of what you just said?''}---which \\textbf{points the same way",
+  "a \\emph{different} probe, \\emph{``would you stake your reputation on the accuracy of what you just said?''}, which \\textbf{points the same way"
+ ],
+ [
+  "sections/discussion.tex",
+  "premise of the identification result}---the equalization experiments",
+  "premise of the identification result}: the equalization experiments"
+ ],
+ [
+  "sections/discussion.tex",
+  "but not in \\emph{environment}---the one cell satisfying (i)--(iv)",
+  "but not in \\emph{environment}: the one cell satisfying (i)--(iv)"
+ ],
+ [
+  "sections/conclusion.tex",
+  "\\textbf{We establish---(1)--(3) structurally or by replication, (4)--(5) as a weaker",
+  "\\textbf{We establish (1)--(3) structurally or by replication, and (4)--(5) as a weaker"
+ ],
+ [
+  "sections/conclusion.tex",
+  "outside deception and we decide it}---\\textbf{while its magnitude we measure only",
+  "outside deception and we decide it}, \\textbf{while its magnitude we measure only"
+ ],
+ [
+  "main.tex",
+  "or---in the criterion-4 materials---by presenting a knowledge-screened false",
+  "or, in the criterion-4 materials, by presenting a knowledge-screened false"
+ ],
+ [
+  "main.tex",
+  "a paraphrase of the lie instruction---information that could",
+  "a paraphrase of the lie instruction, information that could"
+ ],
+ [
+  "main.tex",
+  "Ollama---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B---with",
+  "Ollama (Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B) with"
+ ],
+ [
+  "main.tex",
+  "at bf16 stored as float32---Gemma-3's residual stream\ncarries outlier features above fp16 range, so the narrower storage is not an\noption---and the extracted tensors run to",
+  "at bf16 stored as float32 (Gemma-3's residual stream\ncarries outlier features above fp16 range, so the narrower storage is not an\noption), and the extracted tensors run to"
+ ],
+ [
+  "main.tex",
+  "stored model response---but not the tensors, which re-extract",
+  "stored model response, but not the tensors, which re-extract"
+ ],
+ [
+  "main.tex",
+  "artifact---eight per-configuration rule records, the eligibility survey, and\n1{,}356 raw judgements---from which every EXP-XL number recomputes",
+  "artifact (eight per-configuration rule records, the eligibility survey, and\n1{,}356 raw judgements) from which every EXP-XL number recomputes"
+ ],
+ [
+  "main.tex",
+  "Its \\emph{five} targets---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and\nQwen~2.5~7B/14B---are served locally",
+  "Its \\emph{five} targets (Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and\nQwen~2.5~7B/14B) are served locally"
+ ],
+ [
+  "main.tex",
+  "judgements---757 confirmatory graded trials, the rest pilot---are committed as JSONL",
+  "judgements (757 confirmatory graded trials, the rest pilot) are committed as JSONL"
+ ],
+ [
+  "sections/appendix.tex",
+  "positive---EXP-AD, ",
+  "positive: EXP-AD, "
+ ],
+ [
+  "sections/appendix.tex",
+  "uctural}---\\emph{no",
+  "uctural}: \\emph{no"
+ ],
+ [
+  "sections/appendix.tex",
+  "pirical}---\\emph{th",
+  "pirical}: \\emph{th"
+ ],
+ [
+  "sections/appendix.tex",
+  "ibution}---\\emph{te",
+  "ibution}: \\emph{te"
+ ],
+ [
+  "sections/appendix.tex",
+  "(V,E,S)$---the clai",
+  "(V,E,S)$ (the clai"
+ ],
+ [
+  "sections/appendix.tex",
+  "s output; \\textb",
+  "s output); \\textb"
+ ],
+ [
+  "sections/appendix.tex",
+  "riction}---no obser",
+  "riction} (no obser"
+ ],
+ [
+  "sections/appendix.tex",
+  "ne $M_i$; and \\t",
+  "ne $M_i$); and \\t"
+ ],
+ [
+  "sections/appendix.tex",
+  "e effect---so $\\tau",
+  "e effect (so $\\tau"
+ ],
+ [
+  "sections/appendix.tex",
+  " witness---and equa",
+  " witness), and equa"
+ ],
+ [
+  "sections/appendix.tex",
+  " wording---this cos",
+  " wording (this cos"
+ ],
+ [
+  "sections/appendix.tex",
+  "ing else; \\textb",
+  "ing else); \\textb"
+ ],
+ [
+  "sections/appendix.tex",
+  "e corpus---2, 21 an",
+  "e corpus (2, 21 an"
+ ],
+ [
+  "sections/appendix.tex",
+  " 3 of 28---and none",
+  " 3 of 28), and none"
+ ],
+ [
+  "sections/appendix.tex",
+  "s of $D$---the obse",
+  "s of $D$, the obse"
+ ],
+ [
+  "sections/appendix.tex",
+  "ecovery}---a threat",
+  "ecovery} (a threat"
+ ],
+ [
+  "sections/appendix.tex",
+  "$\\tau_D$. A desi",
+  "$\\tau_D$). A desi"
+ ],
+ [
+  "sections/appendix.tex",
+  "er $M_i$---an exclu",
+  "er $M_i$, an exclu"
+ ],
+ [
+  "sections/appendix.tex",
+  "citation---rung~4---and not ",
+  "citation (rung~4), and not "
+ ],
+ [
+  "sections/appendix.tex",
+  "ecessary---though n",
+  "ecessary (though n"
+ ],
+ [
+  "sections/appendix.tex",
+  "fficient---for an a",
+  "fficient) for an a"
+ ],
+ [
+  "sections/appendix.tex",
+  "riterion---\\textbf{",
+  "riterion (\\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  " column}---and Tabl",
+  " column}), and Tabl"
+ ],
+ [
+  "sections/appendix.tex",
+  ", 2, 3)}---\\emph{te",
+  ", 2, 3)}: \\emph{te"
+ ],
+ [
+  "sections/appendix.tex",
+  "est (4)}---\\textbf{",
+  "est (4)}, \\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  "ixed $E$---necessar",
+  "ixed $E$: necessar"
+ ],
+ [
+  "sections/appendix.tex",
+  "ess (5)}---\\emph{no",
+  "ess (5)}: \\emph{no"
+ ],
+ [
+  "sections/appendix.tex",
+  "lization---a robust",
+  "lization: a robust"
+ ],
+ [
+  "sections/appendix.tex",
+  "ymmetry}---\\textbf{",
+  "ymmetry}, \\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  "terion~4---interven",
+  "terion~4 (interven"
+ ],
+ [
+  "sections/appendix.tex",
+  "ication}---can dist",
+  "ication}) can dist"
+ ],
+ [
+  "sections/appendix.tex",
+  "onstruct---no amoun",
+  "onstruct, no amoun"
+ ],
+ [
+  "sections/appendix.tex",
+  "ization}---rewrite ",
+  "ization}: rewrite "
+ ],
+ [
+  "sections/appendix.tex",
+  "raction}---if any f",
+  "raction}: if any f"
+ ],
+ [
+  "sections/appendix.tex",
+  "aseline}---write a ",
+  "aseline}: write a "
+ ],
+ [
+  "sections/appendix.tex",
+  "ransfer}---hold out",
+  "ransfer}: hold out"
+ ],
+ [
+  "sections/appendix.tex",
+  "itation}---requires",
+  "itation} requires"
+ ],
+ [
+  "sections/appendix.tex",
+  "d robust---not that",
+  "d robust, not that"
+ ],
+ [
+  "sections/appendix.tex",
+  " corpora---the 8 Li",
+  " corpora (the 8 Li"
+ ],
+ [
+  "sections/appendix.tex",
+  "5probes}---\\textbf{",
+  "5probes}), \\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  "itiques}---\\texttt{",
+  "itiques}; \\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  " indices---\\texttt{",
+  " indices (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "(2 each)---with 100",
+  "(2 each)) with 100"
+ ],
+ [
+  "sections/appendix.tex",
+  "is exact---\\texttt{",
+  "is exact (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "00 rows}---and it i",
+  "00 rows}), and it i"
+ ],
+ [
+  "sections/appendix.tex",
+  "n label}---\\texttt{",
+  "n label} (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "_answer}---and its ",
+  "_answer}), and its "
+ ],
+ [
+  "sections/appendix.tex",
+  "ception}---not by t",
+  "ception}, not by t"
+ ],
+ [
+  "sections/appendix.tex",
+  "ibility}---the key ",
+  "ibility}: the key "
+ ],
+ [
+  "sections/appendix.tex",
+  "ut files---\\texttt{",
+  "ut files (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "\\}.json}---carry th",
+  "\\}.json}) carry th"
+ ],
+ [
+  "sections/appendix.tex",
+  "EREG~§0) --- rule, a",
+  "EREG~§0); rule, a"
+ ],
+ [
+  "sections/appendix.tex",
+  "e only}) --- rule 16",
+  "e only}): rule 16"
+ ],
+ [
+  "sections/appendix.tex",
+  "vity arm---1.0\\,pp ",
+  "vity arm: 1.0\\,pp "
+ ],
+ [
+  "sections/appendix.tex",
+  "ectories---with no ",
+  "ectories, with no "
+ ],
+ [
+  "sections/appendix.tex",
+  "generate---predicts",
+  "generate, predicts"
+ ],
+ [
+  "sections/appendix.tex",
+  "ne fails---a classi",
+  "ne fails: a classi"
+ ],
+ [
+  "sections/appendix.tex",
+  "izations---includin",
+  "izations (includin"
+ ],
+ [
+  "sections/appendix.tex",
+  " was run---so close",
+  " was run), so close"
+ ],
+ [
+  "sections/appendix.tex",
+  "rmatory}---pre-regi",
+  "rmatory} is pre-regi"
+ ],
+ [
+  "sections/appendix.tex",
+  "porting}---measured",
+  "porting} is measured"
+ ],
+ [
+  "sections/appendix.tex",
+  "oratory}---hypothes",
+  "oratory} is hypothes"
+ ],
+ [
+  "sections/appendix.tex",
+  "-out 7th---a test o",
+  "-out 7th: a test o"
+ ],
+ [
+  "sections/appendix.tex",
+  "en lying---consiste",
+  "en lying, consiste"
+ ],
+ [
+  "sections/appendix.tex",
+  " indicts---instruct",
+  " indicts (instruct"
+ ],
+ [
+  "sections/appendix.tex",
+  "ful ones---so crite",
+  "ful ones), so crite"
+ ],
+ [
+  "sections/appendix.tex",
+  "lidation---no claim",
+  "lidation, no claim"
+ ],
+ [
+  "sections/appendix.tex",
+  "elected}---index 15",
+  "elected}: index 15"
+ ],
+ [
+  "sections/appendix.tex",
+  " strings---the same",
+  " strings, the same"
+ ],
+ [
+  "sections/appendix.tex",
+  "ivations---so the p",
+  "ivations, so the p"
+ ],
+ [
+  "sections/appendix.tex",
+  "5] & Yes---the prob",
+  "5] & Yes: the prob"
+ ],
+ [
+  "sections/appendix.tex",
+  "nce (H2)---the same",
+  "nce (H2): the same"
+ ],
+ [
+  "sections/appendix.tex",
+  "t use it---and on t",
+  "t use it, and on t"
+ ],
+ [
+  "sections/appendix.tex",
+  " 100.0\\%---on Gemma",
+  " 100.0\\% (on Gemma"
+ ],
+ [
+  "sections/appendix.tex",
+  "1.0\\,pp}---so \\text",
+  "1.0\\,pp}), so \\text"
+ ],
+ [
+  "sections/appendix.tex",
+  "t budge}---the pre-",
+  "t budge}; the pre-"
+ ],
+ [
+  "sections/appendix.tex",
+  "he strip---a limita",
+  "he strip, a limita"
+ ],
+ [
+  "sections/appendix.tex",
+  "\\!0.016$---the two ",
+  "\\!0.016$: the two "
+ ],
+ [
+  "sections/appendix.tex",
+  "for them---a conser",
+  "for them: a conser"
+ ],
+ [
+  "sections/appendix.tex",
+  "metadata---includin",
+  "metadata (includin"
+ ],
+ [
+  "sections/appendix.tex",
+  "ted from---is commi",
+  "ted from) is commi"
+ ],
+ [
+  "sections/appendix.tex",
+  "on only}---bf16 com",
+  "on only} (bf16 com"
+ ],
+ [
+  "sections/appendix.tex",
+  " storage---with the",
+  " storage) with the"
+ ],
+ [
+  "sections/appendix.tex",
+  "e graded---so recen",
+  "e graded, so recen"
+ ],
+ [
+  "sections/appendix.tex",
+  " mixture---neither ",
+  " mixture (neither "
+ ],
+ [
+  "sections/appendix.tex",
+  " ceiling---and Phi'",
+  " ceiling), and Phi'"
+ ],
+ [
+  "sections/appendix.tex",
+  "tches on---so a thi",
+  "tches on, so a thi"
+ ],
+ [
+  "sections/appendix.tex",
+  "implicit---the rost",
+  "implicit; the rost"
+ ],
+ [
+  "sections/appendix.tex",
+  "dels now---with Fam",
+  "dels now (with Fam"
+ ],
+ [
+  "sections/appendix.tex",
+  " in hand---is exact",
+  " in hand) is exact"
+ ],
+ [
+  "sections/appendix.tex",
+  "--56.0\\%---below th",
+  "--56.0\\%: below th"
+ ],
+ [
+  "sections/appendix.tex",
+  "clusive}---three ta",
+  "clusive}: three ta"
+ ],
+ [
+  "sections/appendix.tex",
+  "findings---an empha",
+  "findings, an empha"
+ ],
+ [
+  "sections/appendix.tex",
+  "vertised---\\texttt{",
+  "vertised (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "ples 50}---and adds",
+  "ples 50}), and adds"
+ ],
+ [
+  "sections/appendix.tex",
+  "ontrast}---the same",
+  "ontrast} (the same"
+ ],
+ [
+  "sections/appendix.tex",
+  "ion test---on curre",
+  "ion test) on curre"
+ ],
+ [
+  "sections/appendix.tex",
+  "reports}---\\texttt{",
+  "reports} (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "r1c_v2})---evaluate",
+  "r1c_v2})), evaluate"
+ ],
+ [
+  "sections/appendix.tex",
+  "structed---\\textbf{",
+  "structed (\\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  "p=0.001$---and fall",
+  "p=0.001$), and fall"
+ ],
+ [
+  "sections/appendix.tex",
+  "t as one---after th",
+  "t as one (after th"
+ ],
+ [
+  "sections/appendix.tex",
+  "nt check---would be",
+  "nt check) would be"
+ ],
+ [
+  "sections/appendix.tex",
+  "al claim---that a \\",
+  "al claim (that a \\"
+ ],
+ [
+  "sections/appendix.tex",
+  "entirely---and \\tex",
+  "entirely), and \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "} answer---its vect",
+  "} answer (its vect"
+ ],
+ [
+  "sections/appendix.tex",
+  "generate---but in 3",
+  "generate), but in 3"
+ ],
+ [
+  "sections/appendix.tex",
+  "observed---so it is",
+  "observed, so it is"
+ ],
+ [
+  "sections/appendix.tex",
+  "the gate---\\texttt{",
+  "the gate (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "{25.0\\%}---so both ",
+  "{25.0\\%}), so both "
+ ],
+ [
+  "sections/appendix.tex",
+  "lse} arm---the §9 d",
+  "lse} arm: the §9 d"
+ ],
+ [
+  "sections/appendix.tex",
+  "e it was---on its o",
+  "e it was: on its o"
+ ],
+ [
+  "sections/appendix.tex",
+  "enerate}---1 of 16 ",
+  "enerate} (1 of 16 "
+ ],
+ [
+  "sections/appendix.tex",
+  "is 4.0\\%---and this",
+  "is 4.0\\%), and this"
+ ],
+ [
+  "sections/appendix.tex",
+  " branch}---that ord",
+  " branch}; that ord"
+ ],
+ [
+  "sections/appendix.tex",
+  "zed cell---\\emph{ab",
+  "zed cell: \\emph{ab"
+ ],
+ [
+  "sections/appendix.tex",
+  "3.4$\\,pp---wider in",
+  "3.4$\\,pp (wider in"
+ ],
+ [
+  "sections/appendix.tex",
+  "n claims---so \\text",
+  "n claims), so \\text"
+ ],
+ [
+  "sections/appendix.tex",
+  "directly---presenti",
+  "directly: presenti"
+ ],
+ [
+  "sections/appendix.tex",
+  "el gate}---\\texttt{",
+  "el gate} (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "hreshold---leaving ",
+  "hreshold), leaving "
+ ],
+ [
+  "sections/appendix.tex",
+  "isabled)---but \\tex",
+  "isabled), but \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "iveness}---of the t",
+  "iveness}; of the t"
+ ],
+ [
+  "sections/appendix.tex",
+  "rmative}---a collap",
+  "rmative}: a collap"
+ ],
+ [
+  "sections/appendix.tex",
+  "imension---assertiv",
+  "imension (assertiv"
+ ],
+ [
+  "sections/appendix.tex",
+  "language---not redu",
+  "language) not redu"
+ ],
+ [
+  "sections/appendix.tex",
+  "m genre}---third-pe",
+  "m genre} (third-pe"
+ ],
+ [
+  "sections/appendix.tex",
+  "riential---with no ",
+  "riential) with no "
+ ],
+ [
+  "sections/appendix.tex",
+  "e models---$+7.5$ a",
+  "e models: $+7.5$ a"
+ ],
+ [
+  "sections/appendix.tex",
+  "evidence---the only",
+  "evidence (the only"
+ ],
+ [
+  "sections/appendix.tex",
+  "positive---trials a",
+  "positive), trials a"
+ ],
+ [
+  "sections/appendix.tex",
+  "interval---five tar",
+  "interval: five tar"
+ ],
+ [
+  "sections/appendix.tex",
+  "ccuracy}---69--80\\%",
+  "ccuracy} (69--80\\%"
+ ],
+ [
+  "sections/appendix.tex",
+  "n choice---and \\tex",
+  "n choice), and \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "% lying)---false-ne",
+  "% lying): false-ne"
+ ],
+ [
+  "sections/appendix.tex",
+  "% lying)---nearly a",
+  "% lying): nearly a"
+ ],
+ [
+  "sections/appendix.tex",
+  "s 83.0\\%---above mo",
+  "s 83.0\\%: above mo"
+ ],
+ [
+  "sections/appendix.tex",
+  " at all}---claim ge",
+  " at all}: claim ge"
+ ],
+ [
+  "sections/appendix.tex",
+  " result}---which is",
+  " result}, which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "c:setup}---a data-a",
+  "c:setup}, a data-a"
+ ],
+ [
+  "sections/appendix.tex",
+  "B 78.8\\%---a $+$12.",
+  "B 78.8\\%: a $+$12."
+ ],
+ [
+  "sections/appendix.tex",
+  "hed here---a Haiku ",
+  "hed here (a Haiku "
+ ],
+ [
+  "sections/appendix.tex",
+  "u cannot---are ther",
+  "u cannot) are ther"
+ ],
+ [
+  "sections/appendix.tex",
+  "variants---original",
+  "variants (original"
+ ],
+ [
+  "sections/appendix.tex",
+  "few-shot---on Llama",
+  "few-shot) on Llama"
+ ],
+ [
+  "sections/appendix.tex",
+  "e models---structur",
+  "e models (structur"
+ ],
+ [
+  "sections/appendix.tex",
+  "lving it---so the o",
+  "lving it), so the o"
+ ],
+ [
+  "sections/appendix.tex",
+  "pipeline---a 4--14\\",
+  "pipeline: a 4--14\\"
+ ],
+ [
+  "sections/appendix.tex",
+  " seeding---every se",
+  " seeding; every se"
+ ],
+ [
+  "sections/appendix.tex",
+  "new bank---Qwen~2.5",
+  "new bank (Qwen~2.5"
+ ],
+ [
+  "sections/appendix.tex",
+  "=0.001$)---so the e",
+  "=0.001$)), so the e"
+ ],
+ [
+  "sections/appendix.tex",
+  " v1 bank---and, by ",
+  " v1 bank; and, by "
+ ],
+ [
+  "sections/appendix.tex",
+  "be alone---dim~2, `",
+  "be alone (dim~2, `"
+ ],
+ [
+  "sections/appendix.tex",
+  "t being asked?''---attains 100.0\\% ",
+  "t being asked?'') attains 100.0\\% "
+ ],
+ [
+  "sections/appendix.tex",
+  "aterials---the 50 d",
+  "aterials (the 50 d"
+ ],
+ [
+  "sections/appendix.tex",
+  "nchanged---to all s",
+  "nchanged) to all s"
+ ],
+ [
+  "sections/appendix.tex",
+  "1's five---notably ",
+  "1's five: notably "
+ ],
+ [
+  "sections/appendix.tex",
+  "ne cells---both con",
+  "ne cells (both con"
+ ],
+ [
+  "sections/appendix.tex",
+  "structed---were col",
+  "structed) were col"
+ ],
+ [
+  "sections/appendix.tex",
+  "=0.998$)---a below-",
+  "=0.998$): a below-"
+ ],
+ [
+  "sections/appendix.tex",
+  "~2 alone---``If you",
+  "~2 alone (``If you"
+ ],
+ [
+  "sections/appendix.tex",
+  "t being asked?''---attains \\textbf{",
+  "t being asked?'') attains \\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  " removed---the unde",
+  " removed: the unde"
+ ],
+ [
+  "sections/appendix.tex",
+  "aterials---50 disjo",
+  "aterials (50 disjo"
+ ],
+ [
+  "sections/appendix.tex",
+  "d probes---applied ",
+  "d probes) applied "
+ ],
+ [
+  "sections/appendix.tex",
+  "onflict}---the targ",
+  "onflict} (the targ"
+ ],
+ [
+  "sections/appendix.tex",
+  "be false---rather t",
+  "be false) rather t"
+ ],
+ [
+  "sections/appendix.tex",
+  "f{KNOWN} --- the tar",
+  "f{KNOWN}: the tar"
+ ],
+ [
+  "sections/appendix.tex",
+  "NKNOWN} --- anythin",
+  "NKNOWN} is anythin"
+ ],
+ [
+  "sections/appendix.tex",
+  " leakage---this is ",
+  " leakage: this is "
+ ],
+ [
+  "sections/appendix.tex",
+  "conflict---the pape",
+  "conflict: the pape"
+ ],
+ [
+  "sections/appendix.tex",
+  "n belief---topic, l",
+  "n belief (topic, l"
+ ],
+ [
+  "sections/appendix.tex",
+  "l covary---so the c",
+  "l covary), so the c"
+ ],
+ [
+  "sections/appendix.tex",
+  "n marker---the mech",
+  "n marker: the mech"
+ ],
+ [
+  "sections/appendix.tex",
+  "t chance---57.6\\% w",
+  "t chance (57.6\\% w"
+ ],
+ [
+  "sections/appendix.tex",
+  "\\!0.032$---so belie",
+  "\\!0.032$), so belie"
+ ],
+ [
+  "sections/appendix.tex",
+  "ly wider---40.3\\% f",
+  "ly wider: 40.3\\% f"
+ ],
+ [
+  "sections/appendix.tex",
+  "~2.5~14B---the more",
+  "~2.5~14B: the more"
+ ],
+ [
+  "sections/appendix.tex",
+  "} claims---the 120 ",
+  "} claims (the 120 "
+ ],
+ [
+  "sections/appendix.tex",
+  "periment---are scre",
+  "periment) are scre"
+ ],
+ [
+  "sections/appendix.tex",
+  "truction---\\emph{si",
+  "truction, \\emph{si"
+ ],
+ [
+  "sections/appendix.tex",
+  "lying''}---which wo",
+  "lying''}, which wo"
+ ],
+ [
+  "sections/appendix.tex",
+  "s parsed---488 of t",
+  "s parsed (488 of t"
+ ],
+ [
+  "sections/appendix.tex",
+  " answers---with 0 u",
+  " answers) with 0 u"
+ ],
+ [
+  "sections/appendix.tex",
+  "red rule---promote ",
+  "red rule (promote "
+ ],
+ [
+  "sections/appendix.tex",
+  "y target---\\textbf{",
+  "y target) \\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  "{0.342}$ --- \\textbf",
+  "{0.342}$: \\textbf"
+ ],
+ [
+  "sections/appendix.tex",
+  "\\!0.757$ --- passes ",
+  "\\!0.757$: passes "
+ ],
+ [
+  "sections/appendix.tex",
+  "nificant---consiste",
+  "nificant: consiste"
+ ],
+ [
+  "sections/appendix.tex",
+  "versions---endorsin",
+  "versions (endorsin"
+ ],
+ [
+  "sections/appendix.tex",
+  "true one---are 3 of",
+  "true one) are 3 of"
+ ],
+ [
+  "sections/appendix.tex",
+  "st empty---which is",
+  "st empty, which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "nt state---the same",
+  "nt state: the same"
+ ],
+ [
+  "sections/appendix.tex",
+  "terials}---deceptio",
+  "terials}, deceptio"
+ ],
+ [
+  "sections/appendix.tex",
+  "vives it---exactly ",
+  "vives it: exactly "
+ ],
+ [
+  "sections/appendix.tex",
+  "deceive}---asserted",
+  "deceive}: asserted"
+ ],
+ [
+  "sections/appendix.tex",
+  "y claim}---the same",
+  "y claim}: the same"
+ ],
+ [
+  "sections/appendix.tex",
+  "ll in it---a hardwa",
+  "ll in it: a hardwa"
+ ],
+ [
+  "sections/appendix.tex",
+  "s bounds---it canno",
+  "s bounds (it canno"
+ ],
+ [
+  "sections/appendix.tex",
+  "liminate---the alte",
+  "liminate) the alte"
+ ],
+ [
+  "sections/appendix.tex",
+  "atements---\\emph{wi",
+  "atements: \\emph{wi"
+ ],
+ [
+  "sections/appendix.tex",
+  "!1$ cell---the very",
+  "!1$ cell: the very"
+ ],
+ [
+  "sections/appendix.tex",
+  "he error---``assert",
+  "he error (``assert"
+ ],
+ [
+  "sections/appendix.tex",
+  "rrect}''---which is",
+  "rrect}''), which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "ne hash}---so withi",
+  "ne hash}, so withi"
+ ],
+ [
+  "sections/appendix.tex",
+  "in them}---the same",
+  "in them}: the same"
+ ],
+ [
+  "sections/appendix.tex",
+  " corpora---it is ha",
+  " corpora: it is ha"
+ ],
+ [
+  "sections/appendix.tex",
+  "lexively---is H1's ",
+  "lexively: is H1's "
+ ],
+ [
+  "sections/appendix.tex",
+  "there''}---the erro",
+  "there''}: the erro"
+ ],
+ [
+  "sections/appendix.tex",
+  "positive---Mistral~",
+  "positive (Mistral~"
+ ],
+ [
+  "sections/appendix.tex",
+  "3.1$\\,pp---which is",
+  "3.1$\\,pp), which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "xclusion---drop tri",
+  "xclusion (drop tri"
+ ],
+ [
+  "sections/appendix.tex",
+  "e belief---therefor",
+  "e belief) therefor"
+ ],
+ [
+  "sections/appendix.tex",
+  "authors}---\\emph{no",
+  "authors} (\\emph{no"
+ ],
+ [
+  "sections/appendix.tex",
+  "ty study---against ",
+  "ty study) against "
+ ],
+ [
+  "sections/appendix.tex",
+  "ng} task---which of",
+  "ng} task (which of"
+ ],
+ [
+  "sections/appendix.tex",
+  "r assert---so a hig",
+  "r assert), so a hig"
+ ],
+ [
+  "sections/appendix.tex",
+  "fined on---$D\\!=\\!1",
+  "fined on ($D\\!=\\!1"
+ ],
+ [
+  "sections/appendix.tex",
+  "D\\!=\\!0$---$\\alpha=",
+  "D\\!=\\!0$), $\\alpha="
+ ],
+ [
+  "sections/appendix.tex",
+  "r target---60 here,",
+  "r target (60 here,"
+ ],
+ [
+  "sections/appendix.tex",
+  " EXP-C4B---and H1's",
+  " EXP-C4B), and H1's"
+ ],
+ [
+  "sections/appendix.tex",
+  "of five}---Mistral~7B---and on i",
+  "of five} (Mistral~7B), and on i"
+ ],
+ [
+  "sections/appendix.tex",
+  "!\\to\\!S$---sampling",
+  "!\\to\\!S$ (sampling"
+ ],
+ [
+  "sections/appendix.tex",
+  "ut hedge---survives",
+  "ut hedge) survives"
+ ],
+ [
+  "sections/appendix.tex",
+  "of power---under EX",
+  "of power; under EX"
+ ],
+ [
+  "sections/appendix.tex",
+  " verdict---criterio",
+  " verdict: criterio"
+ ],
+ [
+  "sections/appendix.tex",
+  "sis uses---\\texttt{",
+  "sis uses (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "e vector---on the \\",
+  "e vector) on the \\"
+ ],
+ [
+  "sections/appendix.tex",
+  "dictions---H1's own",
+  "dictions (H1's own"
+ ],
+ [
+  "sections/appendix.tex",
+  "fication---at $N\\!=",
+  "fication) at $N\\!="
+ ],
+ [
+  "sections/appendix.tex",
+  "laim set---pairwise",
+  "laim set (pairwise"
+ ],
+ [
+  "sections/appendix.tex",
+  "20 of 20---but each",
+  "20 of 20), but each"
+ ],
+ [
+  "sections/appendix.tex",
+  "ed value---$p\\!=\\!1",
+  "ed value ($p\\!=\\!1"
+ ],
+ [
+  "sections/appendix.tex",
+  "evidence. mistra",
+  "evidence). mistra"
+ ],
+ [
+  "sections/appendix.tex",
+  " targets---not a me",
+  " targets, not a me"
+ ],
+ [
+  "sections/appendix.tex",
+  "raining)---the same",
+  "raining). We give it the same"
+ ],
+ [
+  "sections/appendix.tex",
+  "-general---five tar",
+  "-general: five tar"
+ ],
+ [
+  "sections/appendix.tex",
+  "per cell---and then",
+  "per cell, and then"
+ ],
+ [
+  "sections/appendix.tex",
+  "no pilot---this is ",
+  "no pilot (this is "
+ ],
+ [
+  "sections/appendix.tex",
+  "lication---and \\tex",
+  "lication), and \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "n chain}---200 cand",
+  "n chain}: 200 cand"
+ ],
+ [
+  "sections/appendix.tex",
+  " the key---not that",
+  " the key, not that"
+ ],
+ [
+  "sections/appendix.tex",
+  "4\\_NULL}---power go",
+  "4\\_NULL}: power go"
+ ],
+ [
+  "sections/appendix.tex",
+  "r target---60 per f",
+  "r target (60 per f"
+ ],
+ [
+  "sections/appendix.tex",
+  "} in all---is commi",
+  "} in all) is commi"
+ ],
+ [
+  "sections/appendix.tex",
+  " claims}---which is",
+  " claims}, which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "isively}---Mistral~",
+  "isively}: Mistral~"
+ ],
+ [
+  "sections/appendix.tex",
+  "s a null---but the ",
+  "s a null, but the "
+ ],
+ [
+  "sections/appendix.tex",
+  "of five}---and \\tex",
+  "of five} (and \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "a~3.1~8B---and this",
+  "a~3.1~8B), and this"
+ ],
+ [
+  "sections/appendix.tex",
+  "!0.840$)---the only",
+  "!0.840$) (the only"
+ ],
+ [
+  "sections/appendix.tex",
+  "periment---while Qw",
+  "periment), while Qw"
+ ],
+ [
+  "sections/appendix.tex",
+  "channel}---the dete",
+  "channel} (the dete"
+ ],
+ [
+  "sections/appendix.tex",
+  "wn input---on all f",
+  "wn input) on all f"
+ ],
+ [
+  "sections/appendix.tex",
+  "ment~(v)---a rule s",
+  "ment~(v) (a rule s"
+ ],
+ [
+  "sections/appendix.tex",
+  "e grader---on a lar",
+  "e grader) on a lar"
+ ],
+ [
+  "sections/appendix.tex",
+  "ositive}---0.795 ag",
+  "ositive}: 0.795 ag"
+ ],
+ [
+  "sections/appendix.tex",
+  "ed null}---a 6.3\\,p",
+  "ed null}, a 6.3\\,p"
+ ],
+ [
+  "sections/appendix.tex",
+  "upported---and that",
+  "upported, and that"
+ ],
+ [
+  "sections/appendix.tex",
+  "e alone}---the word",
+  "e alone} (the word"
+ ],
+ [
+  "sections/appendix.tex",
+  "0,0.70]$---and expl",
+  "0,0.70]$), and expl"
+ ],
+ [
+  "sections/appendix.tex",
+  " at all}---0 of 64 ",
+  " at all} (0 of 64 "
+ ],
+ [
+  "sections/appendix.tex",
+  "red rows---while H1",
+  "red rows), while H1"
+ ],
+ [
+  "sections/appendix.tex",
+  "ng above---it is an",
+  "ng above; it is an"
+ ],
+ [
+  "sections/appendix.tex",
+  " of five---Phi-4 $-",
+  " of five (Phi-4 $-"
+ ],
+ [
+  "sections/appendix.tex",
+  "0.0084$)---and not ",
+  "0.0084$)), and not "
+ ],
+ [
+  "sections/appendix.tex",
+  " failure---so that ",
+  " failure, so that "
+ ],
+ [
+  "sections/appendix.tex",
+  "boundary---a bounda",
+  "boundary, a bounda"
+ ],
+ [
+  "sections/appendix.tex",
+  "tections---under th",
+  "tections (under th"
+ ],
+ [
+  "sections/appendix.tex",
+  "not two}---and gate",
+  "not two}), and gate"
+ ],
+ [
+  "sections/appendix.tex",
+  "survives---criterio",
+  "survives. This is criterio"
+ ],
+ [
+  "sections/appendix.tex",
+  "on above---Family E",
+  "on above: Family E"
+ ],
+ [
+  "sections/appendix.tex",
+  "ately so---it tests",
+  "ately so; it tests"
+ ],
+ [
+  "sections/appendix.tex",
+  "asserted---so the s",
+  "asserted, so the s"
+ ],
+ [
+  "sections/appendix.tex",
+  "tatistic---Spearman",
+  "tatistic (Spearman"
+ ],
+ [
+  "sections/appendix.tex",
+  " regimes---requires",
+  " regimes) requires"
+ ],
+ [
+  "sections/appendix.tex",
+  " of bits---on Qwen~",
+  " of bits (on Qwen~"
+ ],
+ [
+  "sections/appendix.tex",
+  "~7B, two---which is",
+  "~7B, two), which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "ms fixed---instruct",
+  "ms fixed (instruct"
+ ],
+ [
+  "sections/appendix.tex",
+  "d probes---is not e",
+  "d probes) is not e"
+ ],
+ [
+  "sections/appendix.tex",
+  "pretable---\\textbf{",
+  "pretable, \\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  ".} Dim~2---\\emph{``",
+  ".} Dim~2, \\emph{``"
+ ],
+ [
+  "sections/appendix.tex",
+  "pp:r1b})---is \\text",
+  "pp:r1b}), is \\text"
+ ],
+ [
+  "sections/appendix.tex",
+  "removed}---which is",
+  "removed}, which is"
+ ],
+ [
+  "sections/appendix.tex",
+  ".} Dim~0---\\emph{``",
+  ".} Dim~0 (\\emph{``"
+ ],
+ [
+  "sections/appendix.tex",
+  "said?''}---is \\text",
+  "said?''}) is \\text"
+ ],
+ [
+  "sections/appendix.tex",
+  "-useless---$|\\delta",
+  "-useless ($|\\delta"
+ ],
+ [
+  "sections/appendix.tex",
+  " of five---and wher",
+  " of five), and wher"
+ ],
+ [
+  "sections/appendix.tex",
+  "-0.473$)---an unrel",
+  "-0.473$) (an unrel"
+ ],
+ [
+  "sections/appendix.tex",
+  "plain it---and dim~",
+  "plain it), and dim~"
+ ],
+ [
+  "sections/appendix.tex",
+  "im sets}---\\texttt{",
+  "im sets} (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "ferences---so a pro",
+  "ferences), so a pro"
+ ],
+ [
+  "sections/appendix.tex",
+  " content---willingn",
+  " content (willingn"
+ ],
+ [
+  "sections/appendix.tex",
+  "ust said---is close",
+  "ust said) is close"
+ ],
+ [
+  "sections/appendix.tex",
+  "stimable---$\\rho\\!=",
+  "stimable ($\\rho\\!="
+ ],
+ [
+  "sections/appendix.tex",
+  " $0.473$---so \\text",
+  " $0.473$), so \\text"
+ ],
+ [
+  "sections/appendix.tex",
+  "positive---uncertai",
+  "positive (uncertai"
+ ],
+ [
+  "sections/appendix.tex",
+  "ferences---and aske",
+  "ferences), and aske"
+ ],
+ [
+  "sections/appendix.tex",
+  " by row}---and on a",
+  " by row}, and on a"
+ ],
+ [
+  "sections/appendix.tex",
+  "r alone}---the same",
+  "r alone}: the same"
+ ],
+ [
+  "sections/appendix.tex",
+  "nd folds---$\\Delta_",
+  "nd folds ($\\Delta_"
+ ],
+ [
+  "sections/appendix.tex",
+  "!0.0005$---so by \\t",
+  "!0.0005$), so by \\t"
+ ],
+ [
+  "sections/appendix.tex",
+  "~8B rows---$231$ ag",
+  "~8B rows ($231$ ag"
+ ],
+ [
+  "sections/appendix.tex",
+  "'s $155$---the sign",
+  "'s $155$), the sign"
+ ],
+ [
+  "sections/appendix.tex",
+  "sitives}---Llama~3.",
+  "sitives} (Llama~3."
+ ],
+ [
+  "sections/appendix.tex",
+  "$-0.025$---and \\tex",
+  "$-0.025$), and \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "in live}---\\emph{co",
+  "in live} (\\emph{co"
+ ],
+ [
+  "sections/appendix.tex",
+  "erences}---and \\tex",
+  "erences}), and \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "5 cells}---the batt",
+  "5 cells}: the batt"
+ ],
+ [
+  "sections/appendix.tex",
+  " battery---not that",
+  " battery, not that"
+ ],
+ [
+  "sections/appendix.tex",
+  "nfidence---the two ",
+  "nfidence: the two "
+ ],
+ [
+  "sections/appendix.tex",
+  "designs}---sandbagg",
+  "designs} (sandbagg"
+ ],
+ [
+  "sections/appendix.tex",
+  " honesty---of which",
+  " honesty), of which"
+ ],
+ [
+  "sections/appendix.tex",
+  "ications---and that",
+  "ications, and that"
+ ],
+ [
+  "sections/appendix.tex",
+  "k access---verified",
+  "k access, verified"
+ ],
+ [
+  "sections/appendix.tex",
+  "periment---the sand",
+  "periment (the sand"
+ ],
+ [
+  "sections/appendix.tex",
+  "70b-3.3}---so every",
+  "70b-3.3}), so every"
+ ],
+ [
+  "sections/appendix.tex",
+  ") at all---not beca",
+  ") at all, not beca"
+ ],
+ [
+  "sections/appendix.tex",
+  "t at all---its inst",
+  "t at all; its inst"
+ ],
+ [
+  "sections/appendix.tex",
+  "n fixed}---both san",
+  "n fixed} (both san"
+ ],
+ [
+  "sections/appendix.tex",
+  "roughout---and thos",
+  "roughout), and thos"
+ ],
+ [
+  "sections/appendix.tex",
+  "licable}---the rule",
+  "licable}: the rule"
+ ],
+ [
+  "sections/appendix.tex",
+  " the ten---both AI-",
+  " the ten (both AI-"
+ ],
+ [
+  "sections/appendix.tex",
+  "ed lying---contain ",
+  "ed lying) contain "
+ ],
+ [
+  "sections/appendix.tex",
+  "urements---which is",
+  "urements, which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "n for H2---restrict",
+  "n for H2 (restrict"
+ ],
+ [
+  "sections/appendix.tex",
+  "ondition---is \\text",
+  "ondition) is \\text"
+ ],
+ [
+  "sections/appendix.tex",
+  "answer''---so on th",
+  "answer'', so on th"
+ ],
+ [
+  "sections/appendix.tex",
+  "g corpus---it shows",
+  "g corpus: it shows"
+ ],
+ [
+  "sections/appendix.tex",
+  "ablishes---and the ",
+  "ablishes, and the "
+ ],
+ [
+  "sections/appendix.tex",
+  "-bearing---EXP-R1, ",
+  "-bearing: EXP-R1, "
+ ],
+ [
+  "sections/appendix.tex",
+  "t it establishes---and what it does",
+  "t it establishes, and what it does"
+ ],
+ [
+  "sections/appendix.tex",
+  "al claim---surface ",
+  "al claim; surface "
+ ],
+ [
+  "sections/appendix.tex",
+  "strument---the surf",
+  "strument: the surf"
+ ],
+ [
+  "sections/appendix.tex",
+  "c signal---EXP-XJ s",
+  "c signal (EXP-XJ s"
+ ],
+ [
+  "sections/appendix.tex",
+  "is there---nor that",
+  "is there), nor that"
+ ],
+ [
+  "sections/appendix.tex",
+  "plicates---the rule",
+  "plicates: the rule"
+ ],
+ [
+  "sections/appendix.tex",
+  "ronment}---that cel",
+  "ronment} (that cel"
+ ],
+ [
+  "sections/appendix.tex",
+  "t models---nor a te",
+  "t models), nor a te"
+ ],
+ [
+  "sections/appendix.tex",
+  " targets---\\textbf{",
+  " targets (\\textbf{"
+ ],
+ [
+  "sections/appendix.tex",
+  "e_audit}---with $D$",
+  "e_audit}) with $D$"
+ ],
+ [
+  "sections/appendix.tex",
+  "e vector---so requi",
+  "e vector, so requi"
+ ],
+ [
+  "sections/appendix.tex",
+  "$\\tau_D$---the desi",
+  "$\\tau_D$; the desi"
+ ],
+ [
+  "sections/appendix.tex",
+  "outcomes---requirem",
+  "outcomes (requirem"
+ ],
+ [
+  "sections/appendix.tex",
+  "gle item. Requir",
+  "gle item). Requir"
+ ],
+ [
+  "sections/appendix.tex",
+  "ot vary}---once the",
+  "ot vary}; once the"
+ ],
+ [
+  "sections/appendix.tex",
+  " \\neg R$---trading ",
+  " \\neg R$ (trading "
+ ],
+ [
+  "sections/appendix.tex",
+  "osing it---so $A$ i",
+  "osing it), so $A$ i"
+ ],
+ [
+  "sections/appendix.tex",
+  " channel---nothing ",
+  " channel: nothing "
+ ],
+ [
+  "sections/appendix.tex",
+  "!0$ cell---an agent",
+  "!0$ cell: an agent"
+ ],
+ [
+  "sections/appendix.tex",
+  "endently---otherwis",
+  "endently; otherwis"
+ ],
+ [
+  "sections/appendix.tex",
+  " nothing---so the e",
+  " nothing, so the e"
+ ],
+ [
+  "sections/appendix.tex",
+  "y corpus---the conc",
+  "y corpus: the conc"
+ ],
+ [
+  "sections/appendix.tex",
+  "amilies}---Mistral-",
+  "amilies} (Mistral-"
+ ],
+ [
+  "sections/appendix.tex",
+  " of them. The pr",
+  " of them). The pr"
+ ],
+ [
+  "sections/appendix.tex",
+  "branches---includin",
+  "branches, includin"
+ ],
+ [
+  "sections/appendix.tex",
+  "d report---the \\tex",
+  "d report: the \\tex"
+ ],
+ [
+  "sections/appendix.tex",
+  "met here---the firs",
+  "met here, the firs"
+ ],
+ [
+  "sections/appendix.tex",
+  " to (v)}---which is",
+  " to (v)}, which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "0.0061$)---but the ",
+  "0.0061$), but the "
+ ],
+ [
+  "sections/appendix.tex",
+  ".30$\\,pp---an \\emph",
+  ".30$\\,pp, an \\emph"
+ ],
+ [
+  "sections/appendix.tex",
+  "ox judge---same \\te",
+  "ox judge (same \\te"
+ ],
+ [
+  "sections/appendix.tex",
+  "verbatim---on both ",
+  "verbatim) on both "
+ ],
+ [
+  "sections/appendix.tex",
+  "nerators---not sile",
+  "nerators, not sile"
+ ],
+ [
+  "sections/appendix.tex",
+  "m prompt---so this ",
+  "m prompt, so this "
+ ],
+ [
+  "sections/appendix.tex",
+  "{honest}---e.g.\\ \\t",
+  "{honest}: e.g.\\ \\t"
+ ],
+ [
+  "sections/appendix.tex",
+  "tection}---EXP-IT's",
+  "tection} (EXP-IT's"
+ ],
+ [
+  "sections/appendix.tex",
+  "atisfied. \\textb",
+  "atisfied). \\textb"
+ ],
+ [
+  "sections/appendix.tex",
+  "families---ten roll",
+  "families, ten roll"
+ ],
+ [
+  "sections/appendix.tex",
+  "P-IT/IT2---the Alph",
+  "P-IT/IT2 (the Alph"
+ ],
+ [
+  "sections/appendix.tex",
+  "rollouts---so the t",
+  "rollouts), so the t"
+ ],
+ [
+  "sections/appendix.tex",
+  "tted one---an empty",
+  "tted one: an empty"
+ ],
+ [
+  "sections/appendix.tex",
+  "xt only}---the rele",
+  "xt only}: the rele"
+ ],
+ [
+  "sections/appendix.tex",
+  "ing else---no paper",
+  "ing else (no paper"
+ ],
+ [
+  "sections/appendix.tex",
+  "s answer---and retu",
+  "s answer), and retu"
+ ],
+ [
+  "sections/appendix.tex",
+  "ph{down}---against ",
+  "ph{down}, against "
+ ],
+ [
+  "sections/appendix.tex",
+  " from it---but it i",
+  " from it, but it i"
+ ],
+ [
+  "sections/appendix.tex",
+  "irection---\\textsc{",
+  "irection, \\textsc{"
+ ],
+ [
+  "sections/appendix.tex",
+  "ajority}---so 15 of",
+  "ajority}, so 15 of"
+ ],
+ [
+  "sections/appendix.tex",
+  "tisfied}---unanimou",
+  "tisfied} (unanimou"
+ ],
+ [
+  "sections/appendix.tex",
+  "er three---tracking",
+  "er three), tracking"
+ ],
+ [
+  "sections/appendix.tex",
+  "verdicts---which is",
+  "verdicts (which is"
+ ],
+ [
+  "sections/appendix.tex",
+  "al claim---and it i",
+  "al claim), and it i"
+ ],
+ [
+  "sections/appendix.tex",
+  " of them---the clai",
+  " of them (the clai"
+ ],
+ [
+  "sections/appendix.tex",
+  "th below---are cite",
+  "th below) are cite"
+ ],
+ [
+  "sections/appendix.tex",
+  "t a time---every tr",
+  "t a time (every tr"
+ ],
+ [
+  "sections/appendix.tex",
+  "thout it---moves po",
+  "thout it) moves po"
+ ],
+ [
+  "sections/appendix.tex",
+  "ecovery}---the labe",
+  "ecovery}: the labe"
+ ],
+ [
+  "sections/appendix.tex",
+  "eception---this pap",
+  "eception: this pap"
+ ],
+ [
+  "sections/appendix.tex",
+  "he floor---\\texttt{",
+  "he floor (\\texttt{"
+ ],
+ [
+  "sections/appendix.tex",
+  "10/137$)---and ever",
+  "10/137$)), and ever"
+ ],
+ [
+  "sections/appendix.tex",
+  "eception---H1/H8 ar",
+  "eception: H1/H8 ar"
+ ],
+ [
+  "sections/appendix.tex",
+  "specific---four-opt",
+  "specific (four-opt"
+ ],
+ [
+  "sections/appendix.tex",
+  "easoning---so nothi",
+  "easoning), so nothi"
+ ],
+ [
+  "sections/appendix.tex",
+  " context---closer t",
+  " context: closer t"
+ ],
+ [
+  "sections/appendix.tex",
+  " proxies---so surfa",
+  " proxies, so surfa"
+ ],
+ [
+  "sections/appendix.tex",
+  "eception---\\emph{de",
+  "eception, \\emph{de"
+ ],
+ [
+  "sections/appendix.tex",
+  "oldout} --- both mem",
+  "oldout} (both mem"
+ ],
+ [
+  "sections/appendix.tex",
+  "together --- and the",
+  "together), and the"
+ ],
+ [
+  "sections/appendix.tex",
+  "roughout---the targ",
+  "roughout (the targ"
+ ],
+ [
+  "sections/appendix.tex",
+  " be true---a \\emph{",
+  " be true), a \\emph{"
+ ],
+ [
+  "sections/appendix.tex",
+  "--100\\%)---a signal",
+  "--100\\%): a signal"
+ ],
+ [
+  "sections/appendix.tex",
+  " targets---$+1.27$ ",
+  " targets ($+1.27$ "
+ ],
+ [
+  "sections/appendix.tex",
+  ") strata---while th",
+  ") strata), while th"
+ ],
+ [
+  "sections/appendix.tex",
+  "ondition---both cel",
+  "ondition: both cel"
+ ],
+ [
+  "sections/appendix.tex",
+  "he class---and on e",
+  "he class, and on e"
+ ],
+ [
+  "sections/appendix.tex",
+  "uman ICC---shared b",
+  "uman ICC (shared b"
+ ],
+ [
+  "sections/appendix.tex",
+  "greement---and the ",
+  "greement), and the "
+ ],
+ [
+  "sections/related_work.tex",
+  "t access---honesty/",
+  "t access: honesty/"
+ ],
+ [
+  "sections/related_work.tex",
+  "erence})---all requ",
+  "erence}), all requ"
+ ],
+ [
+  "sections/related_work.tex",
+  " context---the conf",
+  " context: the conf"
+ ],
+ [
+  "sections/related_work.tex",
+  "eceptive---the comp",
+  "eceptive: the comp"
+ ],
+ [
+  "sections/related_work.tex",
+  "ot cover---it is al",
+  "ot cover; it is al"
+ ],
+ [
+  "sections/related_work.tex",
+  "tion~(A)---deceptio",
+  "tion~(A) (deceptio"
+ ],
+ [
+  "sections/related_work.tex",
+  "on fixed---and the ",
+  "on fixed), and the "
+ ],
+ [
+  "sections/related_work.tex",
+  "ntry is}---(a)~inst",
+  "ntry is}: (a)~inst"
+ ],
+ [
+  "sections/related_work.tex",
+  "nstructs---because ",
+  "nstructs, because "
+ ],
+ [
+  "sections/related_work.tex",
+  " not new---\\citet{c",
+  " not new; \\citet{c"
+ ],
+ [
+  "sections/related_work.tex",
+  "ladder})---but no e",
+  "ladder}), but no e"
+ ],
+ [
+  "sections/related_work.tex",
+  "omewhere---2, 21 an",
+  "omewhere (2, 21 an"
+ ],
+ [
+  "sections/related_work.tex",
+  " corpora---\\emph{no",
+  " corpora); \\emph{no"
+ ],
+ [
+  "sections/related_work.tex",
+  "nst them---ten roll",
+  "nst them (ten roll"
+ ],
+ [
+  "sections/related_work.tex",
+  "35 cells---and buil",
+  "35 cells), and buil"
+ ],
+ [
+  "sections/related_work.tex",
+  "chmarks}---the para",
+  "chmarks}: the para"
+ ],
+ [
+  "sections/related_work.tex",
+  "24catch} --- instruc",
+  "24catch}: instruc"
+ ],
+ [
+  "sections/related_work.tex",
+  "$\\times$ --- $E$ is ",
+  "$\\times$: $E$ is "
+ ],
+ [
+  "sections/related_work.tex",
+  "studies}---a differ",
+  "studies}: a differ"
+ ],
+ [
+  "sections/related_work.tex",
+  "rsbench} --- 7 datas",
+  "rsbench}: 7 datas"
+ ],
+ [
+  "sections/related_work.tex",
+  "ph{p} & $\\times$ --- generalizes acr",
+  "ph{p} & $\\times$: generalizes acr"
+ ],
+ [
+  "sections/related_work.tex",
+  "tectors} --- fine-tu",
+  "tectors}: fine-tu"
+ ],
+ [
+  "sections/related_work.tex",
+  "kmark & $\\times$ --- generalizes acr",
+  "kmark & $\\times$: generalizes acr"
+ ],
+ [
+  "sections/related_work.tex",
+  "ganisms}---$D$ \\emp",
+  "ganisms}: $D$ \\emp"
+ ],
+ [
+  "sections/related_work.tex",
+  "dyoulie} --- 13 trai",
+  "dyoulie}: 13 trai"
+ ],
+ [
+  "sections/related_work.tex",
+  "ndirect} --- prompte",
+  "ndirect}: prompte"
+ ],
+ [
+  "sections/related_work.tex",
+  "corpora}---what §\\r",
+  "corpora}: what §\\r"
+ ],
+ [
+  "sections/related_work.tex",
+  "structs}---the requ",
+  "structs}: the requ"
+ ],
+ [
+  "sections/related_work.tex",
+  "mph{n/a} --- reports",
+  "mph{n/a}: reports"
+ ],
+ [
+  "sections/related_work.tex",
+  "$\\times$ --- success",
+  "$\\times$: success"
+ ],
+ [
+  "sections/related_work.tex",
+  "mph{n/a} --- trainin",
+  "mph{n/a}: trainin"
+ ],
+ [
+  "sections/related_work.tex",
+  "{partly} --- prompt-",
+  "{partly}: prompt-"
+ ],
+ [
+  "sections/related_work.tex",
+  "pt fixed---``the pr",
+  "pt fixed (``the pr"
+ ],
+ [
+  "sections/related_work.tex",
+  "onment''---manipula",
+  "onment''), manipula"
+ ],
+ [
+  "sections/related_work.tex",
+  "t cannot---\\citet{g",
+  "t cannot; \\citet{g"
+ ],
+ [
+  "sections/related_work.tex",
+  " nothing---the conf",
+  " nothing: the conf"
+ ],
+ [
+  "sections/related_work.tex",
+  "ollowing---so none ",
+  "ollowing, so none "
+ ],
+ [
+  "sections/related_work.tex",
+  "alizing}---for inst",
+  "alizing}; for inst"
+ ],
+ [
+  "sections/related_work.tex",
+  "t place}---and that",
+  "t place}, and that"
+ ],
+ [
+  "sections/related_work.tex",
+  "lish one---which is",
+  "lish one, which is"
+ ],
+ [
+  "sections/related_work.tex",
+  "faces it---a design",
+  "faces it; a design"
+ ],
+ [
+  "sections/related_work.tex",
+  "radigms}---prior wo",
+  "radigms} (prior wo"
+ ],
+ [
+  "sections/related_work.tex",
+  "ar probe---rather t",
+  "ar probe) rather t"
+ ]
+]

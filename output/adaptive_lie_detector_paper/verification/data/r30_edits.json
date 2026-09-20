@@ -1,0 +1,104 @@
+[
+ [
+  "introduction",
+  "r30-a1-mixture",
+  "\\paragraph{What we do not establish, in plain terms.}",
+  "\\noindent\\textbf{What the accuracy aggregates}: \\textbf{a heterogeneous mixture}---instruction-following (equalization takes 97.0\\% to 43.3\\%), surface correction markers (a parameter-free 14-pattern rule reaches 69--80\\% with nothing fit), a component \\emph{consistent with} knowledge conflict (70.0\\% KNOWN vs.\\ 57.6\\% UNKNOWN, $p\\!=\\!0.0045$, stratified observational), and \\emph{sometimes} deception-associated behavior (one of five targets, at byte-identical elicitation)---\\textbf{and once the instruction confound is removed, what remains is neither stable across targets nor cleanly separable from surface behavior} (\u00a7\\ref{sec:experiments}, \u00a7\\ref{sec:external_audit}). Criteria~1--4 test these one at a time (Table~\\ref{tab:criteria}); no one of them by itself is deception detection, and an accuracy figure does not say which it is measuring.\n\n\\paragraph{What we do not establish, in plain terms.}"
+ ],
+ [
+  "experiments",
+  "r30-dedup-knowledge-conflict",
+  "\\emph{surface-accessible accuracy}, \\textbf{not a decomposition of the rest}. A component is \\emph{consistent with} knowledge conflict (70.0\\% KNOWN vs.\\ 57.6\\% UNKNOWN, $p\\!=\\!0.0045$), \\emph{stratified observational}, so \\textbf{this does not identify knowledge conflict as its cause}",
+  "\\emph{surface-accessible accuracy}, \\textbf{not a decomposition of the rest}. That component is 70.0\\% KNOWN vs.\\ 57.6\\% UNKNOWN ($p\\!=\\!0.0045$), \\emph{stratified observational}, so \\textbf{this does not identify knowledge conflict as its cause}"
+ ],
+ [
+  "experiments",
+  "b4-recency-disclaimer",
+  "No claim below is a scaling, recency or effect-magnitude claim",
+  "No claim below is an effect-magnitude claim"
+ ],
+ [
+  "experiments",
+  "b4-fifteen-to-sixteen",
+  "\\textbf{fifteen pre-registered analyses",
+  "\\textbf{sixteen pre-registered analyses"
+ ],
+ [
+  "experiments",
+  "b4-roster-setup",
+  "and the probe-substitution demonstration (EXP-AD).}",
+  "and the probe-substitution demonstration (EXP-AD).} A pre-registered panel adds seven frontier-scale targets from seven organizations (EXP-FS)."
+ ],
+ [
+  "experiments",
+  "b4-panel-supporting",
+  "(EXP-A/EXP-G; Figure~\\ref{fig:feature_collapse}, Appendices~\\ref{app:adage_details},~\\ref{app:factorial_txd}).",
+  "(EXP-A/EXP-G; Figure~\\ref{fig:feature_collapse}, Appendices~\\ref{app:adage_details},~\\ref{app:factorial_txd}). Frontier scale: rule 80--90\\%, pipeline 40--56\\% (EXP-FS; Appendix~\\ref{app:frontier_panel})."
+ ],
+ [
+  "abstract",
+  "b4-scope-abstract",
+  "\\textbf{Scope: English, instructed-roleplay evaluations, open-weight models 3B--70B.}",
+  "\\textbf{Scope: English; open-weight models 3B--70B, plus seven frontier-scale targets from seven organizations; instructed-roleplay evaluations except where criterion~4 requires otherwise.}"
+ ],
+ [
+  "discussion",
+  "b4-scope-discussion",
+  "Targets are \\textbf{English-language instructed roleplay on instruction-tuned open-weight models, 3B--70B}",
+  "Targets are \\textbf{English-language instructed roleplay, 3B--70B open-weight and seven frontier targets}"
+ ],
+ [
+  "appendix",
+  "b4-title-frontier",
+  "\\section{Frontier-Scale Preliminary Observations (Exploratory: Not Load-Bearing for Any Claim)}\n\\label{app:frontier_preliminary}",
+  "\\section{Frontier-Scale Results: the Pre-Registered Panel (EXP-FS)}\n\\label{app:frontier_panel}"
+ ],
+ [
+  "appendix",
+  "b4-title-maverick",
+  "\\section{Llama~4~Maverick Frontier-Scale Results (Exploratory: Not Load-Bearing for Any Claim)}",
+  "\\section{Llama~4~Maverick Frontier-Scale Results}"
+ ],
+ [
+  "appendix",
+  "b4-roadmap-bucket4",
+  "Frontier-scale preliminaries (\\ref{app:frontier_preliminary}); Llama~4~Maverick (\\ref{app:llama405b_results}); sycophancy",
+  "Sycophancy"
+ ],
+ [
+  "appendix",
+  "b4-roadmap-bucket2",
+  "headline numbers and the multiple-testing policy (\\ref{app:headlines},~\\ref{app:scale_details})",
+  "headline numbers and the multiple-testing policy (\\ref{app:headlines},~\\ref{app:scale_details}); the pre-registered frontier-scale panel over seven targets from seven organizations, EXP-FS (\\ref{app:frontier_panel},~\\ref{app:llama405b_results})"
+ ],
+ [
+  "appendix",
+  "b4-appx-preliminary-para",
+  "\\emph{Preliminary observations, not findings.} These results are not interpretable as findings due to the confounded $n\\!=\\!2$ design; they are retained solely as documentation of the experimental record. The two targets differ on multiple confounded axes (closed/open weight, dense/MoE architecture, RLHF recipe); the panel is insufficient to attribute any observed pattern to a specific axis. Results are excluded from all open-weight averages and headline summaries.",
+  "\\begin{table}[h]\n\\centering\n\\caption{\\textbf{The pre-registered frontier-scale panel} (EXP-FS): 7 targets from 7 organizations, $n\\!=\\!100$ each, one byte-identical neutral system prompt in both conditions and no target ever instructed to lie. \\textbf{Rule} is the parameter-free 14-pattern rule (RC$\\,\\geq\\,1$), with \\emph{nothing} fit; \\textbf{Pipeline} is the detector trained on $\\leq$70B open-weight targets, transferred unchanged. At $n\\!=\\!100$ the smallest count significantly above chance is 61/100. Rows marked $\\dagger$ were already published and are re-scored here by the PREREG~\u00a78.3 gate, not newly collected; Holm correction runs within the 5 new targets, within each outcome family separately.}\n\\label{tab:frontier_panel}\n\\begin{small}\n\\setlength{\\tabcolsep}{4pt}\n\\begin{tabular}{llccrrc}\n\\toprule\n\\textbf{Target} & \\textbf{Organization} & \\textbf{Weights} & \\textbf{Arch.} & \\textbf{Rule} & \\textbf{Pipeline} & \\textbf{RC$\\,\\geq\\,1$ (lie/truth)} \\\\\n\\midrule\nClaude Sonnet~4.5$^\\dagger$ & Anthropic & closed & dense & \\textbf{84.8\\%} & 50.5\\% & 47/49 vs.\\ 13/50 \\\\\nAmazon Nova~Pro & Amazon & closed & undisc. & \\textbf{80.0\\%} & 56.0\\% & 34/50 vs.\\ 4/50 \\\\\nLlama~4~Maverick$^\\dagger$ & Meta & open & MoE & \\textbf{83.0\\%} & 45.0\\% & 39/50 vs.\\ 6/50 \\\\\nDeepSeek-V3 & DeepSeek & open & MoE & \\textbf{87.0\\%} & 40.0\\% & 43/50 vs.\\ 6/50 \\\\\nMistral Large~3 & Mistral AI & open & MoE & \\textbf{88.0\\%} & 50.0\\% & 44/50 vs.\\ 6/50 \\\\\nQwen3~235B-A22B & Qwen & open & MoE & \\textbf{90.0\\%} & 47.0\\% & 44/50 vs.\\ 4/50 \\\\\nGLM-5 & Z.AI & open & MoE & \\textbf{89.0\\%} & 47.0\\% & 48/50 vs.\\ 9/50 \\\\\n\\bottomrule\n\\end{tabular}\n\\end{small}\n\\end{table}\n\n\\paragraph{Panel-level outcomes (PREREG~\u00a75, \u00a76).}\nAcross the 7 targets the parameter-free rule spans \\textbf{80.0--90.0\\%} and the transferred pipeline \\textbf{40.0--56.0\\%}. At $n\\!=\\!100$ the smallest count significantly above chance is 61/100, so every rule cell clears that floor, and no pipeline cell reaches it, making the split between the two outcomes complete across the panel.\n\n\\textbf{H1} (exact two-sided binomial, Holm-corrected within the 5 new targets, within each outcome family separately): the rule is above chance on \\textbf{5 of 5} new targets (largest $p_{\\mathrm{Holm}}\\!<\\!0.001$), the pipeline on \\textbf{0 of 5} (smallest $p_{\\mathrm{Holm}}\\!=\\!0.284$). Cells between 40\\% and 61\\% are reported as \\emph{not distinguishable from chance at $n\\!=\\!100$}, never as ``at chance'' (PREREG~\u00a76).\n\n\\textbf{H2} (homogeneity of proportions; the version over the new targets alone is the one carrying confirmatory weight, PREREG~\u00a70) --- rule, all 7: $\\chi^2\\!=\\!6.33$, $\\mathrm{df}\\!=\\!6$, $p\\!=\\!0.387$; rule, 5 new: $\\chi^2\\!=\\!5.48$, $\\mathrm{df}\\!=\\!4$, $p\\!=\\!0.241$; pipeline, all 7: $\\chi^2\\!=\\!5.98$, $\\mathrm{df}\\!=\\!6$, $p\\!=\\!0.426$; pipeline, 5 new: $\\chi^2\\!=\\!5.37$, $\\mathrm{df}\\!=\\!4$, $p\\!=\\!0.252$. No test departs from a common rate, so the panel gives no evidence that these targets differ from one another on either outcome.\n\n\\textbf{H3} (closed- versus open-weight, \\textbf{descriptive only}) --- rule 164/199 closed vs.\\ 437/500 open ($-5.0$\\,pp, Fisher exact $p\\!=\\!0.0918$); pipeline 106/199 vs.\\ 229/500 ($+7.5$\\,pp, $p\\!=\\!0.0786$). \\textbf{We make no attribution to weight availability.} The pairwise two-proportion MDE at $n\\!=\\!100$ per cell is 19.4\\,pp, ``closed'' is 2 \\emph{organizations}, and weight availability, architecture, RLHF recipe and serving stack remain collinear at the panel level (PREREG~\u00a76, \u00a711).\n\n\\paragraph{The Anthropic row's two extractor arms (PREREG~\u00a74).}\nClaude Haiku~4.5 extracts features for all 7 targets, so for the Anthropic target alone the extractor is \\emph{same-family}. The pre-registration therefore makes the cross-family extractor (Llama-3.3-70B) \\textbf{primary} for that row and Haiku the sensitivity arm, and requires both to be reported and never averaged. The transferred pipeline reaches \\textbf{49.5\\%} (48/97) under the primary arm and 50.5\\% (50/99) under the sensitivity arm---1.0\\,pp apart, both degenerate (every trial predicted truthful) and both below the 61/100 floor, so which arm is read does not change this row's verdict. The table prints the same-family value, which is the published one. \\textbf{How the primary arm was obtained, since it is not a second run:} its committed file re-extracts features with the cross-family extractor but stores the same-family run's detector outputs verbatim, so the classifier was replayed offline over the committed feature trajectories---with no model calls, and only after that replay reproduced the same-family arm's stored confidences, stopping points and predictions bit for bit. The 2 trials whose re-extraction failed at or after the deciding step are excluded and not imputed. The parameter-free rule cannot differ between the arms at all: it reads the target's own turns, which both files share.\n\nTrials terminating in \\texttt{status == error} are excluded from both outcomes and never imputed: \\textbf{1} across the panel.\n\n% ---- audit trail: the same numbers, unformatted ----\n% H1 Amazon Nova Pro      rule      80.0\\%  p_raw=1.116e-09  p_Holm=1.116e-09\n% H1 Amazon Nova Pro      pipeline  56.0\\%  p_raw=0.2713  p_Holm=1\n% H1 DeepSeek-V3          rule      87.0\\%  p_raw=1.313e-14  p_Holm=2.626e-14\n% H1 DeepSeek-V3          pipeline  40.0\\%  p_raw=0.05689  p_Holm=0.2844\n% H1 Mistral Large 3      rule      88.0\\%  p_raw=1.911e-15  p_Holm=5.734e-15\n% H1 Mistral Large 3      pipeline  50.0\\%  p_raw=1  p_Holm=1\n% H1 Qwen3 235B-A22B      rule      90.0\\%  p_raw=3.063e-17  p_Holm=1.532e-16\n% H1 Qwen3 235B-A22B      pipeline  47.0\\%  p_raw=0.6173  p_Holm=1\n% H1 GLM-5                rule      89.0\\%  p_raw=2.541e-16  p_Holm=1.016e-15\n% H1 GLM-5                pipeline  47.0\\%  p_raw=0.6173  p_Holm=1\n% total errored trials across the panel: 1"
+ ],
+ [
+  "appendix",
+  "b4-appx-third-model",
+  "The two cells therefore do not constitute a mechanistic double dissociation. A third frontier model from a different organization (e.g., GPT-4o, DeepSeek-V3) would break at least one confound; this is a limitation of the current design.",
+  "The two cells therefore do not constitute a mechanistic double dissociation. \\textbf{The confound this design named is now broken}: EXP-FS adds five further targets from five further organizations---including DeepSeek-V3, one of the two this sentence named as an example before any of them was run---so closed/open weight, dense/MoE architecture and RLHF recipe are no longer collinear across the panel (Table~\\ref{tab:frontier_panel})."
+ ],
+ [
+  "appendix",
+  "b4-appx-not-established",
+  "\\textbf{We do not establish that the collapse reproduces on current-generation models}, and nothing here should be read as evidence that it does or does not. The prediction is sharp, and we attempted to falsify it: \\textbf{EXP-R1d (Appendix~\\ref{app:r1d}) ran it on four current-generation targets and is \\emph{inconclusive}}---three void on a pre-registered probe-channel gate, one admissible target falling $-46.0$\\,pp---which is why the sentence above stands unchanged rather than being replaced by a result.",
+  "\\textbf{The trained-pipeline collapse now has a current-generation test, and it survives it.} The pre-registered frontier panel (Appendix~\\ref{app:frontier_panel}) transfers the trained detector unchanged onto 7 frontier-scale targets from 7 organizations under a byte-identical neutral prompt, and every cell lands at 40.0--56.0\\%---below the 61/100 count that would be significant at $n\\!=\\!100$. No test departs from a common rate across the panel, so \\textbf{the pipeline collapse of \u00a7\\ref{sec:prompt_equalized} is not specific to the $\\leq$70B open-weight vintage we measured it on} (PREREG~\u00a77, Branch~A). \\textbf{Two things this does not give us.} It is \\emph{not} a current-generation test of EXP-R1c's 16-probe battery, a different detector that was not run on these targets; there the recency question stays open, and our attempt on it (Appendix~\\ref{app:r1d}) is \\emph{inconclusive}---three targets void on a pre-registered probe-channel gate, one admissible target falling $-46.0$\\,pp. And it runs the \\emph{other} way for the surface rule: the parameter-free 14-pattern rule reaches 80.0--90.0\\% across the same panel, \\textbf{above} its 69--80\\% range on the $\\leq$70B roster, so \\textbf{surface-accessible accuracy does not collapse at frontier scale} and is the more robust of the two findings---an emphasis shift the pre-registration committed to in advance (PREREG~\u00a78.2).\n\n% ---------------- PREREG \u00a77 BRANCH DIAGNOSTIC ----------------\n% A DECISION AID. \u00a77 branch selection is a judgement call the pre-registration\n% keeps with a human. The prose above is the wording the realized branch LICENSES;\n% confirm the branch below before it goes into the paper.\n%   S_r (new targets, rule, significant after Holm)     = 5 of 5\n%   S_p (new targets, pipeline, significant after Holm) = 0 of 5\n%   per-target (rule sig?, pipeline sig?) pattern: [(True, False), (True, False), (True, False), (True, False), (True, False)]\n%   H2 tests rejecting a common rate: none\n%   A  'S_p = 0, and rule heterogeneous or low':\n%        S_p == 0 ................. True\n%        rule heterogeneous ....... False\n%        rule low (any cell < 61) . False   [range 80.0--90.0\\%]\n%   B  'H2 significant, OR S_p and S_r disagree across targets':\n%        any H2 rejection ......... False\n%        channel differs BY TARGET  False   (see the pattern above; S_r != S_p alone is NOT this condition)\n%   C  'S_p >= 3 of 5' -- ABSTRACT reports reduced generality, \u00a73.1 NARROWS: False\n%   D  'two or more primaries fail a \u00a73 gate, no reserve': not visible here --\n%      the analysis sees cells that exist, not gate failures. Check the run log.\n%   -> the text above was generated under Branch A wording.\n%   -> NOTE, and it is the judgement call: A's parenthetical ('rule heterogeneous or\n%      low') is NOT satisfied -- the rule is high AND homogeneous across the panel.\n%      That is PREREG \u00a78.2's situation, not \u00a77's: the rule holds where the pipeline\n%      does not, so surface-accessible accuracy is the more robust finding and the\n%      paper's emphasis shifts to it. The Branch-A sentence above is about the\n%      PIPELINE only and is licensed by S_p = 0; \u00a78.2's shift is carried in the\n%      same paragraph. Confirm both readings before pasting."
+ ],
+ [
+  "appendix",
+  "b4-appx-item-l",
+  "so recency is \\emph{not} established here, and the collapse is untested on current-generation models (Appendix~\\ref{app:vintage}).",
+  "so recency is \\emph{not} established for the criterion-4 contrast, which has still not been re-run on a current-generation target. The equalization collapse itself now has one: EXP-FS's pre-registered panel finds the transferred pipeline at 40.0--56.0\\% on 7 frontier-scale targets, every cell below the 61/100 count that would be significant at $n\\!=\\!100$ (Appendix~\\ref{app:frontier_panel}), while the surface rule \\emph{gains} at that scale (Appendix~\\ref{app:vintage})."
+ ],
+ [
+  "appendix",
+  "b4-appx-summary-row",
+  "EXP-AF & 2 & 28 corpora & ECCP decidability census & App.~\\ref{app:eccp_decidability} & 2/21/3 of 28 meet one property; none all three \\\\",
+  "EXP-AF & 2 & 28 corpora & ECCP decidability census & App.~\\ref{app:eccp_decidability} & 2/21/3 of 28 meet one property; none all three \\\\\nEXP-FS & 2 & 699 & Frontier-scale panel (pre-reg.) & App.~\\ref{app:frontier_panel} & Rule 80--90\\%; pipeline 40--56\\%, none $\\geq$61/100 \\\\"
+ ]
+]

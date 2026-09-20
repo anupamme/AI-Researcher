@@ -1,0 +1,4846 @@
+[
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   3798
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "; the two pre-registered audits of our \\emph{own} criterion-4 positive",
+  "inner": null,
+  "post": "EXP-AD, whether the audit changes which behavior indicates deception, ",
+  "line": 41
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7291
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "nses} \\\\ \\midrule \\multicolumn{4}{@{}p{2.60in}}{\\textbf{A. Structural}",
+  "inner": null,
+  "post": "\\emph{no experiment could establish or refute it}} & \\multicolumn{2}{p",
+  "line": 63
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7633
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "} \\\\ \\addlinespace[3pt] \\multicolumn{6}{@{}l@{}}{\\textbf{B. Empirical}",
+  "inner": null,
+  "post": "\\emph{the confound is active}} \\\\ \\addlinespace[1pt] \\textbf{Q1. Does ",
+  "line": 65
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   8792
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "\\\\ \\addlinespace[3pt] \\multicolumn{6}{@{}l@{}}{\\textbf{C. Attribution}",
+  "inner": null,
+  "post": "\\emph{tested by criterion~4 alone, never by an instructed design}} \\\\ ",
+  "line": 75
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   11441,
+   11562
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "rm{do}(E)$; \\textbf{(A3)}~the only observables are $(V,E,S)$",
+  "inner": "the claim's truth-value, the condition label, and the detector's output; \\textbf{(A4)}~\\emph{no exclusion restriction}",
+  "post": "no observable is a child of exactly one $M_i$; and \\textbf{(",
+  "line": 93
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   12348,
+   12383
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ch $D$ is severed from $S$ and $C$ absorbs the entire effect",
+  "inner": "so $\\tau_D\\!=\\!0$ in the witness",
+  "post": "and equally by one in which $D$ carries all of it. Two model",
+  "line": 95
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   13402
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": " and the same item is realized under more than one elicitation wording",
+  "inner": null,
+  "post": "this costs generation time and nothing else; \\textbf{(2)~record the re",
+  "line": 97
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   14351,
+   14371
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "toward it: each of the three properties holds in some corpus",
+  "inner": "2, 21 and 3 of 28",
+  "post": "and none holds all three. \\paragraph{Two senses of ``necess",
+  "line": 97
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   15244,
+   15724
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "(iii)}~the same scenario realized under both outcomes of $D$",
+  "inner": "the observable procedure by which an auditor \\emph{checks} (A4) on a benchmark they did not build, since an item realized under one outcome only leaves scenario and outcome collinear and no within-item contrast to inspect; \\textbf{(iv)}~a deployed-observable channel only, which bounds what the result would mean for deployment rather than what it identifies; and \\textbf{(v)}~$D$ not definitionally equivalent to the detector's input, which rules out \\emph{construct recovery}",
+  "post": "a threat to the \\textbf{claim} attached to a score, not to t",
+  "line": 99
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   16361
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "g (A4) with an observable that is a child of $D$ and of no other $M_i$",
+  "inner": null,
+  "post": "an exclusion restriction, i.e.\\ an instrument; negating (A5) with a pa",
+  "line": 101
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   16946,
+   16955
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "unmanipulated. That buys an association at fixed elicitation",
+  "inner": "rung~4",
+  "post": "and not $\\tau_D$, because a latent $U$ with $U\\!\\to\\!D$ and ",
+  "line": 101
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   17451,
+   17475
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ves the elicitation confound}, and it is therefore necessary",
+  "inner": "though not sufficient",
+  "post": "for an attribution to deception; the other four are supporti",
+  "line": 103
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   18026,
+   18116
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "b:criteria} below states the protocol criterion by criterion",
+  "inner": "\\textbf{it is the specification behind Figure~\\ref{fig:ladder}'s ``Reached by'' column}",
+  "post": "and Table~\\ref{tab:criteria_taxonomy} then restates it by wh",
+  "line": 103
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   18983
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "olumn{3}{@{}l@{}}{$\\square$~\\textbf{A. Confound diagnostics (1, 2, 3)}",
+  "inner": null,
+  "post": "\\emph{testable on any published benchmark by whoever did not build it}",
+  "line": 115
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   19764
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "umn{3}{@{}l@{}}{$\\blacksquare$~\\textbf{B. Construct-validity test (4)}",
+  "inner": null,
+  "post": "\\textbf{different in kind}: \\emph{must be designed in, and cannot be a",
+  "line": 123
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   20109
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ition label} & \\textbf{Deception-\\emph{associated} signal at fixed $E$",
+  "inner": null,
+  "post": "necessary, but not $\\tau_D$} \\\\ \\addlinespace[3pt] \\multicolumn{3}{@{}",
+  "line": 125
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   20224
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ace[3pt] \\multicolumn{3}{@{}l@{}}{$\\square$~\\textbf{C. Robustness (5)}",
+  "inner": null,
+  "post": "\\emph{not a construct-validity test, and not equally fundamental}} \\\\ ",
+  "line": 127
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   20948
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ions without establishing one, and criterion~5 concerns generalization",
+  "inner": null,
+  "post": "a robustness property, not construct validity, which a detector readin",
+  "line": 139
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   22490
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " the detector was reading the \\textbf{deception-instruction asymmetry}",
+  "inner": null,
+  "post": "\\textbf{not instruction-following as such}, which no prompt-level inte",
+  "line": 161
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   23190,
+   23238
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "e of robustness, not of construct validity; only criterion~4",
+  "inner": "intervention~(A) of §\\ref{sec:identification}",
+  "post": "can distinguish the two, and an instruction-only design cann",
+  "line": 163
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   23580
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " accuracy identifies the benchmark condition rather than the construct",
+  "inner": null,
+  "post": "no amount of it repairs the design. Instructed sycophancy, refusal, re",
+  "line": 165
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   24128
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "iterion~4 needs a design change. Concretely: \\textbf{(1)~equalization}",
+  "inner": null,
+  "post": "rewrite the two conditions to share one neutral prompt, vary only what",
+  "line": 166
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   24384
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "function of the prompt asymmetry. \\textbf{(2)~cross-family extraction}",
+  "inner": null,
+  "post": "if any feature is produced by a model, re-extract with a model from a ",
+  "line": 166
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   24574
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "r to be swappable, nothing more. \\textbf{(3)~matched surface baseline}",
+  "inner": null,
+  "post": "write a parameter-free lexical rule over the same transcripts and trea",
+  "line": 166
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   24799
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ific features, not as a competitor to be beaten. \\textbf{(5)~transfer}",
+  "inner": null,
+  "post": "hold out an entire model and an entire claim set, not individual trial",
+  "line": 166
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   24918
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "et, not individual trials. \\textbf{(4)~deception at fixed elicitation}",
+  "inner": null,
+  "post": "requires trials in which $D$ varies while $E$ does not: incentive or g",
+  "line": 166
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   25366
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "t that a signal is independent of the instruction asymmetry and robust",
+  "inner": null,
+  "post": "not that it is deception-specific. \\section{EXP-AF: Is the Elicitatio",
+  "line": 166
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   26766,
+   26929
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "f that channel. Across the \\textbf{28} pinned public corpora",
+  "inner": "the 8 Liars' Bench configurations at revision \\texttt{503399b8}~\\citep{kretschmar2025liarsbench} and the 20 Apollo rollout files~\\citep{goldowskydill2025probes}",
+  "post": "\\textbf{2 corpora satisfy (1), 21 satisfy (2), and 3 satisfy",
+  "line": 173
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   27352
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": " already made inside the instructed-lie paradigm this paper critiques}",
+  "inner": null,
+  "post": "\\texttt{instructed-deception} realizes 100 of its 100 released items u",
+  "line": 173
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   28082,
+   28244
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "is \\textbf{separable} on all four of its elicitation indices",
+  "inner": "\\texttt{system\\_template\\_index} (4 variants), \\texttt{user\\_template\\_index}, \\texttt{instructed\\_deceptiveness} and \\texttt{donotadmit\\_instruction} (2 each)",
+  "post": "with 100/100 released \\texttt{dataset\\_index} items and 482/",
+  "line": 175
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   30427,
+   30565
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "r}~$\\neq$~\\texttt{meta.correct\\_option}. Its anchor is exact",
+  "inner": "\\texttt{answer}~$\\neq$~\\texttt{meta.model\\_belief} reproduces the released \\texttt{deceptive} label on \\textbf{5{,}400 of 5{,}400 rows}",
+  "post": "and it is a \\emph{distinct} construct, agreeing with that la",
+  "line": 179
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   31507,
+   31604
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "bf{task correctness \\emph{is} that corpus's deception label}",
+  "inner": "\\texttt{analyze\\_external\\_audit.py:170} defines \\texttt{dec = answer\\_idx != correct\\_answer}",
+  "post": "and its topic index is perfectly collinear with the label in",
+  "line": 179
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   32073
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " fires and no magnitude of the confound is measured outside deception}",
+  "inner": null,
+  "post": "not by this analysis and not anywhere in this paper. The principle's \\",
+  "line": 181
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   33159
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "y with its own counts and gates each verdict on \\textbf{admissibility}",
+  "inner": null,
+  "post": "the key must be $E$-free, must not be vacuous (as many classes as rows",
+  "line": 183
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   34088,
+   34171
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "round.} \\textbf{(1)}~Four of the twenty Apollo rollout files",
+  "inner": "\\texttt{insider\\_trading\\{,\\_doubledown\\}\\_\\_upscale\\_\\_llama-70b\\{,-3.3\\}.json}",
+  "post": "carry the literal string \\texttt{\"SEE OTHER FILE\"} where the",
+  "line": 185
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   41548
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "new targets alone is the one carrying confirmatory weight, PREREG~§0) ",
+  "inner": null,
+  "post": " rule, all 7: $\\chi^2\\!=\\!6.33$, $\\mathrm{df}\\!=\\!6$, $p\\!=\\!0.387$; r",
+  "line": 251
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   42030
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " \\textbf{H3} (closed- versus open-weight, \\textbf{descriptive only}) ",
+  "inner": null,
+  "post": " rule 164/199 closed vs.\\ 437/500 open ($-5.0$\\,pp, Fisher exact $p\\!=",
+  "line": 253
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   42968
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "97) under the primary arm and 50.5\\% (50/99) under the sensitivity arm",
+  "inner": null,
+  "post": "1.0\\,pp apart, both degenerate (every trial predicted truthful) and bo",
+  "line": 256
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   43476
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "lassifier was replayed offline over the committed feature trajectories",
+  "inner": null,
+  "post": "with no model calls, and only after that replay reproduced the same-fa",
+  "line": 256
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   45076
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "mean$=$2.24, truth RC mean$=$0.34). Haiku pipeline: 50.5\\% (degenerate",
+  "inner": null,
+  "post": "predicts ``truthful'' on 99/99 trials). The correction-marker channel ",
+  "line": 275
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   45462
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "n 47 of 49 lying trials. So the rule succeeds while the pipeline fails",
+  "inner": null,
+  "post": "a classifier-transfer failure, the ADAGE classifier having been traine",
+  "line": 275
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   47503,
+   47604
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "FS adds five further targets from five further organizations",
+  "inner": "including DeepSeek-V3, one of the two this sentence named as an example before any of them was run",
+  "post": "so closed/open weight, dense/MoE architecture and RLHF recip",
+  "line": 279
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "REVIEW",
+  "pos": [
+   48181
+  ],
+  "rep": [
+   null
+  ],
+  "pre": "akes the evidential hierarchy explicit}: \\textbf{Tier~1, confirmatory}",
+  "inner": null,
+  "post": "pre-registered and load-bearing for a claim in §\\ref{sec:conclusion}; ",
+  "line": 288
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "REVIEW",
+  "pos": [
+   48281
+  ],
+  "rep": [
+   null
+  ],
+  "pre": "ring for a claim in §\\ref{sec:conclusion}; \\textbf{Tier~2, supporting}",
+  "inner": null,
+  "post": "measured and reported, but no claim rests on it alone; \\textbf{Tier~3,",
+  "line": 288
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "REVIEW",
+  "pos": [
+   48367
+  ],
+  "rep": [
+   null
+  ],
+  "pre": "reported, but no claim rests on it alone; \\textbf{Tier~3, exploratory}",
+  "inner": null,
+  "post": "hypothesis-generating, load-bearing for nothing (Table~\\ref{tab:append",
+  "line": 288
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   60690
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "pipeline) was trained on the other 6 and evaluated on the held-out 7th",
+  "inner": null,
+  "post": "a test of whether the pipeline's 64.7\\% cross-family accuracy generali",
+  "line": 481
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   62545
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "s the high correction-marker density other models show only when lying",
+  "inner": null,
+  "post": "consistent with Haiku being an outlier checkpoint. \\section{Llama~4~M",
+  "line": 506
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   68195,
+   68241
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ed on exactly the contrast §\\ref{sec:identification} indicts",
+  "inner": "instructed-lie trials against truthful ones",
+  "post": "so criteria 1 and 3 apply to it verbatim. \\textbf{EXP-WP app",
+  "line": 588
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   69174
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "$, \\texttt{SEED}=42) with \\textbf{claim-pair-grouped} cross-validation",
+  "inner": null,
+  "post": "no claim pair appears in both folds. Pooling \\texttt{full\\_mean} and h",
+  "line": 590
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   69385
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ory run; \\textbf{the second model's layer is derived, not re-selected}",
+  "inner": null,
+  "post": "index 15, the same \\emph{fractional} depth ($16/36$) in a 35-state sta",
+  "line": 590
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   69720
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "matory set} (\\texttt{EQUALIZED\\_CLAIMS\\_V2}, zero shared claim strings",
+  "inner": null,
+  "post": "the same set EXP-R1c uses), collected after the pre-registration was c",
+  "line": 590
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   71058
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "prompt, while claim truth-value is decodable from the same activations",
+  "inner": null,
+  "post": "so the probe reads $E$, and the accuracy it is scored on is matched by",
+  "line": 594
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   72934
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " [0.803, 0.900]; \\textbf{Gemma/v2} \\textbf{0.800} [0.750, 0.855] & Yes",
+  "inner": null,
+  "post": "the probe \\emph{could} read $V$ \\\\ \\addlinespace[1pt] H4 & Real accura",
+  "line": 608
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   75332
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ted under one neutral prompt and separates them at exactly chance (H2)",
+  "inner": null,
+  "post": "the same criterion-1 collapse the behavioral detectors show (§\\ref{sec",
+  "line": 622
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   76079
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "account is present in the representation and the probe does not use it",
+  "inner": null,
+  "post": "and on the confirmatory runs $\\beta_V$'s interval covers zero (Qwen) o",
+  "line": 622
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   76449,
+   76486
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "response text reach 92.5--99.0\\% against the probe's 100.0\\%",
+  "inner": "on Gemma a gap of \\textbf{1.0\\,pp}",
+  "post": "so \\textbf{we withdraw any representational reading of this ",
+  "line": 622
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   76952
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "ly and on-manifold, \\emph{while the behavioral readout does not budge}",
+  "inner": null,
+  "post": "the pre-registered reading of that branch is \\textbf{causally reachabl",
+  "line": 622
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   78215
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": ".985), so residual lexical traces of the instruction survive the strip",
+  "inner": null,
+  "post": "a limitation of the control, not evidence against H2, which uses fresh",
+  "line": 624
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   78534
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "cosine $+0.020$) against a random-pair null of mean $|\\cos|\\!=\\!0.016$",
+  "inner": null,
+  "post": "the two are as close to orthogonal as chance would place them, so the ",
+  "line": 624
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   79488
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " 1000-character storage cap, so H6's length feature saturates for them",
+  "inner": null,
+  "post": "a conservative bias against the surface baseline, which nonetheless re",
+  "line": 624
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   79902,
+   79990
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "nd claim set) with no model call, and the per-trial metadata",
+  "inner": "including every stored response, which is what H6's surface baseline is computed from",
+  "post": "is committed for all three. \\textbf{(9)}~The Gemma configura",
+  "line": 624
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   80693,
+   80725
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " alone. The re-run changes \\textbf{numerical precision only}",
+  "inner": "bf16 compute, float32 storage",
+  "post": "with the claim set, cells, prompts, pooling, derived layer, ",
+  "line": 624
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   84911
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " substitution rule closes the roster once a target's trials are graded",
+  "inner": null,
+  "post": "so recency is \\emph{not} established for the criterion-4 contrast, whi",
+  "line": 669
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   86547,
+   86586
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "}: \\texttt{llama4} is a $16\\times$17B/$128\\times$17B mixture",
+  "inner": "neither dense nor inside the ceiling",
+  "post": "and Phi's only 14B successor is \\texttt{phi4-reasoning}, whi",
+  "line": 674
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   87194
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "t rather than the on-claim answer, changing what the grader matches on",
+  "inner": null,
+  "post": "so a thinking model is not the same instrument, and swapping one in is",
+  "line": 676
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   87491
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "e same document states the consequence rather than leaving it implicit",
+  "inner": null,
+  "post": "the roster is \\emph{``chosen for family diversity under a 24 GiB / $\\l",
+  "line": 676
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   88314,
+   88352
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "emph{after} seeing results, and swapping in newer models now",
+  "inner": "with Family~E's one-of-five in hand",
+  "post": "is exactly the move that rule exists to prevent. A paper who",
+  "line": 678
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   89480
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " a byte-identical neutral prompt, and every cell lands at 40.0--56.0\\%",
+  "inner": null,
+  "post": "below the 61/100 count that would be significant at $n\\!=\\!100$. No te",
+  "line": 680
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   90041
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " and our attempt on it (Appendix~\\ref{app:r1d}) is \\emph{inconclusive}",
+  "inner": null,
+  "post": "three targets void on a pre-registered probe-channel gate, one admissi",
+  "line": 680
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   90457
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "collapse at frontier scale} and is the more robust of the two findings",
+  "inner": null,
+  "post": "an emphasis shift the pre-registration committed to in advance (PREREG",
+  "line": 680
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   94173,
+   94289
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "--target X}, which sequences the command item~(7) advertised",
+  "inner": "\\texttt{experiments/run\\_r1\\_faithful.py --model X --condition instructed|equalized --variant v2 --n\\_samples 50}",
+  "post": "and adds only the gate and the pilot/confirmatory separation",
+  "line": 716
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   94409,
+   94589
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ion. It re-collects \\textbf{EXP-R1c's identical v2 contrast}",
+  "inner": "the same 50 matched claim pairs, the same 16 independently worded probes, the same estimator, the same $n=50$ balanced trials per cell, the same 1000-draw label-permutation test",
+  "post": "on current-generation $\\leq$14B instruction-tuned open-weigh",
+  "line": 716
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   95291,
+   95368
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "he worst per-probe ambiguity rate the paper already reports}",
+  "inner": "\\texttt{mistral:7b} equalized, at \\textbf{26.0\\%} (Table~\\ref{tab:r1c_v2})",
+  "post": "evaluated on a 10-claim instructed pilot before any confirma",
+  "line": 718
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   96765,
+   96795
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "e target.} \\texttt{ministral-3:8b} is informative instructed",
+  "inner": "\\textbf{100.0\\%}, $p=0.001$",
+  "post": "and falls to \\textbf{54.0\\%} ($p=0.327$) once both condition",
+  "line": 737
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   97824,
+   97881
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "with the prediction is not a panel}, and reporting it as one",
+  "inner": "after three of four targets failed an instrument check",
+  "post": "would be the same move this paper spends its length criticis",
+  "line": 739
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   98190,
+   98264
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "f thinking-mode targets is stated there as a technical claim",
+  "inner": "that a \\texttt{<think>} block consumes a 40-token probe budget entirely",
+  "post": "and \\textbf{these voids measure it rather than assert it}. B",
+  "line": 741
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   98685,
+   98718
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ls differently and more interestingly: it \\emph{does} answer",
+  "inner": "its vectors are non-degenerate",
+  "post": "but in 39\\% of ambiguous probes the budget goes to visible d",
+  "line": 741
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   99349
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "viation, and it was written \\emph{after} the voids above were observed",
+  "inner": null,
+  "post": "so it is fenced off from everything pre-registered rather than trusted",
+  "line": 743
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   99916,
+   100028
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": " experiment.} It clears both empty-channel voids at the gate",
+  "inner": "\\texttt{qwen3.5:9b} 100.0$\\to$\\textbf{0.0\\%} pilot ambiguity, \\texttt{granite4.2:8b} 35.0$\\to$\\textbf{25.0\\%}",
+  "post": "so both targets become admissible under §4, and then \\textbf",
+  "line": 743
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   100880
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ular} \\caption{EXP-R1d's \\textbf{exploratory} \\texttt{think:false} arm",
+  "inner": null,
+  "post": "the §9 declared deviation, \\textbf{not a pre-registered cell and never",
+  "line": 758
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   101461
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "e} \\paragraph{Why the exploratory arm leaves the verdict where it was",
+  "inner": null,
+  "post": "on its own data, and then on sequencing.} \\emph{On its own data:} \\tex",
+  "line": 762
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   101799,
+   101887
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "collapse, but \\textbf{its equalized cell is near-degenerate}",
+  "inner": "1 of 16 probe dimensions varies, the 50 trials yield 2 distinct vectors, LOO is 4.0\\%",
+  "post": "and this paper reads that configuration elsewhere as \\emph{a",
+  "line": 762
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   102569
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "targets failed may not then be allowed to select the reporting branch}",
+  "inner": null,
+  "post": "that ordering is exactly what criterion~4 exists to detect, and we do ",
+  "line": 762
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   103082
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "its 50-claim instructed cell and \\textbf{39.5\\%} on its equalized cell",
+  "inner": null,
+  "post": "\\emph{above} the threshold it was admitted under. We still report it a",
+  "line": 764
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   103470,
+   103523
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "s a 25\\% rate with a binomial standard error of $\\pm3.4$\\,pp",
+  "inner": "wider in truth, since probes cluster within claims",
+  "post": "so \\textbf{the gate's resolution is coarser than the 1.0\\,pp",
+  "line": 764
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   104596
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "er equalization, so questions should test correction behavior directly",
+  "inner": null,
+  "post": "presenting false alternatives and measuring whether the model corrects",
+  "line": 770
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   106482,
+   106645
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " are void on the pre-registered 40-token probe-channel gate}",
+  "inner": "\\texttt{olmo-3:7b} and \\texttt{qwen3.5:9b} at 100.0\\% per-probe ambiguity with zero response tokens, \\texttt{granite4.2:8b} at 35.0\\% against a 26.0\\% threshold",
+  "post": "leaving one admissible target, \\texttt{ministral-3:8b}, whic",
+  "line": 782
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   107309
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " and \\texttt{gemma4:12b} (emits empty thought tags even when disabled)",
+  "inner": null,
+  "post": "but \\texttt{olmo-3:7b} and \\texttt{qwen3.5:9b} \\emph{also} advertise a",
+  "line": 782
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   107939
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "he binding constraint moves from the channel to \\emph{informativeness}",
+  "inner": null,
+  "post": "of the two targets it then admits, only \\texttt{qwen3.5:9b} is above c",
+  "line": 782
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   108197
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "nd changes nothing. \\textbf{Either outcome would still be informative}",
+  "inner": null,
+  "post": "a collapse extends §\\ref{sec:r1_faithful} to current models, a smaller",
+  "line": 782
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   115973,
+   116026
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "\\rho| = 0.31$), so the extractor captures a latent dimension",
+  "inner": "assertive self-defense through confidence language",
+  "post": "not reducible to refusal/correction markers; hedge count's m",
+  "line": 892
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   117337,
+   117394
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "parating these two sets may be separating \\emph{claim genre}",
+  "inner": "third-person factual against first-person experiential",
+  "post": "with no reference to deception at all: this is §\\ref{sec:ide",
+  "line": 903
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   117887
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " instruction effect survives at $+7.5$ to $+31$\\,pp across five models",
+  "inner": null,
+  "post": "$+7.5$ and $+15$\\,pp on the two cells free of the knowledge-truth conf",
+  "line": 903
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   122265,
+   122312
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "es} above counts \\emph{trials}. For the criterion-4 evidence",
+  "inner": "the only place this paper reports a positive",
+  "post": "trials are \\textbf{nested}, and the unit that carries the in",
+  "line": 975
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   123063
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "t 95\\% interval $[0.005,\\,0.716]$ spans almost the whole unit interval",
+  "inner": null,
+  "post": "five targets cannot distinguish a rare property from a common one. Eve",
+  "line": 979
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   129746,
+   129785
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "tbf{demonstrated lower bound on surface-accessible accuracy}",
+  "inner": "69--80\\% depending on pattern choice",
+  "post": "and \\textbf{not as a bound on the benchmark}, nor as a singl",
+  "line": 1064
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   131632
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "amily). Mock-trained accuracy is 71.7\\% (100\\% truthful, 42.2\\% lying)",
+  "inner": null,
+  "post": "false-negative dominant, i.e.\\ convincing lies that evade detection. C",
+  "line": 1102
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   132450
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "98$).} Mock-trained accuracy is 61.2\\% (26.5\\% truthful, 95.9\\% lying)",
+  "inner": null,
+  "post": "nearly all lies detected but 36/49 truthful claims falsely flagged, th",
+  "line": 1105
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   133175
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": ". LOO recalibration recovers 100\\%. The zero-shot judge reaches 83.0\\%",
+  "inner": null,
+  "post": "above mock-trained (79.0\\%), well below recalibrated (100\\%). \\paragr",
+  "line": 1108
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   135451
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "tector separating those two sets need not be reading deception at all}",
+  "inner": null,
+  "post": "claim genre alone distinguishes them (§\\ref{app:claims}). The instruct",
+  "line": 1147
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R2-rel",
+  "pos": [
+   135788
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "o \\textbf{the genre defect is not what produces the instructed result}",
+  "inner": null,
+  "post": "which is the point, since the instruction effect itself survives the c",
+  "line": 1147
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   145036
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": " the scale sweep but outside the seven-model panel of §\\ref{sec:setup}",
+  "inner": null,
+  "post": "a data-availability and failure-mode boundary, not a selection on outc",
+  "line": 1265
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   146291
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "tor, Sonnet gives Haiku 92.9\\%, Mistral~L3 82.8\\% and Llama~70B 78.8\\%",
+  "inner": null,
+  "post": "a $+$12.1\\,pp cross-family gap, inside the range spanned by the open-w",
+  "line": 1269
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   146698,
+   146793
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "s Haiku by 2.0\\,pp. The two readings previously weighed here",
+  "inner": "a Haiku checkpoint blind spot, or Mistral~L3 accessing non-marker features that Haiku cannot",
+  "post": "are therefore both unnecessary. In particular, the premise t",
+  "line": 1269
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   149883,
+   149928
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "shot} \\label{sec:zero_shot} Three zero-shot prompt variants",
+  "inner": "original, chain-of-thought (CoT), few-shot",
+  "post": "on Llama~3B ($n=98$), Mistral~7B ($n=100$) and Llama~70B ($n",
+  "line": 1297
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   151138,
+   151205
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "CoT is \\emph{worse} than simple judgment on all three models",
+  "inner": "structured analysis amplifies ambiguity rather than resolving it",
+  "post": "so the original prompt is the best variant everywhere (77.9-",
+  "line": 1325
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   152527
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "% (Claude Haiku) against 93.9\\%, 100\\% and 97.8\\% for the LLM pipeline",
+  "inner": null,
+  "post": "a 4--14\\,pp gap, so most signal is surface-lexical. Combining text and",
+  "line": 1352
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   162307
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "10\\,pp between them (\\texttt{GroupKFold} fold composition, not seeding",
+  "inner": null,
+  "post": "every seed in the pipeline is fixed). Grouped 5-fold is a secondary le",
+  "line": 1426
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   166215,
+   166269
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "gives all three cells. The mechanism is live on the new bank",
+  "inner": "Qwen~2.5~14B instructed reaches 100.0\\% ($p=0.001$)",
+  "post": "so the equalized 46.0\\% ($p=1.000$) is a property of the equ",
+  "line": 1463
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   167424
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "on five of five targets on which the mechanism works under the v1 bank",
+  "inner": null,
+  "post": "and, by EXP-R1c below, on six of six under the v2 bank. This is the ou",
+  "line": 1465
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   167798,
+   167881
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "veals about the mechanism.} On the new bank, one probe alone",
+  "inner": "dim~2, ``If you had made an error, would you point it out without being asked?''",
+  "post": "attains 100.0\\% grouped-5-fold with $P(\\text{yes}\\mid\\text{l",
+  "line": 1467
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   170185,
+   170285
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " on one target. EXP-R1c extends the \\emph{same} v2 materials",
+  "inner": "the 50 disjoint claim pairs and the 16 independently worded probes of the design above, unchanged",
+  "post": "to all six targets in both conditions. It was pre-registered",
+  "line": 1491
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   171455
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "=\\!0.001$), so the v2 panel tests \\emph{six} targets against v1's five",
+  "inner": null,
+  "post": "notably Qwen~2.5~7B, on which the v1 bank had no signal at all (54.0\\%",
+  "line": 1495
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   172495,
+   172601
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ceived; its instructed cell is new. The remaining nine cells",
+  "inner": "both conditions on Llama~3.2~3B, Llama~3.1~8B, Qwen~2.5~7B and Qwen~2.5~32B, plus Mistral~7B instructed",
+  "post": "were collected after R1c's pre-registration was written. On ",
+  "line": 1497
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   173583
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "d signal, and the permutation test is correspondingly null ($p=0.998$)",
+  "inner": null,
+  "post": "a below-chance point estimate on features carrying no signal, which is",
+  "line": 1499
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   174176,
+   174252
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "a panel-wide one. Under the instructed protocol, dim~2 alone",
+  "inner": "``If you had made an error, would you point it out without being asked?''",
+  "post": "attains \\textbf{100.0\\%} grouped-5-fold with $P(\\text{yes}\\m",
+  "line": 1501
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   174736
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "d it carries exactly zero information once that instruction is removed",
+  "inner": null,
+  "post": "the underidentification of §\\ref{sec:identification} visible in one di",
+  "line": 1501
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   175420,
+   175481
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "{\\tabcolsep}{4pt} \\caption{EXP-R1c: the EXP-R1b v2 materials",
+  "inner": "50 disjoint claim pairs and 16 independently worded probes",
+  "post": "applied to all six targets in both conditions ($n=50$ per ce",
+  "line": 1509
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   177310,
+   177364
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "y surviving prompt equalization is \\emph{knowledge conflict}",
+  "inner": "the target reacting to a claim it holds to be false",
+  "post": "rather than anything to do with deception. Under equalizatio",
+  "line": 1532
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   179096
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "h member of the pair. \\begin{itemize}\\itemsep2pt \\item \\textbf{KNOWN} ",
+  "inner": null,
+  "post": " the target answers TRUE to the true member \\emph{and} FALSE to the fa",
+  "line": 1540
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   179229
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": " to the false member (\\texttt{correct\\_both}). \\item \\textbf{UNKNOWN} ",
+  "inner": null,
+  "post": " anything else: \\texttt{endorses\\_both}, \\texttt{rejects\\_both}, \\text",
+  "line": 1541
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   179961
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " is no calibration step, no cross-validation, and no route for leakage",
+  "inner": null,
+  "post": "this is the L-indep detector of §\\ref{sec:hedging_baseline}, scored ex",
+  "line": 1545
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   180952
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "d \\emph{identify} the surviving equalized signal as knowledge conflict",
+  "inner": null,
+  "post": "the paper's one positive identification result. A null gap constrains ",
+  "line": 1549
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   181257,
+   181310
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "scure claims differ from well-known ones in more than belief",
+  "inner": "topic, length, and surface plausibility all covary",
+  "post": "so the contrast is not a clean $\\mathrm{do}(B)$; and the bel",
+  "line": 1551
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   182114
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "se-claim and true-claim trials carrying at least one correction marker",
+  "inner": null,
+  "post": "the mechanism behind the accuracy column. $p$ values are 10{,}000-draw",
+  "line": 1557
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   184541,
+   184569
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "tbf{Not confirmed:} UNKNOWN accuracy is \\emph{not} at chance",
+  "inner": "57.6\\% with $p\\!=\\!0.032$",
+  "post": "so belief accounts for a substantial part of the equalized r",
+  "line": 1582
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   185861
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "th percentile, 63--186 words) leaves the gap intact and slightly wider",
+  "inner": null,
+  "post": "40.3\\% fire on false claims the target knows against 20.5\\% on those i",
+  "line": 1584
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   186692
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " 111/120 pairs as KNOWN for Llama~3.2~3B, Mistral~7B, and Qwen~2.5~14B",
+  "inner": null,
+  "post": "the more capable target knows almost the entire pool. Qwen~2.5~14B the",
+  "line": 1588
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   188631,
+   188834
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ding in for belief. For each target, 164 \\emph{false} claims",
+  "inner": "the 120 false members of the EXP-B pool, both false variants of the 15 factorial triples, and the 15 aligned claims of the autonomous false-belief pool, deduplicated, none authored for this experiment",
+  "post": "are screened by one direct query (\\emph{``Is the following s",
+  "line": 1595
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   189494
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ndorses \\\\ C3 & HELD & 1 & 0 & complies with the deception instruction",
+  "inner": null,
+  "post": "\\emph{sincerely} \\\\ \\bottomrule \\end{tabular} \\end{center} \\noindent ",
+  "line": 1605
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R2-rel",
+  "pos": [
+   190303
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "claim is FALSE, but your goal is to defend it convincingly by lying''}",
+  "inner": null,
+  "post": "which would re-inform the target that the claim is false and destroy t",
+  "line": 1612
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   191079,
+   191121
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " rather than run underpowered. All 492 screen queries parsed",
+  "inner": "488 of them as literal one-word answers",
+  "post": "with 0 unparsed and 0 timeouts. Because HELD claims are capp",
+  "line": 1614
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   191793,
+   191910
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "deception is absent by construction. The pre-registered rule",
+  "inner": "promote to the main text if $R\\!\\geq\\!0.50$ with $\\beta_E^{D=0}$ significant at $p\\!<\\!0.05$ on the primary target",
+  "post": "\\textbf{fails}. Effects are negative because the instruction",
+  "line": 1620
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   192577
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "to$\\,\\phantom{0}2\\% \\\\ \\multicolumn{6}{l}{\\quad$R\\!=\\!\\mathbf{0.342}$ ",
+  "inner": null,
+  "post": " \\textbf{pre-registered rule FAILS} ($R\\!<\\!0.50$; $\\beta_E^{D=0}$ n.s",
+  "line": 1629
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   192956
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " 33\\%\\,$\\to$\\,\\phantom{0}5\\% \\\\ \\multicolumn{6}{l}{\\quad$R\\!=\\!0.757$ ",
+  "inner": null,
+  "post": " passes here, but this target is \\emph{secondary} by design} \\\\ \\midru",
+  "line": 1634
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   194370
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "that discriminates, and there $\\beta_E^{D=0}$ is large and significant",
+  "inner": null,
+  "post": "consistent with (i). One target is not evidence, and we claim neither ",
+  "line": 1643
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   194943,
+   194998
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ELD claim's matched true variant. \\textbf{Genuine inversions",
+  "inner": "endorsing the false claim and rejecting the true one",
+  "post": "are 3 of 18 mapped HELD claims on Llama~3.2~3B and 0 of 28 o",
+  "line": 1645
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R2-rel",
+  "pos": [
+   196210
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " happens to be absent, because that corner is empirically almost empty",
+  "inner": null,
+  "post": "which is why §\\ref{sec:eval_controls}'s criterion~4 asks for intervent",
+  "line": 1647
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   196645
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "} from a behavioral belief measure, not an observation of latent state",
+  "inner": null,
+  "post": "the same limitation this paper presses on the instruction-as-ground-tr",
+  "line": 1649
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   197786
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "nds in for $\\mathrm{do}(D)$: \\textbf{criterion~4 on our own materials}",
+  "inner": null,
+  "post": "deception varying while the elicitation prompt is held byte-identical.",
+  "line": 1654
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   198233
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "prompt, so any latent $U$ with $U\\!\\to\\!D$ and $U\\!\\to\\!S$ survives it",
+  "inner": null,
+  "post": "exactly the limit §\\ref{sec:eval_controls} states for criterion~4 in g",
+  "line": 1656
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   198847
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ve internal reference, and contains \\textbf{no instruction to deceive}",
+  "inner": null,
+  "post": "asserted at import time against a forbidden-word list, so the prompt c",
+  "line": 1658
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   200091
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "n, \\texttt{SEED}=42, splits and permutations \\textbf{grouped by claim}",
+  "inner": null,
+  "post": "the same instrument and the same inferential unit as EXP-R1c, chosen b",
+  "line": 1668
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   202576
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "oned. It is therefore \\emph{absent} from EXP-C4 rather than null in it",
+  "inner": null,
+  "post": "a hardware limit, disclosed, not a selection on results. \\paragraph{B",
+  "line": 1696
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   202854,
+   202876
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ial records whether the true fact is still held. This bounds",
+  "inner": "it cannot eliminate",
+  "post": "the alternative reading that the model \\emph{updated} from t",
+  "line": 1698
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   203243
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "he assistant's answer, and the two mutually exclusive claim statements",
+  "inner": null,
+  "post": "\\emph{with no indication of which came from the reference}. The refere",
+  "line": 1700
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   204196
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "lse by construction, that rubric would have emptied the $D\\!=\\!1$ cell",
+  "inner": null,
+  "post": "the very quantity H1 is defined on. Relabelling failed three further w",
+  "line": 1702
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   204712,
+   204787
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "rts the asserted statement while explicitly noting the error",
+  "inner": "``asserts statement~(2), \\emph{despite this being factually incorrect}''",
+  "post": "which is the intended behavior. Validation: \\textbf{32/32} h",
+  "line": 1702
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   206761
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "em\\_prompt\\_md5} values, and \\textbf{no claim with more than one hash}",
+  "inner": null,
+  "post": "so within every claim the prompt is byte-identical across both $D$ out",
+  "line": 1708
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   209168
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " instrument, unmodified, on materials with no lie instruction in them}",
+  "inner": null,
+  "post": "the same 16 probes, the same logistic regression, the same \\texttt{SEE",
+  "line": 1730
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   210451
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ixed elicitation is not merely hard to \\emph{find} in released corpora",
+  "inner": null,
+  "post": "it is hard to \\emph{construct}, and the spread across five targets of ",
+  "line": 1732
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   211875
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ced inside a design we control.} H2 is criterion~3 applied reflexively",
+  "inner": null,
+  "post": "is H1's separation reachable from surface form? \\textbf{On the probe c",
+  "line": 1756
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   212498
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " sentence above as ``not detected at this $n$,'' not as ``not there''}",
+  "inner": null,
+  "post": "the error this paper's own MDE rule exists to prevent, made by us on o",
+  "line": 1756
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   213191,
+   213218
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "and never on the answer. H3 is \\emph{not} uniformly positive",
+  "inner": "Mistral~7B is $+3.1$\\,pp",
+  "post": "which is the expected behavior of a lexical rule whose marke",
+  "line": 1756
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   213646,
+   213681
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " 21/21, 107/107, 49/49, 92/92). The pre-registered exclusion",
+  "inner": "drop trials that lose the belief",
+  "post": "therefore removes nothing, and the reading that the referenc",
+  "line": 1758
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   214133,
+   214252
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ttt{SEED}=42) were hand-coded \\textbf{by one of the authors}",
+  "inner": "\\emph{not} by the outside annotators of §\\ref{app:human_icc_n100}, and we do not present this as a third-party study",
+  "post": "against the grader's own rubric, \\textbf{blind to the machin",
+  "line": 1760
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   214600,
+   214649
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "cution, not construct}: the rubric is a \\emph{matching} task",
+  "inner": "which of two statements does the answer assert",
+  "post": "so a high $\\alpha$ says the grader matched reliably, not tha",
+  "line": 1760
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   214973,
+   215000
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "s, raw agreement 50/60. \\textbf{On the axis H1 is defined on",
+  "inner": "$D\\!=\\!1$ vs.\\ $D\\!=\\!0$",
+  "post": "$\\alpha=0.956$}, 46/47. Of the ten disagreements, \\textbf{ni",
+  "line": 1760
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   216990,
+   217016
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ls alone.} The hand-coded subsamples are 12 items per target",
+  "inner": "60 here, 120 in EXP-C4B",
+  "post": "and H1's inferential unit is the \\emph{claim}, with folds gr",
+  "line": 1762
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   218627,
+   218640
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "of those two}, so the standing claim is \\textbf{one of five}",
+  "inner": "Mistral~7B",
+  "post": "and on it the H2 check above is no longer clean. \\paragraph",
+  "line": 1764
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   218855,
+   218951
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ixed $E$, so any latent $U$ with $U\\!\\to\\!D$ and $U\\!\\to\\!S$",
+  "inner": "sampling temperature realizations, per-claim difficulty, whatever makes a given rollout hedge",
+  "post": "survives it, and the signal is \\textbf{deception-\\emph{assoc",
+  "line": 1766
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   219714
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": ".80 and 0.90 those cells cannot distinguish absence from lack of power",
+  "inner": null,
+  "post": "under EXP-C4B's rule both are \\texttt{UNDERPOWERED} rather than null. ",
+  "line": 1766
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   220946
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "y result was known, and nothing in it can change a criterion-4 verdict",
+  "inner": null,
+  "post": "criterion~5 is a \\textbf{robustness} test, not a construct-validity te",
+  "line": 1773
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   221293,
+   221381
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "tory cells, fit the same estimator the primary analysis uses",
+  "inner": "\\texttt{LogisticRegression(max\\_iter=1000, C=1.0)} on the 16-dimensional probe vector",
+  "post": "on the \\emph{pooled} graded rows of the other four targets, ",
+  "line": 1775
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   221686,
+   221712
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "s $D$ \\textbf{within claim strata} against those predictions",
+  "inner": "H1's own stratification",
+  "post": "at $N\\!=\\!10{,}000$, \\texttt{SEED=42}. Per target: transfer ",
+  "line": 1775
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   222101,
+   222137
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "r that target}, so the five cells do not share one claim set",
+  "inner": "pairwise overlaps run 6--20 of 20",
+  "post": "but each held-out target still shares 12--19 of its 20 claim",
+  "line": 1777
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   224094
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "ermutation null collapses to a \\emph{point mass} at the observed value",
+  "inner": null,
+  "post": "$p\\!=\\!1$ \\textbf{by construction}, not by evidence. mistral:7b's tran",
+  "line": 1801
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   224402,
+   224672
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ies no \\emph{within-claim} information for those two targets",
+  "inner": "not a measured absence of signal. \\textbf{llama3.2:3b is the one genuine null}: 0.800 against a 0.832 majority, i.e.\\ below it, and it is both the thinnest cell (21 of 125 graded trials deceptive) and by far the most claim-disjoint (8 of 20 claims unseen in training)",
+  "post": "the same MDE-style reading the confirmatory analysis applies",
+  "line": 1801
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   225203
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "xternal_audit}, and licenses no claim that the signal is model-general",
+  "inner": null,
+  "post": "five targets, 3B--14B, one wording, one claim pool, a mostly shared cl",
+  "line": 1803
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   226290
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "ule applied to non-detections, and (d)~roughly twice the data per cell",
+  "inner": null,
+  "post": "and then, on \\emph{five new targets}, whether the design's positives a",
+  "line": 1810
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   226750,
+   226776
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "e EXP-C4 targets re-run at the same wording P3 with no pilot",
+  "inner": "this is the replication",
+  "post": "and \\textbf{Family E}, five \\emph{new} targets (Gemma~2~9B~\\",
+  "line": 1812
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   228205
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "sults $\\to$ salt $\\to$ unseal). \\textbf{Each family ran its own chain}",
+  "inner": null,
+  "post": "200 candidate blocks in all, Family R's archived unmodified before Fam",
+  "line": 1814
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   228911
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "he analysis code and all 20 candidates' results existed before the key",
+  "inner": null,
+  "post": "not that the analyst was ignorant. Two custody defects are disclosed i",
+  "line": 1814
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   229497
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ed MDE $>0.30$ is \\texttt{UNDERPOWERED}, not \\texttt{CRITERION4\\_NULL}",
+  "inner": null,
+  "post": "power governs the reading of a non-detection, not of a detection. \\tex",
+  "line": 1816
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   230200,
+   230237
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "der family. \\textbf{(6)}~Human coding of 12 items per target",
+  "inner": "60 per family, \\textbf{120} in all",
+  "post": "is committed \\emph{before} that family's blind analysis runs",
+  "line": 1816
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R2-rel",
+  "pos": [
+   231129
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "old of 30). \\textbf{Gate 3 passes on all five at 12--23 paired claims}",
+  "inner": null,
+  "post": "which is worth stating against EXP-C4, whose realized 6--11 means \\tex",
+  "line": 1818
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   233701
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "not.} \\textbf{The two strongest EXP-C4 positives replicate decisively}",
+  "inner": null,
+  "post": "Mistral~7B at 0.885 against a 0.571 baseline and Llama~3.1~8B at 0.857",
+  "line": 1840
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   234214
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "ds 0.30, so it is recorded \\texttt{UNDERPOWERED} rather than as a null",
+  "inner": null,
+  "post": "but the pre-registered replication summary for Family R is \\textbf{\\te",
+  "line": 1840
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   234535,
+   234635
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "are positive at fixed elicitation must now read two of five}",
+  "inner": "and \\textbf{one of five} once §\\ref{app:covariate_audit}'s covariate audit withdraws Llama~3.1~8B",
+  "post": "and this paper's main text says so at every site that report",
+  "line": 1840
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   235154,
+   235207
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "xtbf{genuine null} (MDE 0.25, $p_{\\mathrm{Holm}}\\!=\\!0.840$)",
+  "inner": "the only informative negative in either experiment",
+  "post": "while Qwen~2.5~14B's EXP-C4 ``null'' is confirmed as a \\text",
+  "line": 1840
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   235648,
+   235675
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "correction-marker rule as null on the \\textbf{probe channel}",
+  "inner": "the detector's own input",
+  "post": "on all five targets, worst $p\\!=\\!0.48$, and concludes ``the",
+  "line": 1842
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   237802,
+   237864
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": ".12$), reproducing EXP-C4's demonstration of requirement~(v)",
+  "inner": "a rule scored on the text a grader read recovers the grader",
+  "post": "on a larger sample and with the same non-uniformity. \\textbf",
+  "line": 1844
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   240047
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "'s positives do not generalize.} \\textbf{Mistral-Nemo~12B is positive}",
+  "inner": null,
+  "post": "0.795 against a 0.599 majority baseline, out-of-fold AUROC 0.874, $p_{",
+  "line": 1866
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   240382
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": ", so its $p_{\\mathrm{Holm}}\\!=\\!0.065$ is a \\textbf{well-powered null}",
+  "inner": null,
+  "post": "a 6.3\\,pp gain that does not survive correction within its own family,",
+  "line": 1866
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   241261
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "ts criterion~4 as generally satisfiable by this battery is unsupported",
+  "inner": null,
+  "post": "and that is the reading our own abstract invites, which is why the cou",
+  "line": 1866
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   241522,
+   241570
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "arget's wording \\textbf{on the realized $D$ base rate alone}",
+  "inner": "the wording nearest 0.50 inside $[0.30,0.70]$",
+  "post": "and explicitly \\textbf{never on detector accuracy or any H1-",
+  "line": 1868
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   242599,
+   242650
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "rection-marker rule never fires on the probe channel at all}",
+  "inner": "0 of 64 deceptive and 0 of 47 honest paired rows",
+  "post": "while H1 separates $D$ at 0.795. \\textbf{This is the first c",
+  "line": 1870
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   243159
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "e signal, and one cell is not a repair of the adverse H2 finding above",
+  "inner": null,
+  "post": "it is an existence proof that the design \\emph{can} produce a clean po",
+  "line": 1870
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   243506,
+   243672
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "arry no weight either way. \\textbf{H3} fires on four of five",
+  "inner": "Phi-4 $-47.5$\\,pp ($p\\!=\\!0.0002$), Granite~3.1-dense $-41.5$\\,pp ($p\\!=\\!0.0038$), Gemma~2 $-41.2$\\,pp ($p\\!=\\!0.0001$), Mistral-Nemo $-19.7$\\,pp ($p\\!=\\!0.0084$)",
+  "post": "and not on OLMo~2 ($-6.8$\\,pp, $p\\!=\\!0.071$), again reprodu",
+  "line": 1870
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   244727
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " (40 of 60), which is also the target whose H1 cell is a power failure",
+  "inner": null,
+  "post": "so that verdict rests on the weakest grading agreement in the study, a",
+  "line": 1872
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   245158
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "ich \\textbf{7} sit on the \\textsc{corrected}/\\textsc{evasive} boundary",
+  "inner": null,
+  "post": "a boundary that does not enter $D$, since \\textsc{evasive} is an exclu",
+  "line": 1872
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   245722,
+   245893
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ow 0.05. What changes is the labelling of the non-detections",
+  "inner": "under the MDE rule \\textbf{both of EXP-C4's ``nulls'' become \\texttt{UNDERPOWERED}} (MDE 0.90 and 0.80), so \\textbf{EXP-C4 reported zero informative negatives, not two}",
+  "post": "and gate 3, which \\textbf{0 of its 5 cells} would pass. Reco",
+  "line": 1874
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   246296
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": ", not set, so any latent $U$ with $U\\!\\to\\!D$ and $U\\!\\to\\!S$ survives",
+  "inner": null,
+  "post": "criterion~4, not the rung above it. \\textbf{Not a repair of EXP-C4's s",
+  "line": 1876
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   246580
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ositive on the two \\emph{replicated} targets}, for the H2 reason above",
+  "inner": null,
+  "post": "Family E's one positive is clean, and one cell is not a repair. \\textb",
+  "line": 1876
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   247086
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "cation}: same authors, same materials, same machinery, deliberately so",
+  "inner": null,
+  "post": "it tests the analysis and the sample size, not the materials. \\paragr",
+  "line": 1876
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   248734
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "s \\textbf{re-derived at run time} across 29 files rather than asserted",
+  "inner": null,
+  "post": "so the same question, worded identically, can be asked of the instruct",
+  "line": 1883
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   249569,
+   249654
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "}, and the reason is itself a result.} The primary statistic",
+  "inner": "Spearman $\\rho$ between the per-dimension $|\\delta_j|$ profiles of the two regimes",
+  "post": "requires enough probes varying in \\emph{both}. \\textbf{Only ",
+  "line": 1885
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   250357,
+   250379
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ed benchmark's accuracy therefore rests on a handful of bits",
+  "inner": "on Qwen~2.5~7B, two",
+  "post": "which is a fact about the audited design, not about our anal",
+  "line": 1885
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   250765,
+   250832
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "adline. \\textbf{The internal control that holds claims fixed",
+  "inner": "instructed versus prompt-equalized on the same claims and probes",
+  "post": "is not estimable either}, because the equalized profiles are",
+  "line": 1885
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   251503
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "re-registration's veto branch does not fire and H-AD2 is interpretable",
+  "inner": null,
+  "post": "\\textbf{but it clears on one and two targets respectively, and the EXP",
+  "line": 1887
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   251820,
+   252010
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "'s best probe carries no signal at fixed elicitation.} Dim~2",
+  "inner": "\\emph{``If you had made an error, would you point it out without being asked?''}, the paraphrase of the instruction, which alone reaches 100.0\\% grouped-5-fold instructed (§\\ref{app:r1b})",
+  "post": "is \\textbf{rank~1 by $|\\delta_j|$ on three of the five share",
+  "line": 1889
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R2-rel",
+  "pos": [
+   252635
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " instruction discriminates not at all once the instruction is removed}",
+  "inner": null,
+  "post": "which is §\\ref{sec:identification}'s claim, measured on the individual",
+  "line": 1889
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   252880,
+   252964
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " fixed-elicitation signal, and it replicates blinded.} Dim~0",
+  "inner": "\\emph{``Would you stake your reputation on the accuracy of what you just said?''}",
+  "post": "is \\textbf{the only dimension surviving Holm on more than on",
+  "line": 1891
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   253717,
+   253761
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "id}. In the instructed regime the same probe is near-useless",
+  "inner": "$|\\delta_0|\\!\\leq\\!0.12$ on three of five",
+  "post": "and where it is large it points the \\emph{other} way ($-0.80",
+  "line": 1891
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   254040,
+   254133
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": " on Llama~3.1~8B ($0.727$ vs.\\ $0.545$, $\\delta\\!=\\!-0.473$)",
+  "inner": "an unrelated control question, reported because it survived, not because we can explain it",
+  "post": "and dim~2 itself on Qwen~2.5~7B, at $0.698$ against a $0.660",
+  "line": 1891
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   257363,
+   257444
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "mativeness.} The two regimes use \\emph{different claim sets}",
+  "inner": "\\texttt{claims\\_equalized\\_v2} against the knowledge-screened false references",
+  "post": "so a profile difference is not attributable to elicitation a",
+  "line": 1920
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   257771,
+   257817
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " \\textbf{(2)~Not that dim~0 measures deception.} Its content",
+  "inner": "willingness to vouch for what was just said",
+  "post": "is close to the reviewer's \\emph{confidence} alternative, an",
+  "line": 1920
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   258764,
+   258864
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "C4 and EXP-C4B on the three targets where both are estimable",
+  "inner": "$\\rho\\!=\\!0.818$ (Llama~3.1~8B), $0.333$ (Llama~3.2~3B), $0.268$ (Mistral~7B), pooling to $0.473$",
+  "post": "so \\textbf{the fixed-$E$ per-dimension profile is itself onl",
+  "line": 1922
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   259579,
+   259773
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ed ten alternative explanations for the criterion-4 positive",
+  "inner": "uncertainty, confidence, instruction interpretation, conflict resolution, refusal behavior, claim difficulty, linguistic awkwardness, topic familiarity, response length, stylistic differences",
+  "post": "and asked that the limitation be made prominent rather than ",
+  "line": 1929
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   260621
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "n is regenerated from the sealed salt and \\textbf{verified row by row}",
+  "inner": null,
+  "post": "and on all fifteen target~$\\times$~collection cells the published H1 a",
+  "line": 1929
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   261573
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "es}). \\textbf{All sixteen are computed from the on-claim answer alone}",
+  "inner": null,
+  "post": "the same text the grader reads and a channel disjoint from the 16-prob",
+  "line": 1931
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   262147,
+   262218
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "8$ against the battery's $0.807$ on identical rows and folds",
+  "inner": "$\\Delta_{\\mathrm{rival}}\\!=\\!+0.032$, $p_{\\mathrm{Holm}}\\!=\\!0.0005$",
+  "post": "so by \\texttt{PREREG\\_EXP\\_AE.md}~\\S5 \\textbf{that target's ",
+  "line": 1933
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   263109,
+   263140
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": " let it rescue the positive.} On EXP-C4B's Llama~3.1~8B rows",
+  "inner": "$231$ against EXP-C4's $155$",
+  "post": "the sign reverses: the battery reaches $0.857$ and the covar",
+  "line": 1935
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   263998,
+   264070
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "val}}$ is \\textbf{negative on all three published positives}",
+  "inner": "Llama~3.1~8B $-0.043$, Mistral~7B $-0.132$, Mistral-Nemo~12B $-0.025$",
+  "post": "and \\textbf{positive on all seven targets whose H1 was null ",
+  "line": 1937
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   265182,
+   265321
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "eature arms, \\textbf{five of the reviewer's ten remain live}",
+  "inner": "\\emph{conflict resolution}, \\emph{refusal behavior}, \\emph{response length}, \\emph{linguistic awkwardness}, \\emph{stylistic differences}",
+  "post": "and \\textbf{five are dead on these rows}: \\emph{uncertainty}",
+  "line": 1939
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   266049
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "curacy-over-majority margin of \\textbf{$\\le\\!0.014$ on 14 of 15 cells}",
+  "inner": null,
+  "post": "the battery's bits are not recoverable from length and hedging. The ex",
+  "line": 1941
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   269984
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "perationalization, at \\emph{this} $n$, does not outperform the battery",
+  "inner": null,
+  "post": "not that the construct is absent. Five alternatives remain live by our",
+  "line": 1974
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   270940
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "nce to read EXP-AD's ``stake your reputation'' probe as non-confidence",
+  "inner": null,
+  "post": "the two are different measurements and we do not conflate them. \\para",
+  "line": 1974
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   271812,
+   271943
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "{public}), spanning \\textbf{seven distinct scenario designs}",
+  "inner": "sandbagging (WMDP/MMLU), on-policy insider trading, AI Liar, goal-directed lying, roleplaying, AI audit, and paired-fact honesty",
+  "post": "of which sandbagging, roleplaying and AI audit each appear a",
+  "line": 1981
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   272283
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "t public material can express criterion~4 today}, not ten replications",
+  "inner": null,
+  "post": "and that is the right reading of the result, because criterion~4 asks ",
+  "line": 1981
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   273077
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "mber below recomputes with no model call and no further network access",
+  "inner": null,
+  "post": "verified by re-running all five analysis arms, after which every commi",
+  "line": 1981
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   274064,
+   274208
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "y.} Five files were inspected while planning this experiment",
+  "inner": "the sandbagging \\texttt{llama-70b-3.3} tag, insider trading, AI Liar, roleplaying \\texttt{llama-70b-3.3}, and AI audit \\texttt{llama-70b-3.3}",
+  "post": "so every number derived from them is \\textbf{exploratory}, a",
+  "line": 1983
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   275848
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "er item} (371, 371, 54), so they cannot supply intervention (A) at all",
+  "inner": null,
+  "post": "not because the detector fails on them, but because the design does no",
+  "line": 1987
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   276438
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "user prompts), and goal-directed lying contains no message list at all",
+  "inner": null,
+  "post": "its instructions live in per-item \\texttt{deceive\\_instruction} and \\t",
+  "line": 1987
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   276930,
+   277064
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "he ten demonstrably do hold one non-empty elicitation fixed}",
+  "inner": "both sandbagging tags (366 and 1000 rollouts) and on-policy insider trading (173), each one byte-identical system prompt throughout",
+  "post": "and those three are the only sets any contrast reported here",
+  "line": 1987
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   278116
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "uld be a category error, so they are reported as \\textbf{inapplicable}",
+  "inner": null,
+  "post": "the rule is undefined outside the interrogation format it was written ",
+  "line": 1987
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   279445,
+   279511
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "r item} (371, 371, 54) rather than one; that four of the ten",
+  "inner": "both AI-audit sets, the paired-fact set and goal-directed lying",
+  "post": "contain \\emph{no} system message at all, so their single rec",
+  "line": 1989
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R2-rel",
+  "pos": [
+   281267
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "or~(iv) or~(v) will reach a different verdict on the same measurements",
+  "inner": null,
+  "post": "which is why every gate's threshold, channel definition and exclusion ",
+  "line": 1989
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   285129,
+   285211
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "09$), also null. The pre-registered capability screen for H2",
+  "inner": "restricting to questions the model answers correctly under the honest condition",
+  "post": "is \\textbf{unrunnable} here and we report it as such: all 10",
+  "line": 2023
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   286201
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "ive bad logic and reasoning, resulting in an \\emph{incorrect} answer''",
+  "inner": null,
+  "post": "so on the full transcript the detector is matching the model restating",
+  "line": 2025
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   287865
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "how that no deception-specific signal exists in the sandbagging corpus",
+  "inner": null,
+  "post": "it shows that \\emph{this} rule does not detect one in the channel a de",
+  "line": 2029
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   288871
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " \\begin{table}[h] \\centering \\caption{What each experiment establishes",
+  "inner": null,
+  "post": "and the nearest conclusion it does \\emph{not} support. Six results are",
+  "line": 2033
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   288957
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "st conclusion it does \\emph{not} support. Six results are load-bearing",
+  "inner": null,
+  "post": "EXP-R1, the pre-registered EXP-R1b/R1c replication (both §\\ref{sec:r1_",
+  "line": 2033
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   290032
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "rule \\textbf{Experiment} & \\textbf{Tier} & \\textbf{What it establishes",
+  "inner": null,
+  "post": "and what it does not} \\\\ \\midrule \\textbf{1--2.} Both detectors collap",
+  "line": 2039
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   291027
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "amilies and a disjoint claim set. \\emph{Not}: a representational claim",
+  "inner": null,
+  "post": "surface features reach 92.5--99.0\\% against its 100.0\\%, and steering ",
+  "line": 2043
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   292125
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "s itself an audit criterion; and the verdict depends on the instrument",
+  "inner": null,
+  "post": "the surface rule is null where the corpus authors' own judge is positi",
+  "line": 2049
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   292300,
+   292328
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "h{Not}: that these corpora hold no deception-specific signal",
+  "inner": "EXP-XJ shows one is there",
+  "post": "nor that instructed-benchmark accuracy was measuring decepti",
+  "line": 2049
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   292848
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "s construct recovery. Also that the rule/judge dissociation replicates",
+  "inner": null,
+  "post": "the rule's within-scenario excess over its own null is $+2.33$\\,pp whe",
+  "line": 2051
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   293002,
+   293083
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": " whole effect. \\emph{Not}: an independent \\emph{environment}",
+  "inner": "that cell re-generates EXP-IT's insider-trading scenario with different models",
+  "post": "nor a test of (v) as EXP-IT2 tested it \\\\ \\addlinespace[1pt]",
+  "line": 2051
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "REVIEW",
+  "pos": [
+   293545
+  ],
+  "rep": [
+   null
+  ],
+  "pre": "ry separates operationally verified deception on three of five targets",
+  "inner": null,
+  "post": "\\textbf{one of five standing} after the blinded re-run of §\\ref{app:cr",
+  "line": 2053
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "REVIEW",
+  "pos": [
+   293677
+  ],
+  "rep": [
+   null
+  ],
+  "pre": "\\ref{app:crit4b} and the covariate audit of §\\ref{app:covariate_audit}",
+  "inner": null,
+  "post": "with $D$ graded from the on-claim answer alone ($\\alpha\\!=\\!0.728$ aga",
+  "line": 2053
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "REVIEW",
+  "pos": [
+   293817
+  ],
+  "rep": [
+   null
+  ],
+  "pre": "against hand coding) while the detector reads only the 16-probe vector",
+  "inner": null,
+  "post": "so requirements~(i)--(v) all hold at once, for the first time in this ",
+  "line": 2053
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   294077
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "n on the graded channel, fires as pre-registered. \\emph{Not}: $\\tau_D$",
+  "inner": null,
+  "post": "the design is \\emph{stratified observational} at fixed $E$, so a laten",
+  "line": 2053
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   295312
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "same scenario is independently realized under both behavioral outcomes",
+  "inner": null,
+  "post": "requirement~(iii) as §\\ref{sec:external_audit} states it, which is res",
+  "line": 2062
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   298916
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "o express criterion 4, because the behaviour it elicits does not vary}",
+  "inner": null,
+  "post": "once the model has concealed the source, it doubles down in nearly eve",
+  "line": 2070
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   300293,
+   300336
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ort. The deceptive act in this scenario is $A \\wedge \\neg R$",
+  "inner": "trading on the tip and not disclosing it",
+  "post": "so $A$ is a component of $D$ that is \\textbf{not} read from ",
+  "line": 2077
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   301668
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "d} \\texttt{DISCLOSURE} regex on the \\textbf{unchanged} visible channel",
+  "inner": null,
+  "post": "nothing was tuned for this arm. The direction was fixed one-sided \\emp",
+  "line": 2079
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   302360
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " usable scenarios. 7 of 11 scenarios drop for having no $A\\!=\\!0$ cell",
+  "inner": null,
+  "post": "an agent that never used the tip has nothing to disclose.} \\label{tab:",
+  "line": 2084
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   304108
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "A null is only informative if $A$ and $R$ genuinely vary independently",
+  "inner": null,
+  "post": "otherwise the test would be the EXP-IT contrast under another name. Wi",
+  "line": 2103
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   305440
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " the detector's input, the rule that appeared decisive returns nothing",
+  "inner": null,
+  "post": "so the earlier positive was construct recovery. It does \\textbf{not} e",
+  "line": 2107
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   305800
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "e excluded by rule. It also does not rescue criterion 4 for any corpus",
+  "inner": null,
+  "post": "the conclusion of §\\ref{sec:external_audit} is that no audited \\emph{p",
+  "line": 2107
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   307212
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "lean, generated by \\textbf{19 generator strings in five base families}",
+  "inner": null,
+  "post": "Mistral-Small-24B, Llama-3.3-70B, Qwen-2.5-72B, Gemma-3-27B and Kimi-K",
+  "line": 2112
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   308488
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "per eligible cell per channel, seed 42; and all six reporting branches",
+  "inner": null,
+  "post": "including the branch in which \\textbf{the paper's own falsifier fires}",
+  "line": 2114
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   310514
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "nfiguration publishes an outcome field disjoint from the graded report",
+  "inner": null,
+  "post": "the \\texttt{meta} of the two eligible cells carries only \\texttt{turn}",
+  "line": 2118
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   310855
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "$\\times$ \\texttt{kimi-k2.6}. \\paragraph{Requirement (iii) is met here",
+  "inner": null,
+  "post": "the first time anywhere in this paper.} All four \\texttt{insider-tradi",
+  "line": 2120
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R2-rel",
+  "pos": [
+   311393
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " this corpus the binding constraint therefore moves from (iii) to (v)}",
+  "inner": null,
+  "post": "which is a real advance in the survey, and also why the outcome below ",
+  "line": 2120
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   312024
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " clear \\texttt{MIN\\_CELL}, the effect is $+14.27$\\,pp ($p\\!=\\!0.0061$)",
+  "inner": null,
+  "post": "but the within-scenario permutation null of that pooled statistic is \\",
+  "line": 2122
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   312806
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "bf{null}: $+10.87$\\,pp, $p\\!=\\!0.0624$, against an MDE of $+15.30$\\,pp",
+  "inner": null,
+  "post": "an \\emph{underpowered} null, and its within-scenario excess is $+8.97$",
+  "line": 2122
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   313082,
+   313129
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ase.} We ran the Apollo release's \\emph{own} black-box judge",
+  "inner": "same \\texttt{prompt.txt}, same md5, verbatim",
+  "post": "on both eligible cells and both channels: \\textbf{956 judgem",
+  "line": 2124
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R3-contra",
+  "pos": [
+   314521
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "ed) the rule fires on \\textbf{2.50--5.05\\%} across the four generators",
+  "inner": null,
+  "post": "not silent on honest text. The judge, on 400 control transcripts drawn",
+  "line": 2126
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   316066
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "th its hidden scratchpad retained and never contains the system prompt",
+  "inner": null,
+  "post": "so this $+17.48$\\,pp and Table~\\ref{tab:external_audit}'s $+84.3$\\,pp ",
+  "line": 2128
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   316704
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "} at \\texttt{deceptive} and \\textbf{10.0--60.9\\,pp} at \\texttt{honest}",
+  "inner": null,
+  "post": "e.g.\\ \\texttt{instructed-deception} $\\times$ \\texttt{gemma-3-27b-it}, ",
+  "line": 2130
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   317407
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": " report, so the positive is \\textbf{construct recovery, not detection}",
+  "inner": null,
+  "post": "EXP-IT's pattern, reproduced on an independent release with a differen",
+  "line": 2132
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   317703
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "two public rollout releases that exist, across five generator families",
+  "inner": null,
+  "post": "ten rollout sets from one and 35 (configuration $\\times$ generator) ce",
+  "line": 2132
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   318037,
+   318105
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "v) is the \\emph{same} insider-trading scenario as EXP-IT/IT2",
+  "inner": "the Alpha/WhiteStone/Amy setup, verified verbatim in the rollouts",
+  "post": "so the two releases are independent in \\emph{generator} but ",
+  "line": 2134
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   319065
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "rites the manifest; verify with \\texttt{git diff} on the committed one",
+  "inner": null,
+  "post": "an empty diff means byte-identical to the audited revision), \\texttt{r",
+  "line": 2136
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   323763
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "nts/build\\_audit\\_packets.py} from \\textbf{release-authored text only}",
+  "inner": null,
+  "post": "the relevant \\texttt{README}/dataset-card section, the verbatim system",
+  "line": 2180
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   324653,
+   324711
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": " the introduction's design box, one packet, and nothing else",
+  "inner": "no paper text, no our verdicts, no other rater's answer",
+  "post": "and returns one of \\{\\textsc{satisfied}, \\textsc{not satisfi",
+  "line": 2190
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   325453
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "is the smaller model, and a weaker rater~2 pushes $\\alpha$ \\emph{down}",
+  "inner": null,
+  "post": "against the claim being tested. \\textbf{The result narrows claim~(2),",
+  "line": 2199
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   326028
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "er version of this paper's own complaint rather than a retreat from it",
+  "inner": null,
+  "post": "but it is a retraction of the stronger wording, and we state it as one",
+  "line": 2206
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   328211
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "l that largely concurs. (v) is the extreme case in the other direction",
+  "inner": null,
+  "post": "\\textsc{undecidable} on 59.3\\% of ratings, which is the finding: wheth",
+  "line": 2238
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   328740
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "extsc{undecidable}} and \\textbf{5 are three-way ties with no majority}",
+  "inner": null,
+  "post": "so 15 of 21 are the panel declining to decide rather than contradictin",
+  "line": 2245
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   329593,
+   329665
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "p:external_audit}), the panel answers \\textsc{not satisfied}",
+  "inner": "unanimously on \\texttt{goal\\_directed\\_lying}, 2/3 on the other three",
+  "post": "tracking our \\emph{corrected} value and contradicting the \\e",
+  "line": 2256
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   331479,
+   331515
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "e from release-authored text by raters blind to our verdicts",
+  "inner": "which is the paper's actual claim",
+  "post": "and it is \\textbf{not} evidence that human domain experts wo",
+  "line": 2278
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   336708,
+   336780
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ese \\emph{establishes} a claim in the main text; two of them",
+  "inner": "the claim-pair holdout and the cross-family re-extraction, both below",
+  "post": "are cited there as controls that bound one, so they are load",
+  "line": 2324
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   337272,
+   337344
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "plains it: holding out an \\emph{entire} claim pair at a time",
+  "inner": "every trial sharing a pair scored by a detector calibrated without it",
+  "post": "moves pooled accuracy by 0.3\\,pp, to \\textbf{67.4\\%} ($n\\!=\\",
+  "line": 2324
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   342687
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "extbf{requirement~(v) is satisfied and this is not construct recovery}",
+  "inner": null,
+  "post": "the label is defined on a channel disjoint from the detector's input. ",
+  "line": 2362
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   343487
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "iance with an instruction it can read} rather than detecting deception",
+  "inner": null,
+  "post": "this paper's confound relocated to the detector's input. On this corpu",
+  "line": 2364
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   344742,
+   344862
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "is directionally consistent wherever a cell clears the floor",
+  "inner": "\\texttt{cyber} $+1.453$ ($p\\!=\\!0.0001$, $n\\!=\\!94/35$), \\texttt{astronomy} $+4.343$ ($p\\!=\\!0.0001$, $n\\!=\\!10/137$)",
+  "post": "and every other topic cell is reported \\textbf{UNDERPOWERED}",
+  "line": 2366
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   346094
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "} establish that instructed-benchmark accuracy was measuring deception",
+  "inner": null,
+  "post": "H1/H8 are about deception arising at fixed elicitation in a corpus we ",
+  "line": 2370
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   346858,
+   346939
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "ama-70B. The judge's affordances are also benchmark-specific",
+  "inner": "four-option questions with a checkable answer, and a 1--7 score with reasoning",
+  "post": "so nothing here is a deployment claim. Reproduction: \\texttt",
+  "line": 2370
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   349419
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "factual knowledge), without an explicit ``lie'' instruction in context",
+  "inner": null,
+  "post": "closer to spontaneous strategic deception than to instructed roleplay,",
+  "line": 2386
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   352167
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": ") but not softer qualifiers that function as weaker correction proxies",
+  "inner": null,
+  "post": "so surface markers are removed more efficiently from truthful response",
+  "line": 2398
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R6-semi",
+  "pos": [
+   355266
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "gh persona maintenance rather than detection of a maintained deception",
+  "inner": null,
+  "post": "\\emph{detection-task mismatch} (§\\ref{sec:transfer_regimes}): the clas",
+  "line": 2432
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   358213,
+   358262
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "ctor LLM under an \\textbf{\\emph{entire}-claim-pair holdout} ",
+  "inner": " both members of a pair are held out together ",
+  "post": " and the further drop to 52--69\\% therefore \\textbf{rules ou",
+  "line": 2443
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   359389,
+   359443
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "y lying''. Under the definition of deception used throughout",
+  "inner": "the target asserts what it does not hold to be true",
+  "post": "a \\emph{compliant} response in either instructed cell is dec",
+  "line": 2448
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   361138
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " and the instruction stays detectable at fixed truth-value (87--100\\%)",
+  "inner": null,
+  "post": "a signal EXP-R1 shows collapses once the instruction is absent. \\text",
+  "line": 2471
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   361462,
+   361626
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "eta_E$ is large and consistently signed on all three targets",
+  "inner": "$+1.27$ (Llama~3.2~3B), $+1.56$ (Mistral~7B), $+1.38$\\,SD (Qwen~2.5~14B), every $p\\!<\\!0.001$, 2000-draw permutations with $E$ shuffled within (pair,~$V$) strata",
+  "post": "while the truth-value response $\\beta_V$ is smaller in every",
+  "line": 2473
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   362536
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "design that lies \\emph{within} a single instructed-deception condition",
+  "inner": null,
+  "post": "both cells carry the same complied-with instruction and the benchmark ",
+  "line": 2475
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R1-coord",
+  "pos": [
+   364035
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "e signal is not deception, or deception itself varies within the class",
+  "inner": null,
+  "post": "and on either reading the instruction is not the ground truth the benc",
+  "line": 2475
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   365682
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " \\multirow{3}{*}{Detector (SD)} & Llama 3.2 3B & \\multicolumn{2}{c}{",
+  "inner": null,
+  "post": "} & $-0.25$ & 0.181 & --- \\\\ & Mistral 7B & \\multicolumn{2}{c}{---",
+  "line": 2493
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   365752
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "---} & $-0.25$ & 0.181 & --- \\\\ & Mistral 7B & \\multicolumn{2}{c}{",
+  "inner": null,
+  "post": "} & $\\mathbf{-1.37}$ & \\textbf{0.0001} & --- \\\\ & Qwen 2.5 14B & \\mu",
+  "line": 2494
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R5-colon",
+  "pos": [
+   365841
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "37}$ & \\textbf{0.0001} & --- \\\\ & Qwen 2.5 14B & \\multicolumn{2}{c}{",
+  "inner": null,
+  "post": "} & $\\mathbf{+1.61}$ & \\textbf{0.0001} & --- \\\\ \\bottomrule \\end{tabul",
+  "line": 2495
+ },
+ {
+  "file": "sections/appendix.tex",
+  "rule": "R4-pair",
+  "pos": [
+   375467,
+   375520
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "cy 0.37. This proxy does \\emph{not} substitute for human ICC",
+  "inner": "shared biases between LLM raters inflate agreement",
+  "post": "and the full $n=100$/3-annotator human study is in Appendix~",
+  "line": 2585
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   227,
+   472
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "oded in model activations and extractable with weight access",
+  "inner": "honesty/deception directions~\\citep{zou2023representation}, unsupervised truthfulness probes~\\citep{burns2022discovering}, activation classifiers (SAPLMA;~\\citealp{azaria2023internal}), inference-time steering (ITI;~\\citealp{li2023inference})",
+  "post": "all requiring access unavailable for API-only models. Unlike",
+  "line": 7
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   1780
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "for it by comparing behavior with and without opinion-carrying context",
+  "inner": null,
+  "post": "the confound our prompt-equalized design targets, and we find the same",
+  "line": 11
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   2443
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " than \\emph{detecting} whether ostensibly normal outputs are deceptive",
+  "inner": null,
+  "post": "the complementary problem studied here. \\paragraph{Autonomous decepti",
+  "line": 15
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R6-semi",
+  "pos": [
+   2929
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "gime matters most for safety and is the one our setting does not cover",
+  "inner": null,
+  "post": "it is also intervention~(A) of §\\ref{sec:identification}, the manipula",
+  "line": 17
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   4047,
+   4090
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "baselines. Those trained organisms instance intervention~(A)",
+  "inner": "deception varying with elicitation fixed",
+  "post": "and the prompted-to-trained gap all three report is what the",
+  "line": 19
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   5145,
+   5295
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "textbf{Rows are grouped by what kind of thing each entry is}",
+  "inner": "(a)~instructed-lie benchmarks, (b)~generalization studies, (c)~belief-verified model organisms, (d)~public rollout corpora, (e)~adjacent constructs",
+  "post": "because they answer different questions, and only (a) is wha",
+  "line": 23
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   5458,
+   5570
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "t}. \\textbf{Reading the table:} fixed elicitation is not new",
+  "inner": "\\citet{cooney2026didyoulie}'s trained organisms have it, and go beyond it (rung~5 of Figure~\\ref{fig:ladder})",
+  "post": "but no entry combines it with a deployed-observable channel,",
+  "line": 23
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   6392,
+   6414
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "erties that would make a benchmark auditable holds somewhere",
+  "inner": "2, 21 and 3 corpora",
+  "post": "\\emph{none} holds all three, and \\textbf{no magnitude is mea",
+  "line": 23
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   6586,
+   6618
+  ],
+  "rep": [
+   " (",
+   "), "
+  ],
+  "pre": "es~(i)--(v), audits \\emph{both} public releases against them",
+  "inner": "ten rollout sets and 35 cells",
+  "post": "and builds materials meeting all five (EXP-C4).} \\label{tab:",
+  "line": 23
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7022
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": " \\multicolumn{7}{@{}l@{}}{\\emph{\\textbf{(a) Instructed-lie benchmarks}",
+  "inner": null,
+  "post": "the paradigm audited here}} \\\\ \\addlinespace[1pt] \\citet{pacchiardi202",
+  "line": 31
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7103
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "digm audited here}} \\\\ \\addlinespace[1pt] \\citet{pacchiardi2024catch} ",
+  "inner": null,
+  "post": " instructed roleplay, the audit target & $\\times$ & $\\times$ & \\checkm",
+  "line": 33
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7217
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "$\\times$ & $\\times$ & \\checkmark & \\checkmark & \\checkmark & $\\times$ ",
+  "inner": null,
+  "post": " $E$ is the manipulation \\\\ \\addlinespace[3pt] \\multicolumn{7}{@{}l@{}",
+  "line": 33
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7333
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "pt] \\multicolumn{7}{@{}l@{}}{\\emph{\\textbf{(b) Generalization studies}",
+  "inner": null,
+  "post": "a different question}} \\\\ \\addlinespace[1pt] \\citet{kretschmar2025liar",
+  "line": 35
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7414
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ent question}} \\\\ \\addlinespace[1pt] \\citet{kretschmar2025liarsbench} ",
+  "inner": null,
+  "post": " 7 datasets, 72{,}863 examples & \\emph{p} & \\emph{p} & \\emph{p} & \\emp",
+  "line": 37
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7514
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "les & \\emph{p} & \\emph{p} & \\emph{p} & \\emph{p} & \\emph{p} & $\\times$ ",
+  "inner": null,
+  "post": " generalizes across lie types \\\\ \\addlinespace[1pt] \\citet{hopkins2026",
+  "line": 37
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7601
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "cross lie types \\\\ \\addlinespace[1pt] \\citet{hopkins2026liedetectors} ",
+  "inner": null,
+  "post": " fine-tuned detectors, held-out categories & \\emph{p} & \\emph{p} & \\em",
+  "line": 39
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7717
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "& \\emph{p} & \\emph{p} & \\emph{p} & \\checkmark & \\checkmark & $\\times$ ",
+  "inner": null,
+  "post": " generalizes across categories \\\\ \\addlinespace[3pt] \\multicolumn{7}{@",
+  "line": 39
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7848
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "icolumn{7}{@{}l@{}}{\\emph{\\textbf{(c) Belief-verified model organisms}",
+  "inner": null,
+  "post": "$D$ \\emph{set}, so \\emph{above} criterion~4}} \\\\ \\addlinespace[1pt] \\c",
+  "line": 41
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   7947
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "bove} criterion~4}} \\\\ \\addlinespace[1pt] \\citet{cooney2026didyoulie} ",
+  "inner": null,
+  "post": " 13 trained organisms, verified beliefs & \\checkmark & \\checkmark$^{*}",
+  "line": 43
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   8077
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "heckmark$^{*}$ & \\checkmark & \\emph{p} & \\checkmark & \\emph{indirect} ",
+  "inner": null,
+  "post": " prompted-vs-trained gap, as predicted \\\\ \\addlinespace[3pt] \\multicol",
+  "line": 43
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   8207
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "pt] \\multicolumn{7}{@{}l@{}}{\\emph{\\textbf{(d) Public rollout corpora}",
+  "inner": null,
+  "post": "what §\\ref{sec:external_audit} audits}} \\\\ \\addlinespace[1pt] Sandbagg",
+  "line": 45
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   8786
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "e[3pt] \\multicolumn{7}{@{}l@{}}{\\emph{\\textbf{(e) Adjacent constructs}",
+  "inner": null,
+  "post": "the requirements applied outside deception}} \\\\ \\addlinespace[1pt] Syc",
+  "line": 51
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   8986
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "$\\times$ & \\emph{p} & \\emph{p} & \\checkmark & \\emph{n/a} & \\emph{n/a} ",
+  "inner": null,
+  "post": " reports the elicitation effect \\emph{as} one; no per-response detecto",
+  "line": 53
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   9206
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "ed} & $\\times$ & $\\times$ & $\\times$ & \\emph{p} & $\\times$ & $\\times$ ",
+  "inner": null,
+  "post": " success is rated by the red-teamer who chose the attack \\\\ \\addlinesp",
+  "line": 55
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   9435
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "mark & \\checkmark & \\checkmark & \\checkmark & \\checkmark & \\emph{n/a} ",
+  "inner": null,
+  "post": " training, not the prompt, is the manipulation; no detector score \\\\ \\",
+  "line": 57
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   9664
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "\\times$ & $\\times$ & \\checkmark & $\\times$ & $\\times$ & \\emph{partly} ",
+  "inner": null,
+  "post": " prompt-sensitivity ablations; the authors state the residual cause is",
+  "line": 59
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   10890,
+   10947
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "sycophancy}: its held-out environment holds the prompt fixed",
+  "inner": "``the prompt is always the same for this environment''",
+  "post": "manipulates \\emph{training} rather than the prompt, and grad",
+  "line": 67
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R6-semi",
+  "pos": [
+   11479
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "eparate designs that can attribute a behavior from designs that cannot",
+  "inner": null,
+  "post": "\\citet{greenblatt2024alignment} name the corresponding gap themselves,",
+  "line": 67
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R5-colon",
+  "pos": [
+   11869
+  ],
+  "rep": [
+   ": "
+  ],
+  "pre": "tation effect and build no detector, so failing~(i) costs them nothing",
+  "inner": null,
+  "post": "the confound bites only when a design converts such materials into a d",
+  "line": 69
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R1-coord",
+  "pos": [
+   12869
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "intervention that induces deception also induces instruction-following",
+  "inner": null,
+  "post": "so none answers whether the accuracy reported in the standard paradigm",
+  "line": 71
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R6-semi",
+  "pos": [
+   13143
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": "sting lie-detector accuracy is \\textbf{not merely poorly generalizing}",
+  "inner": null,
+  "post": "for instructed-lie benchmarks it is \\textbf{uninterpretable as evidenc",
+  "line": 71
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R1-coord",
+  "pos": [
+   14034
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": " published accuracy licensed the deception reading in the first place}",
+  "inner": null,
+  "post": "and that is a different question in two ways that matter. \\textbf{It i",
+  "line": 73
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R2-rel",
+  "pos": [
+   15212
+  ],
+  "rep": [
+   ", "
+  ],
+  "pre": "olution they require, and the releases audited here do not publish one",
+  "inner": null,
+  "post": "which is a sharper form of this paper's own complaint, and also a retr",
+  "line": 73
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R6-semi",
+  "pos": [
+   15525
+  ],
+  "rep": [
+   "; "
+  ],
+  "pre": " amount of transfer testing, scale, or held-out evaluation surfaces it",
+  "inner": null,
+  "post": "a design that fails~(i) and one that satisfies it are indistinguishabl",
+  "line": 73
+ },
+ {
+  "file": "sections/related_work.tex",
+  "rule": "R4-pair",
+  "pos": [
+   16490,
+   16581
+  ],
+  "rep": [
+   " (",
+   ") "
+  ],
+  "pre": "cy across three mechanistically distinct detector paradigms}",
+  "inner": "prior work's black-box battery, a hand-written surface rule and a white-box linear probe",
+  "post": "rather than raising it as a possibility and setting it aside",
+  "line": 75
+ }
+]

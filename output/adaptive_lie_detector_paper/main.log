@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  19 SEP 2026 11:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  20 SEP 2026 22:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -972,24 +972,24 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1018,26 +1018,26 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 57.
+Package hyperref Info: Link coloring OFF on input line 63.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 57.
-Package microtype Info: Applying patch `item' on input line 57.
-Package microtype Info: Applying patch `toc' on input line 57.
-Package microtype Info: Applying patch `eqnum' on input line 57.
-Package microtype Info: Applying patch `footnote' on input line 57.
-Package microtype Info: Applying patch `verbatim' on input line 57.
-LaTeX Info: Redefining \microtypesetup on input line 57.
+LaTeX Info: Redefining \microtypecontext on input line 63.
+Package microtype Info: Applying patch `item' on input line 63.
+Package microtype Info: Applying patch `toc' on input line 63.
+Package microtype Info: Applying patch `eqnum' on input line 63.
+Package microtype Info: Applying patch `footnote' on input line 63.
+Package microtype Info: Applying patch `verbatim' on input line 63.
+LaTeX Info: Redefining \microtypesetup on input line 63.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 57.
+LaTeX Info: Redefining \showhyphens on input line 63.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1054,7 +1054,7 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1063,7 +1063,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1093,7 +1093,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--40
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 42--42
-[]\T1/ptm/m/it/7 (+20) none\T1/ptm/m/n/7 (+20) ---structural
+[]\T1/ptm/m/it/7 (+20) none\T1/ptm/m/n/7 (+20) : struc-tural
  []
 
 
@@ -1103,7 +1103,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 44--45
-\T1/ptm/b/n/7 (+20) dependent\T1/ptm/m/n/7 (+20) ---three mech-a-nis-ti-cally
+\T1/ptm/b/n/7 (+20) dependent\T1/ptm/m/n/7 (+20) : three mech-a-nis-ti-cally
  []
 
 
@@ -1135,6 +1135,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 [7]
 
 [8]) (./sections/discussion.tex) (./sections/conclusion.tex)
+Underfull \vbox (badness 3942) has occurred while \output is active []
+
+
 
 [9]
 
@@ -1205,13 +1208,13 @@ osed rather
 
 Underfull \hbox (badness 10000) in paragraph at lines 185--186
 \T1/ptm/b/n/10 (+20) than worked around.[] (1) \T1/ptm/m/n/10 (+20) Four of the
- twenty Apollo roll-out files---
+ twenty Apollo roll-out files
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 185--186
-\T1/pcr/m/n/10 insider_trading{,_doubledown}__upscale__llama-70b{,-3.3}.json\T1
-/ptm/m/n/10 (+20) ---
+\T1/ptm/m/n/10 (+20) (\T1/pcr/m/n/10 insider_trading{,_doubledown}__upscale__ll
+ama-70b{,-3.3}.json\T1/ptm/m/n/10 (+20) )
  []
 
 
@@ -1283,7 +1286,7 @@ Underfull \vbox (badness 8056) has occurred while \output is active []
 [24]
 
 [25]
-<figures/feature_collapse.pdf, id=1007, 859.63786pt x 261.91829pt>
+<figures/feature_collapse.pdf, id=1010, 859.63786pt x 261.91829pt>
 File: figures/feature_collapse.pdf Graphic file (type pdf)
 <use figures/feature_collapse.pdf>
 Package pdftex.def Info: figures/feature_collapse.pdf  used on input line 392.
@@ -1316,7 +1319,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/probe_layer_curve_panel.pdf, id=1103, 787.27187pt x 236.62376pt>
+<figures/probe_layer_curve_panel.pdf, id=1106, 787.27187pt x 236.62376pt>
 File: figures/probe_layer_curve_panel.pdf Graphic file (type pdf)
 <use figures/probe_layer_curve_panel.pdf>
 Package pdftex.def Info: figures/probe_layer_curve_panel.pdf  used on input lin
@@ -1404,9 +1407,9 @@ which se-quences the com-mand
  []
 
 
-Underfull \hbox (badness 4266) in paragraph at lines 716--717
-\T1/ptm/m/n/10 (+20) item (7) advertised---\T1/pcr/m/n/10 experiments/run_r1_fa
-ithful.py --model X --condition
+Underfull \hbox (badness 3547) in paragraph at lines 716--717
+\T1/ptm/m/n/10 (+20) item (7) ad-ver-tised (\T1/pcr/m/n/10 experiments/run_r1_f
+aithful.py --model X --condition
  []
 
 
@@ -1431,7 +1434,7 @@ Underfull \hbox (badness 2894) in paragraph at lines 801--802
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1472) has occurred while \output is active []
 
 
 
@@ -1564,6 +1567,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [57]
 
 [58]
+Underfull \vbox (badness 2285) has occurred while \output is active []
+
+
 
 [59]
 Underfull \hbox (badness 10000) in paragraph at lines 1768--1769
@@ -1689,13 +1695,6 @@ ambiguous_sum\T1/ptm/m/n/10 (+20) , \T1/pcr/m/n/10 known_preserved\T1/ptm/m/n/1
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 1931--1932
-\T1/pcr/m/n/10 true_verdict_yes\T1/ptm/m/n/10 (+20) ). \T1/ptm/b/n/10 (+20) All
- six-teen are com-puted from the on-claim an-swer alone\T1/ptm/m/n/10 (+20) ---
-
- []
-
-
 
 [67]
 
@@ -1765,9 +1764,9 @@ xperiments/analyze_insider_audit.py --arm
 
 
 [75]
-Underfull \hbox (badness 5077) in paragraph at lines 2120--2121
- []\T1/ptm/b/n/10 (+20) Requirement (iii) is met here---the first time any-wher
-e in this pa-per.[] \T1/ptm/m/n/10 (+20) All four
+Underfull \hbox (badness 4686) in paragraph at lines 2120--2121
+ []\T1/ptm/b/n/10 (+20) Requirement (iii) is met here, the first time any-where
+ in this pa-per.[] \T1/ptm/m/n/10 (+20) All four
  []
 
 
@@ -1788,8 +1787,8 @@ e man-i-fest; ver-ify with
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 2136--2137
-\T1/pcr/m/n/10 git diff \T1/ptm/m/n/10 (+20) on the com-mit-ted one---an empty 
-diff means byte-identical to the
+\T1/pcr/m/n/10 git diff \T1/ptm/m/n/10 (+20) on the com-mit-ted one: an empty d
+iff means byte-identical to the
  []
 
 
@@ -1813,9 +1812,6 @@ Underfull \hbox (badness 1320) in paragraph at lines 2179--2186
 
 
 [78]
-Underfull \vbox (badness 5460) has occurred while \output is active []
-
-
 
 [79]
 
@@ -1878,9 +1874,6 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [85]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2500.
@@ -1971,13 +1964,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7B36071B960E7C3DF4AA56F7FFB4825C;26149.
  ) 
 Here is how much of TeX's memory you used:
- 40934 strings out of 473190
- 899506 string characters out of 5715801
- 1472370 words of memory out of 5000000
- 61891 multiletter control sequences out of 15000+600000
- 725118 words of font info for 860 fonts, out of 8000000 for 9000
+ 40958 strings out of 473190
+ 899839 string characters out of 5715801
+ 1473331 words of memory out of 5000000
+ 61897 multiletter control sequences out of 15000+600000
+ 725950 words of font info for 871 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,14n,87p,3543b,852s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,87p,3539b,838s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
@@ -2007,10 +2000,10 @@ ype1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/ut
 mbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (89 pages, 894828 bytes).
+Output written on main.pdf (89 pages, 896432 bytes).
 PDF statistics:
- 2173 PDF objects out of 2487 (max. 8388607)
- 1834 compressed objects within 19 object streams
- 513 named destinations out of 1000 (max. 500000)
+ 2181 PDF objects out of 2487 (max. 8388607)
+ 1842 compressed objects within 19 object streams
+ 515 named destinations out of 1000 (max. 500000)
  122527 words of extra memory for PDF output out of 128383 (max. 10000000)
 

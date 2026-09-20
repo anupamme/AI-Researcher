@@ -1,0 +1,219 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2027_conference,times}
+
+% NOTE: iclr2027_conference.sty already \RequirePackage{natbib} and {fancyhdr}.
+% Do not load natbib again here.
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{nicefrac}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage{url}
+% iclr2027_conference.bst emits \doi{...} for entries carrying a doi field
+% (FUNCTION {format.doi}). main.bbl ships a plain-text fallback, so this is not
+% needed to compile -- it is defined here, ahead of the bbl, so that the two
+% DOIs resolve as clickable links rather than inert text. \providecommand keeps
+% it inert if a future package supplies its own \doi.
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
+\usepackage{microtype}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{alphalph}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!10},
+}
+
+% Float spacing, tightened. The style file specifies neither of these, and the
+% text block, margins and font size are untouched -- this only closes the gap
+% between a float and its caption, and between a float and the body text.
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\textfloatsep}{14pt plus 2pt minus 3pt}
+
+\title{What Does Lie-Detection Accuracy Measure? An Identification Audit of Behavioral LLM Deception Benchmarks}
+
+% ICLR submissions are DOUBLE-BLIND. Authors must not appear in the submitted
+% version; non-anonymous submissions are rejected without review. Uncomment
+% \iclrfinalcopy below (and restore the real author block) only for camera-ready.
+\author{Anonymous authors\\
+Paper under double-blind review}
+
+%\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/methodology}
+\input{sections/experiments}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\subsection*{Ethics statement}
+\label{sec:ethics}
+\textbf{Human annotators.} One component of this work used human raters: three
+annotators recruited via Prolific rated 100 AI-generated conversation transcripts
+on five behavioural features (Appendix~\ref{app:human_icc_n100}). Annotators were
+blind to ground-truth labels and to one another's ratings, and attention-check
+items were embedded to verify engagement. They rated model-generated text only;
+no personal or identifying data about any human was collected, presented or
+stored. Annotators were paid at a rate of \$10 per hour, and gave their consent
+before beginning the task. \textbf{No institutional review board review applied
+to this work, and none was sought}; we state this rather than imply a safeguard
+that was not in place. The study's per-rater CSVs are released.
+
+\textbf{Model-generated content.} All deceptive content in our own experiments is
+model output, elicited either by an explicit instruction to defend a false claim
+or---in the criterion-4 materials---by presenting a knowledge-screened false
+reference fact with no lie instruction at all. Claims are matched factual pairs
+about neutral subject matter: science, history, geography, technology and culture
+(Appendix~\ref{app:claims}), chosen so that a false claim is verifiable rather
+than harmful. No experiment sought to elicit harmful, private or unsafe content,
+and nothing here trains a model to deceive more effectively.
+
+\textbf{Third-party data.} The two audited rollout releases are used under their
+own terms. One is not redistributed: it is a git submodule pinned to a single
+upstream commit. The other is access-gated, so we redistribute a sha256 manifest
+and our derived artifacts rather than the corpus, and we accessed it under our
+own account. Closed models were accessed via AWS Bedrock under standard terms.
+
+\textbf{Dual use.} This paper is a critique of evaluation practice, not a
+deception capability. It does report that much of a benchmark's accuracy is
+reachable from surface features, and that the most discriminative probe in a
+published battery is a paraphrase of the lie instruction---information that could
+in principle help someone score well on such a benchmark without detecting
+deception. We judge disclosure to be right: the failure mode is a property of the
+benchmark design, published designs are already being used to support attribution
+claims, and naming the mechanism is what allows it to be fixed. Every control we
+describe is one an auditor can apply to a benchmark they did not build.
+
+\textbf{Risk of over-reading a negative result.} The clearest misuse of this work
+would be to cite it as evidence that LLM deception is undetectable, or to dismiss
+deception evaluation as a whole. \textbf{We establish neither}, and say so in
+§\ref{sec:eval_controls} and in claim~(4): under a design that removes the
+elicitation confound, prior work's own battery does separate realized deception.
+The claim is about what a class of benchmarks can license, not about what
+detectors can do.
+
+\subsection*{AI use statement}
+Generative AI tools were used in preparing this work and we take full
+responsibility for its final content. LLM assistance was used for writing and
+editing the manuscript text, and for authoring and refactoring experiment code.
+All references were independently verified against their authoritative records
+(DOI, arXiv, or publisher metadata) using an automated citation-retrieval tool,
+and the verification script is released with the code. All experimental results
+reported here were produced by executed code against real model outputs, and
+all numbers in the text were checked against the emitted result files. AI tools
+were not used to generate data, results, or findings.
+
+\subsection*{Reproducibility statement}
+\textbf{The central result requires no closed-model API.} EXP-R1/R1b/R1c
+(§\ref{sec:r1_faithful}) run against six open-weight targets served locally via
+Ollama---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and Qwen~2.5~7B/14B/32B---with
+fixed claim sets, fixed elicitation-question banks, and \emph{no} LLM feature
+scoring: that detector is a logistic regression over binarised yes/no replies,
+so no API-served model enters its pipeline at any stage.
+The interrogation-pipeline experiments \emph{do} use a closed model: Claude
+Haiku~4.5 is the interrogator and feature extractor throughout, via AWS
+Bedrock, and Llama~3.1~8B, Llama~3.3~70B, Mistral Large~3 and Llama~4~Maverick
+are Bedrock-served as targets, the remaining open-weight targets running locally
+under Ollama (per-experiment infrastructure and cost in
+Appendix~\ref{app:compute_cost}).
+The protocol, the full 16-question elicitation bank, condition prompts, and
+answer-parsing rules are given in Appendix~\ref{app:r1_protocol}; claim
+construction is in Appendix~\ref{app:claims}; the interrogation pipeline is
+specified in Appendix~\ref{app:adage_details}; and the regex patterns for the
+label-free rule are in Appendix~\ref{app:regex_patterns}. The appendix opens with a
+reader's guide (Table~\ref{tab:appendix_roadmap}) grouping its sections into five
+buckets and naming the five that carry every load-bearing number. The external audits (§\ref{sec:external_audit},
+Appendices~\ref{app:external_audit},~\ref{app:insider_audit},~\ref{app:external_audit_judge})
+read a third-party corpus we do not redistribute: it is a git submodule pinned to
+one upstream commit, fetched with a single \texttt{git submodule update --init},
+after which every regex-arm audit result file regenerates byte-identically with no
+model call and no further network access (\texttt{docs/EXTERNAL\_DATA.md}).
+\textbf{EXP-XJ is the one audit that calls a model, and the detector is not ours}:
+it is the corpus authors' own released black-box judge prompt
+(\texttt{data/black\_box\_baseline/prompt.txt} in the pinned submodule, 1{,}373
+characters, md5 \texttt{83ddc4bd2ebcc6c4b05baff091c5cc8c}), used verbatim and
+unmodified, served through AWS Bedrock as
+\texttt{us.anthropic.claude-haiku-4-5-20251001-v1:0} at temperature~0 with
+\texttt{max\_tokens}~1000. Its 3{,}605 raw judgements are committed as JSONL, so
+every EXP-XJ number in the paper recomputes from the repository with no model call
+(Appendix~\ref{app:external_audit_judge}).
+\textbf{EXP-WP (§\ref{sec:td_vs_fd}) needs weight access, and its activation
+tensors are not a release artifact}: the probe reads residual hidden states from
+local \texttt{Qwen3-4B-Instruct-2507} weights under MPS at fp16 and from
+\texttt{google/gemma-3-4b-it} at bf16 stored as float32---Gemma-3's residual stream
+carries outlier features above fp16 range, so the narrower storage is not an
+option---and the extracted tensors run to ${\sim}210$\,MB per fp16 configuration and
+${\sim}430$\,MB for the float32 one. The release therefore carries the two
+pre-registrations, the generation and probing scripts, every per-step result JSON
+for all three configurations, and the per-trial metadata including every
+stored model response---but not the tensors, which re-extract from the released
+scripts at the fixed seed (Appendix~\ref{app:probe_audit}).
+\textbf{The second public release (EXP-XL) is gated, so we make no claim of
+reproducibility parity with Apollo}: it can be neither vendored nor
+submodule-pinned, and the path there is a committed sha256 manifest (revision,
+per-file hash, byte size, verified row counts) plus every committed derived
+artifact---eight per-configuration rule records, the eligibility survey, and
+1{,}356 raw judgements---from which every EXP-XL number recomputes with no model
+call and no network. \textbf{A manifest is weaker than a pin}: it lets a reader
+detect that the corpus changed, not fetch the revision we audited. Accepting the
+host's gate under one's own account is required to re-derive those artifacts from
+raw rows, and is not required to reproduce any reported figure
+(Appendix~\ref{app:liars_bench}).
+\textbf{EXP-C4 (§\ref{sec:external_audit}) is local generation plus one grading pass.}
+Its \emph{five} targets---Llama~3.2~3B, Llama~3.1~8B, Mistral~7B and
+Qwen~2.5~7B/14B---are served locally under Ollama at the fixed seed. Qwen~2.5~32B is
+excluded on one stated ground, recorded before any detector result was computed: its
+belief screen could not be completed within the available memory, so we cannot show
+it holds the negation of any reference fact (Appendix~\ref{app:crit4_ours}).
+The only model call outside generation is the deception grader, and it is
+\textbf{cross-family to every target}: \texttt{us.anthropic.claude-haiku-4-5-20251001-v1:0}
+via AWS Bedrock at temperature~0, one call per trial, reading the on-claim answer
+alone and never the probe vector the detector is scored on. Its 1{,}040 raw
+judgements---757 confirmatory graded trials, the rest pilot---are committed as JSONL
+(\texttt{data/results/crit4\_grades\_raw.jsonl}) alongside the rubric's md5, so
+\textbf{every EXP-C4 number in the paper recomputes from the repository with no model
+call}: H1--H4, the pilot's selection trace, the exploratory leave-one-target-out
+transfer arm (\texttt{analyze\_crit4.py --phase transfer} $\to$
+\texttt{data/results/crit4\_transfer.json}), and the grading reliability, whose 60
+hand codes are literals in \texttt{experiments/analyze\_crit4\_reliability.py}.
+Codebase, raw
+transcripts, per-trial result files, and a table-reproduction script will be
+released publicly.
+\textbf{Build identity.} Source revision~35, built 20~September~2026 from parent
+commit \texttt{c9718cf}. The revision number increments once per review round, so
+a reader can check which round's tree a given PDF was compiled from.
+
+\bibliographystyle{iclr2027_conference}
+\bibliography{references}
+
+\newpage
+\appendix
+\renewcommand\thesection{\AlphAlph{\value{section}}}
+\input{sections/appendix}
+
+\end{document}

@@ -1,0 +1,71 @@
+
+
+We situate our contribution across three areas of prior work.
+
+\subsection{White-Box Probes and Black-Box Behavioral Detection}
+
+Deception-related information is encoded in model activations and extractable with weight access---honesty/deception directions~\citep{zou2023representation}, unsupervised truthfulness probes~\citep{burns2022discovering}, activation classifiers (SAPLMA;~\citealp{azaria2023internal}), inference-time steering (ITI;~\citealp{li2024inference})---all requiring access unavailable for API-only models. Unlike externally induced misbehavior~\citep{goodfellow2014explaining, perez2022ignore}, the model itself is the source of the deceptive output here.
+
+\paragraph{Black-box behavioral approaches.} The closest prior work is \citet{pacchiardi2023catch}, who ask a fixed battery of \emph{unrelated} follow-up questions after a model states a possibly false claim and train a classifier on the binarised answers, finding detectable changes even on topically unrelated queries. We differ in three ways: (1)~our own instrument uses topically related, adaptive follow-ups; (2)~we add prompt-equalized and cross-family controls, under which most of the above-chance accuracy reported in this setting does not survive; and (3)~we give the identifiability analysis their fixed-condition evaluation leaves open, rather than a further detector. Their unrelated-question design leaves refusal-count accuracy nearly unchanged, consistent with the signal residing in the target's \emph{first} response (EXP-K, Appendix~\ref{app:pacchiardi}).
+
+\paragraph{Instruction-following and judge controls.} \citet{sharma2023sycophancy} show LLMs shift answers toward perceived user preferences, controlling for it by comparing behavior with and without opinion-carrying context---the confound our prompt-equalized design targets, and we find the same pattern (93.9--100\% instructed $\to$ 52--69\% equalized under cross-family extraction). LLM evaluators also carry systematic biases, which motivates the cross-family control: \citet{verga2024replacing} find diverse judge panels more reliable than single judges, and here extractor choice moves accuracy by 9--16\,pp (EXP-H).
+
+\subsection{Red-Teaming, Evaluation, and Autonomous Deception}
+
+Red-teaming, human~\citep{ganguli2022red} and automated~\citep{perez2022red}, focuses on \emph{eliciting} harmful outputs rather than \emph{detecting} whether ostensibly normal outputs are deceptive---the complementary problem studied here.
+
+\paragraph{Autonomous deception.} Deceptive behavior also arises without explicit instruction: strategic deception under pressure followed by misreporting~\citep{scheurer2024strategic}, alignment faking~\citep{greenblatt2024alignment}, learned reward tampering~\citep{denison2024sycophancy}, and capabilities that emerge with scale~\citep{hagendorff2024deception}. This regime matters most for safety and is the one our setting does not cover---it is also intervention~(A) of §\ref{sec:identification}, the manipulation that would identify the effect: a model deceiving autonomously need not produce the instruction-following behavior that instructed benchmarks cannot separate from deception.
+
+\paragraph{Concurrent evaluations of lie detectors.} A recent line of work stress-tests lie detectors across settings rather than auditing one. \citet{kretschmar2025liarsbench} assemble 72{,}863 lie and honest-response examples over seven datasets and find black- and white-box techniques fail systematically on lie types not adjudicable from the transcript alone. \citet{cooney2026didyoulie} evaluate four detectors on 31 models (2B--1T) and 13 \emph{trained} organisms with verified hidden beliefs: all four scale positively on \emph{prompted} lying, while activation- and logprob-based detectors drop sharply on the organisms. \citet{hopkins2026liedetectors} report the same for fine-tuned detectors, at AUROC 0.95 in-distribution but 0.70--0.75 across held-out lie categories, barely beating prompted baselines. Those trained organisms instance intervention~(A)---deception varying with elicitation fixed---and the prompted-to-trained gap all three report is what the Proposition predicts: accuracy earned by manipulating the instruction carries no commitment about deception arising another way.
+
+\begin{table}[htbp]
+\centering
+\caption{\textbf{Prior work and the audited corpora against the five requirements} of §1's box (§\ref{sec:eval_controls}): \textbf{(i)}~$E$ fixed, \textbf{(ii)}~$D$ graded independently of the condition label, \textbf{(iii)}~the same scenario independently realized under both behavioral outcomes, \textbf{(iv)}~deployed-observable channel only, \textbf{(v)}~$D$ not definitionally equivalent to the detector's input. \checkmark~= satisfied, $\times$~= not, \emph{p}~= satisfied in some settings or for some detector families, \checkmark$^{*}$~= exceeded, with $D$ \emph{set} rather than observed, \emph{n/a}~= the requirement concerns a detector's input and the evaluation reports no per-response detector score. The last column asks the question this paper is about. \textbf{Rows are grouped by what kind of thing each entry is}---(a)~instructed-lie benchmarks, (b)~generalization studies, (c)~belief-verified model organisms, (d)~public rollout corpora, (e)~adjacent constructs---because they answer different questions, and only (a) is what our identification claim is \emph{about}. \textbf{Reading the table:} fixed elicitation is not new---\citet{cooney2026didyoulie}'s trained organisms have it, and go beyond it (Table~\ref{tab:criteria}'s last row)---but no entry combines it with a deployed-observable channel, an independently grounded $D$, and a test of whether \emph{instructed}-benchmark accuracy was attributable to deception; among the deception designs the sandbagging row is the near-miss, failing only~(iii). That combination is what criterion~4 asks for and what §\ref{sec:external_audit} audits. \textbf{Group~(e)} reads $D$ as the behavior each evaluation attributes its score to; it shows the requirements are decidable outside deception, \emph{not} that the confound is active there. \textbf{This work} states~(i)--(v), audits \emph{both} public releases against them---ten rollout sets and 35 cells---and builds materials meeting all five (EXP-C4).}
+\label{tab:prior_work_criteria}
+\begin{scriptsize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{1.72in}ccccc p{1.44in}@{}}
+\toprule
+\textbf{Design or corpus} & \textbf{(i)} & \textbf{(ii)} & \textbf{(iii)} & \textbf{(iv)} & \textbf{(v)} & \textbf{Tests attribution?} \\
+\midrule
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(a) Instructed-lie benchmarks}---the paradigm audited here}} \\
+\addlinespace[1pt]
+\citet{pacchiardi2023catch} --- instructed roleplay, the audit target & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & $\times$ --- $E$ is the manipulation \\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(b) Generalization studies}---a different question}} \\
+\addlinespace[1pt]
+\citet{kretschmar2025liarsbench} --- 7 datasets, 72{,}863 examples & \emph{p} & \emph{p} & \emph{p} & \emph{p} & \emph{p} & $\times$ --- generalizes across lie types \\
+\addlinespace[1pt]
+\citet{hopkins2026liedetectors} --- fine-tuned detectors, held-out categories & \emph{p} & \emph{p} & \emph{p} & \checkmark & \checkmark & $\times$ --- generalizes across categories \\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(c) Belief-verified model organisms}---$D$ \emph{set}, so \emph{above} criterion~4}} \\
+\addlinespace[1pt]
+\citet{cooney2026didyoulie} --- 13 trained organisms, verified beliefs & \checkmark & \checkmark$^{*}$ & \checkmark & \emph{p} & \checkmark & \emph{indirect} --- prompted-vs-trained gap, as predicted \\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(d) Public rollout corpora}---what §\ref{sec:external_audit} audits}} \\
+\addlinespace[1pt]
+Sandbagging, WMDP/MMLU~\citep{goldowskydill2025probes} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark\ \textbf{tested: null} for our surface rule, \textbf{positive} for the corpus authors' own judge (EXP-XJ) \\
+\addlinespace[1pt]
+Insider trading, on-policy~\citep{goldowskydill2025probes} & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark\ \textbf{tested: construct recovery} \\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l@{}}{\emph{\textbf{(e) Adjacent constructs}---the requirements applied outside deception}} \\
+\addlinespace[1pt]
+Sycophancy, four evaluations~\citep{sharma2023sycophancy} & $\times$ & \emph{p} & \emph{p} & \checkmark & \emph{n/a} & \emph{n/a} --- reports the elicitation effect \emph{as} one; no per-response detector \\
+\addlinespace[1pt]
+Human red-teaming, attack success~\citep{ganguli2022red} & $\times$ & $\times$ & $\times$ & \emph{p} & $\times$ & $\times$ --- success is rated by the red-teamer who chose the attack \\
+\addlinespace[1pt]
+Reward tampering, held-out environment~\citep{denison2024sycophancy} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \emph{n/a} --- training, not the prompt, is the manipulation; no detector score \\
+\addlinespace[1pt]
+Alignment faking, compliance gap~\citep{greenblatt2024alignment} & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \emph{partly} --- prompt-sensitivity ablations; the authors state the residual cause is unverified \\
+\midrule
+\textbf{This work} & \multicolumn{5}{c}{\emph{states (i)--(v)}} & \checkmark\ \textbf{the question asked} \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
+\paragraph{The requirements outside deception.} Group~(e) of Table~\ref{tab:prior_work_criteria} applies~(i)--(v) to four adjacent constructs, reading $D$ as the behavior each evaluation attributes its score to and \emph{the detector's input} as the channel that score is computed from. Every cell is scored from the published design alone; where an evaluation reports no per-response detector score, requirements about a detector's input are marked \emph{n/a} rather than guessed. Three of the four vary the elicitation to produce the score and so fail~(i): \citet{sharma2023sycophancy} insert the user's stated view or an ``are you sure?'' challenge, \citet{ganguli2022red} let each red-teamer choose and adapt their own attack, and \citet{greenblatt2024alignment} flip a free-tier flag inside the very input the alignment-faking grader also reads. The one design meeting all five is \citet{denison2024sycophancy}: its held-out environment holds the prompt fixed---``the prompt is always the same for this environment''---manipulates \emph{training} rather than the prompt, and grades the behavior by running the reward function and unit tests afterwards, so $D$ is grounded in program state rather than in the transcript a monitor would read. That is intervention~(A) of §\ref{sec:identification}, obtained in a setting where the behavior leaves a verifiable trace. \textbf{The verdicts differ, which is the point}: the requirements are decidable outside deception, and they separate designs that can attribute a behavior from designs that cannot---\citet{greenblatt2024alignment} name the corresponding gap themselves, that it ``is hard for us to verify'' what causes the behavioral difference persisting once the scratchpad is removed.
+
+Two asymmetries with group~(a) are worth stating. \citet{sharma2023sycophancy} report the elicitation effect \emph{as} an elicitation effect and build no detector, so failing~(i) costs them nothing---the confound bites only when a design converts such materials into a detection accuracy. And \citet{ganguli2022red}'s attack-success label is supplied by the red-teamer who wrote the attack, with only ``poor to fair'' agreement in their own review task (Fleiss' $\kappa\!=\!0.32$); that is the annotation-channel problem of criterion~4 rather than the elicitation problem of criterion~1. \textbf{What group~(e) does not show} is that the elicitation confound is empirically \emph{active} in sycophancy, refusal, reward hacking or alignment faking: none of these four is a deception-detection benchmark, and establishing activity would need the equalization contrast we run only for deception (§\ref{sec:prompt_equalized}).
+
+\paragraph{Summary of the gap.} These establish that lie detectors fail to \emph{generalize} across lie types, organisms, and training regimes. None isolates the identifiability problem created when the intervention that induces deception also induces instruction-following---so none answers whether the accuracy reported in the standard paradigm was ever attributable to deception. That is the question addressed here. The constraint itself is a standard non-identifiability result; what is new is enforcing it on a widely used paradigm and turning it into the five-criterion protocol of §\ref{sec:eval_controls}.
