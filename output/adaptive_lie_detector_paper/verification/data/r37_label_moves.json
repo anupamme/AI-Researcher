@@ -1,0 +1,1032 @@
+{
+ "app:adage_details": [
+  [
+   "AO",
+   "85"
+  ],
+  [
+   "AO",
+   "88"
+  ]
+ ],
+ "app:adv_n50": [
+  [
+   "AF",
+   "80"
+  ],
+  [
+   "AF",
+   "83"
+  ]
+ ],
+ "app:adv_qualitative": [
+  [
+   "AG",
+   "80"
+  ],
+  [
+   "AG",
+   "83"
+  ]
+ ],
+ "app:audit_agreement": [
+  [
+   "AE",
+   "78"
+  ],
+  [
+   "AE",
+   "81"
+  ]
+ ],
+ "app:autonomous_transfer": [
+  [
+   "AI",
+   "83"
+  ],
+  [
+   "AI",
+   "86"
+  ]
+ ],
+ "app:baselines": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "app:belief_strata": [
+  [
+   "V",
+   "51"
+  ],
+  [
+   "V",
+   "54"
+  ]
+ ],
+ "app:causal_probes": [
+  [
+   "AQ",
+   "86"
+  ],
+  [
+   "AQ",
+   "90"
+  ]
+ ],
+ "app:compute_cost": [
+  [
+   "L.7",
+   "40"
+  ],
+  [
+   "L.7",
+   "39"
+  ]
+ ],
+ "app:covariate_audit": [
+  [
+   "AA",
+   "67"
+  ],
+  [
+   "AA",
+   "70"
+  ]
+ ],
+ "app:crit4_ours": [
+  [
+   "X",
+   "56"
+  ],
+  [
+   "X",
+   "59"
+  ]
+ ],
+ "app:crit4_transfer": [
+  [
+   "X.1",
+   "60"
+  ],
+  [
+   "X.1",
+   "63"
+  ]
+ ],
+ "app:crit4b": [
+  [
+   "Y",
+   "61"
+  ],
+  [
+   "Y",
+   "64"
+  ]
+ ],
+ "app:cross_claim": [
+  [
+   "AH.2",
+   "83"
+  ],
+  [
+   "AH.2",
+   "86"
+  ]
+ ],
+ "app:dimension_transfer": [
+  [
+   "Z",
+   "65"
+  ],
+  [
+   "Z",
+   "68"
+  ]
+ ],
+ "app:diverse_claims_detail": [
+  [
+   "AM",
+   "84"
+  ],
+  [
+   "AM",
+   "87"
+  ]
+ ],
+ "app:exp_i_4th_scenario": [
+  [
+   "AQ.1",
+   "86"
+  ],
+  [
+   "AQ.1",
+   "90"
+  ]
+ ],
+ "app:exp_i_5th_scenario": [
+  [
+   "AQ.2",
+   "87"
+  ],
+  [
+   "AQ.2",
+   "91"
+  ]
+ ],
+ "app:expg_details": [
+  [
+   "O",
+   "43"
+  ],
+  [
+   "O",
+   "44"
+  ]
+ ],
+ "app:external_audit": [
+  [
+   "AB",
+   "69"
+  ],
+  [
+   "AB",
+   "72"
+  ]
+ ],
+ "app:external_audit_judge": [
+  [
+   "AH.1",
+   "81"
+  ],
+  [
+   "AH.1",
+   "84"
+  ]
+ ],
+ "app:factorial_2x2": [
+  [
+   "AQ.3",
+   "88"
+  ],
+  [
+   "AQ.3",
+   "91"
+  ]
+ ],
+ "app:factorial_txd": [
+  [
+   "AP",
+   "85"
+  ],
+  [
+   "AP",
+   "88"
+  ]
+ ],
+ "app:human_baseline_full": [
+  [
+   "AL",
+   "84"
+  ],
+  [
+   "AL",
+   "87"
+  ]
+ ],
+ "app:human_icc_n100": [
+  [
+   "AS",
+   "89"
+  ],
+  [
+   "AS",
+   "92"
+  ]
+ ],
+ "app:insider_audit": [
+  [
+   "AC",
+   "72"
+  ],
+  [
+   "AC",
+   "75"
+  ]
+ ],
+ "app:insider_audit2": [
+  [
+   "AC.1",
+   "74"
+  ],
+  [
+   "AC.1",
+   "77"
+  ]
+ ],
+ "app:instructed_results": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "app:intervention_b": [
+  [
+   "W",
+   "54"
+  ],
+  [
+   "W",
+   "57"
+  ]
+ ],
+ "app:liars_bench": [
+  [
+   "AD",
+   "75"
+  ],
+  [
+   "AD",
+   "78"
+  ]
+ ],
+ "app:limitations_detail": [
+  [
+   "K.1",
+   "32"
+  ],
+  [
+   "K.1",
+   "31"
+  ]
+ ],
+ "app:machine_icc": [
+  [
+   "AR",
+   "89"
+  ],
+  [
+   "AR",
+   "92"
+  ]
+ ],
+ "app:mistral_adv_mech": [
+  [
+   "AK",
+   "84"
+  ],
+  [
+   "AK",
+   "87"
+  ]
+ ],
+ "app:mistral_probe_panel": [
+  [
+   "AM",
+   "84"
+  ],
+  [
+   "AM",
+   "87"
+  ]
+ ],
+ "app:mock_accuracy": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "app:mock_adaptive": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "app:mock_confidence": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "app:mock_features": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "app:mock_importance": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "app:mock_summary": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "app:partial_transfer_detail": [
+  [
+   "AJ",
+   "83"
+  ],
+  [
+   "AJ",
+   "87"
+  ]
+ ],
+ "app:probe_audit": [
+  [
+   "J",
+   "28"
+  ],
+  [
+   "J",
+   "29"
+  ]
+ ],
+ "app:q1_refusal_dist": [
+  [
+   "AH.2",
+   "83"
+  ],
+  [
+   "AH.2",
+   "86"
+  ]
+ ],
+ "app:qwen_persona_qual": [
+  [
+   "AN",
+   "84"
+  ],
+  [
+   "AN",
+   "88"
+  ]
+ ],
+ "app:qwen_persona_spotcheck": [
+  [
+   "AN",
+   "84"
+  ],
+  [
+   "AN",
+   "88"
+  ]
+ ],
+ "app:r1_protocol": [
+  [
+   "U.1",
+   "48"
+  ],
+  [
+   "U.2",
+   "50"
+  ]
+ ],
+ "app:r1b": [
+  [
+   "U.2",
+   "49"
+  ],
+  [
+   "U.3",
+   "52"
+  ]
+ ],
+ "app:regex_patterns": [
+  [
+   "L.8",
+   "41"
+  ],
+  [
+   "L.8",
+   "40"
+  ]
+ ],
+ "app:supporting_diagnostics": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "app:sycophancy_mechanism": [
+  [
+   "AI",
+   "83"
+  ],
+  [
+   "AI",
+   "86"
+  ]
+ ],
+ "app:target_config": [
+  [
+   "L.1",
+   "36"
+  ],
+  [
+   "L.1",
+   "37"
+  ]
+ ],
+ "app:threshold_sweep": [
+  [
+   "L.3",
+   "37"
+  ],
+  [
+   "L.3",
+   "38"
+  ]
+ ],
+ "sec:autonomous_matched": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:autonomous_pilot": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:claude_haiku_n100": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:cross_family_equalized": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:diverse_claims": [
+  [
+   "AM",
+   "84"
+  ],
+  [
+   "AM",
+   "87"
+  ]
+ ],
+ "sec:exp_i_4th_scenario": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:exp_i_5th_scenario": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:factorial_2x2": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:failure_analysis": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:llama70b_eval": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:mistral_eval": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:mock_validation": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:ollama_eval": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:pipeline_ablation": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:qwen_scale_sweep": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:real_llm_pilot": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:recalibration": [
+  [
+   "M",
+   "41"
+  ],
+  [
+   "M",
+   "42"
+  ]
+ ],
+ "sec:rlhf_replication": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:saplma_application": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "sec:scale_transfer_cf": [
+  [
+   "AH",
+   "81"
+  ],
+  [
+   "AH",
+   "84"
+  ]
+ ],
+ "tab:adv_multimodel": [
+  [
+   "58",
+   "80"
+  ],
+  [
+   "59",
+   "83"
+  ]
+ ],
+ "tab:adv_qualitative_summary": [
+  [
+   "AG",
+   "81"
+  ],
+  [
+   "AG",
+   "84"
+  ]
+ ],
+ "tab:audit_agreement": [
+  [
+   "57",
+   "79"
+  ],
+  [
+   "58",
+   "82"
+  ]
+ ],
+ "tab:belief_strata": [
+  [
+   "44",
+   "53"
+  ],
+  [
+   "45",
+   "56"
+  ]
+ ],
+ "tab:compute_cost": [
+  [
+   "31",
+   "40"
+  ],
+  [
+   "31",
+   "41"
+  ]
+ ],
+ "tab:covariate_audit": [
+  [
+   "52",
+   "69"
+  ],
+  [
+   "53",
+   "72"
+  ]
+ ],
+ "tab:crit4_ours_h1": [
+  [
+   "47",
+   "58"
+  ],
+  [
+   "48",
+   "61"
+  ]
+ ],
+ "tab:crit4_ours_h2h3": [
+  [
+   "48",
+   "58"
+  ],
+  [
+   "49",
+   "61"
+  ]
+ ],
+ "tab:crit4_ours_reqs": [
+  [
+   "46",
+   "57"
+  ],
+  [
+   "47",
+   "59"
+  ]
+ ],
+ "tab:crit4b_h1": [
+  [
+   "49",
+   "62"
+  ],
+  [
+   "50",
+   "65"
+  ]
+ ],
+ "tab:crit4b_h1_e": [
+  [
+   "50",
+   "64"
+  ],
+  [
+   "51",
+   "67"
+  ]
+ ],
+ "tab:dimension_transfer": [
+  [
+   "51",
+   "67"
+  ],
+  [
+   "52",
+   "70"
+  ]
+ ],
+ "tab:exp_i_4th_scenario": [
+  [
+   "63",
+   "87"
+  ],
+  [
+   "64",
+   "90"
+  ]
+ ],
+ "tab:exp_i_5th_scenario": [
+  [
+   "64",
+   "88"
+  ],
+  [
+   "65",
+   "91"
+  ]
+ ],
+ "tab:external_audit_judge": [
+  [
+   "59",
+   "82"
+  ],
+  [
+   "60",
+   "85"
+  ]
+ ],
+ "tab:external_eligibility": [
+  [
+   "53",
+   "71"
+  ],
+  [
+   "54",
+   "75"
+  ]
+ ],
+ "tab:factorial": [
+  [
+   "61",
+   "86"
+  ],
+  [
+   "62",
+   "89"
+  ]
+ ],
+ "tab:factorial_2x2": [
+  [
+   "65",
+   "88"
+  ],
+  [
+   "66",
+   "92"
+  ]
+ ],
+ "tab:human_baseline": [
+  [
+   "60",
+   "84"
+  ],
+  [
+   "61",
+   "87"
+  ]
+ ],
+ "tab:human_llm_agreement": [
+  [
+   "23",
+   "31"
+  ],
+  [
+   "23",
+   "32"
+  ]
+ ],
+ "tab:icc_study_n100": [
+  [
+   "66",
+   "89"
+  ],
+  [
+   "67",
+   "92"
+  ]
+ ],
+ "tab:insider_it2": [
+  [
+   "55",
+   "75"
+  ],
+  [
+   "56",
+   "78"
+  ]
+ ],
+ "tab:intervention_b": [
+  [
+   "45",
+   "55"
+  ],
+  [
+   "46",
+   "58"
+  ]
+ ],
+ "tab:liars_bench": [
+  [
+   "56",
+   "78"
+  ],
+  [
+   "57",
+   "81"
+  ]
+ ],
+ "tab:mistral_probe_panel": [
+  [
+   "AM",
+   "84"
+  ],
+  [
+   "AM",
+   "87"
+  ]
+ ],
+ "tab:r1_faithful": [
+  [
+   "41",
+   "49"
+  ],
+  [
+   "42",
+   "52"
+  ]
+ ],
+ "tab:r1_variants": [
+  [
+   "42",
+   "50"
+  ],
+  [
+   "43",
+   "53"
+  ]
+ ],
+ "tab:r1c_v2": [
+  [
+   "43",
+   "52"
+  ],
+  [
+   "44",
+   "54"
+  ]
+ ],
+ "tab:sample_sizes": [
+  [
+   "29",
+   "39"
+  ],
+  [
+   "29",
+   "40"
+  ]
+ ],
+ "tab:td_vs_fd": [
+  [
+   "62",
+   "87"
+  ],
+  [
+   "63",
+   "90"
+  ]
+ ],
+ "tab:what_establishes": [
+  [
+   "54",
+   "73"
+  ],
+  [
+   "55",
+   "76"
+  ]
+ ]
+}

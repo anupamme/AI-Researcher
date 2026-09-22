@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the paper's verification harness from the repo copy.
 
-`verify_r36.py` is a GENERATED file: each round's verifier is produced from the
+`verify_r37.py` is a GENERATED file: each round's verifier is produced from the
 previous round's by `generators/mk_verify_rNN.py`, which asserts that every
 string it rewrites occurs exactly once before rewriting it. That discipline is
 what makes a retained check impossible to weaken by accident, and it is also why
@@ -11,8 +11,8 @@ So it still loads its ledgers from /tmp, exactly as it did when it was written.
 This wrapper seeds /tmp from `data/` and runs it from the paper directory (the
 verifier opens `sections/*.tex` relatively).  Usage, from anywhere:
 
-    python3 verification/run.py            # the current harness, r36
-    python3 verification/run.py r35        # the previous round, for comparison
+    python3 verification/run.py            # the current harness, r37
+    python3 verification/run.py r36        # the previous round, for comparison
 """
 import os
 import shutil
@@ -24,7 +24,7 @@ PAPER = os.path.dirname(HERE)
 DATA = os.path.join(HERE, "data")
 SNAP = os.path.join(HERE, "snapshots")
 
-which = sys.argv[1] if len(sys.argv) > 1 else "r36"
+which = sys.argv[1] if len(sys.argv) > 1 else "r37"
 verifier = os.path.join(HERE, "verify_%s.py" % which)
 if not os.path.exists(verifier):
     sys.exit("no such verifier: %s" % verifier)
