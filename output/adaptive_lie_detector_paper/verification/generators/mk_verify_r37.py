@@ -303,6 +303,18 @@ sub(r'''    st_lines = [ln for ln in st.splitlines() if not CKPT.match(ln.strip(
        f"round 37's enumerated deliverables excluded): {st_filtered!r}")''',
     "(e) 28o working-tree allow-set")
 
+# ============================ (e2) one narrative SHA the history rewrite renumbered
+# Check 28o's comment cites the round-28 commit that first tracked EXP-AF's three
+# files. The 2026-09-22 `git filter-repo --strip-blobs-bigger-than 50M` pass (run to
+# drop four blobs over GitHub's 100 MB per-file limit, which had made the code repo
+# unpushable) renumbered every commit SHA, so b499458 no longer resolves. Same
+# commit, same tree, new name: b499458 -> 644d10f. Comment only -- no check changes
+# behaviour -- but a dangling SHA in an audit trail is exactly what this apparatus
+# exists to prevent, so it is corrected rather than left to rot.
+sub(r'''    # *untracked* set until code b499458 committed them. The invariant this''',
+    r'''    # *untracked* set until code 644d10f committed them. The invariant this''',
+    "(e2) round-28 narrative SHA b499458 -> 644d10f")
+
 # ============================================================ (f) 27j, 16 -> 17
 sub(r'''    ck(len(pre) == 16, f"27j: {len(pre)} pre-registrations, expected 16 "
                        f"(12 frozen + EXP-AD + EXP-AE + EXP-AF + EXP-FS)")
@@ -916,18 +928,26 @@ GROUP37 = r'''    # ============================================================
     # the post-hoc addition is logged where the discipline requires: PREREG_EXP_C4B
     # §12 is append-only, and the file must differ from the pinned commit by
     # exactly one contiguous insertion beginning with the new entry's own marker.
+    # The pinned commit is abc7d04, not d3bb92d as first written. Both name the
+    # SAME commit -- "PREREG_EXP_FS §10: log the §7 branch adjudication" -- and the
+    # same tree. On 2026-09-22 the code repo's history was rewritten with
+    # `git filter-repo --strip-blobs-bigger-than 50M` to drop four blobs that
+    # exceeded GitHub's 100 MB per-file limit and made the repo unpushable, which
+    # renumbered every commit SHA while leaving every surviving blob SHA untouched.
+    # So this is a renamed pin, not a weakened one: the bytes it asserts against are
+    # bit-for-bit the ones d3bb92d carried.
     _C4B37 = io.open(_ALD37 + "/docs/PREREG_EXP_C4B.md", encoding="utf-8").read()
     _c4b_was37 = subprocess.run(
-        ["git", "show", "d3bb92d:adaptive_lie_detector/docs/PREREG_EXP_C4B.md"],
+        ["git", "show", "abc7d04:adaptive_lie_detector/docs/PREREG_EXP_C4B.md"],
         cwd=_ALD37, capture_output=True, text=True)
     ck(_c4b_was37.returncode == 0,
-       "37f: cannot read d3bb92d:PREREG_EXP_C4B.md, so the append-only claim is "
+       "37f: cannot read abc7d04:PREREG_EXP_C4B.md, so the append-only claim is "
        "unverifiable")
     if _c4b_was37.returncode == 0:
         _w37 = _c4b_was37.stdout
         _ins37 = _C4B37[49943:49943 + 2300]
         ck(_C4B37 == _w37[:49943] + _ins37 + _w37[49943:],
-           "37f: PREREG_EXP_C4B.md differs from d3bb92d by more than one "
+           "37f: PREREG_EXP_C4B.md differs from abc7d04 by more than one "
            "contiguous 2,300-character insertion -- the file is frozen except "
            "for its append-only log")
         ck(_ins37.startswith("**(17) A post-hoc DESCRIPTIVE arm: "
@@ -974,13 +994,13 @@ GROUP37 = r'''    # ============================================================
         if _f37g in ("PREREG_EXP_XP.md", "PREREG_EXP_C4B.md"):
             continue
         _r37g = subprocess.run(
-            ["git", "show", "d3bb92d:adaptive_lie_detector/docs/" + _f37g],
+            ["git", "show", "abc7d04:adaptive_lie_detector/docs/" + _f37g],
             cwd=_ALD37, capture_output=True, text=True)
         if _r37g.returncode != 0 or _r37g.stdout != io.open(
                 os.path.join(_ALD37, "docs", _f37g), encoding="utf-8").read():
             _frozen37.append(_f37g)
     ck(not _frozen37,
-       f"37g: these pre-registrations are not byte-identical to d3bb92d: "
+       f"37g: these pre-registrations are not byte-identical to abc7d04: "
        f"{_frozen37} -- all sixteen but C4B's append-only log are frozen")
     # THE CENSUS ITSELF, cross-checked between the committed JSON and the prose.
     _CEN37 = json.load(io.open(_ALD37 + "/data/results/pacchiardi_census.json",
