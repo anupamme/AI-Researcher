@@ -16,11 +16,13 @@ Amos Azaria and Tom Mitchell.
 \newblock The internal state of an {LLM} knows when it's lying.
 \newblock \emph{arXiv preprint arXiv:2304.13734}, 2023.
 
-\bibitem[Burns et~al.(2022)Burns, Ye, Klein, and
-  Steinhardt]{burns2022discovering}
+\bibitem[Burns et~al.(2023)Burns, Ye, Klein, and
+  Steinhardt]{burns2023discovering}
 Collin Burns, Haotian Ye, Dan Klein, and Jacob Steinhardt.
 \newblock Discovering latent knowledge in language models without supervision.
-\newblock \emph{arXiv preprint arXiv:2212.03827}, 2022.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+\newblock arXiv:2212.03827.
 
 \bibitem[Cooney et~al.(2026)Cooney, Africa, and Irving]{cooney2026didyoulie}
 Alan Cooney, David Africa, and Geoffrey Irving.
@@ -72,11 +74,13 @@ Nicholas Goldowsky-Dill, Bilal Chughtai, Stefan Heimersheim, and Marius
 \newblock Detecting strategic deception using linear probes.
 \newblock \emph{arXiv preprint arXiv:2502.03407}, 2025.
 
-\bibitem[Goodfellow et~al.(2014)Goodfellow, Shlens, and
-  Szegedy]{goodfellow2014explaining}
+\bibitem[Goodfellow et~al.(2015)Goodfellow, Shlens, and
+  Szegedy]{goodfellow2015explaining}
 Ian~J. Goodfellow, Jonathon Shlens, and Christian Szegedy.
 \newblock Explaining and harnessing adversarial examples.
-\newblock \emph{arXiv preprint arXiv:1412.6572}, 2014.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2015.
+\newblock arXiv:1412.6572.
 
 \bibitem[Greenblatt et~al.(2024)Greenblatt, Denison, Wright, Roger, MacDiarmid,
   Marks, Treutlein, Belonax, Chen, Duvenaud, Khan, Michael, Mindermann, Perez,

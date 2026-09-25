@@ -135,7 +135,7 @@ for r in results:
             print(f"  source has  : {', '.join(r['missing'])}")
 
 print("\n" + "=" * 72)
-print("COULD NOT VERIFY (no data returned) — need manual check")
+print("COULD NOT VERIFY (no data returned): need manual check")
 print("=" * 72)
 for r in results:
     if r["status"] == "NO_DATA":

@@ -71,15 +71,15 @@ DEFAULT_MODEL_DIRECT = "claude-opus-4-6"
 DEFAULT_MODEL_BEDROCK = "us.anthropic.claude-opus-4-6-v1"
 
 # ---------------------------------------------------------------------------
-# Real LLM pilot results — injected into section prompts
+# Real LLM pilot results: injected into section prompts
 # ---------------------------------------------------------------------------
 REAL_LLM_RESULTS = """
-REAL LLM PILOT RESULTS (Claude Haiku 4.5 via AWS Bedrock — use these in the paper):
+REAL LLM PILOT RESULTS (Claude Haiku 4.5 via AWS Bedrock; use these in the paper):
 - Target model: Claude Haiku 4.5-20251001 (a production LLM, not a mock)
 - Completed trials: 9 (7 truthful claims, 2 lying claims)
 - Overall accuracy: 88.9% (8/9 correct)
 - Truthful claim accuracy: 100% (7/7)
-- Lying claim accuracy: 50% (1/2) — harder than mock; classifier partially transfers
+- Lying claim accuracy: 50% (1/2), harder than mock; classifier partially transfers
 - Average questions asked (adaptive): 3.0 per interrogation
 - Key observation: the single lying misclassification had very high confidence (0.92),
   confirming the calibration problem noted in the mock study
@@ -89,10 +89,10 @@ REAL LLM PILOT RESULTS (Claude Haiku 4.5 via AWS Bedrock — use these in the pa
 """
 
 # ---------------------------------------------------------------------------
-# Section prompts (Revision 2 — addressing NeurIPS reviewer feedback)
+# Section prompts (Revision 2: addressing NeurIPS reviewer feedback)
 # ---------------------------------------------------------------------------
 SYSTEM_PROMPT = """You are an expert academic writer helping produce a NeurIPS 2024 conference paper.
-Write ONLY the LaTeX body content for the requested section — no \\documentclass, no \\begin{{document}},
+Write ONLY the LaTeX body content for the requested section: no \\documentclass, no \\begin{{document}},
 no preamble, and no markdown code fences. Use proper LaTeX commands throughout.
 Write in third-person academic style. Be precise, formal, and technically rigorous.
 Where you introduce citations use \\cite{{key}} with reasonable BibTeX keys (e.g. \\cite{{vaswani2017attention}}).
@@ -122,11 +122,11 @@ Research documentation:
 Use \\section{{Introduction}} with 4 subsections. Target ~800 words.
 
 Requirements (address reviewer feedback):
-1. §1.1 Motivation: AI safety, alignment, interpretability — cite \\cite{{hubinger2019risks}} for
+1. §1.1 Motivation: AI safety, alignment, interpretability; cite \\cite{{hubinger2019risks}} for
    deceptive alignment, \\cite{{ouyang2022training}} for RLHF alignment.
 2. §1.2 The Challenge: explain why LLM deception detection differs from human lie detection.
    Explicitly distinguish between (a) instructed roleplay deception (this paper's setting) and
-   (b) autonomous strategic deception (the harder alignment problem) — be clear this paper
+   (b) autonomous strategic deception (the harder alignment problem): be clear this paper
    addresses (a) as a tractable proxy for studying behavioral detection methods.
 3. §1.3 Our Approach: the 4-component adaptive interrogation system.
 4. §1.4 Contributions: use \\begin{{itemize}} listing:
@@ -142,20 +142,20 @@ Research documentation:
 {{doc}}
 """,
 
-    "related_work": """Write the LaTeX content for the Related Work section (REVISED — add missing work).
+    "related_work": """Write the LaTeX content for the Related Work section (REVISED, add missing work).
 Use \\section{{Related Work}} with 5 subsections. Target ~700 words.
 
-CRITICAL: The reviewer specifically called out missing these areas — you MUST include them:
+CRITICAL: The reviewer specifically called out missing these areas. You MUST include them:
 1. §2.1 Human Deception Detection: polygraph (\\cite{{raskin1988polygraph}}), micro-expressions
    (\\cite{{ekman2003emotions}}). Explain why physical tells don't apply to LLMs.
 2. §2.2 Adversarial Examples and Prompt Injection: \\cite{{goodfellow2014explaining}},
    \\cite{{perez2022ignore}}. These differ from intentional model deception (different threat model).
-3. §2.3 Representation Engineering and Probing Classifiers (REQUIRED — reviewer called this out):
+3. §2.3 Representation Engineering and Probing Classifiers (REQUIRED, reviewer called this out):
    - \\cite{{zou2023representation}}: representation engineering finds deception-related directions
      in activation space (white-box, requires model internals)
    - \\cite{{burns2022discovering}}: probing classifiers for model honesty (white-box)
    - Contrast with our black-box behavioral approach: no model internals needed
-4. §2.4 Sycophancy, Sandbagging, and AI Safety Risks (REQUIRED — reviewer called this out):
+4. §2.4 Sycophancy, Sandbagging, and AI Safety Risks (REQUIRED, reviewer called this out):
    - \\cite{{hubinger2019risks}}: deceptive alignment in advanced AI systems
    - \\cite{{perez2022discovering}}: sycophancy in LLMs
    - Note this paper addresses instructed roleplay, not autonomous strategic deception
@@ -188,16 +188,16 @@ CRITICAL CHANGES required by reviewer:
 
 2. §3.2 Target Model: truth/lie mode system prompts (verbatim in \\begin{{verbatim}}).
    IMPORTANT: Add a subsection "§3.2.3 Scope Note" explicitly stating: "The target operates
-   in cooperative roleplay mode — it is instructed to defend a false claim. This is distinct
+   in cooperative roleplay mode: it is instructed to defend a false claim. This is distinct
    from autonomous deceptive behaviour where a model strategically misleads without instruction.
    We study the former as a tractable experimental proxy."
 
 3. §3.3 Interrogation Strategy: question generation with LLM, question taxonomy.
 
-4. §3.4 Feature Extraction: table with \\label{{tab:behavioral_features}} (NOT tab:features —
+4. §3.4 Feature Extraction: table with \\label{{tab:behavioral_features}} (NOT tab:features;
    this avoids duplicate label conflict). Include 5 features with descriptions and why-it-matters.
    ALSO add a paragraph: "Feature validity note: scores are assigned by an LLM judge, introducing
-   circularity — the extractor may capture stylistic artifacts of the prompts rather than genuine
+   circularity: the extractor may capture stylistic artifacts of the prompts rather than genuine
    deception signals. No ground-truth validation of feature scores was performed."
 
 5. §3.5 Classification: logistic regression. Add: "We choose logistic regression for
@@ -218,20 +218,20 @@ CRITICAL CHANGES required by reviewer:
 
 §4.1 Experimental Setup:
 - Clearly state: "All mock experiments use deterministic pattern-matching models (MockTargetModel).
-  Statistics are descriptive — p-values are not meaningful for deterministic processes and are
+  Statistics are descriptive: p-values are not meaningful for deterministic processes and are
   omitted from this revision."
 - Table of hyperparameters.
 - Claims used (truth/lie examples).
 
 §4.2 Core Detection Accuracy (n=100, NOT n=10):
 Use the n=100 mock results: Adaptive: 91% accuracy (truthful: 100%, lying: 82%), avg 2.0 questions.
-Do NOT report 100% perfect accuracy — that was the flawed n=10 result. Use:
+Do NOT report 100% perfect accuracy; that was the flawed n=10 result. Use:
 \\begin{{table}}[h] \\centering \\caption{{Adaptive system accuracy on n=100 mock interrogations}}
 Show: overall acc=91%, truthful acc=100%, lying acc=82%, precision=1.00, recall=0.82, F1=0.901.
 
 §4.3 Adaptive vs. Fixed Baseline (n=100):
 Adaptive: 91% accuracy, 2.0 avg questions. Fixed (8Q): 100% accuracy, 8.0 avg questions.
-Efficiency gain: 75% fewer questions. IMPORTANT: add caveat — "The fixed baseline always asks
+Efficiency gain: 75% fewer questions. IMPORTANT: add caveat, "The fixed baseline always asks
 8 questions; this number is arbitrary. On the deterministic mock setup, even 1 question may
 suffice. The efficiency result demonstrates that early stopping works on mock patterns, but
 the absolute question counts should not be interpreted as evidence for real-world efficiency."
@@ -248,9 +248,9 @@ Table showing confidence by question number. Discussion of diminishing returns.
 Only 0.04 confidence gap between correct (0.88) and incorrect (0.84) predictions.
 Interpret this clearly as a calibration failure, not a subtle distinction.
 
-§4.7 Real LLM Pilot (NEW — directly addresses reviewer concern #1):
+§4.7 Real LLM Pilot (NEW, directly addresses reviewer concern #1):
 "To assess whether the framework transfers beyond mock models, we conducted a pilot evaluation
-using Claude Haiku 4.5 (\\cite{{anthropic2024claude}}) via AWS Bedrock as the target model —
+using Claude Haiku 4.5 (\\cite{{anthropic2024claude}}) via AWS Bedrock as the target model,
 a production-grade LLM, not a pattern-matching mock."
 Results table: n=9 completed, 88.9% overall, 100% truthful, 50% lying, avg 3.0 questions.
 Discuss: (1) truthful detection transfers well, (2) lying detection harder on real LLMs (50% vs 82%),
@@ -272,9 +272,9 @@ Use \\section{{Discussion}} with structured subsections. Target ~600 words.
 
 CRITICAL restructuring required by reviewer:
 
-§5.1 Key Findings: 3 bullet paragraphs — adaptive efficiency, confidence convergence, question type.
+§5.1 Key Findings: 3 bullet paragraphs; adaptive efficiency, confidence convergence, question type.
 
-§5.2 Instructed Roleplay vs. Genuine Deception (REQUIRED — reviewer said this was inadequate):
+§5.2 Instructed Roleplay vs. Genuine Deception (REQUIRED, reviewer said this was inadequate):
 Write a DEDICATED subsection (not buried in limitations) making this explicit:
 "The experimental setting in this paper involves instructed cooperative roleplay: the target model
 is given an explicit system prompt instructing it to defend a specific false claim. This is
@@ -284,7 +284,7 @@ to testing whether a verifier can distinguish \\emph{{prompted lying}} from \\em
 This is a tractable experimental proxy for studying behavioral detection methods, but findings
 may not generalise to models that deceive without instruction."
 
-§5.3 Feature Extraction Validity (REQUIRED — reviewer raised circularity issue):
+§5.3 Feature Extraction Validity (REQUIRED, reviewer raised circularity issue):
 "The five behavioral features are scored by an LLM judge (Claude Haiku). This introduces
 circularity: the extractor may be sensitive to surface-level stylistic differences between
 truth and lie prompts rather than genuine deception signals. There is no ground-truth annotation
@@ -292,7 +292,7 @@ of feature scores, and no human inter-rater reliability study was conducted. Fut
 should validate features against human judgments or interpretability methods
 \\cite{{zou2023representation}}."
 
-§5.4 Limitations: cover remaining issues —
+§5.4 Limitations: cover remaining issues:
 (a) Mock model testing (all confirmed by real LLM pilot)
 (b) Small sample sizes and need for scale
 (c) Classifier overfitting risk (trained on same mock distribution tested on)
@@ -317,7 +317,7 @@ Requirements:
    (mock: 91% accuracy at 2.0 questions; real LLM pilot: 88.9% but only 50% lying accuracy).
 2. Accurately state what was NOT shown: generalisation to real LLMs at scale, robustness to
    sophisticated adversarial lying, applicability to non-cooperative deception settings.
-3. The real LLM pilot shows partial transfer — truthful detection works, lying detection degrades.
+3. The real LLM pilot shows partial transfer: truthful detection works, lying detection degrades.
 4. Broader implication: behavioral black-box interrogation is a complementary approach to
    white-box probing \\cite{{zou2023representation}} \\cite{{burns2022discovering}}.
 5. Future work: real-model validation at scale, calibration, cross-model generalization,
@@ -334,26 +334,26 @@ REFERENCES_PROMPT = """Generate a BibTeX references file for a NeurIPS paper on 
 Include complete, accurate entries (realistic authors, venues, years) for ALL of the following:
 
 REQUIRED (reviewer noted missing entries):
-1. Zou et al. 2023 — Representation Engineering: A Top-Down Approach to AI Transparency (arxiv)
-2. Burns et al. 2022 — Discovering Latent Knowledge in Language Models Without Supervision (arxiv/ICLR)
-3. Hubinger et al. 2019 — Risks from Learned Optimization in Advanced ML Systems (arxiv)
-4. Perez et al. 2022 — Discovering Language Model Behaviors with Model-Written Evaluations (sycophancy)
-5. Ganguli et al. 2022 — Red Teaming Language Models to Reduce Harms (Anthropic, arxiv)
+1. Zou et al. 2023, Representation Engineering: A Top-Down Approach to AI Transparency (arxiv)
+2. Burns et al. 2022: Discovering Latent Knowledge in Language Models Without Supervision (arxiv/ICLR)
+3. Hubinger et al. 2019: Risks from Learned Optimization in Advanced ML Systems (arxiv)
+4. Perez et al. 2022: Discovering Language Model Behaviors with Model-Written Evaluations (sycophancy)
+5. Ganguli et al. 2022: Red Teaming Language Models to Reduce Harms (Anthropic, arxiv)
    Include journal/booktitle field so bibtex does not warn about empty journal.
-6. Perez et al. 2022 — Ignore Previous Prompt: Attack Techniques For Language Models (prompt injection)
+6. Perez et al. 2022, Ignore Previous Prompt: Attack Techniques For Language Models (prompt injection)
    Include venue field.
 
 ALSO INCLUDE:
-7. Ekman 2003 — Emotions Revealed (human micro-expressions)
-8. Raskin & Kircher — polygraph / concealed information test
-9. Goodfellow et al. 2014 — Explaining and Harnessing Adversarial Examples (ICLR)
-10. Ouyang et al. 2022 — Training language models to follow instructions with human feedback (InstructGPT, NeurIPS)
-11. Bai et al. 2022 — Constitutional AI (Anthropic, arxiv)
-12. Brown et al. 2020 — Language Models are Few-Shot Learners (GPT-3, NeurIPS)
-13. Anthropic 2024 — Claude (model card / technical report)
-14. Platt 1999 — Probabilistic outputs for SVMs (temperature/confidence calibration)
-15. Guo et al. 2017 — On Calibration of Modern Neural Networks (ICML)
-16. Shevlane et al. 2023 — Model evaluation for extreme risks (DeepMind, arxiv)
+7. Ekman 2003: Emotions Revealed (human micro-expressions)
+8. Raskin & Kircher: polygraph / concealed information test
+9. Goodfellow et al. 2014: Explaining and Harnessing Adversarial Examples (ICLR)
+10. Ouyang et al. 2022: Training language models to follow instructions with human feedback (InstructGPT, NeurIPS)
+11. Bai et al. 2022: Constitutional AI (Anthropic, arxiv)
+12. Brown et al. 2020: Language Models are Few-Shot Learners (GPT-3, NeurIPS)
+13. Anthropic 2024: Claude (model card / technical report)
+14. Platt 1999: Probabilistic outputs for SVMs (temperature/confidence calibration)
+15. Guo et al. 2017: On Calibration of Modern Neural Networks (ICML)
+16. Shevlane et al. 2023: Model evaluation for extreme risks (DeepMind, arxiv)
 
 Output ONLY valid BibTeX entries, nothing else.
 """

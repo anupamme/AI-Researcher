@@ -5,37 +5,37 @@ The style file: iclr2027_conference.bst
 Database file #1: references.bib
 You've used 27 entries,
             2773 wiz_defined-function locations,
-            721 strings with 12565 characters,
-and the built_in function-call counts, 19525 in all, are:
-= -- 1447
+            721 strings with 12535 characters,
+and the built_in function-call counts, 19603 in all, are:
+= -- 1451
 > -- 2211
 < -- 9
 + -- 741
 - -- 714
-* -- 1860
-:= -- 3287
-add.period$ -- 91
+* -- 1862
+:= -- 3291
+add.period$ -- 93
 call.type$ -- 27
 change.case$ -- 320
 chr.to.int$ -- 27
 cite$ -- 54
-duplicate$ -- 556
-empty$ -- 905
+duplicate$ -- 564
+empty$ -- 925
 format.name$ -- 745
-if$ -- 3814
+if$ -- 3838
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 25
-newline$ -- 153
+newline$ -- 155
 num.names$ -- 108
-pop$ -- 649
+pop$ -- 655
 preamble$ -- 1
 purify$ -- 292
 quote$ -- 0
 skip$ -- 579
 stack$ -- 0
 substring$ -- 127
-swap$ -- 44
+swap$ -- 46
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
@@ -43,4 +43,4 @@ type$ -- 297
 warning$ -- 0
 while$ -- 85
 width$ -- 0
-write$ -- 354
+write$ -- 358

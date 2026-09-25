@@ -20,7 +20,7 @@ END = "magnitude we measure only"   # last words of the main text (r26: the
 
 MARKERS = [
     "Three questions, kept apart", "Contribution: four claims",
-    "Relation to prior work", "The design that would settle",
+    "Related work", "The design that would settle",
     "An instructed-lie benchmark changes two things", "Proposition (",
     "How the criteria divide", "What is proven, what is shown", "We evaluate seven LLMs",
     "The most discriminative question", "A hand-written regex",
