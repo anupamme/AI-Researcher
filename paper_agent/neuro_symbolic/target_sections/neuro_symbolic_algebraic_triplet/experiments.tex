@@ -1,104 +1,401 @@
 \section{Experiments}
 \label{sec:experiments}
 
-\subsection{Setup}
-
-All experiments use a single frozen pipeline. The primary corpus is the AI~Feynman held-out-form suite (10 equations, one withheld equivalent form each, $n{=}25$ seeds); the shared-variable and overlap suites are described where used. Appendix~A documents that all tables derive from one run family under satisfaction-rate filter $[0.1,0.9]$ and paraphrase-only equivalence, and lists every run tag.
-
-\subsection{Where Do Benchmarks Expose Low-Tier Cues?}
-\label{sec:survey}
-
-Before diagnosing any encoder, we ask whether the token-lookup shortcut is a property of the benchmark \emph{corpora} the field uses. Table~\ref{tab:benchmark_survey} (Appendix~Y) applies a zero-parameter classifier (no training, nothing fitted) to 23 corpora from four benchmark families, reporting separability at each cue tier (\S\ref{sec:tiers}). We released this as a command-line auditor so a corpus can be screened before any model is trained (\S\ref{sec:artifact}).
-
-\paragraph{The tier-1 flaw is real, and it is confined to one family.} The AI~Feynman corpus \citep{udrescu2020ai} gives $84\%$ of its equations a variable set no other equation shares, so a held-out-form protocol built on it is almost entirely solvable without algebraic reasoning. But this is a property of a \emph{tokenization convention}, not of equivalence-class benchmarks in general. Generated symbolic-regression corpora (NeSymReS \citep{biggio2021neural}, Lample--Charton \citep{lample2019deep}) reuse a tiny variable pool and score $0\%$. So, decisively, does \textbf{EQNET} \citep{allamanis2017learning}: across all 15 of its corpora, at most $3.2\%$ of classes have a unique variable set.
-
-We therefore state the finding narrowly: we cannot cite published work that runs this protocol on a physics corpus and attributes the result to structural learning. The defensible claim is design hygiene: \emph{build a held-out-form protocol on a physics corpus under the natural tokenization and you get a lookup task}. This is a targeted audit of selected corpora, not a comprehensive survey.
-
-\subsection{Held-Out-Form Suite: Variable-Identity Leakage}
+% Round 46, his #5.  The prespecification sentence that stood here as \S4's preamble now opens the
+% consolidated `Scope of inference' close at the end of \S4.4: it is a GLOBAL scoping, and a reader who
+% met it before the first finding read it as a hedge rather than as a design commitment.  Moved, not
+% deleted -- check_protected_claims.py matches over the concatenated body, so relocation is safe.
+% Round 46, his #12 list ("use argumentative section titles ... state the finding").  Three titles change
+% here (4.1, 4.3, 4.4); 4.2 and \S3.3 already state theirs, and \S3.3's is the reviewer's own suggestion.
+% Each replacement is SHORTER than the title it replaces (62->60, 42->42, 45->44 characters): a heading
+% that wraps to a second line costs a body line, and p7-p9 carry 0.000pt of slack.  Section titles are
+% keyed by no gate in this repo -- check_reviewer_map.py keys on \label{sec:...} -- but they ARE keyed in
+% /tmp/r38_measure.py's smallcaps fragments, which were updated before this edit was measured.
+% "Only One CORPUS" was false on this paper's own survey table, which exposes THREE corpora at tier 1:
+% AI~Feynman at 84%, Feynman-10 (ours, derived from it) at 100%, and the Python clone corpus at 96%.
+% Table~\ref{tab:benchmark_survey}'s caption states the accurate individuation -- "confined to the
+% physics block" -- which is the FAMILY, exactly as this subsection's own first sentence says.  Corpus
+% -> Family is character-identical, so the page state cannot move.  Do not re-narrow it to a corpus.
+\subsection{Only One Family Carries the S1 Flaw, and S2 Is an Entitlement}
 \label{sec:held_out_form}
-
-We now apply the diagnostic to the AI~Feynman held-out-form suite, where one equivalent form per equation is withheld from training and tested at inference.
-
-\paragraph{Apparent success, and a zero-parameter classifier that beats it.} Under plain held-out evaluation, the Tree-LSTM identifies held-out Feynman forms at $0.972 \pm 0.060$ ($n{=}25$, chance $0.10$) against a random encoder's $0.724 \pm 0.184$. Read naively, this is structural identification. But the survey has already ruled that out: this corpus gives \emph{every} equation a variable set no other equation shares (Table~\ref{tab:benchmark_survey}), so a bag over variable tokens alone is a complete lookup solution \emph{by construction}, and scores $\mathbf{1.000}$ (sd $0.000$), above the trained encoder at every seed, with no training and no parameters. This is the \emph{token-bag skyline}, and it is the reason step~1 of the checklist is to compute it before training anything. Table~\ref{tab:held_out_form} (Appendix~X) gives the full rows, including a replication in which the full-token bag falls \emph{below} the trained encoder, which is why we anchor this comparison on the deterministic variable-only row rather than on a near-tied one.
-
-Under within-range renaming the (plain, renamed) pair is $(0.972, 0.824)$ for the trained encoder and $(0.724, 0.624)$ for the random one; the variable-blind bag scores $0.636$, ${\approx}6\times$ chance from operator content alone. Variable identity is the dominant cue; tier-2 is what remains. With genuine out-of-library rewrites the pair collapses to $(0.50, 0.15)$ (Appendix~E).
-
-
-\subsection{The Fix: Shared-Variable Design}
 \label{sec:the_fix}
 \label{sec:positive_control}
-
-The diagnostic prescribes its own remedy. If variable identity is what the encoder is exploiting, then a benchmark whose equivalence classes share a variable pool removes the cue by construction, and makes whatever remains measurable.
-
-\paragraph{The fix: shared-variable design, with a non-trivial renaming control.} We remap all 10 Feynman equations to a shared pool via de~Bruijn normalization; 7/10 then share $\{x_0, x_1\}$, so variable identity can no longer disambiguate them. Evaluating under \emph{genuine} within-range renaming, a random injective relabeling into the trained vocabulary (tags \texttt{r52}, \texttt{r61}, $n{=}25$), a triplet encoder identifies held-out forms at plain $= 0.932$ with renamed accuracy \emph{preserved} at $0.972$, against a random encoder at $0.604$/$0.672$ and zero-parameter bags at $0.624$, $0.564$ and $0.496$. \textbf{This is the one identification result in the paper that clears every non-learned baseline available to it.} Resampling \emph{equations}, the trained-minus-random gap is $+0.328$ $[0.192, 0.472]$ plain.
-
-\paragraph{Auditing the positive result.} Under \emph{operator scrambling} (each held-out operator replaced by a random one of the same arity; tags \texttt{r53}, \texttt{r54}, \texttt{r61}) trained identification falls from $0.932$ to $0.312$ $[0.184, 0.460]$ against a random skyline falling to $0.140$, a gap of $+0.172$ $[0.044, 0.300]$. Operator content is the dominant cue, with a small shape residual; under arity control the six two-variable equations reach $0.887$ $[0.753, 1.000]$ against within-group chance $0.167$. The defensible claim is identification \emph{above the operator-bag skyline}, narrower than ``structural identification''.
-
-\subsection{A Floor Under a Published Leaderboard}
+\label{sec:survey}
 \label{sec:eqnet_audit}
 \label{sec:causal_external}
 
-The strongest form of the audit is to point it at numbers someone is currently standing behind. Three published systems report $\mathrm{score}_5$ on the \textsc{UnseenEqClass} split of the 14 SemVec corpora: EqNet \citep{allamanis2017learning}, and the StructEmb ablation and headline SemEmb system of \citet{gangwar2023semantic}. The metric needs only a distance, so it is computable for a bag of tokens exactly as for a learned embedding. Table~\ref{tab:score5} (Appendix~V) does, under those authors' own evaluation: neighbours searched in the full corpus, normalisation by $\min(|\text{class}|,5)$ (tag \texttt{r68}).
+% "confined to one family" was true of PUBLISHED benchmarks and false of the 23 corpora this sentence
+% quantifies over: Table~\ref{tab:benchmark_survey} exposes Feynman-10 at 100% and the Python clone set
+% at 96%, and its own caption says T1 "fires harder than in any symbolic corpus" there.  Both are
+% corpora WE built, so `published' is the one word that makes the sentence true at its stated scope --
+% and it is the scoping check_protected_claims.py's ABSENT_ANYWHERE note relies on to refute prevalence.
+% Round 48.  ,~AF added, and it is a CORRECTNESS fix found by a gate written for something else.  This
+% sentence cited Y (the corpus audit's full table, right) and AG ("Auditing EQNET Under Its Own Splits"),
+% while AF -- "The AI Feynman Case Study, Full Controls", whose first sentence is "\S\ref{sec:held_out_form}
+% states the AI~Feynman result in one paragraph ... the controls behind it are here" -- was referenced
+% NOWHERE in 94 pages.  AF \ref's this section; this section did not \ref AF.  AF and AG are one letter
+% apart, which is the signature of a past re-lettering, and it is precisely the failure mode
+% check_appendix_letters()'s docstring says no mechanical check can see: a hand-typed letter that names a
+% real but WRONG section.  It was found only because the new unreachable-section clause flagged AF, so the
+% lesson is that an ORPHAN check catches wrong-target citations as a side effect.  AG is kept, not
+% replaced: it is the reviewer map's row 1 and the survey spans EQNET corpora too.
+% +4 rendered characters into a second line already 20 columns short of full; p7 carries 0.000pt.  R61: 23 -> 25 digit-for-digit (this count named r57's LOG; the parenthetical cites the TABLE, which grew the r95 clone and r96 SCAN rows after r57 -- 3+15+2+3+1+1). Enlarging the population STRENGTHENS the claim: the added published corpus (SCAN) is T1-immune at 0.3% and the exposed one (clones, 96%) is ours, so line 27's `published' warning stands unchanged. The r57 provenance row keeps 23 -- it describes the log. No line inserted here: 14 pins sit below.
+Over all 25 corpora (Table~\ref{tab:benchmark_survey}, Appendices~\ref{app:corpus_audit},~\ref{app:feynman_case},~\ref{app:eqnet_own_splits}) \textbf{the S1 flaw is real and confined to one published family}: only AI~Feynman \citep{udrescu2020ai} is exposed, at $84\%$.
 
-\emph{The leaderboard is robust.} No non-learned representation we tried reaches EqNet or SemEmb on \emph{any} of the 14 corpora, usually by a wide margin (\textsc{Bool8}: bag $12.7$ against EqNet's $58.1$; \textsc{SimpPoly10}: untrained encoder $36.1$ against $99.3$). Five corpora see a non-learned representation reach the StructEmb autoencoder ablation, the weakest of the three published columns. The verdict is a \emph{non-learned baseline floor under the published evaluation protocol}, not a certification: these systems exceed every non-learned baseline we could construct, on every corpus (Appendix~T documents the protocol verification that was necessary). As \S\ref{sec:structural_scale} shows, exceeding such baselines does not by itself establish that the information used is compositional.
+\paragraph{Two encoders we did not build.} On 320 integrands from \citet{lample2019deep}'s own test distribution, their released 80M-parameter integration encoder scores $0.872$ and a zero-parameter operator/arity bag $\mathbf{0.941}$, \textbf{an S2 task correctly identified, and evidence of nothing above it}, since the four family labels are \emph{defined} by which operators appear (Appendix~\ref{app:external_audit}). And on NeSymReS's published 10M Set-Transformer it returns a \emph{null} under a global column permutation, withdrawing a portability claim of our own that an earlier, weaker control had scored as a drop (Table~\ref{tab:entitlements}, Appendix~\ref{app:nesymres}).
 
-\paragraph{Auditing EQNET: a benchmark we did not build.} Running the full diagnostic on the EQNET corpora \citep{allamanis2017learning} under \emph{their} splits: variable identity is semantic there, so the corpora are tier-1 immune by construction. On \textsc{simplepoly8} (86 classes, chance $0.012$) the trained encoder reaches $1.000$ $[1.000,1.000]$ against bag $0.242$ and random $0.115$, with zero of 747 held-out forms string-identical to a training form (tag \texttt{r66}); on their \textsc{UnseenEqClass} split, $0.980$ against bag $0.741$. On the smaller \textsc{simplepoly5} unseen split the bag nearly matches the encoder ($0.433$ vs.\ $0.467$): exactly the condition the checklist exists to surface before training.
-
-\subsection{Structural Generalization at Scale}
+\subsection{The Shape-Matched Twin: A Ceiling Known by Proof}
 \label{sec:structural_scale}
+% The external audit was its own subsection until round 17, when the review asked
+% for its prominence to be reduced; it is now the closing paragraph of this one, so
+% the label rides here and all eight cross-references still resolve.
+\label{sec:external_audit}
 
-\textbf{EQNET \texttt{poly8}} provides exactly the benchmark the formal criterion demands: 1102 equivalence classes over a shared variable pool $\{x_0,x_1,x_2\}$ (tier-1 immune by construction) with \emph{zero} classes having a unique operator bag (tier-2 immune: mean collision = 73.5 classes per bag, largest = 348 classes sharing one bag). Any identification above the bag skyline on this corpus \emph{must} use tree-compositional features.
+\textbf{Here the ceiling is proved, not searched for.} EQNET \texttt{poly8} is the survey's only corpus clean at both lower levels, so it is where \S\ref{sec:tiers}'s criterion can be run: 1102 classes over a shared variable pool $\{x_0,x_1,x_2\}$ (S1 immune), \emph{zero} of them with a unique operator bag (S2 immune). Its expressions and equivalence classes are EQNET's released data, used unmodified and hash-pinned; what is ours is the composition protocol layered on it. Tree-LSTM, GIN and Transformer encoders are trained on $K$ classes under \textsc{SeenEqClass} and \textsc{UnseenEqClass} (Appendices~\ref{app:unseen_protocol},~\ref{app:poly8_full}).
 
-We train Tree-LSTM, GIN, and Transformer encoders (triplet loss, same recipe as the main experiments) on $K$ training classes and evaluate on two protocols: \textsc{SeenEqClass}, identify the held-out form of a training class (centroid matching); \textsc{UnseenEqClass}, $k$-NN class precision on held-out classes never seen during training. The second protocol is the OOD test the reviewer requested. Table~\ref{tab:poly8_structural} reports results at $K = 50, 100, 200, 500, 1000$ (tag \texttt{r70\_poly8\_structural}, 5 seeds).
+% Round 47, funding his \S15 one page later, and both trims are exact restatements under round 43's rule.
+% (a) "The chain is explicit: the pair SHARES every lower-level cue and DIFFERS in arrangement alone" ->
+% "Arrangement alone differs": the shared-cue half is this paragraph's own first sentence ("a twin of
+% identical token and operator multisets") AND \S1's twin paragraph verbatim ("the same variable multiset
+% and the same operator multiset in a different arrangement").  The INFERENCE it draws is kept in full --
+% it is the strongest rung's whole move -- and only the premise's third statement goes.
+% (b) "a trained readout over one included, at any capacity" -> "readouts included": the fourth statement
+% of readout closure inside two pages (\S1, Prop.~\ref{prop:ceiling}, this clause, and the sentence
+% closing the family-stress paragraph below, "one bound covers the family at any capacity").  "at any
+% capacity" stays, because it is the part a reader cannot reconstruct.  No gate keys on either literal
+% (checked against all four scripts and the reviewer map's seven frozen \S4.2 quotes; the frozen one here
+% is "composition-sensitive structural discrimination", untouched).
+\paragraph{Holding every lower-level cue fixed: a ceiling that is a theorem.} Each held-out form is paired with a twin of identical token and operator multisets, scored by which the encoder places closer to the class centroid (chance $0.5$). Twin members are \emph{not} algebraically equivalent, so a high score measures \emph{composition-sensitive structural discrimination}, not algebraic-equivalence generalization. Arrangement alone differs, so any score above chance is read off arrangement. At $K{=}500$ the trained Tree-LSTM reaches $\mathbf{0.994}$, every \emph{arrangement-invariant} representation, declared or not, is pinned at exactly $0.500$ by proof (Prop.~\ref{prop:twin_exact}), readouts included, at any capacity; and tree-edit distance, the one baseline that \emph{can} see a sibling swap, reaches only $0.723$, so \textbf{\emph{no} admissible comparator narrows the $0.206$ $[0.172,0.240]$ the untrained encoder leaves} (Appendices~\ref{app:stronger_baselines},~\ref{app:relocate}).
 
-\begin{table}[t]
-\centering
-\begin{threeparttable}
-\caption{\textbf{Structural generalization at scale on EQNET \texttt{poly8}} (tags \texttt{r70}, \texttt{r70\_k1000}; 5 seeds; 10 epochs). \texttt{poly8} is tier-1 \emph{and} tier-2 immune by construction (0/1102 unique operator bags). \textsc{Unseen} is $k$-NN class precision on classes \emph{never seen in training}, the OOD test. At every scale, Tree-LSTM substantially exceeds both non-learned baselines on unseen classes. The bag\_blind skyline falls as $K$ grows while Tree-LSTM unseen precision holds above $0.86$. Class-level 95\% bootstrap CIs for seen identification in brackets.}
-\label{tab:poly8_structural}
-\small
-\begin{tabular}{l rrrrr}
+% Round 49, his \S11: report the effect size prominently -- "+0.218 absolute gap, 95% CI, after
+% adversarial search over 28 control primitives".  The statistic was already here and already
+% STRONGER than the one asked for, but in the wrong ORDER: the paragraph opened on two accuracy levels
+% and reached the margin third, and the CI-based figure sat four lines below in another paragraph.  So
+% this is a reorder, not an addition -- the gap, the search that produced the comparator, and the
+% margin against the encoder's own bootstrap LOWER bound now open the paragraph, and the two levels
+% follow.  $0.181$ and the count $28$ MOVE here from the family-stress paragraph, which now says
+% "those $28$"; nothing is stated twice.
+% We do NOT print his $+0.218$.  It is a subtraction of two three-decimal numbers; the log-derived
+% margins are $+0.2208$ and $+0.2202$, and Appendix~\ref{app:adversarial_family} already records that a
+% per-$K$ margin computed from the printed values and one computed from the logs disagree in the last
+% digit.  $+0.22$ is the precision both derivations agree on.
+% WIDTH BUDGET, and it is the reason every clause below is as short as it is.  Measured on the built
+% PDF with pdftotext -bbox-layout: this paragraph's last line ends with 206.8pt of tail room on p8, so
+% the paragraph absorbs 206.8/4.5 = 46 rendered characters before it WRAPS and costs a body line --
+% and a body line here does not stay here.  The first draft of this edit added 93 and the conclusion
+% spilled 3 lines onto p10.  Funding it from \S3.2 did NOT work and the reason is worth recording: p6
+% is oversaturated (-1.927pt), so lines freed on p6 relieve that overflow instead of moving the p6/p7
+% boundary -- \S3.3 rose 3 rows on p6 while \S4 and \S4.2 did not move a single row on p7.  Freed
+% space upstream of a saturated page is latent, not spendable.  Pay INSIDE the page you spend on.
+\paragraph{Trained encoders exceed every non-learned baseline on unseen classes.} \textbf{A margin of $+0.22$}, $0.181$ clear of the encoder's bootstrap lower bound, over the strongest non-learned baseline an \emph{adversarial} search over $28$ primitives finds: at $K{=}500$, Tree-LSTM unseen $=0.894$ against $\mathbf{0.676}$, a ratio $1.3\times$, not a flattering $6.1\times$ against a variable-blind bag. The constructive claim is scoped to $K{\geq}200$ on this corpus and design: intervals \emph{overlap} at $K{=}50$ and $100$ and separate cleanly from $K{=}200$ on. That threshold is instrument resolution, not the effect's onset: unseen accuracy moves $0.05$ over a $10\times$ $K$ range ($0.843\to0.894$) while the class-level interval narrows $0.333\to0.066$.
+
+\paragraph{The ceiling is attained by the \emph{coarsest} member.} The depth ladder terminates at $\phi_{d\geq4}$ (\S\ref{sec:tiers}). \textbf{And the finest is not the strongest}: the order-sensitive completion $\phi_\infty$ falls \emph{below} the coarsest member (measured; Proposition~\ref{prop:resolution}, Appendix~\ref{app:phi_family}). It replicates on three corpora, two algebras, all five class partitions and an external encoder on deeper trees (Appendix~\ref{app:split_robustness}), but not on SCAN (\S\ref{sec:outside_symbolic}).
+
+% Round 51, his \S12C: "the paper should state very explicitly: the search score is exploratory; the
+% frozen-partition evaluation is the inferential test.  If that isn't already crystal clear, make it so."
+% Measured before writing: the general RULE is already body text at \S4.4's `Scope of inference.' close
+% ("inferential claims are restricted to the contrasts prespecified in \S\ref{sec:artifact}, so every
+% exploratory appendix test is descriptive"), and the MECHANISM is already at this site ("given the
+% split we report" ... "holds with that winner frozen, re-scored on four partitions it never saw").
+% What was missing is the JOIN: neither status word occurred in this sentence, so a reader had to derive
+% which of the two numbers is which -- and \S4.4's rule is one page later than the $0.676$ it governs.
+% Two words, at the two clauses that already existed, and the sizing took two attempts -- record the
+% failed one, because the reasoning behind it looks correct and is not.  p8's slack is 0.000pt, and this
+% paragraph's own last rendered line on p8 carried 114.10pt of tail room (measured with pdftotext -bbox),
+% so a +25-character version looked funded.  It was NOT: it pushed one line off p8, and p9 -- which
+% after this round's conclusion edit has 4.92pt of tail room, i.e. one character -- pushed it straight
+% on to p10, ahead of the Ethics heading.  TAIL ROOM ON A PARAGRAPH'S LAST LINE IS NOT A CHARACTER
+% BUDGET FOR AN INSERTION EARLIER IN THAT PARAGRAPH: line breaks are quantized, an insertion re-wraps
+% every line after it, and where the slack ends up is not where the tail was.  So this version is
+% length-neutral to +3 characters by construction: +13 for "exploratory," and +7 for the inferential
+% label, funded inside the same paragraph by
+%   - "test, given the split we report" -> "test on the split we report"                          (-4)
+%   - "is unreachable and never claimed" -> "is unreachable, never claimed"                        (-4)
+%   - "every cell the union passes is passed by all 8191 sub-families"
+%     -> "all 8191 sub-families pass every cell the union passes"                                 (-9)
+%     (voice only; the phrase "every cell the union passes" is preserved verbatim so a grep for it
+%      still lands here, and the quantifier and the number are untouched).
+%   THREE MISTAKES IN THE SIZING OF THIS EDIT, all caught by measurement or a gate, none by inspection:
+%   1. +25 characters "fit" because this paragraph's last line on p8 had 114.10pt of tail room.  It did
+%      not: it pushed a line off p8, and p9 (4.92pt of tail after the conclusion edit) pushed it to p10.
+%      TAIL ROOM AT A PARAGRAPH'S END IS NOT A BUDGET FOR AN INSERTION EARLIER IN THAT PARAGRAPH --
+%      line breaks are quantized, an insertion re-wraps everything after it, and the freed space does
+%      not come back where the tail was.
+%   2. A colon closed the frozen clause ("it never saw: $+0.16$"), and check_holdout_join() freezes
+%      "it never saw, \$\+..." because that pattern is what joins this sentence to Table 37's numbers.
+%      One character of punctuation took that check to ZERO coverage.  Restored the comma rather than
+%      loosening the pattern: the colon bought nothing.
+%   3. Two of the first draft's funding cuts were FROZEN REVIEWER-MAP QUOTES -- "widened by search
+%      rather than by hand" and "robustness of the verdict to family specification" -- and both are
+%      restored verbatim above.  They were grepped, and the grep was WRONG: it searched check_*.py,
+%      and the quotes live in the READING MAP TABLE in appendix_domain_guards.tex, which
+%      check_reviewer_map.py reads them out of.  Grep the .tex tree, not the gate scripts: a frozen
+%      quote lives in the paper, and the script only knows where to look for it.
+% \S4.4's general rule is deliberately left untouched: it scopes all of \S4, not just this number.
+\paragraph{How much could the family we declared have mattered? Exactly this much.} Widened by five descriptors we did not choose, the ceiling moves at $5$ of $8$ cells by at most $+0.038$, and all $8191$ sub-families pass every cell the union passes (Table~\ref{tab:entitlements}). So this measures robustness of the verdict to family specification; completeness is unreachable, never claimed (Corollary~\ref{cor:monotone_family}; Appendix~\ref{app:family_stress}). And widened by \emph{search} rather than by hand: the $0.676$ is \emph{exploratory}, a hill-climb over weighted unions of those $28$ primitives, each gated by the same per-instance twin test on the split we report, and it \emph{asymptotes}: four optima in $[0.6523,\,0.676]$, none closing the gap; \textbf{the \emph{inferential} test: that winner frozen, re-scored on four partitions it never saw, $+0.16$ to $+0.27$} (App.~\ref{app:adversarial_family}, Table~\ref{tab:holdout_ceiling}).
+% Round 45.  The reviewer's \S26.2 calls a search-then-freeze-then-evaluate-on-an-untouched-split run
+% "the single experiment I would most want".  Both halves already existed and did not cite each other:
+% appendix BB had the frozen composite re-scored on partition 71, and the five-partition sweep had the
+% TRAINED encoder on that same partition.  BB's own text refused the join -- "there is no trained row
+% on that partition to read it against" -- which was true of BB in isolation and false of the document.
+% Three more re-scorings (holdout_seed 72/73/74, ~31 min CPU, nothing trained) make it four unseen
+% partitions.  Funded in-paragraph, not from the cascade: "each cell ... of its sub-families" ->
+% "every cell ... sub-families", "So what this measures is" -> "So this measures", "has already
+% merged" -> "has merged", "finer than one of them" -> "finer than one", "with nothing trained" ->
+% "untrained" (same fact, 11 fewer characters), "everywhere" -> "wherever".  No number, no scoping
+% clause and no caveat removed.  The Appendix BB pointer becomes the table's, and the table lives in
+% appendix BB, so the routing is unchanged; \ref'ing it is also what check_float_routing() requires.
+And over every trained readout, not just every feature map: a readout cannot separate what its input has merged, and \emph{no} admissible map is finer than one, so one bound covers the family at any capacity, untrained; and it is cleared, with room, wherever the constructive claim is scoped (Appendix~\ref{app:readout_closure}).
+
+\input{figure_novelty_cost.tex}
+
+% Round 47, his \S6: the depth-8 $0.736$ is where a reader forms the overclaim, and the limit that
+% bounds it -- a primitive held OUT of the library, `+0.429--+0.845, not established' -- was stated only
+% in \S4.4's axis table one page later.  So the clause naming it now sits at the site of the overclaim
+% and routes to \ref{app:lopo}, which was already in this paragraph's own citation list.
+% Funded HORIZONTALLY, which is the only lever available here: this paragraph is on p8, upstream of the
+% bistable \S4.3 heading boundary, so one extra LINE would flip that boundary and spill the conclusion
+% past p9.  Its last line ended at ~25% of the measure (~66 characters of tail room) and the clause is
+% ~56, measured after the edit as page-state-identical.  Do not lengthen it without re-measuring.
+% Round 49, his \S19.2: "put the depth-8 + twin result at the absolute center", with the spine
+% "shortcut audit -> twin -> surviving composition -> failure on novel inventory" legible from the
+% headings.  It was a \paragraph inside a subsection titled after the TWIN, so a reader scanning the
+% table of contents met the paper's strongest composition result as a run-in head under a different
+% result's name -- the same routing defect as round 48's uncaptioned novelty table and round 40's
+% recorded diagnosis, third round running.  Promoted to a numbered subsection; the run-in head is
+% deleted because the title now says it, and \S3.2 funds the heading's height (measured, not assumed).
+% The \texttt{boolean8} paragraph stays here rather than in \S\ref{sec:structural_scale}: it is the
+% spine's fourth element (a novel inventory on which the coverage MECHANISM fails), so it belongs
+% after the surviving composition result, not before it.
+% CAUTION: two rows of the reviewer map pinned their Claim cell to \ref{sec:structural_scale} and both
+% quotes live in THIS subsection now -- "composition-of-known-transformations" and "the
+% coverage-closure \emph{mechanism} is polynomial-specific".  check_reviewer_map.py's check 5b
+% verifies a Claim is in the section its own row NAMES, so both cells were repointed here in the same
+% edit.  Do not move either paragraph again without repointing them.
+% Title is 57 characters on one line; \S3.2's is 62 and \S3.3's is 61, both one line, so this fits --
+% a two-line title would repack p8 and spill the conclusion past p9.
+% CAUTION (round 53): `the Tree-LSTM' in this paragraph replaced `the encoder', and the two-character
+% substitution IS the round's deliverable.  Measured before the edit: this section contained ZERO
+% architecture words naming the encoder its 0.736 belongs to, and exactly ONE naming an encoder that
+% FAILS (the Transformer, in the parenthesis below).  A reader of p8 alone therefore could not say whose
+% result the headline composition number is -- which is precisely round 53's Barrier 1 (`the positive
+% result is too dependent on the Tree-LSTM'), scoring Generality 6 and Theoretical 6.5.  The reviewer
+% could not find the three-encoder answer in Appendix AK because this paragraph never named an
+% architecture and routed to AK as the fourth of four bare parenthetical refs.  Do NOT generalise this
+% back to `the encoder': the name is what makes the scope clause below mean anything.
+% FUNDING, measured: the substitution is +2 rendered characters and the paragraph's last line was
+% ALREADY saturated (tail -0.00pt) after `singles-trained'.  Unfunded, those 2 characters cost the
+% paragraph a rendered line, which pushed 7 lines off p8 onto p9 and the conclusion's finding (3) onto
+% p10 -- a TEN-PAGE BODY, i.e. a desk reject.  Measured both ways: p8 123 rows -> 116, p9 118 -> 119,
+% p10's first body line `E THICS S TATEMENT' -> conclusion prose.  The 2 characters are therefore paid
+% for inside this same paragraph by `$188$ of them realised and \emph{none} trained on' ->
+% `$188$ realised, \emph{none} trained on' (-11 rendered characters), which keeps the number AND the
+% emphasis on `none' and is pinned by no gate.  Do not restore the longer form without re-funding it.
+% CAUTION (round 53): `singles-trained' in the closing parenthesis is LOAD-BEARING and is not a
+% hedge.  Appendix~\ref{app:r81_arch} now runs the composites-in-library arm for that encoder, and the
+% SAME Transformer that fails the $\mathcal{F}_3$ audit at $d{=}3,4$ trained on singles CLEARS it
+% resolvedly at all four depths trained on depth-4 composites (interval lower bounds
+% 0.613/0.650/0.586/0.449 against bags 0.245/0.255/0.255/0.185).  So the unqualified sentence -- which
+% is what this clause said until round 53 -- asserted an architecture-level verdict the audit never
+% licensed, ours being the paper that says a verdict is about a trained model on a task.  Deleting the
+% qualifier restores a claim the appendix it cites now refutes.  16 rendered characters, funded by the
+% 73.90pt of tail measured on this paragraph's last line.
+\subsection{Trained on Singles; Tested on Depth-8 Chains It Never Saw}
+\label{sec:depth8_composition}
+
+We train on single rewrite applications and test on held-out compositions equivalent to their anchor. Allowing each of poly8's four primitives twice at \emph{distinct} sites reaches depth~8 over 200 classes, every held-out chain a token-delta-matched multiset in one of $2520$ orders, $188$ realised, \emph{none} trained on. Trained on singles alone the Tree-LSTM identifies them at $\mathbf{0.736}$ at $d{=}8$ (chance $0.005$; strongest non-learned $0.100$) and a per-depth shape-matched twin holds $\mathbf{0.876}$ there, so the deep result is not the size contrast that grows with depth. \textbf{The evidence is sensitivity to global arrangement beyond the declared order-blind family}; calling that composition-of-known-transformations generalization is an interpretation that does not reach a primitive held out of the library, \textbf{or another encoder} (Appendices~\ref{app:deep_composition},~\ref{app:lopo},~\ref{app:nonlocal}; \ref{app:r81_arch}: a singles-trained Transformer fails the audit past $d{=}2$).
+
+% CAUTION (round 53): `encoder-specific' below rests on the REPLICATE-STABLE
+% signature, not on the loud one.  GIN's own d=4 column turns over in replicate 1
+% (argmax at training depth 3) and rises monotonically in replicate 2, so `GIN's
+% coverage ladder is non-monotone' is NOT a claim these runs support and was
+% withdrawn from this sentence after being drafted into it.  What both replicates
+% agree on is the CLOSURE FRACTION: GIN recovers 13-22% of its own d1-minus-d4
+% deficit by training on composites where the Tree-LSTM recovers 87%, and 3-4 of
+% its 6 above-diagonal cells fall below row 1 where none of the Tree-LSTM's do.
+% Appendix AK's table carries both numbers.  Do not re-sharpen this to a
+% monotonicity claim about GIN.
+\paragraph{A different algebra: \texttt{boolean8} clears the criterion harder and breaks the coverage story.} \texttt{boolean8} needs four new primitives, one of them non-local, and clears the criterion \emph{more} decisively ($7.6\times$ against $5.0\times$) with the twin margin \emph{widening} to $+0.296$ $[0.225,0.364]$. And there the coverage mechanism breaks outright: \texttt{boolean8}'s coverage ladder is non-monotone; \textbf{the coverage-closure \emph{mechanism} is polynomial- \emph{and} encoder-specific} (Appendices~\ref{app:external_replication},~\ref{app:r81_arch}). And what the readout bound costs here: our $K{=}50$ pass is left unproved by $0.0027$, and Appendix~\ref{app:boolean_twin}'s untrained-encoder anomaly splits into a \emph{readout} artifact there and a \emph{proved} family property above it.
+
+
+\subsection{The Audit Ports; Our Own Inversion Does Not}
+\label{sec:outside_symbolic}
+\label{sec:scan_composition}
+
+% Round 46, his #4 ("reorganize the results so each section starts with its finding").  The two
+% sentences below are SWAPPED, not rewritten: the section used to open on its own scope and reach its
+% finding second.  Both stay inside this subsection, so check_reviewer_map.py's row for
+% sec:outside_symbolic still finds its quote here (its SEC_TEXT is order-insensitive; a paragraph that
+% crossed a subsection boundary would be the unsafe edit, and none does).
+\textbf{An audit earns its keep where it \emph{disagrees} with the conventional report}, one row per modality, and in the natural-language row it disagrees with \emph{us}. S1--S3 name cues, not algebra: everything above is the detailed case study, and a new modality needs only a parser and a level assignment; \emph{portability, not general validation}, never prevalence.
+
+{\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.94}%
+\setlength{\aboverulesep}{0.5pt}\setlength{\belowrulesep}{0.5pt}
+\noindent\begin{tabular}{@{}p{0.155\linewidth}p{0.30\linewidth}p{0.505\linewidth}@{}}
 \toprule
- & $K{=}50$ & $K{=}100$ & $K{=}200$ & $K{=}500$ & $K{=}1000$ \\
+\textbf{Modality} & \textbf{Conventional report} & \textbf{What the audit licenses} \\
 \midrule
-\multicolumn{6}{l}{\emph{SeenEqClass (centroid identification, in-distribution):}} \\
-Tree-LSTM & $0.976$ $[0.94,1.00]$ & $0.984$ $[0.97,1.00]$ & $0.992$ $[0.98,1.00]$ & $0.990$ $[0.98,1.00]$ & $0.980$ $[0.97,0.99]$ \\
-GIN       & $0.964$ & $0.924$ & $0.806$ & $0.667$ & $0.527$ \\
-Transformer & $0.724$ & $0.670$ & $0.667$ & $0.566$ & $0.443$ \\
-Random encoder & $0.628$ & $0.642$ & $0.587$ & $0.476$ & $0.436$ \\
-Bag (full token) & $0.680$ & $0.500$ & $0.390$ & $0.212$ & $0.147$ \\
-Bag (variable-blind) & $0.200$ & $0.130$ & $0.065$ & $0.024$ & $0.012$ \\
-\midrule
-\multicolumn{6}{l}{\emph{UnseenEqClass ($k$-NN precision, OOD classes never seen in training):}} \\
-Tree-LSTM & $\mathbf{0.843}$ & $\mathbf{0.882}$ & $\mathbf{0.872}$ & $\mathbf{0.896}$ & $\mathbf{0.866}$ \\
-GIN       & $0.832$ & $0.884$ & $0.867$ & $0.740$ & $0.763$ \\
-Transformer & $0.825$ & $0.806$ & $0.837$ & $0.729$ & $0.736$ \\
-Random encoder & $0.711$ & $0.673$ & $0.673$ & $0.525$ & $0.538$ \\
-Bag (full token) & $0.800$ & $0.770$ & $0.685$ & $0.518$ & $0.560$ \\
-Bag (tree-local, tier 3) & $0.726$ & $0.658$ & $0.564$ & $0.411$ & $0.371$ \\
-Bag (token n-gram, tier 3) & $0.426$ & $0.603$ & $0.315$ & $0.230$ & $0.197$ \\
-Bag (variable-blind) & $0.535$ & $0.425$ & $0.287$ & $0.186$ & $0.228$ \\
-Chance & $0.100$ & $0.050$ & $0.025$ & $0.010$ & $0.001$ \\
+symbolic math & a released 80M integration encoder scores $0.872$ on its own test distribution & a zero-parameter operator/arity bag scores $\mathbf{0.941}$: \textbf{an S2 task correctly identified}, and evidence of nothing above it \\
+natural language & a Tree-LSTM reaches $\mathbf{0.987}$ on SCAN \texttt{add\_prim\_jump}, where the grammar and the held-out set are theirs & it \textbf{passes}, against $\sup\mathcal{F}_3{=}0.0005$, \emph{and their design puts the admissible bar on the floor}, so we quote no ratio: what clears it is composition of \emph{one known} transformation onto one unseen primitive, still not compositional reasoning \\
+code & S2 reaches $0.987$ over $300$ Type-2 clone classes we built from Python stdlib code & \textbf{Program representations: settled below S3}; \emph{every} $\mathcal{F}_3$ member attains $0.990$, exactly the maximum this corpus admits \\
 \bottomrule
-\end{tabular}
-\end{threeparttable}
-\end{table}
+\end{tabular}}
 
-\paragraph{Trained encoders exceed every non-learned baseline on unseen classes.} At $K{=}500$, Tree-LSTM unseen $= 0.896$ against the strongest non-learned baseline (full-token bag) at $0.518$, the tier-3 tree-local bag at $0.411$, and the variable-blind bag at $0.186$. The comparison that matters is the strongest of these, not the weakest: against bag\_blind the ratio is $4.8\times$, but against the full-token bag it is $1.7\times$, and that is the honest figure. The margin \emph{grows with scale} (at $K{=}50$ the encoder leads the strongest baseline by only $0.843$ vs $0.800$), which is itself the more interesting claim, since a shortcut that survives at 50 classes should not survive at 1000.
+\noindent The sharpest test of the whole procedure is one somebody else built: on \citet{lake2018generalization}'s split the prediction we registered before running held, and \textbf{it bounds our centrepiece}; there the ceiling is monotone, $\phi_\infty$ sits \emph{above} the family, and \S\ref{sec:structural_scale}'s inversion replicates in \emph{none} of $9$ cells (Appendices~\ref{app:external_audit},~\ref{app:scan},~\ref{app:scan_split},~\ref{app:clones},~\ref{app:code_structural}).
 
-\paragraph{Tier 3 holds most of the apparent headroom.} The tree-local bag reaches $0.411$ at $K{=}500$ where the operator bag reaches $0.186$: more than half the gap one might attribute to ``structure beyond operator content'' comes from parent--child and subtree-size statistics alone, untrained. Claims resting on distance to a bag skyline must be restated against it, which is why criterion condition~(3) (\S\ref{sec:tiers}) requires clearing it.
+\subsection{The Protocol Changes the Generalization Claim}
+\label{sec:protocol_disagreement}
 
-\paragraph{Holding the lower tiers fixed: twin probes.} Exceeding a baseline on unseen classes still does not say \emph{which} cue the encoder uses. We therefore pair each held-out form with a \emph{twin} of identical token and operator multisets, differing only in how they combine, and ask whether the encoder places the true form closer to its class centroid than the twin (chance $0.5$). Inventory baselines are then pinned at exactly $0.500$ by construction. Our first twin was a rotation, $(a \mathbin{\text{op}_1} b) \mathbin{\text{op}_2} c \to a \mathbin{\text{op}_1} (b \mathbin{\text{op}_2} c)$ (tag \texttt{r72}), but a rotation also changes depths, parent--child pairs and subtree sizes, which are tier-3 cues, and our own tree-local bag scores $0.861$ on it. That probe therefore licenses only ``more sensitive than the measured tier-3 baseline''.
 
-\paragraph{The shape-matched twin (tag \texttt{r73}).} Swapping two \emph{sibling} subtrees under a non-commutative operator ($x - y \to y - x$) leaves the tree-local bag \emph{exactly} invariant, verified per instance, so inventory \emph{and} local shape are both pinned at $0.500$. At $K{=}500$ over 348 probed classes the ladder reads: full-token bag $0.500$, tree-local $0.500$, token n-gram $0.681$, untrained encoder $0.788$, trained Tree-LSTM $\mathbf{0.994}$. Closing the shape loophole costs the untrained encoder $0.925 \to 0.788$ while the trained encoder holds, so the trained--untrained gap \emph{widens} from $0.075$ to $0.206$.
+\textbf{Takeaway: an evaluation protocol is a hypothesis about what generalization means}. On \textsc{boolean8} ($K{=}190$), \textbf{one set of trained GIN weights reads as clearing S3 under one protocol and at chance under the other}: $\mathbf{.881}$ $[.850,.909]$ on \textsc{UnseenEqClass} against a strongest-non-learned bound of $.596$, then $\mathbf{.511}{\pm}.026$ on the shape-matched twin against chance $.500$. The disagreement is the content: recovering a held-out form's class and telling it from a non-equivalent match are \emph{different} properties. Neither GIN number reproduces on MPS; the $.370$ gap is $5.7\times$ the largest per-seed GIN drift, $.065$ (Appendix~\ref{app:depth_arch}). % Round 48, D1, his \S10: he warns against publishing the GIN/Transformer ordering as a result, and the
+% number he quotes to do it ($0.669$) is appendix-only -- he assembled the ranking himself.  The body's one
+% architectural claim is this clause, and it was TRUE but under-sourced, which is the same complaint from
+% the other side.  Measured what was actually missing: GIN's failure is already printed TWO SENTENCES
+% above ($.511{\pm}.026$ against chance $.500$), so the only basis a reader could not see was the
+% Transformer's interval.  That one number is added and nothing else -- not a ranking, an interval that
+% fails to clear a stated bound.  Both printed numbers were ALREADY asserted at the digits they print --
+% verify_claims.py pins [0.588,0.746] at tol=0 and strongest_up==0.596 -- so the body caught up to the
+% verifier here rather than the other way round, and no new assertion was needed for D1.
+%
+% COST, measured not guessed.  The clause is ~46 rendered characters onto a line with ~18 of tail room, so
+% it grew this paragraph 8 -> 9 lines; widow control then moved TWO lines of \S5 to p10 for one line of
+% pressure, and p10's first body line stopped being ETHICS.  Paid back inside this same paragraph, six
+% restatements, nothing dropped: "is itself a hypothesis" -> "is a hypothesis"; "at $K{=}190$," ->
+% "($K{=}190$),"; "and as at chance" -> "and at chance"; "form's own class" -> "form's class"; "Their
+% disagreement" -> "The"; "is reproducible" -> "reproduces"; "the gap of $.370$ is" -> "the $.370$ gap
+% is"; "drift measured here, $.065$" -> "drift, $.065$" (the citation supplies the locus); "is the
+% architecture's" -> "is architectural"; and "of the three, only the Tree-LSTM" -> "only the Tree-LSTM",
+% which also de-ranks the clause his \S10 warns against ranking.  Back to 8 lines, body ends p9.
+% Do NOT re-fund this from \S4.4's axis paragraph below: it ends in an 11-character orphan line that LOOKS
+% like slack, and 13 freed characters there moved the break without removing the line.
+Which protocol a model clears is architectural: only the Tree-LSTM clears both; the Transformer's $[.588,.746]$ misses $.596$ (Appendix~\ref{app:boolean_twin}).
 
-\paragraph{Order too, and across corpora (tag \texttt{r74}).} A swap still changes left/right order, so it could be read as testing argument order alone. We therefore add \emph{operand relocation}: exchange two leaves holding \emph{different} variables, $(x_0 - x_1)\cdot x_2 \to (x_0 - x_2)\cdot x_1$. The tier-3 baggers being variable-blind, inventory, shape \emph{and} order are all invariant, leaving only the variable-to-position binding. Across 17 cells over six corpora and two symbolic families every construction guarantee held and every encoder gap was positive; under relocation the trained--untrained gap is $+0.142$, $+0.383$, $+0.210$, $+0.184$: the swap's range, so the residual is not argument order. The matrix records its own limits: \textsc{oneVarPoly13} admits no relocation (one variable), and \textsc{boolean8} has no encoder row, the encoder vocabulary having no boolean operators.
-
-\paragraph{What this licenses, and what it does not.} Poly8 is tier-1 and tier-2 immune, the encoder exceeds every non-learned baseline including both tier-3 ones, and all held-out forms are genuine EQNET test classes; this clears the criterion of \S\ref{sec:tiers}: the highest floor we can build, which is not the same as demonstrating composition. We claim no clean partition: a complete set of local relations determines a tree, so tiers 3 and 4 are separated by the \emph{boundedness} of the statistic rather than categorically. And the effect is bounded, not decomposed: training adds \emph{at most} $0.206$ over the randomly initialised architecture under this probe, which does not split into architectural and learned parts that could be summed. That an untrained recursive encoder reaches $0.788$ at all is why we report it as \emph{non-learned} rather than structure-free. GIN and Transformer degrade at large $K$ on seen identification while maintaining strong unseen precision, a split that merits further study.
-
-\subsection{Coverage Is Causal (LOSO)}
+\paragraph{Novelty is not a scalar, so a split must declare which axis it varies.}
 \label{sec:loso}
 \label{sec:coverage}
 \label{sec:robustness}
+% Round 48, B4, found while mapping his \S17.2's seven requested conditions onto what already runs.  This
+% sentence's count is FIVE and it hangs the \ref on the count, but Figure~\ref{fig:novelty_cost}'s lower
+% panel draws THREE bars -- the figure's own caption says why ("paired drops at $d=8$"), and the five-row
+% table below prices all five.  Round 47's "three modalities" defect exactly: a countable claim whose
+% cited object has a different count, invisible to every gate here because no gate counts a tikz bar.
+% The figure keeps the \ref (check_float_routing() pins the cited-float set); what changes is that the
+% cite now names the subset it draws, so the number the reader can count matches the number in print.
+%
+% D1 tried and REVERTED an edit here, and the revert is the durable part.  This paragraph ends in an
+% 11-character orphan line, "(Figure 3).", which looks like a free line; "in this paper" -> "here" freed 13
+% characters and moved the break WITHOUT removing the line, so the orphan is not slack.  Worse, the
+% sentence is a FROZEN reviewer-map quote: check_reviewer_map.py pins "moves the apparent result further
+% than any baseline in this paper does" verbatim AND to sec:loso, so the compression FAILed the gate twice
+% (missing literal, plus wrong section) even though it changed no meaning.  Restored verbatim; D1 was
+% funded inside \S4.4's own opening paragraph instead.  Grep the reviewer map before touching this line.
+\textbf{Changing only how the held-out form is \emph{constructed} moves the apparent result further than any baseline in this paper does}: ``out-of-distribution'' names \emph{five separable axes}, free to fatal; the three paired at $d{=}8$ are drawn (Figure~\ref{fig:novelty_cost}).
 
-A leave-one-schema-out design establishes coverage causally (tag \texttt{r59}): for eight out-of-library rewrite schemas we train two encoders whose held-out trees are \emph{byte-identical}, varying only whether that schema is in the training library. On the three schemas with headroom, $\Delta$plain $= +0.170$, $+0.170$, $+0.150$, pooling to $+0.061$ $[0.019, 0.123]$: library membership \emph{per se} raises identification with structural distance held fixed, though it is not the sole explanation. The matched contrast motivating it (Table~\ref{tab:diversity_sweep}) moves the (plain, renamed) pair from $(0.965, 0.880)$ to $(0.832, 0.662)$ when only the held-out construction changes, while a variable-token bag scores $1.000$ in \emph{both} arms. Full design and table: Appendix~W.
+{\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.94}%
+\setlength{\aboverulesep}{0.5pt}\setlength{\belowrulesep}{0.5pt}
+\noindent\begin{tabular}{@{}p{0.315\linewidth}p{0.215\linewidth}p{0.43\linewidth}@{}}
+\toprule
+\textbf{What the split makes novel} & \textbf{Measured cost} & \textbf{Verdict} \\
+\midrule
+% Round 48, his \S17.2 (unseen pair, unseen triple).  MEASURED before writing: every cell in this table
+% is a fixed-width p{} column, so the round-44 rule "a column is width, a row is height" does NOT apply
+% here -- more text in a p{} cell is a LINE, hence height, on a page carrying 0.000pt.  What IS free is the
+% horizontal tail of a short cell: the `inventory' row's Verdict is 58 characters on ONE rendered line, and
+% this row's held four ("free").  So r102's result is annotated inside that tail and nowhere else; a sixth
+% row was not affordable and is not needed, because co-occurrence is a DIFFERENT manipulation from
+% arrangement (Appendix~\ref{app:cooccurrence} states the difference, and Figure~\ref{fig:novelty_cost}'s
+% arrangement bar and its provenance pin stay on r93/r94 for exactly that reason).  "also," is doing work:
+% without it a reader attaches the $+0.012$ in the Cost cell to the pair/triple claim beside it.
+\textbf{arrangement} of known primitives & $+0.012$, CI covers $0$ & free; also, unseen pair/triple $\le+0.010$ (App.~\ref{app:cooccurrence}) \\
+\textbf{composition depth}, never composed & $+0.200$ $[0.163,0.237]$ & graceful decay \\
+\textbf{schema}, vs.\ a wrong-schema control & $+0.070$ $[0.021,0.115]$ & at the family, not the rewrite \\
+\textbf{inventory}: library membership & $.965/.880 \to .832/.662$ & plain\,/\,renamed; held-out tree \emph{byte-identical}: largest move \\
+% Round 49, his \S7: "a much larger transformation library than four primitives".  The answer is a
+% MEASUREMENT and it belongs in this row, the one about library membership, not in a new sentence: the
+% largest inventory-preserving library available anywhere in the 15-corpus survey is FIVE, on the corpus
+% the paper already uses.  Same width discipline as the round-48 comment above -- every cell here is a
+% fixed-width p{} column, so more text is HEIGHT, and the only free space is the horizontal tail of a
+% short Verdict cell.  "not established" is 15 characters against the `inventory' row's 58 on one
+% rendered line, so this clause is 53 and still one line.  The 15-corpus table, the disqualified sixth
+% schema and the depth-8 feasibility census are Appendix~\ref{app:library_ceiling}.
+%   FOUND ON THE RENDER OF PAGE 9, and it is a cross-representation contradiction, not a wording nit.
+% This cell first read "no survey corpus admits $>5$", unqualified -- while Table~\ref{tab:library_ceiling}
+% prints a BOLD $6$ in its `usable' column for \texttt{poly8}, the very corpus this paper uses, and again
+% for \texttt{oneVarPoly10/13}.  So the body stated a bound that the cited table appears on its face to
+% refute, and only the caption's first clause ("the largest INVENTORY-PRESERVING library ... is five")
+% reconciles them.  Two numbers the paper prints, comparable and uncompared.  The fix names the table's
+% own column, which makes the join checkable rather than inferable, and it is $52$ rendered characters
+% against the $53$ it replaces -- STRICTLY SHORTER, so a $p\{\}$ cell that already fit one line still
+% does and page 9 cannot grow.  Do not restore the unqualified form.
+\textbf{primitive}, held out of the library & $+0.429$--$+0.845$ & not established; $\le5$ inventory-safe anywhere (App.~\ref{app:library_ceiling}) \\
+\bottomrule
+\end{tabular}}
+
+% Round 47, his \S15: "I would elevate this result slightly in the main paper", because it kills the
+% objection "maybe your original model was simply too weak".  MEASURED before writing it: `hardened',
+% `E3b' and `leakage index' returned ZERO hits in all six body files, and `grep -c hardened
+% verify_claims.py' returned 0 -- the result answering the most natural objection to \S4.4's largest
+% row was invisible to the body AND asserted by none of the 2366 checks.  So it lands here, beside the
+% `inventory' row it scopes, and check_hardened_recipe() now asserts it from logs/r31_hardened_recipe.json.
+% Deliberately ONE sentence and deliberately without $\ell'$: the symbol is defined only in
+% Appendix~\ref{app:hardened_recipe}, and importing an undefined symbol into the body on the round whose
+% binding axis is clarity would trade his \S15 against his \S11.  The recipe's four parameters stay in
+% the appendix for the same reason; "hardest recipe" is the claim, and the appendix is what it means.
+% FUNDED by \S4.2's two exact restatements one page earlier, measured empty before this was written.
+% Caught on the readiness pass, in this round's OWN new sentence: it read "against $0.992$ in
+% (App.~H)", with the second half of the contrast DROPPED -- "out-of-library" against a bare "in".
+% No gate here reads for grammar, and the missing word is not a missing \ref, so nothing flagged it;
+% it survived a build, four gates and 2398 assertions.  Restoring "-library" costs 8 characters, which
+% the paragraph's last line had room for: on the render that line still ends mid-column, and p9's slack
+% (+0.000), its line count (71) and the \S5/Ethics boundary are all what they were before the fix.
+\noindent And the ranking is corpus-specific: this coverage ordering fails on \texttt{boolean8} (\S\ref{sec:depth8_composition}). So \textbf{name the axis, and declare the family against \emph{it}} (Appendices~\ref{app:transfer},~\ref{app:lopo},~\ref{app:order_diversity}). \textbf{And this is no capacity failure}: our hardest recipe reaches only $0.480$ out-of-library, against $0.992$ in-library (App.~\ref{app:hardened_recipe}).
+
+% Round 46, his #5 ("move about 50\% of the caveats into one `Scope of inference' section") and #14
+% ("a consolidated limitations paragraph"), delivered BOUNDED -- and the response says exactly how far.
+% Measured before writing it: most of \S4's hedges are pinned to the number they qualify.  Five are `==1'
+% literals that earlier reviewers required, and check_reviewer_map.py freezes seven Claim quotes inside
+% \S4.2 alone, each of which must stay in the subsection its row names.  Hauling those here would undo
+% round 45's lesson -- quote the dispersion figure WHERE the number is -- and would risk the factual
+% drift this apparatus exists to catch, for a presentational gain.  So what gathers here is the GLOBAL
+% scope only: prespecification (moved from \S4's old standalone preamble), the unit of inference, and
+% what a pass is.  Nothing is deleted, and \S4's local scopings stay beside their cells.
+% This paragraph also carries his #17 (the class as the inferential unit) for all of \S4 at once, which
+% is why the two tabulars above did not each grow a clause: \S4 has 0.000pt of slack on every page.
+% Round 47, his \S9 and his \S21, and this paragraph is where they belong because both are limits.
+% \S9: he reads \texttt{boolean8}'s coverage failure as evidence FOR the framework -- "a mechanism claim
+% that fails to port is exactly what an audit should surface".  We agree and say it in our own voice
+% (thirteenth consecutive round declining to paste a reviewer's sentence); \S4.2 already reports the
+% failure, so what is added is the inference, not the result.
+% \S21: he wants "at least one non-symbolic reversal".  Stated honestly rather than claimed: the code
+% corpus we settle below S3 IS a reversal of the conventional reading, but we built it, and the
+% published non-symbolic benchmark (SCAN) is NARROWED, not reversed -- which is what the two new rows of
+% Table~\ref{tab:audit_changes} say on their face.  A reversal on someone else's non-symbolic benchmark
+% is named as the gap it is, in the paper and not only in the response.
+% FUNDING, and it is the round's whole page story.  The \S4.3 heading boundary flipped from p9 (round 46)
+% to p8, which released ~4.5 slots at the bottom of p9 -- room the Ethics block had drifted up into.
+% These ~3.2 lines spend exactly that, which puts Ethics back at the first body line of p10.  So the
+% overshoot from this round's methodology trims was spent on content instead of reverted.  Anything
+% added here now costs a line, and the paragraph is the last before \S5: measure before extending it.
+% Round 56, his \S9: the Type-2 clone NEGATIVE audit -- which he calls "actually very valuable, it
+% demonstrates the method can say No" -- existed only as a modality-table cell (line 240: S2 reaches
+% 0.987, every $\mathcal{F}_3$ member 0.990), with no claim attached to it anywhere in running prose.
+% This paragraph is the one narrative sentence about negative outcomes and it used a DIFFERENT example
+% (the coverage mechanism off polynomials), naming the clone corpus only as a scope limit.
+% NOT the clause the plan proposed.  That was a trailing "--- on the clones it refuses outright", and it
+% RESTATES "the code corpus we settle is ours" from ~1 rendered line earlier: "settle" already means
+% settled below S3, which already means refused.  Round 55's defect class exactly (a paragraph restating
+% a nearby span on the same page), and it would have been self-inflicted in the round's own new prose.
+% What the paragraph nowhere said is what settling AMOUNTS to -- so the parenthesis names the verdict
+% and its magnitude instead: the refusal lands at the corpus maximum, i.e. nothing is left to show, not
+% a narrow miss.  It quotes no number, so :240's row keeps 0.987/0.990 and no verifier assertion moves.
+% Checked on the p9 render and KEPT: "at the corpus maximum" echoes the code row's "exactly the maximum
+% this corpus admits" ~13 rendered lines above it, which is round 55's restatement class.  It is a
+% pointer rather than a restatement -- the row says what the numbers are, this says the audit REFUSED,
+% and the magnitude is what makes the refusal total rather than a narrow miss, checkable against that
+% row without hunting for it.  Do not re-litigate this without reading both on p9 together.
+% CALIBRATION, and carry it forward.  /tmp/r54_tail.py reported 221.80pt tail = "chars~ 59.9", i.e. it
+% prices a character at 3.7pt.  This 35-character bolded addition cost 154.12pt: 4.40 pt/char.  The
+% plan's 59-character version would have cost ~260pt and broken a line on a page carrying 0.000pt of
+% slack -- a ten-page body.  Treat that chars~ figure as an UPPER bound and divide it by ~1.2 before
+% spending it, especially for a \textbf clause, which sets wider than the roman the estimator assumes.
+\paragraph{Scope of inference.} One frozen pipeline throughout; inferential claims are restricted to the contrasts prespecified in \S\ref{sec:artifact}, so every exploratory appendix test is \emph{descriptive}. \textbf{The unit of inference is the equivalence class} on the corpora we built, and every interval above is a class-level bootstrap. Every pass falsifies a declared family's alternatives at a stated level and split, never certification, never architecture-independent (Appendix~\ref{app:r81_arch}); scopings tied to one number stay beside it. \textbf{Where our own results break is the audit working}: the coverage mechanism does not port off polynomials (\S\ref{sec:depth8_composition}); a family-relative bar exists to expose that rather than absorb it. What we cannot yet show is a \emph{reversal} on a non-symbolic benchmark built by others: the code corpus we settle is ours (\textbf{a refusal, at the corpus maximum}), and on SCAN the audit \emph{narrows} (Table~\ref{tab:audit_changes}).

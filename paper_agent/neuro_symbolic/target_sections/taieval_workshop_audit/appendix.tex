@@ -1,12 +1,24 @@
 \appendix
+% Tall, unbreakable [H] tables leave some pages short; let the slack fall to the
+% page bottom rather than stretching glue between headings and their content.
+\raggedbottom
 
 \section{The Screen, on Two Corpora}
 \label{app:cli}
+
+Stage~1 of the auditor runs in seconds and trains nothing. Figure~\ref{fig:cli} reproduces its
+output on two representative corpora: the physics corpus \texttt{feynman100}, where it fires the
+tier-1 warning that motivates this paper, and EQNET \texttt{poly8}, where it reports tier-1 clean
+and then flags that pairwise separability far exceeds the measured bag accuracy.
 
 \input{figure_cli.tex}
 
 \section{The Controlled-Probe Matrix, Every Cell}
 \label{app:probes}
+
+This is the full controlled-probe matrix underlying \S\ref{sec:tier3}. Figure~\ref{fig:tiers} shows
+what each baseline can solve on the rotation and swap twins, and Table~\ref{tab:probes_full} reports
+every cell of the three-transformation ladder (rotate, swap, relocate) across all six corpora.
 
 \input{figure_tiers.tex}
 
@@ -14,6 +26,10 @@
 
 \section{The Targeted Corpus Audit, Full Table}
 \label{app:survey}
+
+Table~\ref{tab:benchmark_survey} gives the complete corpus audit summarised in \S\ref{sec:survey}:
+all 23 corpora from the four benchmark families, with their tier-1 (unique variable-set) and tier-2
+(operator-bag separability) figures.
 
 \input{table_survey.tex}
 
@@ -42,10 +58,17 @@ EQNET \textsc{simplepoly8}        & 90 & 0.467 (full-token)          & \textbf{1
 \section{Twin Probes: Full Numbers}
 \label{app:twin}
 
+Table~\ref{tab:twin} gives the full twin-probe numbers for every baseline under both the rotation
+twin (inventory matched) and the shape-matched swap twin (inventory \emph{and} local shape matched).
+
 \input{table_twin.tex}
 
 \section{The $\mathrm{score}_5$ Leaderboard Floor, in Full}
 \label{app:score5}
+
+Table~\ref{tab:score5} gives the complete $\mathrm{score}_5$ leaderboard floor: all 14 SemVec
+corpora, our three non-learned representations, and the three published systems, computed under
+those authors' own protocol.
 
 \input{table_score5.tex}
 

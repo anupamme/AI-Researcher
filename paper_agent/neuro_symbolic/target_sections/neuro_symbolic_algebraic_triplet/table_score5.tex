@@ -3,6 +3,7 @@
 \caption{\textbf{A zero-parameter floor under a published leaderboard, computed under that leaderboard's own protocol} (tag \texttt{r68}). $\mathrm{score}_5$ (\%) on the \textsc{UnseenEqClass} split of the 14 SemVec corpora. The right-hand columns are transcribed from the published papers: EqNet \citep{allamanis2017learning}, and the StructEmb autoencoder ablation and headline SemEmb system of \citet{gangwar2023semantic}. The left-hand columns are non-learned representations we compute: a token-multiset bag, a variable-blind bag (operators, constants and arity), and an untrained Tree-LSTM ($n{=}3$ initialisations, over the full pool in every case). Nothing on the left is trained. Crucially, all of it is evaluated exactly as \citet{allamanis2017learning} evaluate: neighbours are searched in the \emph{full corpus} (\emph{pool}), not in the test split; cosine distance; self excluded; and the score normalised by $\min(|\text{class}|, 5)$ rather than by 5. \textbf{No non-learned representation reaches EqNet or SemEmb on any corpus.} Boldface marks the five where one reaches the StructEmb ablation.}
 \label{tab:score5}
 \small
+\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{l r r rrr r rrr}
 \toprule
 & & & \multicolumn{3}{c}{\emph{non-learned (this work)}} & & \multicolumn{3}{c}{\emph{published}} \\

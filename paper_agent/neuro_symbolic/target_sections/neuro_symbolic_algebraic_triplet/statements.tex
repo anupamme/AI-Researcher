@@ -1,0 +1,84 @@
+% Unnumbered statements. ICLR places these after the main text and before the
+% references; none of them count toward the page limit. Keep them here rather
+% than in the appendix so a reviewer finds them where the CFP says they are.
+
+\section*{Ethics Statement}
+
+This work involves no human subjects, no personally identifying information, and no new data collection: every corpus audited is already public (symbolic-expression benchmarks throughout, and, outside that domain, the published SCAN corpus \citep{lake2018generalization} and Type-2 clone classes built from a local Python standard library), and every model trained is a small encoder trained from scratch on those corpora. SCAN is fetched from its authors' repository under its own licence (BSD, Facebook Inc.) against a pinned SHA-256 and is \emph{not} redistributed with this supplement. We see three ethical dimensions worth stating explicitly.
+
+\emph{Auditing other researchers' published numbers.} Section~\ref{sec:eqnet_audit} computes non-learned floors under a live $\mathrm{score}_5$ leaderboard. We report that the leaderboard is \emph{robust}: no non-learned representation we built reaches EqNet or SemEmb on any of the 14 corpora; and we frame the result as a floor under a protocol, not as a defect in anyone's system. Where a corpus is weak (\textsc{simplepoly5}) we name the corpus, not an author. The tier-1 finding concerns a \emph{tokenization convention} inherited by a suite, not misconduct by the people who built the suite, and we say so wherever the finding appears.
+
+% Round 51's readiness pass ("is the paper ready?"), which is now the third consecutive
+% round in which ASKING that question found a defect no gate could see -- and this one
+% is the same class as the round's own finding, one paragraph over.  Part B closed this
+% FILE by opening it, for the Reproducibility Statement's counts.  This paragraph, two
+% above it, was still wrong about the ledger: "the four already-published numbers among
+% them are the \emph{Our\dots} rows of Table~\ref{tab:audit_changes}" is an IDENTITY
+% claim, and that table has SIX \emph{Our\dots} rows.  Its own caption says which four:
+% "Eight rows are already-published numbers, and four of those are systems and
+% leaderboards built by other people; the LAST TWO are claims of \emph{ours} that only
+% this revision's audit settled."  So 10 rows = 4 others' + 4 ours-already-published +
+% 2 ours-settled-here, and the four this sentence means are the FIRST FOUR Our rows --
+% which is the whole repair, mirroring the caption's own "the last two".
+%   Why eleven reviewers read past it: the sentence's six (four already-published + two
+% protocol-level, and the protocol-level two are NOT table rows) and the table's six Our
+% rows (four already-published + the caption's last two) are DIFFERENT SETS THAT SHARE A
+% COUNT.  A reader who counts Our rows gets six, matches the "six" in this clause, and
+% concludes the Our rows ARE the six claims -- which the same clause then contradicts.
+% Two sixes that coincide are worse than a wrong number, because each one checks out.
+%   Gated now by check_ledger_pointer(), whose control reverts exactly this: 18 -> 19.
+% And note what it means about the gate that already existed -- LEDGER_OURS = 6 was in
+% check_protected_claims.py all along, verified against this very table by
+% check_ledger_distribution().  Both facts sat in one process and nothing compared them.
+% THE ROUND-51 LESSON NEEDS ITS SECOND HALF: a gate's coverage is not the set of files
+% it opens, it is the set of CLAIMS IN THEM IT COMPARES.  Opening a file for one
+% paragraph is not covering the file.
+%   Do not "simplify" `first four' back to `the': it is the only thing making the
+% identity true, and it is a claim about RENDERED ROW ORDER, which the gate grounds by
+% asserting the last two rows of the table really are ours.
+\emph{Applying the standard to ourselves.} The same audit has now changed \emph{six} claims of our own; the four already-published numbers among them are the first four \emph{Our\dots} rows of Table~\ref{tab:audit_changes}, and the other two are protocol-level: computed our own way, our floor appeared to beat a published ablation on 13 corpora rather than 5; both of our purpose-built ``leakage-proof'' suites proved solvable at tier~2; a float32 tie defect in our own non-learned baselines had understated them; the chance level of our headline metric was understated by up to $1.6\times$; and a $+0.250$ ``alternate-order cost'' we had published as a non-replication was an aggregation artifact, withdrawn in this revision, a correction that \emph{removes} a caveat of ours rather than adding one; and, between review rounds, our own claim that the diagnostic detects notational sensitivity in a published 10M-parameter external encoder proved to rest on a control that permuted the held-out sets alone, so under a corpus-wide permutation the effect is a \emph{null} and the claim is withdrawn (Appendix~\ref{app:nesymres}). Every one is reported: the corrected numbers in the tables they belong to and the verdicts in Appendices~\ref{app:score5_superseded},~\ref{app:overlap_joint},~\ref{app:knn_ties} and~\ref{app:unseen_protocol}, with the full chronology of how each was found shipped as \texttt{REVISION\_HISTORY.md} rather than deleted. We think an auditing paper that hid its own corrections would be self-refuting.
+
+\emph{Compute and environmental cost.} All experiments run on a single consumer GPU/accelerator; the largest single run (Table~\ref{tab:poly8_unseen}) is a few GPU-hours and the whole paper is well under 100. No large pretrained model is trained or fine-tuned.
+
+We see no dual-use or misuse risk specific to this work: a tool that makes benchmark claims harder to overstate is defensive by construction.
+
+\section*{Reproducibility Statement}
+
+Every quantitative claim in this paper carries a provenance tag (e.g.\ \texttt{r70}, \texttt{r76}) that names the script that produced it and the JSON log it was read from; Appendix~\ref{app:provenance} tabulates the tags of the AI~Feynman and corpus-survey families, each EQNET run is tagged in the appendix subsection that reports it, and \texttt{REPRODUCE.md} lists every tag of both groups in one place. Appendix~\ref{app:pipeline_guards} documents the frozen pipeline configuration and names the rows that come from a separate run family. Code, the command-line auditor \texttt{audit-symbolic-benchmark}, all run logs, and the tier-1/tier-2 corpus statistics are included in the supplementary material.
+
+% Round 51, and this paragraph is the round's own finding, not a reviewer's: the reviewer scored
+% reproducibility 9/10 and enumerated this paragraph item by item, quoting "2,304 assertions; 43 indexed
+% runs" -- neither of which is what it said.  What it SAID was 2398 and 77.  What is TRUE is 2486 and 81.
+%   Measured, not assumed: `python3 verify_claims.py' in the project copy exits 0 and prints
+% "2486/2486 assertions passed", and check_reproduce_index() asserts len(tags) == 81 with tol=0.  So 77
+% went stale in round 48 (78) and again in round 49 (81), and 2398 in rounds 48, 49 and 50 -- three
+% consecutive revisions in which the paper misdescribed its own artifact in the one section whose whole
+% subject is that the artifact is described correctly.
+%   Why nothing caught it: `LC_ALL=C grep -l statements.tex check_*.py' returns NOTHING.  No gate script
+% opens this file, and the verifier lives in a different tree and reads REPRODUCE.md and its own source,
+% never this prose -- the ONE number here it does pin is "six runs have no wall-clock time", via
+% doc.count("runtime not recorded") == 6, which is untouched and still 6.  A gate's coverage is the set
+% of FILES IT OPENS, not the set of claims it is about; closed by check_artifact_counts() this round,
+% which also adds statements.tex to check_protected_claims.py's file list.
+%   The arithmetic is RE-PREMISED, not re-counted, and that distinction is the whole repair.  A naive
+% 33 -> 37 would have shipped a FALSE claim: at 81 the gain is 37, and four of the new entries genuinely
+% ARE new runs (r102_composition_lattice; r103_library_size and r103_library_size_s200, the two
+% invocations of one run, indexed together; r103_library_census), so "not one of them is a new run" is
+% false where "33 of the 37 are not new runs at all" is true and leaves the existing "Thirty-two ... The
+% thirty-third" explanation below correct VERBATIM -- 32 + the 77th = 33, exactly as it already reads.
+% Each of the four was checked against check_reproduce_index()'s own note and the load_log() call sites,
+% not against memory.  Two further staleness fixes in the same sentence: "two revisions ago" is dropped
+% for "has risen from", because a relative date decays every round and this is the third round in a row
+% that this paragraph's self-description drifted; and "it is this revision's" -> "it is our own", which
+% keeps the self-attribution (it was our defect) while removing a claim that expired four rounds ago.  ROUND 61's readiness pass found a third defect, in the paragraph below rather than this one: it printed $0.0023$ -- the cross-environment envelope of ONE poly8 Tree-LSTM cell -- as what ``a trained cell'' reproduces to, while Appendix AK measures replicate envelopes of $0.047$ (GIN) and $0.062$ (Transformer) on trained cells and states, at appendix_domain_guards.tex:1813, the very principle this sentence broke: a bound on one arm is not a bound on another.  r106 then measured a trained GIN arm moving $0.0165$ and its untrained twin $0.0219$, enough to carry GIN's $+0.034$ boolean gap across zero -- so the SMALLEST of the paper's several measured envelopes was standing, in the paper's most load-bearing place, for all of them.  It now prints both scopes and the LARGEST value, which is also the one r106's drift cannot falsify.  Funded in-paragraph: -17 chars of trim against 77.54pt of last-line tail on p11.
+The supplement also ships \texttt{verify\_claims.py}, which makes 2619 assertions and exits non-zero if any fails, so corrupting a single logged value fails it. It \emph{recomputes} the benchmark constructions the arguments depend on rather than reading them from a stored flag, and every check names the run tag it reads from and \emph{fails} if that log is absent rather than skipping it. \texttt{REPRODUCE.md} indexes every run the verifier asserts against (all $87$, a claim the verifier checks on itself), with each one's command, expected output and wall-clock runtime; six runs' logs have no wall-clock time and their cells say \emph{not recorded} rather than an estimate. \textbf{That count has risen from $44$, and $33$ of the $43$ it has gained are not new runs at all.} Thirty-two were a defect in the self-check: it derived its list by \emph{reading its own source} for load sites with a literal string argument, so whole families addressed by a computed name (five class partitions $\times$ three scripts, four replicate runs) were asserted against while being invisible to the check that exists to prove they are indexed; it now records the stems as they are loaded and expands the shorthands \texttt{REPRODUCE.md} uses to name a family. \textbf{The thirty-third is worse, and it is our own}: a log that had shipped since July was cited by no sentence of the body \emph{and} carried no assertion at all, so the result answering the most obvious objection to \S\ref{sec:coverage}'s largest row was invisible twice over (Appendix~\ref{app:hardened_recipe}). Reading it in order to assert it found four wrong figures in the appendix that had been printing it, every one of them flattering; they are corrected there. \textbf{The other ten are new runs}, and counted as such, not folded into the defect: a composition-lattice run, two \emph{invocations} of one library-expansion run (the second exists only to establish that the first's pre-registered stop rule was not an artifact of the first's own search budget, and both are indexed under one entry) and a 15-corpus library census; the remaining four, two encoders $\times$ two replicates, complete the one arm of the composition design this paper had recorded as never run, and are indexed under one entry for the same reason; the last two re-run the swap twin per class, one per corpus, for a class-level gap interval. This is bookkeeping, not evidence: it establishes that the numbers in the paper are the numbers the runs produced, and nothing about whether the audit is the right test.
+
+Two caveats to state: first, the \textsc{UnseenEqClass} protocol's no-leakage property rests on a single fixed shuffle seed that splits classes by index before training, so reproducing the split requires that seed; it is recorded in every log's provenance block, and Appendix~\ref{app:split_robustness} re-runs the $K{=}500$ cell over five partitions, because no number of training seeds speaks to the choice of split. Second, training is stochastic and we report $3$--$25$ seeds per run; the unit of inference throughout is the equivalence class (or equation), never the seed, and every interval bootstraps over that unit. Re-running a trained cell reproduces it to $0.0023$ across environments and, on other arms, only to $0.062$ across replicates (Appendices~\ref{app:split_robustness},~\ref{app:r81_arch}), which bounds what the bit-for-bit claim in Appendix~\ref{app:depth_arch} covers. Appendix~\ref{app:reproducibility_details} records the revision history of numbers that changed during review.
+
+\section*{Statement on the Use of AI Assistants}
+
+\textbf{The research question, the level hierarchy, the falsification criterion at its centre, every decision about which claims the evidence supports, and every retraction reported in this paper are the author's.} The author has read, checked, and takes full responsibility for the entire content, including all claims, numbers and citations, and for any errors that remain.
+
+\emph{Where assistants were used.} Large language model assistants (Anthropic Claude, via an agentic coding harness) were used substantially in implementing the experimental harness, the training-free auditor and the non-learned baselines; running experiments and reading their logs; drafting and revising the manuscript, including the wording of the sections here; and constructing the \texttt{verify\_claims.py} checks. Portions of the pipeline used to organise the writing are themselves included in the supplement.
+
+The failure mode of LLM-assisted scientific writing is confident text unsupported by the data, which is why the supplement ships an executable that asserts the prose against the logs as opposed to asking a reader to trust it.

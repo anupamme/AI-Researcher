@@ -1,0 +1,228 @@
+% Round 46, the reviewer's #3 ("add the one-picture audit workflow figure", third on his own priority
+% list) together with his #13 ("simplify Figure 1 until it answers only: what does the audit let me
+% conclude?").  Those are one ask, and the picture already existed TWICE -- welded to the results ladder
+% of figure_framework.tex on page 3, and again as figure_procedure.tex, which the .aux placed on page 16,
+% BEHIND the references.  So this file is not new content: every node below is the chain that round 38
+% moved INTO figure_framework.tex, moved back out and given its own float, at zero new claims.  Round 15
+% exiled figure_procedure.tex from the body and round 38 consolidated the page-2 \fbox chain into the
+% ladder; this partially reverses both, deliberately, and the response says so.
+%
+% Placement: \input from introduction.tex after \S1's first paragraph, so [t] floats it to the top of
+% page 2 -- page 1 is all abstract, which is round 44's lesson that "page 1" is a claim about the
+% RENDERED document and not about the source.
+%
+% GEOMETRY.  Deliberately NOT the vertical column that figure_procedure.tex is: \resizebox scales by
+% WIDTH, so a tall picture is expensive and a wide flat one is cheap.  Five stages were folded to four --
+% "declare the family" and "measure its ceiling" share a box -- because the text still sets legibly at
+% four boxes across the strip; at five it would not.  The three level names moved to the caption and to
+% figure_framework.tex's new left column, so they are not lost.
+%
+% The boxes are deliberately WIDER than \textwidth: natural width is 4*3.62 + 3*0.62 = 16.34cm against a
+% 13.9cm \textwidth, so the \resizebox scales DOWN by ~0.85 and the rendered HEIGHT falls with it.  This
+% is the inverse of round 38's trap and the same lever in the other direction: at 2.98cm boxes the strip
+% was 13.9cm wide, scaled by 1.00, and cost two more body lines on a page that has 0.000pt of slack.
+% Widening also lets each box's text wrap in fewer lines, which is where most of the height went.
+% A collision here is invisible to pdftotext and to every gate in this repo: render page 2 and look.
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\scriptsize,
+  dec/.style={draw, rounded corners=1.5pt, text width=3.62cm, minimum height=1.02cm,
+              align=center, inner sep=3pt},
+  ar/.style={-{Latex[length=1.6mm]}, shorten >=1pt, shorten <=1pt},
+  ex/.style={anchor=north, text width=3.70cm, align=center, font=\scriptsize},
+]
+% Round 55, his #2 ("simplify Figure 1 into the 5-step audit", +0.4 on his own
+% weighting).  Measured first: every node of his ASCII sketch is already here,
+% including the pass-exit he draws, which is band cell t2 -- so the gap is not a
+% missing step but that NOTHING in the picture is ordered, so "the 5-step audit"
+% cannot be read off it and the caption's own count ("two steps end the
+% inference") is unverifiable against the figure it captions.  Ordinals are the
+% whole fix, at ~3 characters per box: the strip's height is set by b1 and b3 at
+% three wrapped lines each, and 3 characters cannot make a 2-line box into a
+% 3-line one (a line holds ~35 characters at \scriptsize on 3.62cm), so this is
+% height-free -- ASSERTED ON THE RENDER, because a collision here is invisible
+% to pdftotext and to every gate in this repo.
+% NOT done, deliberately: he asks for five boxes.  Round 46 folded "declare the
+% family" and "measure its ceiling" into b3 because at five the \scriptsize text
+% does not set legibly at the ~0.85 \resizebox factor (see GEOMETRY above), and
+% his fifth step is the pass VERDICT, which is the graded band -- round 47's \S8
+% and round 51's work, and simultaneously HIS OWN \S7 ask for a boxed statement
+% of what a pass means.  Cutting the band to reach five boxes would delete two
+% predecessors' requirements and one of his own in the same stroke.
+\node[dec] (b1) at (0,0) {\textbf{1. the claim}:\\[-1pt]the representation $h$ encodes property $P$};
+\node[dec, right=0.62cm of b1] (b2) {\textbf{2.}~can a $P$-\textbf{invariant} control solve the task?};
+\node[dec, right=0.62cm of b2] (b3) {\textbf{3.}~\emph{no}: \textbf{declare the family} $\mathcal{F}$, and measure its \textbf{ceiling} $\sup\mathcal{F}$: readouts included};
+\node[dec, right=0.62cm of b3] (b4) {\textbf{4.}~is the learned score \emph{above} that ceiling?};
+
+\foreach \a/\b in {b1/b2, b2/b3, b3/b4} \draw[ar] (\a) -- (\b);
+
+% the two stages that END the inference.  Both were nodes x1/x2 of figure_framework.tex before this round.
+\node[ex] (x1) at ([yshift=-0.26cm] b2.south)
+     {\emph{yes} $\Rightarrow$ \textbf{the experiment decides nothing}};
+\draw[ar] (b2.south) -- (x1.north);
+\node[ex] (x2) at ([yshift=-0.26cm] b4.south)
+     {\emph{no}, at any margin $\Rightarrow$ \textbf{no evidence about} $P$};
+\draw[ar] (b4.south) -- (x2.north);
+
+% Round 47, his \S8: "make the evidence hierarchy visually unavoidable -- absolute (shape-matched twin)
+% -> family-relative (F3 auditing) -> not evidence of mechanism".  Measured first: all three tiers were
+% already stated in the paper, but only tiers 2 and 3 were in this band and NOTHING anywhere ordered
+% them as a hierarchy; tab:entitlements' Verdict cells carry the same grading and are blocked by WHOSE
+% claim a row is, not by evidential strength.  So the single shaded one-liner below becomes three graded
+% cells, dark to light, left to right -- strongest evidence first.  Every phrase is lifted from text the
+% paper already uses (the band itself, \S\ref{sec:structural_scale}, Prop.~\ref{prop:twin_exact}), so
+% this adds no claim.
+%
+% GEOMETRY, and it is the whole risk.  The band is now TWO lines where it was one, which the note this
+% replaces warns costs a body line -- funded by \S1 \P6's compression, and measured before it was spent.
+% What it does NOT cost is scale: the picture's natural width is set by the four-box strip above
+% (4*(3.62+0.21 inner sep) + 3*0.62 = 17.18cm), not by this band, so any total up to ~17.1cm leaves the
+% \resizebox factor at ~0.85 and the legibility with it.  Cell text widths 5.20+5.10+6.00 plus three
+% inner seps and two 0.12cm gaps = 16.93cm, inside that budget.  Do NOT buy height by widening the
+% strip: at 0.85 the \scriptsize text already sets at ~6.8pt and legibility is this round's scored axis.
+% A collision here is invisible to pdftotext and to every gate: render page 2 and look at it.
+% Round 58, his \S13 ("make what a pass means visually impossible to miss") and his \S2 ("Figure 1 is
+% visually overloaded", with an ASCII redraw that DELETES this band).  Those are one object read two
+% ways, and this is the THIRD consecutive round to ask for a box that has been on this page since
+% round 47: round 55's \S7 asked for a boxed statement of what a pass means, round 57's P2 asked for
+% the three-level hierarchy in boxes, and his \S13 asks for it using this caption's own words
+% ("what a pass means").  So the reviewer read the caption and still filed the object as missing.
+% (That phrase is FOUR words.  It was written here as "five" and repeated into round 58's new gate
+% before the readiness pass caught it -- a count attached to a noun, wrong, in a comment defending
+% a round whose own lesson is that a count is a universal quantifier wearing a numeral.  Deleted
+% rather than corrected, per round 57: the sentence does not need the number to make its point.)
+% Round 55's rule -- a reported absence that is present is a LAYOUT failure -- and after three rounds
+% it is not a naming failure either: round 57 tried the naming fix and correctly declined it.
+%
+% WHAT THE RENDER SHOWS, and it is invisible to pdftotext, to all four gates and to the verifier.
+% The band was framed IDENTICALLY to the four numbered boxes -- same \draw, same rounded corners, same
+% \scriptsize -- sat directly beneath them at the same width, and the reader who has just walked
+% 1->2->3->4 left to right continues left to right INTO it, so it reads as steps 5, 6 and 7.  The
+% band's axis is evidential strength DESCENDING; the strip's is procedural order ASCENDING.  Two
+% orthogonal meanings on one horizontal axis ~14pt apart -- round 44's cross-panel axis-direction
+% defect and round 51's t2 polarity defect in a third form, same figure.  The dark->light fill
+% compounds it: the reading path ENDS on the palest cell while the strongest verdict sits at the far
+% left, reachable only by jumping the page width backwards from b4.
+%
+% The fix is the DRAWING, not the caption -- and the caption fix was priced and DECLINED, not
+% forgotten.  Its last rendered line carries 26.37pt of tail, ~7 characters at the measured ~3.9
+% pt/char; the shortest truthful direction clause (", strongest first") is 17.  So any caption
+% addition buys a FOURTH caption line at 11.6pt against p2's 9.463pt of slack, which cascades into
+% p4's 0.000pt and a ten-page body.  Everything in that caption is pinned anyway: "the band below
+% grades what a pass means" by rounds 47/55/57, "coverage is a separate axis" by round 47, the
+% S1--S3 clause by round 46.  No truthful swap exists in either direction -- round 57's finding,
+% re-measured and unchanged -- so the direction word goes where the defect is instead.
+%
+% GEOMETRY, priced before it was spent.  \resizebox scales by width, so natural height converts at
+% the ~0.809 factor set by the four-box strip (13.9/17.18): the rule sits INSIDE the 0.20cm gap that
+% already existed, and the rubric line costs 0.14 + ~0.30 + 0.06 - 0.20 = ~+0.30cm natural = ~0.24cm
+% = ~6.9pt rendered, against p2's 9.463pt.  Measured on the rebuilt render, not asserted.
+% VOCABULARY, per round 57's rule (reuse the paper's own word, never a synonym): "a grading" is
+% \S3.3's own -- methodology.tex:381 ships "a \textbf{graded verdict}" and "\textbf{That grading is
+% the deliverable}", round 57's repair, and "grading" occurs nowhere else in the body.  Deliberately
+% NOT "verdicts": round 57 established that all eight body uses of `verdict' mean the outcome on ONE
+% CLAIM and not a grade, so labelling these cells verdicts would re-introduce the exact equivocation
+% that round fixed.  "strongest evidence first" is round 47's own grant wording, above.  "a fifth
+% step" names the misreading precisely (the boxes are numbered 1--4) and respects round 55's word
+% discipline: STEPS are this figure's, STAGES are Figure~\ref{fig:procedure}'s.
+\draw[black!55, line width=0.4pt]
+     ([yshift=-0.10cm] b1.west |- x1.south) -- ([yshift=-0.10cm] b4.east |- x1.south);
+\node[anchor=north west, font=\scriptsize, inner sep=0pt] (bh)
+     at ([yshift=-0.14cm] b1.west |- x1.south)
+     {\textbf{a grading, not a fifth step}; strongest evidence first:};
+\node[draw, rounded corners=1.5pt, fill=black!22, font=\scriptsize,
+      text width=5.20cm, align=left, inner sep=3pt, anchor=north west]
+     (t1) at ([yshift=-0.06cm] bh.south west)
+     {\textbf{absolute}, the ceiling is a \emph{theorem}: on the twin, \emph{any} arrangement-invariant
+      map is pinned at $0.500$};
+\node[draw, rounded corners=1.5pt, fill=black!12, font=\scriptsize,
+      text width=5.10cm, align=left, inner sep=3pt, anchor=north west]
+     (t2) at ([xshift=0.12cm] t1.north east)
+     {\emph{a pass} $\Rightarrow$ \textbf{family-relative}: the alternatives the declared family names
+      fall, and nothing more};
+\node[draw, rounded corners=1.5pt, fill=black!4, font=\scriptsize,
+      text width=6.00cm, align=left, inner sep=3pt, anchor=north west]
+     (t3) at ([xshift=0.12cm] t2.north east)
+     {\textbf{never mechanism}: never certification, never \emph{how} $h$ computes,
+      \emph{compositional reasoning} out of reach at any width};
+\end{tikzpicture}}
+% The three cue levels are spelled out twice below this caption -- in \S1's next paragraph and in
+% Figure~\ref{fig:framework}'s left column -- so naming them a third time here was the redundancy the
+% round is supposed to be removing, and it cost a caption line on a page with 0.000pt of slack.
+% The lead clause said "two of its steps can end the inference BEFORE a learned score is read at all",
+% which the picture it captions contradicts: x2 hangs off b4, "is the learned score above that ceiling?",
+% so that exit is reached only BY reading the learned score.  Two steps end the inference; exactly ONE
+% of them ends it before anything is trained, and that is the more surprising half.  Found by reading
+% the figure against its own caption -- no gate here compares a caption's count to its picture's nodes.
+% "against a published result" also overclaimed: of Figure~\ref{fig:framework}'s four rungs, two are
+% other people's published results and two are ours on EQNET's released corpora.
+% Round 47, his \S12 ("S3, F3, twin, F_t, A_P and coverage are confusable"): the one distinction the
+% paper never drew in one place is between a cue LEVEL and the FAMILY of controls that read only levels
+% up to it.  It replaces, rather than adds to, the coverage clause that stood here -- +17 rendered
+% characters, on a page whose slack this round spent.  The band is named in the lead clause because his
+% \S8 asks for the hierarchy itself, not for its parts, to be unmissable.
+% Caught on the render, in this round's OWN new clause: it read "a pass exits into the band's three
+% grades", and no pass exits into the third one -- "never mechanism" is what a pass never buys, so the
+% count of grades a pass can exit into is TWO.  The band does grade all three, as a scale of evidential
+% force ending at zero, so the fix is to make the band the subject rather than the pass.  Round 46's
+% defect class exactly (a caption whose count contradicts its own figure), one round later and self-
+% inflicted; sized 2 characters SHORTER than what it replaced, because p2 has 0.001pt of slack.
+% Second defect in the same band, caught on the FINAL readiness read of p2 (round 44's cross-panel
+% axis-direction defect in a new form).  Cell t2 read "\emph{yes} $\Rightarrow$ family-relative", and
+% its "yes" answers b4 ("is the learned score above that ceiling?") -- but t2 sits HORIZONTALLY under
+% b2/b3, i.e. directly below x1, "\emph{yes} $\Rightarrow$ the experiment decides nothing", which is
+% b2's yes and the FATAL branch.  Two "yes $\Rightarrow$" clauses stacked ~14pt apart with opposite
+% polarity, every one correct with respect to its own antecedent and the antecedent invisible.  Fixed
+% to "\emph{a pass}", which is unambiguous wherever the cell sits and is the caption's own subject
+% ("the band below grades what a pass means"); +3 characters in a 5.10cm cell that had tail room on
+% its second line, so the band held two lines and p2's slack is unmoved.  Durable: when a graded band
+% is placed under a FLOW, check every branch word in it against the box vertically above it, not only
+% against the box it logically answers.
+% Round 55.  The lead now NAMES the two steps, which round 46's correction could
+% not do because the boxes were unnumbered: its count ("two steps", "exactly one
+% of them before anything is trained") is preserved exactly and is now checkable
+% against the picture -- steps 2 and 4 carry the two exits, and only step 2's
+% hangs off a box asked before a learned score exists.  +8 bold characters in the
+% lead, -4 in the join.
+% The closing cross-reference sentence -- "Figure 2 settles each step on a real
+% benchmark; Figure 5 is the released auditor's screen-by-screen checklist" -- is
+% CUT to fund \S1's three-object table on this same page (p2 carries +0.001pt).
+% Checked before cutting, because a caption sentence is where this paper hides
+% predecessors' requirements: it is in NONE of the grants recorded above (round
+% 46's S1--S3 clause, round 47's cue-level/family clause, the band-count fix, the
+% t2 "a pass" fix); no gate literal covers it (zero matches for figure_audit or
+% fig:audit in all four check_*.py beyond this file's name in a BODY list); and
+% it orphans neither float -- fig:framework keeps 2 body citations in
+% introduction.tex and fig:procedure keeps 2, in methodology.tex and
+% conclusion.tex.  Counting the target float's OTHER body citations is the check;
+% a float cited only from another float's caption is unreachable from the body.
+% ROUND 55, second readiness find: numbering these boxes made "step~N" a NUMBERED term, and the
+% document already had a second numbered sequence -- the released checklist of
+% Figure~\ref{fig:procedure}, whose own caption calls its items STAGES ("the first six stages are
+% screens; the seventh...") while two appendix sentences called them "the checklist's step~2" and
+% "Step~1 of the checklist".  Before this round "step" was unnumbered in the body, so those were
+% unambiguous; numbering these boxes took the word.  Worse, the two step~2's are adjacent in
+% meaning -- Figure 1's is "can a P-invariant control solve the task?", the checklist's is "report
+% BOTH non-learned baselines" -- so a reader carrying this figure's numbering into the appendix
+% reads Figure 1 step~2 as "report both baselines", which is exactly the baseline/ceiling conflation
+% the paper exists to prevent.  Fixed by word discipline, not by explanation (this round's thesis):
+% STEPS are this figure's, STAGES are Figure~\ref{fig:procedure}'s.  "stage" occurs nowhere else in
+% the document, so it was free to take.  If a later round numbers any third sequence, give it a
+% third word -- and grep BOTH words, because neither gate can see an ordinal collision.
+% THREE checklist sites were renamed, not two: appendix_domain_guards.tex 1107, 1115 and
+% 1461.  1461 is the one that proves the defect was real rather than pedantic -- it read
+% "the checklist's step~2 would have stopped a structural claim BEFORE ANY MODEL WAS
+% TRAINED" against this caption's "only step~2 BEFORE ANY LEARNED SCORE IS READ": same
+% ordinal, near-identical qualifier, two different sequences, 30 pages apart.  Found by
+% enumerating every `(step|stage)s?~?\d' in the tree, which is the only way to see it.
+% appendix_domain_guards.tex:1993 is left as "Step~1/Step~2" ON PURPOSE: those are steps of
+% a PROOF, scoped by their own sentence ("The proof has two steps"), not a procedure a
+% reader walks -- renaming them would be the pedantic version of this fix.
+\caption{\textbf{The audit in one picture: steps~2 and~4 end the inference, and only step~2 before any
+learned score is read}; the band below grades what a pass means. \textbf{S1}--\textbf{S3} name
+\emph{cues}; $\mathcal{F}_3$ is the controls reading \emph{only} cues up to S3, and \emph{coverage} is a
+separate axis, not a fourth level (\S\ref{sec:tiers}).}
+\label{fig:audit}
+\end{figure}

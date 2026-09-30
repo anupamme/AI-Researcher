@@ -18,12 +18,20 @@
 \usepackage{enumitem}
 \usepackage{makecell}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,decorations.pathreplacing}
+% Compact theorem style: the default topsep/belowsep costs ~1 line per environment
+% and there are six of them in section 3.  Body type size and leading are untouched.
+\newtheoremstyle{compact}{3pt}{3pt}{\itshape}{0pt}{\bfseries}{.}{ }{}
+\theoremstyle{compact}
+\newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
 \newtheorem{hypothesis}{Hypothesis}
 
 
-\title{When Does Held-Out-Form Generalization Test Structure? A Hierarchical Audit of Neuro-Symbolic Expression Benchmarks}
+
+\title{When Stronger Baselines Mislead:\\ Admissibility Auditing for\\ Representation-Level Claims}
 
 % Authors are hidden for double-blind review (the \iclrfinalcopy macro below
 % is commented out). Replace this block before the camera-ready submission.
@@ -32,6 +40,21 @@ Paper under double-blind review}
 
 \newcommand{\fix}{\marginpar{FIX}}
 \newcommand{\new}{\marginpar{NEW}}
+
+% The appendix sections are \subsection*{...} with hand-written letters (Y, Z, AH, ...),
+% so they set no counter and a plain \label there makes \ref print whatever counter
+% happened to be current -- every "Appendix~\ref{app:...}" in the body was rendering as
+% "Appendix 5".  \applabel{AH}{app:composition} pins the printed letter to the label.
+\makeatletter
+\newcommand{\applabel}[2]{\def\@currentlabel{#1}\label{#2}}
+\makeatother
+
+% Float and caption spacing tightened (margins, type size and leading are untouched).
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{5pt}
+\setlength{\belowcaptionskip}{2pt}
 
 %\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
 
@@ -53,12 +76,22 @@ Paper under double-blind review}
 
 \input{conclusion.tex}
 
+% Ethics, reproducibility, and AI-use statements. Unnumbered and exempt from the
+% page limit, so they live after the body and before the references.
+\input{statements.tex}
 
 \bibliography{iclr2027_conference}
 \bibliographystyle{iclr2027_conference}
 
 \appendix
-\input{figure_overview.tex}
+% Round 44.  figure_overview.tex and figure_procedure.tex were \input HERE, i.e. BEFORE
+% appendix_domain_guards.tex, whose first lines are \clearpage\section*{Appendix}.  With
+% \usepackage[section]{placeins} that heading raises a \FloatBarrier, so both floats were flushed
+% out ahead of it: Figure 3 on p13 and Figure 4 on p14, after the references (p11-12) and before the
+% APPENDIX heading (p15).  That is the mechanism behind the round-44 reviewer's "the main paper is
+% about 14-15 pages": body 9 + statements 2 + references 2 = 13, plus two orphaned float pages.
+% Both \input's now live inside appendix_domain_guards.tex, after its front matter.  Their ORDER is
+% preserved, so Figure 3 and Figure 4 keep their numbers and every \ref still resolves.
 \input{appendix_domain_guards.tex}
 
 \input{figure_scale_curve.tex}

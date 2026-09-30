@@ -1,8 +1,9 @@
 \begin{table}[t]
 \centering
-\caption{\textbf{Zero-parameter separability survey across published expression benchmarks} (no training; tag \texttt{r57}, produced by the released auditor). \emph{Unique var-set} (tier 1): fraction of equivalence classes whose variable \emph{set} is shared by no other class. If high, knowing which variables appear pins the class, and a held-out-form protocol is solvable by token lookup. \emph{Op-bag sep.} (tier 2): fraction of class pairs separable by the operator/arity bag alone. The tier-1 failure is confined to the physics block: the AI~Feynman corpus, from which such benchmarks are built, gives $84\%$ of equations a variable set no other equation shares. \emph{The canonical published benchmark family for this task, EQNET \citep{allamanis2017learning}, is immune}, defining every class over a shared variable pool ($\leq 3.2\%$ unique var-sets across all 15 corpora), as are generated symbolic-regression corpora. Tier~2, by contrast, is high nearly everywhere, which is why identification claims must be stated relative to the operator-bag skyline. \emph{These columns measure whether class representatives differ, not what a bag scores on held-out forms}; the two diverge sharply (Appendix~S, Appendix~P), and the released auditor prints the measured accuracy alongside them. $N$ is the corpus's class count; corpora above $600$ classes are subsampled (seeded) for the $O(n^2)$ pairwise columns.}
+\caption{\textbf{Zero-parameter separability survey across published expression benchmarks} (no training; tag \texttt{r57}, produced by the released auditor). \emph{Unique var-set} (tier 1): fraction of equivalence classes whose variable \emph{set} is shared by no other class. If high, knowing which variables appear pins the class, and a held-out-form protocol is solvable by token lookup. \emph{Op-bag sep.} (tier 2): fraction of class pairs separable by the operator/arity bag alone. The tier-1 failure is confined to the physics block: the AI~Feynman corpus, from which such benchmarks are built, gives $84\%$ of equations a variable set no other equation shares. \emph{The canonical published benchmark family for this task, EQNET \citep{allamanis2017learning}, is immune}, defining every class over a shared variable pool ($\leq 3.2\%$ unique var-sets across all 15 corpora), as are generated symbolic-regression corpora. Tier~2, by contrast, is high nearly everywhere, which is why class-recovery claims must be stated relative to the operator-bag control. \emph{These columns measure whether class representatives differ, not what a bag scores on held-out forms}; the two diverge sharply (Appendix~\ref{app:screening_cli}, Appendix~\ref{app:overlap_joint}), and the released auditor prints the measured accuracy alongside them. $N$ is the corpus's class count; corpora above $600$ classes are subsampled (seeded) for the $O(n^2)$ pairwise columns. \textbf{The last two blocks port the auditor out of symbolic mathematics}, and only the second is a benchmark we did not build: identifiers for variables and AST node types with arities for the operator bag over $300$ Type-2 clone classes $\alpha$-renamed from \emph{real} Python stdlib functions, \emph{constructed}, so evidence the auditor ports and not of prevalence there, and T1 fires harder than in any symbolic corpus, $96\%$ against AI~Feynman's $84\%$ (Appendix~\ref{app:clones}), and \textbf{SCAN} \citep{lake2018generalization}, \emph{published}, whose classes are its own gold action sequences, with content words for variables and its connectives for the operator bag. \textbf{SCAN is immune at T1 like EQNET, yet a content bag still scores $64\times$ chance on held-out forms}: the sharpest instance in this table of the representatives-versus-held-out divergence noted above (Appendix~\ref{app:scan}).}
 \label{tab:benchmark_survey}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{l r r r r}
 \toprule
 Benchmark & $N$ & Var.\ pool & Unique var-set (T1) & Op-bag sep.\ (T2) \\
@@ -24,6 +25,12 @@ Lample--Charton \citep{lample2019deep}& 320 & 1  & $0\%$   & $99\%$ \\
 Feynman-10 shared (de~Bruijn)         & 10  & 4  & $20\%$  & $98\%$ \\
 Overlap-5 (shared $x_0,x_1$)          & 5   & 2  & $0\%$   & $100\%$ \\
 Overlap-12 (shared $x_0,x_1$)         & 12  & 2  & $0\%$   & $100\%$ \\
+\midrule
+\multicolumn{5}{l}{\emph{Outside symbolic mathematics: code, a corpus we constructed (tag \texttt{r95}):}} \\
+Python stdlib Type-2 clones           & 300 & 1454 & $\mathbf{96\%}$ & $\mathbf{100\%}$ \\
+\midrule
+\multicolumn{5}{l}{\emph{Outside symbolic mathematics: a \textbf{published} benchmark (tag \texttt{r96}):}} \\
+SCAN \citep{lake2018generalization}   & 9222 & 7 & $0.3\%$ & $99\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}

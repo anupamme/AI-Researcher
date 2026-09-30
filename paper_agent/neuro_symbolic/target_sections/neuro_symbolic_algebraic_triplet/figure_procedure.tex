@@ -1,0 +1,41 @@
+\begin{figure}[t]
+\centering
+% Moved out of the main text in round 15: once every rung of Figure~\ref{fig:framework} carries its
+% own verdict, this procedure column was largely redundant with it, and the main text could not
+% afford both. It is kept intact here because the checklist is what the released auditor implements.
+\resizebox{0.62\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\footnotesize,
+  pbox/.style={draw, rounded corners=1.5pt, minimum width=4.5cm,
+               minimum height=0.44cm, align=center, inner sep=1pt},
+  hdr/.style={font=\footnotesize\bfseries},
+  ar/.style={-{Latex[length=1.6mm]}, shorten >=1pt, shorten <=1pt},
+]
+\node[hdr, anchor=south west, align=left] at (-2.65, 0.42)
+     {The criterion, as a procedure:\\fail at \emph{any} stage $\Rightarrow$\\the reading is unsupported};
+
+\node[pbox] (c0) at (0, 0)     {corpus};
+\node[pbox] (c1) at (0, -0.56) {S1 screen: unique variable sets?};
+\node[pbox] (c2) at (0, -1.12) {S2 screen: unique operator bags?};
+\node[pbox] (c3) at (0, -1.68) {non-learned skyline, same protocol};
+\node[pbox] (c4) at (0, -2.24) {renaming / operator scrambling};
+\node[pbox] (c5) at (0, -2.80) {shape-matched twin \& $\phi_d$ family};
+\node[pbox] (c6) at (0, -3.36) {axis C: out-of-library coverage test};
+\node[pbox, fill=black!10, font=\footnotesize\bfseries] (c7) at (0, -4.02)
+     {only now interpret learned performance};
+
+\foreach \a/\b in {c0/c1, c1/c2, c2/c3, c3/c4, c4/c5, c5/c6, c6/c7}
+  \draw[ar] (\a) -- (\b);
+
+\draw[decorate, decoration={brace, amplitude=3pt}]
+  (2.90, -0.34) -- (2.90, -3.58);
+\end{tikzpicture}}
+\caption{\textbf{Definition~\ref{def:audit_complete} as a procedure}, and what the released auditor
+implements. The first six stages are screens; the seventh is the only point at which a learned number
+is interpreted. \textbf{Coverage is drawn in sequence but it is neither a cue level nor a universal
+gate}: S1--S3 are representational invariances, whereas coverage is a property of the train/test split,
+one of the \emph{five} independent axes of novelty costed in \S\ref{sec:loso}, and \textbf{measured
+non-monotone} on \texttt{boolean8}, where the coverage-closure mechanism does not hold
+(\S\ref{sec:structural_scale}, Appendix~\ref{app:external_replication}).}
+\label{fig:procedure}
+\end{figure}
